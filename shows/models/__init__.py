@@ -8,6 +8,7 @@ from .show_participant import ShowParticipant
 from .show_photo import ShowPhoto
 from .show_role import ShowRole
 from .show_type import ShowType
+from .show_type_photo import ShowTypePhoto
 
 __all__ = (
     MatchResults,
@@ -18,4 +19,5 @@ __all__ = (
     ShowPhoto,
     ShowRole,
     ShowType,
+    ShowTypePhoto,
 )
