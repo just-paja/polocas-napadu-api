@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'locations',
     'bands',
     'events',
+    'profiles',
     'shows',
 ]
 
