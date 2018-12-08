@@ -9,6 +9,7 @@ pygraphviz = "*"
 [packages]
 django = "*"
 django-extensions = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
