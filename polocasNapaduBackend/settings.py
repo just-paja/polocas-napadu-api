@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'events',
     'profiles',
     'shows',
+    'management',
 ]
 
 MIDDLEWARE = [
