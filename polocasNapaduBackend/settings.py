@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'profiles',
     'shows',
     'management',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -129,4 +130,8 @@ STATIC_URL = '/static/'
 GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
+}
+
+GRAPHENE = {
+  'SCHEMA': 'polocasNapaduBackend.schema.schema',
 }

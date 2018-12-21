@@ -10,6 +10,7 @@ pygraphviz = "*"
 django = "*"
 django-extensions = "*"
 pillow = "*"
+graphene-django = "*"
 
 [requires]
 python_version = "3.7"
