@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-22 16:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: shows/__init__.py:7 shows/models/show.py:11
+msgid "Shows"
+msgstr "Představení"
+
+#: shows/models/match_results.py:11
+msgid "Match results"
+msgstr "Výsledek zápasu"
+
+#: shows/models/match_results.py:12
+msgid "Matches results"
+msgstr "Výsledky zápasů"
+
+#: shows/models/show.py:10
+#, fuzzy
+#| msgid "Shows"
+msgid "Show"
+msgstr "Představení"
+
+#: shows/models/show_band.py:10
+msgid "team-home"
+msgstr "Domácí tým"
+
+#: shows/models/show_band.py:11
+msgid "team-guest"
+msgstr "Hosté"
+
+#: shows/models/show_type.py:11
+msgid "Show type"
+msgstr "Formát představení"
+
+#: shows/models/show_type.py:12
+msgid "Show types"
+msgstr "Formáty představení"

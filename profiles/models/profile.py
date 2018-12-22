@@ -7,6 +7,11 @@ from fields import NameMixin, VisibilityMixin
 
 
 class Profile(NameMixin, TimeStampedModel, VisibilityMixin):
+
+    class Meta:
+        verbose_name = _('Actor profile')
+        verbose_name_plural = _('Actor profiles')
+
     slug = AutoSlugField(_('Slug'), populate_from='name')
     about = TextField()
     group = ForeignKey(

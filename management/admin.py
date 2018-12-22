@@ -6,7 +6,6 @@ from locations.models import Location
 from profiles.models import Profile, ProfileGroup
 from shows.models import MatchResults, Show, ShowRole, ShowType
 
-
 from .models import (
     BandAdmin,
     LocationAdmin,
@@ -18,7 +17,12 @@ from .models import (
     ShowTypeAdmin,
 )
 
-admin = AdminSite()
+
+class ImprovAdminSite(AdminSite):
+    site_header = 'Poločas nápadu'
+
+
+admin = ImprovAdminSite()
 
 admin.register(Band, BandAdmin)
 admin.register(Location, LocationAdmin)

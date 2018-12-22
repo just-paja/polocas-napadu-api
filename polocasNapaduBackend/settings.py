@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+from django.utils.translation import gettext_lazy as _
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,11 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'locations',
-    'bands',
-    'events',
-    'profiles',
-    'shows',
+    'locations.LocationsConfig',
+    'bands.BandsConfig',
+    'profiles.ProfilesConfig',
+    'shows.ShowsConfig',
     'management',
     'graphene_django',
 ]
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'polocasNapaduBackend.urls'
@@ -113,6 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = [
+    ('cs', _('Czech')),
+    ('en', _('English')),
+]
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -135,3 +142,14 @@ GRAPH_MODELS = {
 GRAPHENE = {
   'SCHEMA': 'polocasNapaduBackend.schema.schema',
 }
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+    os.path.join(BASE_DIR, 'bands/locale'),
+    os.path.join(BASE_DIR, 'events/locale'),
+    os.path.join(BASE_DIR, 'fields/locale'),
+    os.path.join(BASE_DIR, 'locations/locale'),
+    os.path.join(BASE_DIR, 'photos/locale'),
+    os.path.join(BASE_DIR, 'profiles/locale'),
+    os.path.join(BASE_DIR, 'shows/locale'),
+]

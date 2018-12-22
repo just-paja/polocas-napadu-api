@@ -1,13 +1,14 @@
 from django.db.models import Manager, Model, PositiveIntegerField
+from django.utils.translation import ugettext_lazy as _
 
 VISIBILITY_PRIVATE = 1
 VISIBILITY_PUBLIC = 2
 VISIBILITY_DELETED = 3
 
 VISIBILITY_CHOICES = (
-    (VISIBILITY_PRIVATE, 'Private'),
-    (VISIBILITY_PUBLIC, 'Public'),
-    (VISIBILITY_DELETED, 'Deleted'),
+    (VISIBILITY_PRIVATE, _('Private')),
+    (VISIBILITY_PUBLIC, _('Public')),
+    (VISIBILITY_DELETED, _('Deleted')),
 )
 
 class VisibilityField(PositiveIntegerField):
@@ -15,6 +16,8 @@ class VisibilityField(PositiveIntegerField):
     def __init__(self, *args, **kwargs):
         kwargs['choices'] = VISIBILITY_CHOICES
         kwargs['default'] = VISIBILITY_PUBLIC
+        kwargs['verbose_name'] = _('Visibility')
+        kwargs['help_text'] = _('visibilityHelpText')
         super().__init__(*args, **kwargs)
 
 

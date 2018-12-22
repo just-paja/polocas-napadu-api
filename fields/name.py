@@ -1,4 +1,5 @@
 from django.db.models import Model, CharField
+from django.utils.translation import ugettext_lazy as _
 
 
 class NameField(CharField):
@@ -7,6 +8,8 @@ class NameField(CharField):
         kwargs['max_length'] = 63
         kwargs['blank'] = False
         kwargs['null'] = False
+        kwargs['verbose_name'] = _('Name')
+        kwargs['help_text'] = _('nameHelpText')
         super().__init__(*args, **kwargs)
 
 
