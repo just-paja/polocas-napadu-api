@@ -3,6 +3,12 @@ from profiles.models import ProfilePhoto
 from .base import BaseAdminModel, BaseInlineAdminModel
 
 
+class ProfileGroupAdmin(BaseAdminModel):
+    """Admin model for profile groups."""
+
+    search_fields = ('name',)
+
+
 class ProfilePhotoAdmin(BaseInlineAdminModel):
     """Admin model for profile photos."""
 

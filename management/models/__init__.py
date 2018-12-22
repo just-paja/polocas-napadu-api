@@ -2,7 +2,12 @@
 
 from .bands import BandAdmin, BandPhotoAdmin
 from .locations import LocationAdmin, LocationPhotoAdmin
-from .profiles import ProfileAdmin, ProfilePhotoAdmin
+from .profiles import (
+    ProfileAdmin,
+    ProfileGroupAdmin,
+    ProfilePhotoAdmin,
+)
+
 from .shows import (
     MatchResultsAdmin,
     MatchScoreAdmin,
@@ -19,6 +24,8 @@ __all__ = (
     LocationPhotoAdmin,
     MatchResultsAdmin,
     MatchScoreAdmin,
+    ProfileAdmin,
+    ProfileGroupAdmin,
     ProfilePhotoAdmin,
     ShowAdmin,
     ShowBandAdmin,

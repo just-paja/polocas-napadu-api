@@ -3,7 +3,7 @@ from django.contrib.auth import admin as auth_admin
 
 from bands.models import Band
 from locations.models import Location
-from profiles.models import Profile
+from profiles.models import Profile, ProfileGroup
 from shows.models import MatchResults, Show, ShowRole, ShowType
 
 
@@ -12,6 +12,7 @@ from .models import (
     LocationAdmin,
     MatchResultsAdmin,
     ProfileAdmin,
+    ProfileGroupAdmin,
     ShowAdmin,
     ShowRoleAdmin,
     ShowTypeAdmin,
@@ -23,6 +24,7 @@ admin.register(Band, BandAdmin)
 admin.register(Location, LocationAdmin)
 admin.register(MatchResults, MatchResultsAdmin)
 admin.register(Profile, ProfileAdmin)
+admin.register(ProfileGroup, ProfileGroupAdmin)
 admin.register(Show, ShowAdmin)
 admin.register(ShowRole, ShowRoleAdmin)
 admin.register(ShowType, ShowTypeAdmin)
