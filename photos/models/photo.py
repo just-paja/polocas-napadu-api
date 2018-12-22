@@ -3,17 +3,14 @@ from django.db.models import CharField, ImageField, PositiveIntegerField
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
-VISIBILITY_PRIVATE = 1
-VISIBILITY_PUBLIC = 2
-VISIBILITY_DELETED = 3
+from fields import VisibilityManager, VisibilityMixin
 
-VISIBILITY_CHOICES = (
-    (VISIBILITY_PRIVATE, 'Private'),
-    (VISIBILITY_PUBLIC, 'Public'),
-    (VISIBILITY_DELETED, 'Deleted'),
-)
 
-class Photo(TimeStampedModel):
+class PhotoManager(VisibilityManager):
+    pass
+
+
+class Photo(TimeStampedModel, VisibilityMixin):
     """Stores photos."""
 
     class Meta:
@@ -21,6 +18,7 @@ class Photo(TimeStampedModel):
 
         abstract = True
 
+    objects = PhotoManager()
     image = ImageField(
         height_field="height",
         width_field="width",
@@ -33,8 +31,4 @@ class Photo(TimeStampedModel):
         max_length=255,
         null=True,
         blank=True,
-    )
-    visibility = PositiveIntegerField(
-        choices=VISIBILITY_CHOICES,
-        default=VISIBILITY_PUBLIC,
     )
