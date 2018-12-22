@@ -7,8 +7,8 @@ class Event(TimeStampedModel):
     name = CharField(max_length=50)
     slug = AutoSlugField(_('Slug'), populate_from='name')
     start = DateTimeField()
-    end = DateTimeField()
-    all_day = BooleanField()
+    end = DateTimeField(null=True, blank=True)
+    all_day = BooleanField(default=False)
     location = ForeignKey('locations.Location', on_delete=PROTECT)
     description = TextField()
 
