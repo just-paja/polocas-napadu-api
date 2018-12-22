@@ -1,3 +1,4 @@
+from .name import NameField, NameMixin
 from .visibility import (
     VisibilityField,
     VisibilityManager,
@@ -5,6 +6,8 @@ from .visibility import (
 )
 
 __all__ = (
+    NameField,
+    NameMixin,
     VisibilityField,
     VisibilityManager,
     VisibilityMixin,

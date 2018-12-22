@@ -3,7 +3,7 @@ from django_extensions.db.models import TimeStampedModel
 from django.db.models import BooleanField, CharField, DateTimeField, ForeignKey, PROTECT, TextField
 from django.utils.translation import ugettext_lazy as _
 
-from fields import VisibilityManager, VisibilityMixin
+from fields import NameMixin, VisibilityManager, VisibilityMixin
 
 
 class EventManager(VisibilityManager):
@@ -11,8 +11,7 @@ class EventManager(VisibilityManager):
         return self.get_visible().order('-start')
 
 
-class Event(TimeStampedModel, VisibilityMixin):
-    name = CharField(max_length=50)
+class Event(TimeStampedModel, NameMixin, VisibilityMixin):
     slug = AutoSlugField(_('Slug'), populate_from='name')
     start = DateTimeField()
     end = DateTimeField(null=True, blank=True)

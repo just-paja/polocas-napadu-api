@@ -11,6 +11,7 @@ VISIBILITY_CHOICES = (
 )
 
 class VisibilityField(PositiveIntegerField):
+
     def __init__(self, *args, **kwargs):
         kwargs['choices'] = VISIBILITY_CHOICES
         kwargs['default'] = VISIBILITY_PUBLIC
@@ -18,8 +19,6 @@ class VisibilityField(PositiveIntegerField):
 
 
 class VisibilityManager(Manager):
-    class Meta:
-        abstract = True
 
     def get_visible(self):
         return self.filter(visibility=VISIBILITY_PUBLIC)
@@ -29,4 +28,5 @@ class VisibilityMixin(Model):
     class Meta:
         abstract = True
 
+    objects = VisibilityManager()
     visibility = VisibilityField()

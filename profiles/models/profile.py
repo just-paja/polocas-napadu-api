@@ -3,15 +3,10 @@ from django_extensions.db.models import TimeStampedModel
 from django.db.models import CharField, ForeignKey, Model, TextField, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
-from fields import VisibilityManager, VisibilityMixin
+from fields import NameMixin, VisibilityMixin
 
 
-class ProfileManager(VisibilityManager):
-    pass
-
-
-class Profile(TimeStampedModel, VisibilityMixin):
-    name = CharField(max_length=127)
+class Profile(NameMixin, TimeStampedModel, VisibilityMixin):
     slug = AutoSlugField(_('Slug'), populate_from='name')
     about = TextField()
     group = ForeignKey(
@@ -20,4 +15,3 @@ class Profile(TimeStampedModel, VisibilityMixin):
         null=True,
         on_delete=PROTECT,
     )
-    objects = ProfileManager()

@@ -1,14 +1,8 @@
 from django_extensions.db.models import TimeStampedModel
 from django.db.models import CharField, TextField
 
-from fields import VisibilityManager, VisibilityMixin
+from fields import NameMixin, VisibilityMixin
 
 
-class ShowTypeManager(VisibilityManager):
-    pass
-
-
-class ShowType(TimeStampedModel, VisibilityMixin):
-    name = CharField(max_length=50)
+class ShowType(NameMixin, TimeStampedModel, VisibilityMixin):
     description = TextField()
-    objects = ShowTypeManager()

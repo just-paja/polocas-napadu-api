@@ -3,11 +3,7 @@ from django.db.models import CharField, ImageField, PositiveIntegerField
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
-from fields import VisibilityManager, VisibilityMixin
-
-
-class PhotoManager(VisibilityManager):
-    pass
+from fields import VisibilityMixin
 
 
 class Photo(TimeStampedModel, VisibilityMixin):
@@ -18,7 +14,6 @@ class Photo(TimeStampedModel, VisibilityMixin):
 
         abstract = True
 
-    objects = PhotoManager()
     image = ImageField(
         height_field="height",
         width_field="width",

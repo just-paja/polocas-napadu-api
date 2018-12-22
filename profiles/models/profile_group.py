@@ -1,6 +1,6 @@
 from django.db.models import BooleanField, CharField, Model
 
+from fields import NameMixin
 
-class ProfileGroup(Model):
-    name = CharField(max_length=63)
+class ProfileGroup(NameMixin):
     public = BooleanField(default=False)
