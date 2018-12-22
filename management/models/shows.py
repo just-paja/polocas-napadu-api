@@ -56,11 +56,14 @@ class ShowAdmin(BaseAdminModel):
         ShowParticipantAdmin,
         ShowPhotoAdmin,
     ]
-    search_fields = ('name',)
+    list_display = ('name', 'location', 'start', 'all_day', 'visibility')
+    list_filter = ('location', 'visibility',)
+    search_fields = ('name', 'all_day')
 
 
 class ShowRoleAdmin(BaseAdminModel):
     """Admin model for show roles."""
+
     search_fields = ('name',)
 
 
@@ -70,4 +73,6 @@ class ShowTypeAdmin(BaseAdminModel):
     inlines = [
         ShowTypePhotoAdmin,
     ]
+    list_display = ('name', 'visibility')
+    list_filter = ('visibility',)
     search_fields = ('name',)

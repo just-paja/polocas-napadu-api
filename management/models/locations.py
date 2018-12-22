@@ -14,4 +14,6 @@ class LocationAdmin(BaseAdminModel):
     inlines = [
         LocationPhotoAdmin,
     ]
-    search_fields = ('name',)
+    list_display = ('name', 'address', 'website', 'visibility')
+    list_filter = ('visibility',)
+    search_fields = ('name', 'address')
