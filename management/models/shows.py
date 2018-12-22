@@ -59,6 +59,17 @@ class ShowAdmin(BaseAdminModel):
     list_display = ('name', 'location', 'start', 'all_day', 'visibility')
     list_filter = ('location', 'visibility',)
     search_fields = ('name', 'all_day')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'show_type')
+        }),
+        (None, {
+            'fields': ('start', 'end', 'all_day'),
+        }),
+        (None, {
+            'fields': ('location', 'description'),
+        })
+    )
 
 
 class ShowRoleAdmin(BaseAdminModel):
