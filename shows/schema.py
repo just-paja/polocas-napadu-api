@@ -25,7 +25,7 @@ class Query:
     all_show_types = graphene.List(ShowTypeType)
 
     def resolve_all_shows(self, info, **kwargs):
-        return models.Show.objects.all()
+        return models.Show.objects.get_visible()
 
     def resolve_all_show_types(self, info, **kwargs):
-        return models.ShowTypes.objects.all()
+        return models.ShowTypes.objects.get_visible()

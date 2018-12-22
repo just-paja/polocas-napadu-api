@@ -16,4 +16,4 @@ class Query:
     all_bands = graphene.List(BandType)
 
     def resolve_all_bands(self, info, **kwargs):
-        return Band.objects.all()
+        return Band.objects.get_visible()

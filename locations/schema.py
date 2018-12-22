@@ -19,4 +19,4 @@ class Query:
     all_locations = graphene.List(LocationType)
 
     def resolve_all_locations(self, info, **kwargs):
-        return Location.objects.all()
+        return Location.objects.get_visible()
