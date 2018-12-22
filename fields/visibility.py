@@ -22,7 +22,7 @@ class VisibilityManager(Manager):
         abstract = True
 
     def get_visible(self):
-        return self.filter(visible=VISIBILITY_PUBLIC)
+        return self.filter(visibility=VISIBILITY_PUBLIC)
 
 
 class VisibilityMixin(Model):
