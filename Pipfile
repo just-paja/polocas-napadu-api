@@ -4,7 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+prospector = {extras = ["with_pyroma", "with_vulture"],version = "*"}
 pygraphviz = "*"
+pylint-django = "*"
+pytest-django = "*"
 
 [packages]
 django = "*"

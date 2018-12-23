@@ -1,0 +1,146 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+
+workspace_root: &workspace_root
+  ~/repo
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/python:3.7
+
+version: 2
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Pipfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install pipenv vrun
+            pipenv install --dev
+            pipenv check
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+
+      - run:
+          name: Compile messages
+          command: ./venv/bin/vrun pipenv ./manage.py compilemessages
+
+      - run:
+          name: Lock requirements
+          command: ./venv/bin/vrun pipenv lock --requirements > requirements.txt
+
+      - run:
+          name: Compile artifacts
+          command: ./venv/bin/vrun python setup.py sdist
+
+      - store_artifacts:
+          path: ./dist
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+
+      - run:
+          name: Static code analysis
+          command: ./venv/bin/vrun pipenv run prospector
+
+      - run:
+          name: Tests
+          command: ./venv/bin/vrun pipenv run pytest --junitxml=/tmp/junit-test-report.xml --cov-config=.coveragerc --cov="."
+
+      - run:
+          name: Code Climate reporter
+          command: ./venv/bin/vrun pipenv run codeclimate-test-reporter
+
+      - store_test_results:
+          path: /tmp/junit-test-report.xml
+
+  deploy-to-staging:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+
+      - run:
+          name: Deploy to Staging
+          command: ./bin/deploy staging
+
+  deploy-to-production:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+
+      - run:
+          name: Deploy to Production
+          command: ./bin/deploy production
+
+workflows:
+  version: 2
+  build-n-deploy:
+    jobs:
+      - install:
+          filters:
+            tags:
+              only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - build:
+          requires:
+            - install
+          filters:
+            tags:
+              only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - test:
+          requires:
+            - install
+          filters:
+            tags:
+              only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - deploy-to-staging:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: master
+      - deploy-to-production:
+          requires:
+            - build
+            - test
+          filters:
+            tags:
+              only: /[0-9]+\.[0-9]+\.[0-9]+/
+            branches:
+              ignore: /.*/

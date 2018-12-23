@@ -21,10 +21,10 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: polocasNapaduBackend/settings.py:119
+#: api/settings.py:119
 msgid "Czech"
-msgstr ""
+msgstr "Czech"
 
-#: polocasNapaduBackend/settings.py:120
+#: api/settings.py:120
 msgid "English"
-msgstr ""
+msgstr "English"
