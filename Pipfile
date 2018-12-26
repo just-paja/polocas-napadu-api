@@ -8,6 +8,7 @@ prospector = {extras = ["with_pyroma", "with_vulture"],version = "*"}
 pygraphviz = "*"
 pylint-django = "*"
 pytest-django = "*"
+pytest-cov = "*"
 
 [packages]
 django = "*"
