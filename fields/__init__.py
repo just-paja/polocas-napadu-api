@@ -6,9 +6,9 @@ from .visibility import (
 )
 
 __all__ = (
-    NameField,
-    NameMixin,
-    VisibilityField,
-    VisibilityManager,
-    VisibilityMixin,
+    'NameField',
+    'NameMixin',
+    'VisibilityField',
+    'VisibilityManager',
+    'VisibilityMixin',
 )

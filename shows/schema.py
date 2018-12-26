@@ -1,31 +1,39 @@
-import graphene
+from graphene import List, relay
 
 from graphene_django.types import DjangoObjectType
 
-from . import models
+from .models import Show, ShowPhoto, ShowType, ShowTypePhoto
 
 
-class ShowType(DjangoObjectType):
+
+class ShowPhotoNode(DjangoObjectType):
     class Meta:
-        model = models.Show
+        model = ShowPhoto
 
 
-class ShowTypeType(DjangoObjectType):
+class ShowNode(DjangoObjectType):
     class Meta:
-        model = models.ShowType
+        model = Show
 
 
-class ShowPhotoType(DjangoObjectType):
+class ShowTypePhotoNode(DjangoObjectType):
     class Meta:
-        model = models.ShowPhoto
+        model = ShowTypePhoto
+
+
+class ShowTypeNode(DjangoObjectType):
+    class Meta:
+        model = ShowType
 
 
 class Query:
-    all_shows = graphene.List(ShowType)
-    all_show_types = graphene.List(ShowTypeType)
+    get_show = relay.Node.Field(ShowNode)
+    get_show_type = relay.Node.Field(ShowTypeNode)
+    list_shows = List(ShowNode)
+    list_show_types = List(ShowTypeNode)
 
-    def resolve_all_shows(self, info, **kwargs):
-        return models.Show.objects.get_visible()
+    def resolve_list_shows(self, info):
+        return Show.objects.get_visible()
 
-    def resolve_all_show_types(self, info, **kwargs):
-        return models.ShowTypes.objects.get_visible()
+    def resolve_list_show_types(self, info):
+        return ShowType.objects.get_visible()

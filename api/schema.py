@@ -6,7 +6,7 @@ import profiles.schema
 import shows.schema
 
 
-class Query(
+class PublicQuery(
     bands.schema.Query,
     locations.schema.Query,
     profiles.schema.Query,
@@ -16,4 +16,4 @@ class Query(
     pass
 
 
-schema = graphene.Schema(query=Query)
+PUBLIC = graphene.Schema(query=PublicQuery)

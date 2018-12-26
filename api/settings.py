@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+import os
+
 from django.utils.translation import gettext_lazy as _
 
-import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w@6p6z=)+k-%ft55-)!yvuptvzda63@#aj^m5q&_x87ddd62el'
+SECRET_KEY = 'w@6p6z=)+k-%ft55-)!yvuptvzda63@#aj^m5q&_x87ddd62el' # noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -135,12 +136,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
+    'all_applications': True,
+    'group_models': True,
 }
 
 GRAPHENE = {
-  'SCHEMA': 'api.schema.schema',
+    'SCHEMA': 'api.schema.PUBLIC',
 }
 
 LOCALE_PATHS = [

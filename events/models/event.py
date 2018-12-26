@@ -1,6 +1,12 @@
 from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
-from django.db.models import BooleanField, CharField, DateTimeField, ForeignKey, PROTECT, TextField
+from django.db.models import (
+    BooleanField,
+    DateTimeField,
+    ForeignKey,
+    PROTECT,
+    TextField,
+)
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin, VisibilityManager, VisibilityMixin

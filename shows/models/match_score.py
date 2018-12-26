@@ -1,6 +1,9 @@
-from django.db.models import Model, OneToOneField, PositiveIntegerField, PROTECT
-
-from events.models import Event
+from django.db.models import (
+    Model,
+    OneToOneField,
+    PositiveIntegerField,
+    PROTECT
+)
 
 
 class MatchScore(Model):

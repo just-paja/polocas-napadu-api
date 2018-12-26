@@ -11,13 +11,13 @@ from .show_type import ShowType
 from .show_type_photo import ShowTypePhoto
 
 __all__ = (
-    MatchResults,
-    MatchScore,
-    Show,
-    ShowBand,
-    ShowParticipant,
-    ShowPhoto,
-    ShowRole,
-    ShowType,
-    ShowTypePhoto,
+    'MatchResults',
+    'MatchScore',
+    'Show',
+    'ShowBand',
+    'ShowParticipant',
+    'ShowPhoto',
+    'ShowRole',
+    'ShowType',
+    'ShowTypePhoto',
 )

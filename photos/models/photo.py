@@ -19,8 +19,18 @@ class Photo(TimeStampedModel, VisibilityMixin):
         width_field="width",
         upload_to='var/photos',
     )
-    height = PositiveIntegerField(null=True, blank=True, editable=False, default=100)
-    width = PositiveIntegerField(null=True, blank=True, editable=False, default=100)
+    height = PositiveIntegerField(
+        null=True,
+        blank=True,
+        editable=False,
+        default=100,
+    )
+    width = PositiveIntegerField(
+        null=True,
+        blank=True,
+        editable=False,
+        default=100,
+    )
     description = CharField(
         verbose_name=_("Description"),
         max_length=255,

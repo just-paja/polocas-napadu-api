@@ -2,8 +2,6 @@ from django_extensions.db.models import TimeStampedModel
 from django.db.models import BooleanField, OneToOneField, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
-from events.models import Event
-
 
 class MatchResults(TimeStampedModel):
 

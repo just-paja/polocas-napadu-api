@@ -1,7 +1,8 @@
-from django.db.models import BooleanField, CharField, Model
+from django.db.models import BooleanField
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin
+
 
 class ProfileGroup(NameMixin):
 

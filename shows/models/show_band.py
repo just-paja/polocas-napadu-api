@@ -1,8 +1,6 @@
 from django.db.models import CASCADE, Model, ForeignKey, PositiveIntegerField
 from django.utils.translation import ugettext_lazy as _
 
-from events.models import Event
-
 TEAM_HOME = 1
 TEAM_GUEST = 2
 

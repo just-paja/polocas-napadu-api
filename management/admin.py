@@ -22,16 +22,16 @@ class ImprovAdminSite(AdminSite):
     site_header = 'Poločas nápadu'
 
 
-admin = ImprovAdminSite()
+ADMIN_SITE = ImprovAdminSite()
 
-admin.register(Band, BandAdmin)
-admin.register(Location, LocationAdmin)
-admin.register(MatchResults, MatchResultsAdmin)
-admin.register(Profile, ProfileAdmin)
-admin.register(ProfileGroup, ProfileGroupAdmin)
-admin.register(Show, ShowAdmin)
-admin.register(ShowRole, ShowRoleAdmin)
-admin.register(ShowType, ShowTypeAdmin)
+ADMIN_SITE.register(Band, BandAdmin)
+ADMIN_SITE.register(Location, LocationAdmin)
+ADMIN_SITE.register(MatchResults, MatchResultsAdmin)
+ADMIN_SITE.register(Profile, ProfileAdmin)
+ADMIN_SITE.register(ProfileGroup, ProfileGroupAdmin)
+ADMIN_SITE.register(Show, ShowAdmin)
+ADMIN_SITE.register(ShowRole, ShowRoleAdmin)
+ADMIN_SITE.register(ShowType, ShowTypeAdmin)
 
-admin.register(auth_admin.Group, auth_admin.GroupAdmin)
-admin.register(auth_admin.User, auth_admin.UserAdmin)
+ADMIN_SITE.register(auth_admin.Group, auth_admin.GroupAdmin)
+ADMIN_SITE.register(auth_admin.User, auth_admin.UserAdmin)

@@ -1,22 +1,17 @@
-import graphene
+from graphene import List
 
 from graphene_django.types import DjangoObjectType
 
-from .models import Location, LocationPhoto
+from .models import Location
 
 
-class LocationType(DjangoObjectType):
+class LocationNode(DjangoObjectType):
     class Meta:
         model = Location
 
 
-class LocationPhotoType(DjangoObjectType):
-    class Meta:
-        model = LocationPhoto
-
-
 class Query:
-    all_locations = graphene.List(LocationType)
+    list_locations = List(LocationNode)
 
-    def resolve_all_locations(self, info, **kwargs):
+    def resolve_list_locations(self, info):
         return Location.objects.get_visible()

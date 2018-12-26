@@ -1,5 +1,5 @@
 from django_extensions.db.models import TimeStampedModel
-from django.db.models import CharField, TextField
+from django.db.models import TextField
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin, VisibilityMixin

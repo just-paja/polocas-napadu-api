@@ -1,17 +1,18 @@
-import graphene
+from graphene import List, relay
 
 from graphene_django.types import DjangoObjectType
 
-from . import models
+from .models import Profile
 
 
-class ProfileType(DjangoObjectType):
+class ProfileNode(DjangoObjectType):
     class Meta:
-        model = models.Profile
+        model = Profile
 
 
 class Query:
-    all_profiles = graphene.List(ProfileType)
+    get_profile = relay.Node.Field(ProfileNode)
+    list_profiles = List(ProfileNode)
 
-    def resolve_all_profiles(self, info, **kwargs):
-        return models.Profile.objects.get_visible()
+    def resolve_list_profiles(self, info):
+        return Profile.objects.get_visible()
