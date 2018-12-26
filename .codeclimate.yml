@@ -1,0 +1,18 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - python
+  fixme:
+    enabled: true
+  radon:
+    enabled: true
+ratings:
+  paths:
+    - "**.inc"
+    - "**.py"
+exclude_paths:
+  - **/migrations/*
+  - **/__tests__/*
