@@ -19,21 +19,20 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Pipfile.lock" }}
-          - v1-dependencies-
+            - dependencies-{{ checksum "Pipfile.lock" }}
 
       - run:
           name: Install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            python3 -m venv .venv
+            . .venv/bin/activate
             pip install pipenv vrun
             pipenv install --dev
             pipenv check
 
       - save_cache:
           paths:
-            - ./venv
+            - ./.venv
           key: v1-dependencies-{{ checksum "Pipfile.lock" }}
 
       - persist_to_workspace:
@@ -49,15 +48,15 @@ jobs:
 
       - run:
           name: Compile messages
-          command: ./venv/bin/vrun pipenv ./manage.py compilemessages
+          command: ./.venv/bin/vrun pipenv ./manage.py compilemessages
 
       - run:
           name: Lock requirements
-          command: ./venv/bin/vrun pipenv lock --requirements > requirements.txt
+          command: ./.venv/bin/vrun pipenv lock --requirements > requirements.txt
 
       - run:
           name: Compile artifacts
-          command: ./venv/bin/vrun python setup.py sdist
+          command: ./.venv/bin/vrun python setup.py sdist
 
       - store_artifacts:
           path: ./dist
@@ -75,15 +74,15 @@ jobs:
 
       - run:
           name: Static code analysis
-          command: ./venv/bin/vrun pipenv run prospector
+          command: ./.venv/bin/vrun pipenv run prospector
 
       - run:
           name: Tests
-          command: ./venv/bin/vrun pipenv run pytest --junitxml=/tmp/junit-test-report.xml --cov-config=.coveragerc --cov="."
+          command: ./.venv/bin/vrun pipenv run pytest --junitxml=/tmp/junit-test-report.xml --cov-config=.coveragerc --cov="."
 
       - run:
           name: Code Climate reporter
-          command: ./venv/bin/vrun pipenv run codeclimate-test-reporter
+          command: ./.venv/bin/vrun pipenv run codeclimate-test-reporter
 
       - store_test_results:
           path: /tmp/junit-test-report.xml
