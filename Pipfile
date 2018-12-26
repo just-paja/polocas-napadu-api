@@ -4,22 +4,22 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+codeclimate-test-reporter = "*"
+coverage = "==4.3.4"
+model-mommy = "*"
 prospector = {extras = ["with_pyroma", "with_vulture"],version = "*"}
 pygraphviz = "*"
 pylint-django = "*"
+pytest-cov = "==2.5.1"
 pytest-django = "*"
-pytest-cov = "*"
 pytest-watch = "*"
-model-mommy = "*"
-codeclimate-test-reporter = "*"
 
 [packages]
-coverage = "==4.3.4"
 django = {editable = true,git = "https://github.com/django/django.git"}
 django-extensions = "*"
-pillow = "*"
-graphene-django = "*"
 django-filter = "*"
+graphene-django = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
