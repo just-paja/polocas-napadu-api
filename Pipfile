@@ -9,9 +9,11 @@ pygraphviz = "*"
 pylint-django = "*"
 pytest-django = "*"
 pytest-cov = "*"
+pytest-watch = "*"
+model-mommy = "*"
 
 [packages]
-django = "*"
+django = {editable = true,git = "https://github.com/django/django.git"}
 django-extensions = "*"
 pillow = "*"
 graphene-django = "*"
