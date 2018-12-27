@@ -1,0 +1,13 @@
+---
+- name: Setup all my servers on AWS
+  hosts: web
+  vars:
+    django_archive: dist/polocas-napadu-api-0.1.0.tar.gz
+    django_config_file: local_settings.j2
+    django_config: api.settings
+    django_project_name: 'cz-polocas-napadu-api'
+    django_project_environment: '{{ lookup("env", "DJANGO_PROJECT_ENVIRONMENT") }}'
+    django_wsgi_file: api/wsgi.py
+
+  roles:
+    - role: practical-ansible.nginx-django

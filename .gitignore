@@ -1,5 +1,7 @@
 db.sqlite3
 /var
+/dist
+*.egg-info
 *.mo
 .pytest_cache
 .coverage
