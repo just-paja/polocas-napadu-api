@@ -92,6 +92,9 @@ jobs:
     steps:
       - attach_workspace:
           at: *workspace_root
+      - add_ssh_keys:
+          fingerprints:
+            - "47:1c:8b:3d:98:f9:c0:1c:7c:2d:77:e9:cd:46:da:cf"
       - run:
           name: Install ansible requirements
           command: ./.venv/bin/vrun pipenv run ansible-galaxy install -r requirements-ansible.yml
