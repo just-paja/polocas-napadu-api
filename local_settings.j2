@@ -16,6 +16,9 @@ AWS_SECRET_ACCESS_KEY = '{{lookup('env', 'AWS_SECRET_ACCESS_KEY')}}'
 {% if lookup('env', 'AWS_STORAGE_BUCKET_NAME') %}
 AWS_STORAGE_BUCKET_NAME = '{{lookup('env', 'AWS_STORAGE_BUCKET_NAME')}}'
 {% endif %}
+{% if lookup('env', 'AWS_S3_REGION_NAME') %}
+AWS_S3_REGION_NAME = '{{lookup('env', 'AWS_S3_REGION_NAME')}}'
+{% endif %}
 {% if lookup('env', 'RECAPTCHA_PUBLIC_KEY') %}
 RECAPTCHA_PUBLIC_KEY = '{{lookup('env', 'RECAPTCHA_PUBLIC_KEY')}}'
 {% endif %}

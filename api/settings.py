@@ -163,9 +163,9 @@ EMAIL_MANAGER = 'test@example.com'
 AWS_ACCESS_KEY_ID = None
 AWS_SECRET_ACCESS_KEY = None
 AWS_STORAGE_BUCKET_NAME = None
+AWS_S3_REGION_NAME = None
 AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_HOST = 's3-eu-central-1.amazonaws.com'
 AWS_S3_FILE_OVERWRITE = False
 
 try:
