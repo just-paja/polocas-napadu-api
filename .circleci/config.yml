@@ -58,9 +58,6 @@ jobs:
           name: Compile artifacts
           command: ./.venv/bin/vrun python setup.py sdist
 
-      - store_artifacts:
-          path: ./dist
-
       - persist_to_workspace:
           root: *workspace_root
           paths:
