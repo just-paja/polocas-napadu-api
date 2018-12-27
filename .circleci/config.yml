@@ -94,8 +94,29 @@ jobs:
           at: *workspace_root
 
       - run:
+          name: Install ansible requirements
+          command: ansible-galaxy install -r rqeuirements-ansible.yml
+      - run:
+          name: Configure ansible inventory
+          command: echo -e "[web]\n${STAGING_DEPLOY_HOST}" > inventory.yml
+      - run:
           name: Deploy to Staging
-          command: ./bin/deploy staging
+          command: >
+            env
+            ALLOWED_HOSTS="$STAGING_ALLOWED_HOSTS"
+            AWS_ACCESS_KEY_ID="$STAGING_AWS_ACCESS_KEY_ID"
+            AWS_SECRET_ACCESS_KEY="$STAGING_AWS_SECRET_ACCESS_KEY"
+            AWS_STORAGE_BUCKET_NAME="$STAGING_AWS_STORAGE_BUCKET_NAME"
+            DB_HOST="$STAGING_DB_HOST"
+            DB_NAME="$STAGING_DB_NAME"
+            DB_PASSWORD="$STAGING_DB_PASSWORD"
+            DB_USER="$STAGING_DB_USER"
+            DJANGO_PROJECT_ENVIRONMENT="staging"
+            DJANGO_SERVER_NAME="$STAGING_ALLOWED_HOSTS"
+            EMAIL_MANAGER="$STAGING_EMAIL_MANAGER"
+            SECRET_KEY="$STAGING_SECRET_KEY"
+            RAVEN_DSN="$STAGING_RAVEN_DSN"
+            ansible-playbook deploy.yml -i inventory.yml
 
   deploy-to-production:
     <<: *defaults

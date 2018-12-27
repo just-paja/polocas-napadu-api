@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import sentry_sdk
 
+from sentry_sdk.integrations.django import DjangoIntegration
 from django.utils.translation import gettext_lazy as _
 
 
@@ -154,3 +156,26 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'profiles/locale'),
     os.path.join(BASE_DIR, 'shows/locale'),
 ]
+
+RAVEN_DSN = None
+EMAIL_MANAGER = 'test@example.com'
+
+AWS_ACCESS_KEY_ID = None
+AWS_SECRET_ACCESS_KEY = None
+AWS_STORAGE_BUCKET_NAME = None
+AWS_QUERYSTRING_AUTH = False
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_HOST = 's3-eu-central-1.amazonaws.com'
+AWS_S3_FILE_OVERWRITE = False
+
+try:
+    # pylint: disable=wildcard-import
+    from local_settings import * # noqa
+except ImportError:
+    pass
+
+if RAVEN_DSN:
+    sentry_sdk.init(
+        dsn=RAVEN_DSN,
+        integrations=[DjangoIntegration()]
+    )

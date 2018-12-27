@@ -13,6 +13,7 @@ pylint-django = "*"
 pytest-cov = "==2.5.1"
 pytest-django = "*"
 pytest-watch = "*"
+ansible = "*"
 
 [packages]
 django = {editable = true,git = "https://github.com/django/django.git"}
@@ -20,6 +21,7 @@ django-extensions = "*"
 django-filter = "*"
 graphene-django = "*"
 pillow = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.7"

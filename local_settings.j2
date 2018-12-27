@@ -1,0 +1,56 @@
+{% if lookup('env', 'DEBUG') %}
+DEBUG = True
+{% endif %}
+{% if lookup('env', 'ALLOWED_HOSTS') %}
+ALLOWED_HOSTS = '{{lookup('env', 'ALLOWED_HOSTS')}}'.split(' ')
+{% endif %}
+{% if lookup('env', 'SECRET_KEY') %}
+SECRET_KEY = '{{lookup('env', 'SECRET_KEY')}}'
+{% endif %}
+{% if lookup('env', 'AWS_ACCESS_KEY_ID') %}
+AWS_ACCESS_KEY_ID = '{{lookup('env', 'AWS_ACCESS_KEY_ID')}}'
+{% endif %}
+{% if lookup('env', 'AWS_SECRET_ACCESS_KEY') %}
+AWS_SECRET_ACCESS_KEY = '{{lookup('env', 'AWS_SECRET_ACCESS_KEY')}}'
+{% endif %}
+{% if lookup('env', 'AWS_STORAGE_BUCKET_NAME') %}
+AWS_STORAGE_BUCKET_NAME = '{{lookup('env', 'AWS_STORAGE_BUCKET_NAME')}}'
+{% endif %}
+{% if lookup('env', 'RECAPTCHA_PUBLIC_KEY') %}
+RECAPTCHA_PUBLIC_KEY = '{{lookup('env', 'RECAPTCHA_PUBLIC_KEY')}}'
+{% endif %}
+{% if lookup('env', 'RECAPTCHA_PRIVATE_KEY') %}
+RECAPTCHA_PRIVATE_KEY = '{{lookup('env', 'RECAPTCHA_PRIVATE_KEY')}}'
+{% endif %}
+{% if lookup('env', 'EMAIL_HOST') %}
+EMAIL_HOST = '{{lookup('env', 'EMAIL_HOST')}}'
+{% endif %}
+{% if lookup('env', 'EMAIL_HOST_PASSWORD') %}
+EMAIL_HOST_PASSWORD = '{{lookup('env', 'EMAIL_HOST_PASSWORD')}}'
+{% endif %}
+{% if lookup('env', 'EMAIL_HOST_USER') %}
+EMAIL_HOST_USER = '{{lookup('env', 'EMAIL_HOST_USER')}}'
+{% endif %}
+{% if lookup('env', 'EMAIL_USE_TLS') %}
+EMAIL_USE_TLS = True
+{% endif %}
+{% if lookup('env', 'EMAIL_PORT') %}
+EMAIL_PORT = '{{lookup('env', 'EMAIL_PORT')}}'
+{% endif %}
+{% if lookup('env', 'EMAIL_MANAGER') %}
+EMAIL_MANAGER = '{{lookup('env', 'EMAIL_MANAGER')}}'
+{% endif %}
+{% if lookup('env', 'RAVEN_DSN') %}
+RAVEN_DSN = '{{lookup('env', 'RAVEN_DSN')}}'
+{% endif %}
+{% if lookup('env', 'DB_NAME') %}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '{{lookup('env', 'DB_NAME')}}',
+        'USER': '{{lookup('env', 'DB_USER')}}',
+        'PASSWORD': '{{lookup('env', 'DB_PASSWORD')}}',
+        'HOST': '{{lookup('env', 'DB_HOST')}}',
+    },
+}
+{% endif %}
