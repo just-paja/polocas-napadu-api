@@ -174,6 +174,10 @@ try:
 except ImportError:
     pass
 
+if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 if RAVEN_DSN:
     sentry_sdk.init(
         dsn=RAVEN_DSN,
