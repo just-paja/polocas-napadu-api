@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'shows.ShowsConfig',
     'management',
     'graphene_django',
+    'admin_sso',
+    'gsuite.GSuiteConfig',
 ]
 
 MIDDLEWARE = [
@@ -168,6 +170,10 @@ AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_FILE_OVERWRITE = False
 
+DJANGO_ADMIN_SSO = False
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = None
+
 try:
     # pylint: disable=wildcard-import
     from local_settings import * # noqa
@@ -182,4 +188,14 @@ if RAVEN_DSN:
     sentry_sdk.init(
         dsn=RAVEN_DSN,
         integrations=[DjangoIntegration()]
+    )
+
+if (
+    DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID
+    and DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET
+):
+    DJANGO_ADMIN_SSO = True
+    AUTHENTICATION_BACKENDS = (
+        'gsuite.auth.GsuiteAuthBackend',
+        'django.contrib.auth.backends.ModelBackend',
     )

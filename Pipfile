@@ -25,6 +25,7 @@ sentry-sdk = "*"
 django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
+django-admin-sso = "*"
 
 [requires]
 python_version = "3.7"
