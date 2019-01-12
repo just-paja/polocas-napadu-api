@@ -35,9 +35,12 @@ MODELS_BASE = [
     'ShowTypePhoto',
 ]
 
+GROUP_DEFAULT = 'Uživatelé domény'
+GROUP_ADMIN = 'Administrátoři domény'
+
 GROUPS = [
     {
-        'name': 'Uživatelé domény',
+        'name': GROUP_DEFAULT,
         'perms': [
             {
                 'models': MODELS_ALL,
@@ -50,7 +53,7 @@ GROUPS = [
         ]
     },
     {
-        'name': 'Administrátoři domény',
+        'name': GROUP_ADMIN,
         'perms': [
             {
                 'models': MODELS_ALL,

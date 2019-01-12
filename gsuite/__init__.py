@@ -5,12 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from .groups import (
     GROUPS,
     MODELS_ALL,
-    MODEL_ACCESS_NONE,
     MODEL_ACCESS_RO,
     MODEL_ACCESS_RW,
-    MODEL_ACTION_ADD,
-    MODEL_ACTION_DELETE,
-    MODEL_ACTION_CHANGE,
     MODEL_ACTION_VIEW,
     MODEL_ACTIONS,
 )

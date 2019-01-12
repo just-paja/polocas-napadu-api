@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from admin_sso.default_settings import ASSIGNMENT_MATCH
 from admin_sso.models import Assignment
+
+from .groups import GROUP_DEFAULT, GROUP_ADMIN
 
 
 class GsuiteAuthBackend():
@@ -16,12 +19,19 @@ class GsuiteAuthBackend():
         try:
             return cls.objects.get(username=sso_email)
         except cls.DoesNotExist:
+            group_default = Group.objects.get(name=GROUP_DEFAULT)
+            group_admin = Group.objects.get(name=GROUP_ADMIN)
+            total_users = cls.objects.count()
             user = cls(
                 email=sso_email,
                 username=sso_email,
                 is_staff=True,
             )
             user.save()
+            user.groups.add(group_default)
+            if total_users == 0:
+                # Assume the first is admin and add him to all groups
+                user.groups.add(group_admin)
             return user
 
     def authenticate(self, request=None, **kwargs):
