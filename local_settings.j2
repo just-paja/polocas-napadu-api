@@ -46,6 +46,12 @@ EMAIL_MANAGER = '{{lookup('env', 'EMAIL_MANAGER')}}'
 {% if lookup('env', 'RAVEN_DSN') %}
 RAVEN_DSN = '{{lookup('env', 'RAVEN_DSN')}}'
 {% endif %}
+{% if lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID') %}
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = '{{lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID')}}'
+{% endif %}
+{% if lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET') %}
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = '{{lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET')}}'
+{% endif %}
 {% if lookup('env', 'DB_NAME') %}
 DATABASES = {
     'default': {

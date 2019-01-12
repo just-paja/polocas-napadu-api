@@ -115,6 +115,8 @@ jobs:
             EMAIL_MANAGER="$STAGING_EMAIL_MANAGER"
             SECRET_KEY="$STAGING_SECRET_KEY"
             RAVEN_DSN="$STAGING_RAVEN_DSN"
+            DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID="$STAGING_DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID"
+            DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET="$STAGING_DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET"
             ./.venv/bin/vrun pipenv run ansible-playbook deploy.yml -i inventory.yml
 
   deploy-to-production:
