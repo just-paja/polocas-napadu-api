@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 16:37+0000\n"
+"POT-Creation-Date: 2019-01-13 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Shows"
 msgstr "Představení"
 
-#: shows/models/match_results.py:11
+#: shows/models/match_results.py:9
 msgid "Match results"
 msgstr "Výsledek zápasu"
 
-#: shows/models/match_results.py:12
+#: shows/models/match_results.py:10
 msgid "Matches results"
 msgstr "Výsledky zápasů"
 
@@ -35,11 +35,11 @@ msgstr "Výsledky zápasů"
 msgid "Show"
 msgstr "Představení"
 
-#: shows/models/show_band.py:10
+#: shows/models/show_band.py:8
 msgid "team-home"
 msgstr "Domácí tým"
 
-#: shows/models/show_band.py:11
+#: shows/models/show_band.py:9
 msgid "team-guest"
 msgstr "Hosté"
 

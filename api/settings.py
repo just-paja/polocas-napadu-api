@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'bands.BandsConfig',
     'profiles.ProfilesConfig',
     'shows.ShowsConfig',
+    'inspirations.InspirationsConfig',
     'management',
     'graphene_django',
     'admin_sso',

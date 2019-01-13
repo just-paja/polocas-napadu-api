@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 16:37+0000\n"
+"POT-Creation-Date: 2019-01-13 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,10 +33,10 @@ msgstr "Herecké profily"
 msgid "Slug"
 msgstr ""
 
-#: profiles/models/profile_group.py:9
+#: profiles/models/profile_group.py:10
 msgid "Actor group"
 msgstr "Herecká skupina"
 
-#: profiles/models/profile_group.py:10
+#: profiles/models/profile_group.py:11
 msgid "Actor groups"
 msgstr "Herecké skupiny"

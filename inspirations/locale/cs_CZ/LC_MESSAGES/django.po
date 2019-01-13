@@ -17,10 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: locations/__init__.py:7 locations/models/location.py:12
-msgid "Locations"
-msgstr "Lokace"
+#: inspirations/__init__.py:7 inspirations/models/inspiration.py:11
+msgid "Inspirations"
+msgstr "Inspirace"
 
-#: locations/models/location.py:11
-msgid "Location"
-msgstr "Lokace"
+#: inspirations/models/inspiration.py:10
+msgid "Inspiration"
+msgstr "Inspirace"
+
+#: inspirations/models/inspiration.py:16
+msgid "Textual inspiration"
+msgstr "Textová inspirace"
+
+#: inspirations/models/inspiration.py:17
+msgid "Enter words that will serve as an inspiration for this improvisation"
+msgstr "Napište slova, která budou použita jako inspirace do této improvizace"

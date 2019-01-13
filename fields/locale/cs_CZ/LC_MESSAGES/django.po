@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 16:37+0000\n"
+"POT-Creation-Date: 2019-01-13 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,23 +25,23 @@ msgstr "Název"
 msgid "nameHelpText"
 msgstr "Napište krátký název, který pomůže uživateli identifikovat objekt"
 
-#: fields/visibility.py:9
+#: fields/visibility.py:10
 msgid "Private"
 msgstr "Privátní"
 
-#: fields/visibility.py:10
+#: fields/visibility.py:11
 msgid "Public"
 msgstr "Veřené"
 
-#: fields/visibility.py:11
+#: fields/visibility.py:12
 msgid "Deleted"
 msgstr "Smazané"
 
-#: fields/visibility.py:19
+#: fields/visibility.py:21
 msgid "Visibility"
 msgstr "Viditelnost"
 
-#: fields/visibility.py:20
+#: fields/visibility.py:22
 msgid "visibilityHelpText"
 msgstr ""
 "Viditelnost ovlivňuje, kdo má přístup k objektu. K veřejným objektům má "

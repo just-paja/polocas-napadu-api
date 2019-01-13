@@ -21,6 +21,7 @@ MODELS_BASE = [
     'LocationPhoto',
     'Band',
     'BandPhoto',
+    'Inspiration',
     'Profile',
     'ProfileGroup',
     'ProfilePhoto',

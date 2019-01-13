@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 16:37+0000\n"
+"POT-Creation-Date: 2019-01-13 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: photos/models/photo.py:25
-msgid "Description"
-msgstr ""
-
-#: api/settings.py:119
+#: api/settings.py:127
 msgid "Czech"
 msgstr "Czech"
 
-#: api/settings.py:120
+#: api/settings.py:128
 msgid "English"
 msgstr "English"
+
+#: gsuite/__init__.py:77
+msgid "Gsuite"
+msgstr ""
+
+#: photos/models/photo.py:35
+msgid "Description"
+msgstr ""
