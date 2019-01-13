@@ -15,4 +15,4 @@ class Query:
     list_inspiration = List(InspirationNode)
 
     def resolve_list_inspirations(self, info):
-        return Show.objects.all()
+        return Inspiration.objects.all()

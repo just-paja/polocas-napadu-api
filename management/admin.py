@@ -8,13 +8,12 @@ from admin_sso.models import Assignment
 from bands.models import Band
 from locations.models import Location
 from profiles.models import Profile, ProfileGroup
-from shows.models import MatchResults, Show, ShowRole, ShowType
+from shows.models import Show, ShowRole, ShowType
 from gsuite.views import gauth
 
 from .models import (
     BandAdmin,
     LocationAdmin,
-    MatchResultsAdmin,
     ProfileAdmin,
     ProfileGroupAdmin,
     ShowAdmin,
@@ -36,7 +35,6 @@ ADMIN_SITE = ImprovAdminSite()
 
 ADMIN_SITE.register(Band, BandAdmin)
 ADMIN_SITE.register(Location, LocationAdmin)
-ADMIN_SITE.register(MatchResults, MatchResultsAdmin)
 ADMIN_SITE.register(Profile, ProfileAdmin)
 ADMIN_SITE.register(ProfileGroup, ProfileGroupAdmin)
 ADMIN_SITE.register(Show, ShowAdmin)

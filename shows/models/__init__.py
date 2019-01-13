@@ -1,7 +1,5 @@
 """Import all models."""
 
-from .match_results import MatchResults
-from .match_score import MatchScore
 from .show import Show
 from .show_band import ShowBand
 from .show_participant import ShowParticipant
@@ -11,8 +9,6 @@ from .show_type import ShowType
 from .show_type_photo import ShowTypePhoto
 
 __all__ = (
-    'MatchResults',
-    'MatchScore',
     'Show',
     'ShowBand',
     'ShowParticipant',

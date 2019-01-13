@@ -9,8 +9,6 @@ from .profiles import (
 )
 
 from .shows import (
-    MatchResultsAdmin,
-    MatchScoreAdmin,
     ShowAdmin,
     ShowBandAdmin,
     ShowPhotoAdmin,
@@ -24,8 +22,6 @@ __all__ = (
     'BandPhotoAdmin',
     'LocationAdmin',
     'LocationPhotoAdmin',
-    'MatchResultsAdmin',
-    'MatchScoreAdmin',
     'ProfileAdmin',
     'ProfileGroupAdmin',
     'ProfilePhotoAdmin',

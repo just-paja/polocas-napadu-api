@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'profiles.ProfilesConfig',
     'shows.ShowsConfig',
     'inspirations.InspirationsConfig',
+    'games.GamesConfig',
+    'theatre_sports.TheatreSportsConfig',
     'management',
     'graphene_django',
     'admin_sso',

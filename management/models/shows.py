@@ -1,5 +1,4 @@
 from shows.models import (
-    MatchScore,
     ShowBand,
     ShowParticipant,
     ShowPhoto,
@@ -31,21 +30,6 @@ class ShowBandAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
     model = ShowBand
-
-
-class MatchScoreAdmin(BaseInlineAdminModel):
-    """Admin model for shows."""
-
-    model = MatchScore
-
-
-class MatchResultsAdmin(BaseAdminModel):
-    """Admin model for shows."""
-
-    inlines = [
-        MatchScoreAdmin,
-    ]
-    search_fields = ('show__name',)
 
 
 class ShowAdmin(BaseAdminModel):

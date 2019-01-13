@@ -1,6 +1,4 @@
-from locations.models import LocationPhoto
-
-from .base import BaseAdminModel, BaseInlineAdminModel
+from .base import BaseAdminModel
 
 
 class InspirationAdmin(BaseAdminModel):
