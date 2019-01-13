@@ -1,4 +1,4 @@
-from django.db.models import CharField, ForeignKey, CASCADE
+from django.db.models import BooleanField, CharField, ForeignKey, CASCADE
 from django.utils.translation import ugettext_lazy as _
 
 from events.models import Event
@@ -16,3 +16,4 @@ class Inspiration(Event):
         verbose_name=_('Textual inspiration'),
         help_text=_('Enter words that will serve as an inspiration for this improvisation'),
     )
+    discarded = BooleanField(default=False)
