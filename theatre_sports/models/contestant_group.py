@@ -12,7 +12,7 @@ TEAM_GUEST = 2
 
 TYPE_CHOICES = [
     (TEAM_HOME, _('team-home')),
-    (TEAM_HOME, _('team-guest')),
+    (TEAM_GUEST, _('team-guest')),
 ]
 
 class ContestantGroup(Model):

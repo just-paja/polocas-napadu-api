@@ -1,4 +1,5 @@
-from graphene import List, relay
+from django.urls import reverse
+from graphene import List, Node, String
 
 from graphene_django.types import DjangoObjectType
 
@@ -12,8 +13,23 @@ class ShowPhotoNode(DjangoObjectType):
 
 
 class ShowNode(DjangoObjectType):
+    inspiration_url = String()
+    inspiration_qr_url = String()
+
     class Meta:
         model = Show
+
+    def resolve_inspiration_url(self, info):
+        return self.get_inspiration_url() # pylint: disable=E1101
+
+    def resolve_inspiration_qr_url(self, info):
+        return '%s://%s%s' % (
+            'https' if info.context.is_secure() else 'http',
+            info.context.get_host(),
+            reverse('show_inspiration_qr', kwargs={
+                'show_id': self.id, # pylint: disable=E1101
+            })
+        )
 
 
 class ShowTypePhotoNode(DjangoObjectType):
@@ -27,8 +43,8 @@ class ShowTypeNode(DjangoObjectType):
 
 
 class Query:
-    get_show = relay.Node.Field(ShowNode)
-    get_show_type = relay.Node.Field(ShowTypeNode)
+    get_show = Node.Field(ShowNode)
+    get_show_type = Node.Field(ShowTypeNode)
     list_shows = List(ShowNode)
     list_show_types = List(ShowTypeNode)
 

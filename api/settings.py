@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'corsheaders',
     'locations.LocationsConfig',
     'bands.BandsConfig',
     'profiles.ProfilesConfig',
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -178,6 +180,12 @@ AWS_S3_FILE_OVERWRITE = False
 DJANGO_ADMIN_SSO = False
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = None
+
+CORS_ORIGIN_WHITELIST = (
+    '127.0.0.1',
+    'localhost:3000',
+    'localhost:8000',
+)
 
 try:
     # pylint: disable=wildcard-import

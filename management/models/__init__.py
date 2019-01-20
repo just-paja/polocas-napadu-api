@@ -17,14 +17,27 @@ from .shows import (
     ShowTypePhotoAdmin,
 )
 
+from .theatre_sports import (
+    FoulAdmin,
+    FoulTypeAdmin,
+    MatchAdmin,
+    MatchStageAdmin,
+    ScorePointAdmin,
+)
+
 __all__ = (
     'BandAdmin',
     'BandPhotoAdmin',
+    'FoulAdmin',
+    'FoulTypeAdmin',
     'LocationAdmin',
     'LocationPhotoAdmin',
+    'MatchAdmin',
+    'MatchStageAdmin',
     'ProfileAdmin',
     'ProfileGroupAdmin',
     'ProfilePhotoAdmin',
+    'ScorePointAdmin',
     'ShowAdmin',
     'ShowBandAdmin',
     'ShowPhotoAdmin',

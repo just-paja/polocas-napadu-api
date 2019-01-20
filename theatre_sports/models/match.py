@@ -1,10 +1,8 @@
-from django.db.models import BooleanField, OneToOneField, CASCADE
+from django.db.models import BooleanField, Model, OneToOneField, CASCADE
 from django.utils.translation import ugettext_lazy as _
 
-from events.models import Event
 
-
-class Match(Event):
+class Match(Model):
 
     class Meta:
         verbose_name = _('Match')
@@ -18,3 +16,6 @@ class Match(Event):
     closed = BooleanField(
         default=False,
     )
+
+    def __str__(self):
+        return '%s: %s' % (_('Match'), self.show)

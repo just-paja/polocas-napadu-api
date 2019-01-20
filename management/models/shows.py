@@ -36,7 +36,6 @@ class ShowAdmin(BaseAdminModel):
     """Admin model for shows."""
 
     inlines = [
-        ShowBandAdmin,
         ShowParticipantAdmin,
         ShowPhotoAdmin,
     ]

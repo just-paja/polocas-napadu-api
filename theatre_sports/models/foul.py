@@ -1,4 +1,4 @@
-from django.db.models import TextField, ForeignKey, CASCADE
+from django.db.models import TextField, ForeignKey, CASCADE, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
@@ -23,6 +23,14 @@ class Foul(TimeStampedModel):
         'games.Game',
         on_delete=CASCADE,
         null=True,
+        blank=True,
+        related_name='fouls',
+    )
+    foul_type = ForeignKey(
+        'FoulType',
+        on_delete=PROTECT,
+        null=True,
+        blank=True,
         related_name='fouls',
     )
     comment = TextField(

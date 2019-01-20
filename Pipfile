@@ -26,6 +26,8 @@ django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
 django-admin-sso = "*"
+django-cors-headers = "*"
+qrcode = {extras = ["pil"],version = "*"}
 
 [requires]
 python_version = "3.7"
