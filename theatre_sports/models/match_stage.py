@@ -1,4 +1,4 @@
-from django.db.models import ForeignKey, PositiveIntegerField, CASCADE
+from django.db.models import ForeignKey, PositiveIntegerField, CASCADE,PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
@@ -30,6 +30,13 @@ class MatchStage(TimeStampedModel):
     match = ForeignKey(
         'Match',
         on_delete=CASCADE,
+        related_name='stages',
+    )
+    game = ForeignKey(
+        'games.Game',
+        blank=True,
+        null=True,
+        on_delete=PROTECT,
         related_name='stages',
     )
     type = PositiveIntegerField(
