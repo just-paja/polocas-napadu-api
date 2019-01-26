@@ -24,7 +24,6 @@ class MatchStageNode(DjangoObjectType):
 class MatchNode(DjangoObjectType):
     class Meta:
         model = Match
-        interfaces = (Node,)
 
     current_stage = Field(MatchStageNode)
 
