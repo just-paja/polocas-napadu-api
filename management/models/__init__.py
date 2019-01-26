@@ -1,6 +1,7 @@
 """Import all models."""
 
 from .bands import BandAdmin, BandPhotoAdmin
+from .inspirations import InspirationAdmin
 from .locations import LocationAdmin, LocationPhotoAdmin
 from .profiles import (
     ProfileAdmin,

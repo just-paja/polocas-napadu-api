@@ -6,16 +6,24 @@ from admin_sso.admin import AssignmentAdmin
 from admin_sso.models import Assignment
 
 from bands.models import Band
+from inspirations.models import Inspiration
 from locations.models import Location
 from profiles.models import Profile, ProfileGroup
 from shows.models import Show, ShowRole, ShowType
 from gsuite.views import gauth
-from theatre_sports.models import Foul, FoulType, Match, MatchStage, ScorePoint
+from theatre_sports.models import (
+    Foul,
+    FoulType,
+    Match,
+    MatchStage,
+    ScorePoint
+)
 
 from .models import (
     BandAdmin,
     FoulAdmin,
     FoulTypeAdmin,
+    InspirationAdmin,
     LocationAdmin,
     MatchAdmin,
     MatchStageAdmin,
@@ -42,6 +50,7 @@ ADMIN_SITE = ImprovAdminSite()
 ADMIN_SITE.register(Band, BandAdmin)
 ADMIN_SITE.register(Foul, FoulAdmin)
 ADMIN_SITE.register(FoulType, FoulTypeAdmin)
+ADMIN_SITE.register(Inspiration, InspirationAdmin)
 ADMIN_SITE.register(Location, LocationAdmin)
 ADMIN_SITE.register(Match, MatchAdmin)
 ADMIN_SITE.register(MatchStage, MatchStageAdmin)

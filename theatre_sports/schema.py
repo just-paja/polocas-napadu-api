@@ -26,9 +26,13 @@ class MatchNode(DjangoObjectType):
         model = Match
 
     current_stage = Field(MatchStageNode)
+    total_inspirations = Int()
 
     def resolve_current_stage(self, info):
-        return self.stages.order_by('-created').first() # pylint: disable=E1101
+        return self.stages.order_by('-created').first()
+
+    def resolve_total_inspirations(self, info):
+        return self.show.inspirations.filter(discarded=False).count()
 
 
 class ScorePointNode(DjangoObjectType):
