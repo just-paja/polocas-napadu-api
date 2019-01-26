@@ -1,5 +1,5 @@
 from django.urls import reverse
-from graphene import List, Node, String
+from graphene import Int, List, Node, String
 
 from graphene_django.types import DjangoObjectType
 
@@ -15,6 +15,7 @@ class ShowPhotoNode(DjangoObjectType):
 class ShowNode(DjangoObjectType):
     inspiration_url = String()
     inspiration_qr_url = String()
+    total_inspirations = Int()
 
     class Meta:
         model = Show
@@ -31,6 +32,9 @@ class ShowNode(DjangoObjectType):
             })
         )
 
+    def resolve_total_inspirations(self, info):
+        return self.show.inspirations.filter(discarded=False).count()
+
 
 class ShowTypePhotoNode(DjangoObjectType):
     class Meta:
@@ -43,13 +47,13 @@ class ShowTypeNode(DjangoObjectType):
 
 
 class Query:
-    get_show = Node.Field(ShowNode)
-    get_show_type = Node.Field(ShowTypeNode)
-    list_shows = List(ShowNode)
-    list_show_types = List(ShowTypeNode)
+    show = Node.Field(ShowNode)
+    show_type = Node.Field(ShowTypeNode)
+    show_list = List(ShowNode)
+    show_type_list = List(ShowTypeNode)
 
-    def resolve_list_shows(self, info):
+    def resolve_show_list(self, info):
         return Show.objects.get_visible()
 
-    def resolve_list_show_types(self, info):
+    def resolve_show_type_list(self, info):
         return ShowType.objects.get_visible()

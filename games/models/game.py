@@ -9,8 +9,16 @@ class Game(TimeStampedModel):
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
 
-    show = ForeignKey('shows.Show', on_delete=CASCADE)
-    rules = ForeignKey('GameRules', on_delete=PROTECT)
+    show = ForeignKey(
+        'shows.Show',
+        on_delete=CASCADE,
+        related_name='games',
+    )
+    rules = ForeignKey(
+        'GameRules',
+        on_delete=PROTECT,
+        related_name='games',
+    )
     time_limit = PositiveIntegerField(blank=True, null=True)
     start = DateTimeField(blank=True, null=True)
     end = DateTimeField(blank=True, null=True)

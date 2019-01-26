@@ -1,4 +1,4 @@
-from graphene import List, relay
+from graphene import List, Node, String
 
 from graphene_django.types import DjangoObjectType
 
@@ -21,18 +21,23 @@ class GameRulesNode(DjangoObjectType):
 
 
 class GameNode(DjangoObjectType):
+    type = String()
+
     class Meta:
         model = Game
 
+    def resolve_type(self, info):
+        return self.rules.name
+
 
 class Query:
-    get_game = relay.Node.Field(GameNode)
-    get_game_rules = relay.Node.Field(GameRulesNode)
-    list_game = List(GameNode)
-    list_game_rules = List(GameRulesNode)
+    game = Node.Field(GameNode)
+    game_list = List(GameNode)
+    game_rules = Node.Field(GameRulesNode)
+    game_rules_list = List(GameRulesNode)
 
-    def resolve_list_games(self, info):
+    def resolve_game_list(self, info):
         return Game.objects.filter(show__visible=True).all()
 
-    def resolve_list_game_rules(self, info):
+    def resolve_game_rules_list(self, info):
         return GameRules.objects.get_visible().all()

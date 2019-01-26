@@ -11,4 +11,4 @@ class GameRules(NameMixin, VisibilityMixin, TimeStampedModel):
         verbose_name = _('Game Rule')
         verbose_name_plural = _('Game Rules')
 
-    description = TextField(max_length=255)
+    description = TextField()

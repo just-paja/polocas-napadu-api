@@ -1,6 +1,7 @@
 """Import all models."""
 
 from .bands import BandAdmin, BandPhotoAdmin
+from .games import GameAdmin, GameRulesAdmin
 from .inspirations import InspirationAdmin
 from .locations import LocationAdmin, LocationPhotoAdmin
 from .profiles import (
@@ -31,6 +32,8 @@ __all__ = (
     'BandPhotoAdmin',
     'FoulAdmin',
     'FoulTypeAdmin',
+    'GameAdmin',
+    'GameRulesAdmin',
     'LocationAdmin',
     'LocationPhotoAdmin',
     'MatchAdmin',

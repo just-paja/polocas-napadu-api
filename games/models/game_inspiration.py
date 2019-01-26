@@ -8,5 +8,13 @@ class GameInspiration(Model):
         verbose_name = _('Game Inspiration')
         verbose_name_plural = _('Game Inspirations')
 
-    game = ForeignKey('Game', on_delete=CASCADE)
-    inspiration = ForeignKey('inspirations.Inspiration', on_delete=PROTECT)
+    game = ForeignKey(
+        'Game',
+        on_delete=CASCADE,
+        related_name='game_inspirations',
+    )
+    inspiration = ForeignKey(
+        'inspirations.Inspiration',
+        on_delete=PROTECT,
+        related_name='inspiration_games',
+    )

@@ -1,4 +1,4 @@
-from graphene import Int, Field, List, Node, String
+from graphene import Int, Field, List, Node
 
 from graphene_django.types import DjangoObjectType
 from fields import VISIBILITY_PUBLIC
@@ -26,13 +26,9 @@ class MatchNode(DjangoObjectType):
         model = Match
 
     current_stage = Field(MatchStageNode)
-    total_inspirations = Int()
 
     def resolve_current_stage(self, info):
         return self.stages.order_by('-created').first()
-
-    def resolve_total_inspirations(self, info):
-        return self.show.inspirations.filter(discarded=False).count()
 
 
 class ScorePointNode(DjangoObjectType):
