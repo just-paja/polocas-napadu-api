@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'corsheaders',
+    'colorfield',
     'locations.LocationsConfig',
     'bands.BandsConfig',
     'profiles.ProfilesConfig',

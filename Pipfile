@@ -16,7 +16,7 @@ pytest-watch = "*"
 ansible = "*"
 
 [packages]
-django = {editable = true,git = "https://github.com/django/django.git"}
+django = "*"
 django-extensions = "*"
 django-filter = "*"
 graphene-django = "*"
@@ -28,6 +28,7 @@ psycopg2-binary = "*"
 django-admin-sso = "*"
 django-cors-headers = "*"
 qrcode = {extras = ["pil"],version = "*"}
+django-colorfield = "*"
 
 [requires]
 python_version = "3.7"

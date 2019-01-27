@@ -6,6 +6,7 @@ from django.db.models import (
     CASCADE
 )
 from django.utils.translation import ugettext_lazy as _
+from colorfield.fields import ColorField
 
 TEAM_HOME = 1
 TEAM_GUEST = 2
@@ -29,6 +30,7 @@ class ContestantGroup(Model):
         on_delete=CASCADE,
         related_name='contestant_groups',
     )
+    color = ColorField(default='#ccc')
     match = ForeignKey(
         'Match',
         on_delete=CASCADE,
