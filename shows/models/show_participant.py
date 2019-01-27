@@ -18,3 +18,6 @@ class ShowParticipant(TimeStampedModel):
         on_delete=CASCADE,
         related_name='showsParticipants',
     )
+
+    def __str__(self):
+        return self.profile.name

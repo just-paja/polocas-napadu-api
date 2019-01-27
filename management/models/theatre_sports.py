@@ -3,7 +3,7 @@ from theatre_sports.models import (
     ScorePoint,
 )
 
-from .base import BaseAdminModel, BaseInlineAdminModel
+from .base import BaseAdminModel, BaseStackedAdminModel
 
 
 class FoulTypeAdmin(BaseAdminModel):
@@ -14,9 +14,9 @@ class FoulAdmin(BaseAdminModel):
     pass
 
 
-class ContestantGroupAdmin(BaseInlineAdminModel):
-
+class ContestantGroupAdmin(BaseStackedAdminModel):
     model = ContestantGroup
+    extra = 0
 
 
 class ScorePointAdmin(BaseAdminModel):

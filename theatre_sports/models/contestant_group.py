@@ -18,8 +18,8 @@ TYPE_CHOICES = [
 class ContestantGroup(Model):
 
     class Meta:
-        verbose_name = _('Match')
-        verbose_name_plural = _('Matches')
+        verbose_name = _('Contestant Group')
+        verbose_name_plural = _('Contestant Groups')
 
     contestant_type = PositiveIntegerField(
         choices=TYPE_CHOICES,
@@ -38,3 +38,6 @@ class ContestantGroup(Model):
         'shows.ShowParticipant',
         related_name='contestant_groups',
     )
+
+    def __str__(self):
+        return self.band.name

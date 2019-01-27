@@ -8,3 +8,8 @@ class BaseAdminModel(admin.ModelAdmin):
 class BaseInlineAdminModel(admin.TabularInline):
     """Base admin for Inline models."""
     extra = 1
+
+
+class BaseStackedAdminModel(admin.StackedInline):
+    """Base admin for Inline models."""
+    extra = 1
