@@ -2,17 +2,12 @@ from graphene import List, Node, String
 
 from graphene_django.types import DjangoObjectType
 
-from .models import GameActor, GameInspiration, GameRules, Game
+from .models import GameActor, GameRules, Game
 
 
 class GameActorNode(DjangoObjectType):
     class Meta:
         model = GameActor
-
-
-class GameInspirationNode(DjangoObjectType):
-    class Meta:
-        model = GameInspiration
 
 
 class GameRulesNode(DjangoObjectType):

@@ -10,6 +10,11 @@ class ContestantGroupNode(DjangoObjectType):
     class Meta:
         model = ContestantGroup
 
+    score = Int()
+
+    def resolve_score(self, info):
+        return self.score_points.count()
+
 
 class FoulNode(DjangoObjectType):
     class Meta:

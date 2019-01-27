@@ -33,7 +33,7 @@ class ShowNode(DjangoObjectType):
         )
 
     def resolve_total_inspirations(self, info):
-        return self.show.inspirations.filter(discarded=False).count()
+        return self.inspirations.filter(discarded=False).count()
 
 
 class ShowTypePhotoNode(DjangoObjectType):
