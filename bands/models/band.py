@@ -1,5 +1,5 @@
 from django_extensions.db.models import TimeStampedModel
-from django.db.models import CharField, URLField
+from django.db.models import CharField, ImageField, URLField
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin, VisibilityMixin
@@ -13,3 +13,4 @@ class Band(TimeStampedModel, NameMixin, VisibilityMixin):
 
     city = CharField(max_length=127)
     website = URLField(blank=True, null=True)
+    logo = ImageField(upload_to='bands', blank=True, null=True)

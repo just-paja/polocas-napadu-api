@@ -1,3 +1,4 @@
+from .host import append_host_from_context
 from .name import NameField, NameMixin
 from .visibility import (
     VISIBILITY_DELETED,
@@ -10,6 +11,7 @@ from .visibility import (
 )
 
 __all__ = (
+    'append_host_from_context',
     'NameField',
     'NameMixin',
     'VISIBILITY_DELETED',

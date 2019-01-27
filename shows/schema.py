@@ -3,6 +3,7 @@ from graphene import Int, List, Node, String
 
 from graphene_django.types import DjangoObjectType
 
+from fields import append_host_from_context
 from .models import Show, ShowPhoto, ShowType, ShowTypePhoto
 
 
@@ -24,13 +25,10 @@ class ShowNode(DjangoObjectType):
         return self.get_inspiration_url() # pylint: disable=E1101
 
     def resolve_inspiration_qr_url(self, info):
-        return '%s://%s%s' % (
-            'https' if info.context.is_secure() else 'http',
-            info.context.get_host(),
-            reverse('show_inspiration_qr', kwargs={
-                'show_id': self.id, # pylint: disable=E1101
-            })
-        )
+        path = reverse('show_inspiration_qr', kwargs={
+            'show_id': self.id, # pylint: disable=E1101
+        })
+        return append_host_from_context(path, info.context)
 
     def resolve_total_inspirations(self, info):
         return self.inspirations.filter(discarded=False).count()

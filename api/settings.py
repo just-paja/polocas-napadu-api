@@ -167,6 +167,10 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'shows/locale'),
 ]
 
+if DEBUG:
+    MEDIA_ROOT = '/var/tmp/polocas-napadu-api'
+    MEDIA_URL = '/media/'
+
 RAVEN_DSN = None
 EMAIL_MANAGER = 'test@example.com'
 

@@ -1,7 +1,7 @@
-from graphene import Int, Field, List, Node
+from graphene import Int, Field, List, Node, String
 
 from graphene_django.types import DjangoObjectType
-from fields import VISIBILITY_PUBLIC
+from fields import append_host_from_context, VISIBILITY_PUBLIC
 
 from .models import ContestantGroup, Foul, Match, MatchStage, ScorePoint
 
@@ -10,7 +10,13 @@ class ContestantGroupNode(DjangoObjectType):
     class Meta:
         model = ContestantGroup
 
+    logo = String()
     score = Int()
+
+    def resolve_logo(self, info):
+        if not self.band.logo:
+            return None
+        return append_host_from_context(self.band.logo.url, info.context)
 
     def resolve_score(self, info):
         return self.score_points.count()
