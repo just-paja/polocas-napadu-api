@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.apps import AppConfig
 from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
@@ -43,6 +44,8 @@ def get_models_permissions(apps, group):
     return perms
 
 def bind_group_permission(apps, group, permission, method):
+    if settings.DEBUG:
+        print('Configuring permission %s:%s' % (group.name, permission))
     perm_cls = apps.get_model('auth', 'Permission')
     perm = perm_cls.objects.get(codename=permission)
     exists = group.permissions.filter(id=perm.id).exists()

@@ -16,23 +16,27 @@ MODEL_ACTIONS = [
 ]
 
 MODELS_BASE = [
-    'LogEntry',
-    'Location',
-    'LocationPhoto',
     'Band',
     'BandPhoto',
+    'ContestantGroup',
+    'Foul',
+    'FoulType',
     'Inspiration',
+    'Location',
+    'LocationPhoto',
+    'LogEntry',
+    'Match',
+    'MatchStage',
     'Profile',
     'ProfileGroup',
     'ProfilePhoto',
-    'MatchResults',
-    'MatchScore',
+    'ScorePoint',
     'Show',
     'ShowBand',
     'ShowParticipant',
+    'ShowPhoto',
     'ShowRole',
     'ShowType',
-    'ShowPhoto',
     'ShowTypePhoto',
 ]
 
