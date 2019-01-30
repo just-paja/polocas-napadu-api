@@ -1,4 +1,4 @@
-from django.db.models import ForeignKey, PositiveIntegerField, CASCADE,PROTECT
+from django.db.models import ForeignKey, PositiveIntegerField, CASCADE, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel

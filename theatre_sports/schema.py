@@ -1,4 +1,4 @@
-from graphene import Int, Field, List, Node, String
+from graphene import Int, Field, List, String
 
 from graphene_django.types import DjangoObjectType
 from fields import append_host_from_context, VISIBILITY_PUBLIC

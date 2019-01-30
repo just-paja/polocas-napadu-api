@@ -22,11 +22,11 @@ class ShowNode(DjangoObjectType):
         model = Show
 
     def resolve_inspiration_url(self, info):
-        return self.get_inspiration_url() # pylint: disable=E1101
+        return self.get_inspiration_url()
 
     def resolve_inspiration_qr_url(self, info):
         path = reverse('show_inspiration_qr', kwargs={
-            'show_id': self.id, # pylint: disable=E1101
+            'show_id': self.id,
         })
         return append_host_from_context(path, info.context)
 

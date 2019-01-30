@@ -34,6 +34,7 @@ __all__ = (
     'FoulTypeAdmin',
     'GameAdmin',
     'GameRulesAdmin',
+    'InspirationAdmin',
     'LocationAdmin',
     'LocationPhotoAdmin',
     'MatchAdmin',

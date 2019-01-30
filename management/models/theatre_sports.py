@@ -1,7 +1,4 @@
-from theatre_sports.models import (
-    ContestantGroup,
-    ScorePoint,
-)
+from theatre_sports.models import ContestantGroup
 
 from .base import BaseAdminModel, BaseStackedAdminModel
 

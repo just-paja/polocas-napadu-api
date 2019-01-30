@@ -17,7 +17,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
-from django.views.static import serve
 from graphene_django.views import GraphQLView
 from management.admin import ADMIN_SITE
 from gsuite.views import gauth
