@@ -21,10 +21,10 @@ class ShowsSchemaTest(TestCase):
         )
 
         client = Client(schema.PUBLIC)
-        result = client.execute('''{ listShows { name } }''')
+        result = client.execute('''{ showList { name } }''')
         self.assertEqual(result, {
             'data': {
-                'listShows': [
+                'showList': [
                     {
                         'name': 'Test show',
                     },
@@ -47,9 +47,9 @@ class ShowsSchemaTest(TestCase):
         )
 
         client = Client(schema.PUBLIC)
-        result = client.execute('''{ listShows { name } }''')
+        result = client.execute('''{ showList { name } }''')
         self.assertEqual(result, {
             'data': {
-                'listShows': [],
+                'showList': [],
             },
         })
