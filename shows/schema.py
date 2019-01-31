@@ -4,8 +4,12 @@ from graphene import Int, List, Node, String
 from graphene_django.types import DjangoObjectType
 
 from fields import append_host_from_context
-from .models import Show, ShowPhoto, ShowType, ShowTypePhoto
+from .models import Show, ShowParticipant, ShowPhoto, ShowType, ShowTypePhoto
 
+
+class ShowParticipantNode(DjangoObjectType):
+    class Meta:
+        model = ShowParticipant
 
 
 class ShowPhotoNode(DjangoObjectType):
