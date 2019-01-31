@@ -21,5 +21,10 @@ class PublicQuery(
 ):
     pass
 
+class Mutation(
+    theatre_sports.schema.Mutations,
+    graphene.ObjectType
+):
+    pass
 
-PUBLIC = graphene.Schema(query=PublicQuery)
+PUBLIC = graphene.Schema(query=PublicQuery, mutation=Mutation)

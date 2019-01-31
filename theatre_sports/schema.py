@@ -1,7 +1,8 @@
-from graphene import Int, Field, List, String
+from graphene import Boolean, Int, Field, List, String, ObjectType, Mutation
 
 from graphene_django.types import DjangoObjectType
 from fields import append_host_from_context, VISIBILITY_PUBLIC
+from games.models import Game
 
 from .models import ContestantGroup, Foul, Match, MatchStage, ScorePoint
 
@@ -56,3 +57,45 @@ class Query:
 
     def resolve_match_list(self, info):
         return Match.objects.filter(show__visibility=VISIBILITY_PUBLIC).all()
+
+
+def check_auth(args, pred):
+    _, info = args
+    if not pred(info.context):
+        raise Exception("Unauthorized")
+
+
+def is_staff(func):
+    def wrapper(*args, **kwargs):
+        check_auth(args, lambda context: context.user.is_staff)
+        return func(*args, **kwargs)
+    return wrapper
+
+
+class ChangeMatchStage(Mutation):
+    class Arguments:
+        game_id = Int()
+        match_id = Int(required=True)
+        stage = String(required=True)
+
+    stage = Field(MatchStageNode)
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, match_id=None, stage=None, game_id=None):
+        match = Match.objects.get(pk=match_id)
+        game = Game.objects.get(pk=game_id) if game_id else None
+        stage = MatchStage.objects.create(
+            game=game,
+            match=match,
+            type=int(stage.split('_')[1]),
+        )
+        return ChangeMatchStage(
+            stage=stage,
+            ok=True
+        )
+
+
+class Mutations(ObjectType):
+    changeMatchStage = ChangeMatchStage.Field()
