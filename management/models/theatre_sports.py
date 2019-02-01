@@ -26,7 +26,7 @@ class MatchStageAdmin(BaseAdminModel):
 
 
 class MatchAdmin(BaseAdminModel):
-
+    change_form_template = 'admin/match_change_form.html'
     inlines = [
         ContestantGroupAdmin,
     ]

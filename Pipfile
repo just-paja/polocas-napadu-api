@@ -29,6 +29,7 @@ django-admin-sso = "*"
 django-cors-headers = "*"
 qrcode = {extras = ["pil"],version = "*"}
 django-colorfield = "*"
+django-graphql-jwt = "*"
 
 [requires]
 python_version = "3.7"

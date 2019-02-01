@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'theatre_sports.TheatreSportsConfig',
     'management',
     'graphene_django',
+    'graphql_jwt.refresh_token',
     'admin_sso',
     'gsuite.GSuiteConfig',
 ]
@@ -141,6 +142,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTHENTICATION_BACKENDS = (
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -154,6 +159,9 @@ GRAPH_MODELS = {
 
 GRAPHENE = {
     'SCHEMA': 'api.schema.PUBLIC',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
 
 LOCALE_PATHS = [
@@ -181,6 +189,9 @@ AWS_S3_REGION_NAME = None
 AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_FILE_OVERWRITE = False
+
+APP_SCOREBOARD_URL = 'http://localhost:3000'
+APP_REFEREE_URL = 'http://localhost:3001'
 
 DJANGO_ADMIN_SSO = False
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
@@ -217,6 +228,7 @@ if (
     DJANGO_ADMIN_SSO = True
     AUTHENTICATION_BACKENDS = (
         'gsuite.auth.GsuiteAuthBackend',
+        'graphql_jwt.backends.JSONWebTokenBackend',
         'django.contrib.auth.backends.ModelBackend',
     )
 

@@ -1,4 +1,5 @@
 import graphene
+import graphql_jwt
 
 import bands.schema
 import games.schema
@@ -25,6 +26,8 @@ class Mutation(
     theatre_sports.schema.Mutations,
     graphene.ObjectType
 ):
-    pass
+    verify_token = graphql_jwt.Verify.Field()
+    refresh_token = graphql_jwt.Refresh.Field()
+
 
 PUBLIC = graphene.Schema(query=PublicQuery, mutation=Mutation)

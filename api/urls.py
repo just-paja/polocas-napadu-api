@@ -21,11 +21,14 @@ from graphene_django.views import GraphQLView
 from management.admin import ADMIN_SITE
 from gsuite.views import gauth
 from shows import urls as shows
+from theatre_sports import urls as theatre_sports
+
 
 urlpatterns = [
     path('admin/', ADMIN_SITE.urls),
-    path('shows/', include(shows.urlpatterns)),
     path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path('shows/', include(shows.urlpatterns)),
+    path('theatre-sports/', include(theatre_sports.urlpatterns)),
     path('', gauth),
 ]
 
