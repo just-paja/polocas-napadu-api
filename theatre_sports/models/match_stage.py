@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
 
+STAGE_SHOW_SETUP = 1
 STAGE_INTRO = 2
 STAGE_GAME_SETUP = 3
 STAGE_GAME = 4
@@ -12,6 +13,7 @@ STAGE_PAUSE = 7
 STAGE_FINALE = 8
 
 STAGE_CHOICES = [
+    (STAGE_SHOW_SETUP, _('stage-show-setup')),
     (STAGE_INTRO, _('stage-intro')),
     (STAGE_GAME_SETUP, _('stage-game-setup')),
     (STAGE_GAME, _('stage-game')),
