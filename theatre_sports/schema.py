@@ -38,9 +38,16 @@ class MatchNode(DjangoObjectType):
         model = Match
 
     current_stage = Field(MatchStageNode)
+    prev_stage = Field(MatchStageNode)
 
     def resolve_current_stage(self, info):
-        return self.stages.order_by('-created').first()
+        return self.get_current_stage()
+
+    def resolve_prev_stage(self, info):
+        try:
+            return self.stages.order_by('-created')[1]
+        except IndexError:
+            return None
 
 
 class ScorePointNode(DjangoObjectType):
@@ -97,5 +104,25 @@ class ChangeMatchStage(Mutation):
         )
 
 
+class RewindMatchStage(Mutation):
+    class Arguments:
+        match_id = Int(required=True)
+
+    stage = Field(MatchStageNode)
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, match_id=None):
+        match = Match.objects.get(pk=match_id)
+        current_stage = match.get_current_stage()
+        current_stage.delete()
+        return ChangeMatchStage(
+            stage=match.get_current_stage(),
+            ok=True
+        )
+
+
 class Mutations(ObjectType):
     changeMatchStage = ChangeMatchStage.Field()
+    rewindMatchStage = RewindMatchStage.Field()

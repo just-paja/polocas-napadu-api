@@ -19,3 +19,6 @@ class Match(Model):
 
     def __str__(self):
         return '%s: %s' % (_('Match'), self.show)
+
+    def get_current_stage(self):
+        return self.stages.order_by('-created').first()
