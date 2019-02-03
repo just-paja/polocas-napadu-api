@@ -1,4 +1,4 @@
-from django.db.models import ForeignKey, PositiveIntegerField, CASCADE, PROTECT
+from django.db.models import ForeignKey, ManyToManyField, PositiveIntegerField, CASCADE, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
@@ -43,6 +43,11 @@ class MatchStage(TimeStampedModel):
     )
     type = PositiveIntegerField(
         choices=STAGE_CHOICES,
+    )
+    inspirations = ManyToManyField(
+        'inspirations.Inspiration',
+        blank=True,
+        related_name='stages',
     )
 
     def pass_game_to_next_stage(self):
