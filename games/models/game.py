@@ -34,3 +34,6 @@ class Game(TimeStampedModel):
     time_limit = PositiveIntegerField(blank=True, null=True)
     start = DateTimeField(blank=True, null=True)
     end = DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return '%s (%s)' % (self.rules.name, self.show.name)
