@@ -5,6 +5,8 @@ from fields import append_host_from_context, VISIBILITY_PUBLIC
 
 from games.models import Game, GameRules
 from games.schema import GameNode
+from inspirations.models import Inspiration
+from inspirations.schema import InspirationNode
 
 from .models import ContestantGroup, Foul, Match, MatchStage, ScorePoint
 
@@ -41,12 +43,19 @@ class MatchNode(DjangoObjectType):
 
     current_stage = Field(MatchStageNode)
     prev_stage = Field(MatchStageNode)
+    prepared_inspiration_count = Int()
 
     def resolve_current_stage(self, info):
         return self.get_current_stage()
 
     def resolve_prev_stage(self, info):
         return self.get_prev_stage()
+
+    def resolve_prepared_inspiration_count(self, info):
+        return self.show.inspirations.filter(
+            discarded=False,
+            stages=None,
+        ).count()
 
 
 class ScorePointNode(DjangoObjectType):
@@ -91,11 +100,20 @@ class ChangeMatchStage(Mutation):
     def mutate(root, info, match_id=None, stage=None):
         match = Match.objects.get(pk=match_id)
         prev_stage = match.get_current_stage()
-        stage = MatchStage.objects.create(
-            game=prev_stage.game if prev_stage and prev_stage.pass_game_to_next_stage() else None,
-            match=match,
-            type=int(stage.split('_')[1]),
-        )
+        stage_type = int(stage.split('_')[1])
+        if prev_stage and prev_stage.pass_game_to_next_stage():
+            stage = MatchStage.objects.create(
+                game=prev_stage.game,
+                match=match,
+                type=stage_type,
+            )
+            stage.inspirations.set(prev_stage.inspirations.all())
+            prev_stage.game.inspirations.set(prev_stage.inspirations.all())
+        else:
+            stage = MatchStage.objects.create(
+                match=match,
+                type=stage_type,
+            )
         return ChangeMatchStage(
             stage=stage,
             ok=True
@@ -159,7 +177,63 @@ class SetMatchGame(Mutation):
         )
 
 
+class RandomPickInspiration(Mutation):
+    class Arguments:
+        replace = Boolean()
+        match_id = Int(required=True)
+
+    stage = Field(MatchStageNode)
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, match_id, replace=False):
+        match = Match.objects.get(pk=match_id)
+        stage = match.get_current_stage()
+        inspiration = None
+        if replace:
+            for insp in stage.inspirations.all():
+                insp.discarded = True
+                insp.save()
+            stage.inspirations.clear()
+            stage.save()
+        inspiration = match.show.inspirations.filter(
+            discarded=False,
+            stages=None,
+        ).order_by('?').first()
+        if inspiration:
+            stage.inspirations.add(inspiration)
+            stage.save()
+        return RandomPickInspiration(
+            stage=stage,
+            ok=True
+        )
+
+
+class DiscardInspiration(Mutation):
+    class Arguments:
+        inspiration_id = Int(required=True)
+
+    inspiration = Field(InspirationNode)
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, inspiration_id):
+        inspiration = Inspiration.objects.get(pk=inspiration_id)
+        if inspiration:
+            inspiration.discarded = True
+            inspiration.stages.clear()
+            inspiration.save()
+        return DiscardInspiration(
+            inspiration=inspiration,
+            ok=True
+        )
+
+
 class Mutations(ObjectType):
-    changeMatchStage = ChangeMatchStage.Field()
-    rewindMatchStage = RewindMatchStage.Field()
-    setMatchGame = SetMatchGame.Field()
+    discard_inspiration = DiscardInspiration.Field()
+    change_match_stage = ChangeMatchStage.Field()
+    random_pick_inspiration = RandomPickInspiration.Field()
+    rewind_match_stage = RewindMatchStage.Field()
+    set_match_game = SetMatchGame.Field()
