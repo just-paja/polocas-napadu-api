@@ -91,7 +91,6 @@ class ChangeMatchStage(Mutation):
     def mutate(root, info, match_id=None, stage=None):
         match = Match.objects.get(pk=match_id)
         prev_stage = match.get_current_stage()
-        print(prev_stage.type)
         stage = MatchStage.objects.create(
             game=prev_stage.game if prev_stage and prev_stage.pass_game_to_next_stage() else None,
             match=match,
