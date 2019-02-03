@@ -22,3 +22,9 @@ class Match(Model):
 
     def get_current_stage(self):
         return self.stages.order_by('-created').first()
+
+    def get_prev_stage(self):
+        try:
+            return self.stages.order_by('-created')[1]
+        except IndexError:
+            return None

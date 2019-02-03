@@ -46,10 +46,7 @@ class MatchNode(DjangoObjectType):
         return self.get_current_stage()
 
     def resolve_prev_stage(self, info):
-        try:
-            return self.stages.order_by('-created')[1]
-        except IndexError:
-            return None
+        return self.get_prev_stage()
 
 
 class ScorePointNode(DjangoObjectType):
@@ -83,7 +80,6 @@ def is_staff(func):
 
 class ChangeMatchStage(Mutation):
     class Arguments:
-        game_id = Int()
         match_id = Int(required=True)
         stage = String(required=True)
 
@@ -92,11 +88,12 @@ class ChangeMatchStage(Mutation):
 
     @staticmethod
     @is_staff
-    def mutate(root, info, match_id=None, stage=None, game_id=None):
+    def mutate(root, info, match_id=None, stage=None):
         match = Match.objects.get(pk=match_id)
-        game = Game.objects.get(pk=game_id) if game_id else None
+        prev_stage = match.get_current_stage()
+        print(prev_stage.type)
         stage = MatchStage.objects.create(
-            game=game,
+            game=prev_stage.game if prev_stage and prev_stage.pass_game_to_next_stage() else None,
             match=match,
             type=int(stage.split('_')[1]),
         )

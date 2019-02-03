@@ -44,3 +44,10 @@ class MatchStage(TimeStampedModel):
     type = PositiveIntegerField(
         choices=STAGE_CHOICES,
     )
+
+    def pass_game_to_next_stage(self):
+        return self.type in [
+            STAGE_GAME_SETUP,
+            STAGE_GAME,
+            STAGE_VOTING,
+        ]
