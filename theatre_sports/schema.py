@@ -2,7 +2,9 @@ from graphene import Boolean, Int, Field, List, String, ObjectType, Mutation
 
 from graphene_django.types import DjangoObjectType
 from fields import append_host_from_context, VISIBILITY_PUBLIC
-from games.models import Game
+
+from games.models import Game, GameRules
+from games.schema import GameNode
 
 from .models import ContestantGroup, Foul, Match, MatchStage, ScorePoint
 
@@ -123,6 +125,45 @@ class RewindMatchStage(Mutation):
         )
 
 
+class SetMatchGame(Mutation):
+    class Arguments:
+        match_id = Int(required=True)
+        game_rules_id = Int(required=False)
+
+    game = Field(GameNode)
+    stage = Field(MatchStageNode)
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, match_id, game_rules_id=None):
+        match = Match.objects.get(pk=match_id)
+        stage = match.get_current_stage()
+        if game_rules_id:
+            rules = GameRules.objects.get(pk=game_rules_id)
+            if stage.game:
+                stage.game.rules = rules
+                stage.game.save()
+            else:
+                game = Game.objects.create(
+                    show=match.show,
+                    rules=rules,
+                )
+                stage.game = game
+                stage.save()
+        elif stage.game:
+            game = stage.game
+            stage.game = None
+            stage.save()
+            game.delete()
+        return SetMatchGame(
+            game=stage.game,
+            stage=stage,
+            ok=True
+        )
+
+
 class Mutations(ObjectType):
     changeMatchStage = ChangeMatchStage.Field()
     rewindMatchStage = RewindMatchStage.Field()
+    setMatchGame = SetMatchGame.Field()
