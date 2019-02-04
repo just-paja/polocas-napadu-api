@@ -34,7 +34,7 @@ class Foul(TimeStampedModel):
         related_name='fouls',
     )
     comment = TextField(
-        max_length=255,
-        verbose_name=_('Textual inspiration'),
-        help_text=_('Enter words that will serve as an inspiration for this improvisation'),
+        blank=True,
+        verbose_name=_('Comment'),
+        help_text=_('Describe what was the foul play'),
     )
