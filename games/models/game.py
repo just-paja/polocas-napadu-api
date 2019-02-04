@@ -28,6 +28,7 @@ class Game(TimeStampedModel):
     )
     inspirations = ManyToManyField(
         'inspirations.Inspiration',
+        blank=True,
         related_name='inspiration_games',
     )
 
