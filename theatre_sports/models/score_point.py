@@ -9,11 +9,6 @@ class ScorePoint(TimeStampedModel):
         verbose_name = _('ScorePoint')
         verbose_name_plural = _('ScorePoints')
 
-    match = ForeignKey(
-        'Match',
-        on_delete=CASCADE,
-        related_name='score_points',
-    )
     contestant_group = ForeignKey(
         'ContestantGroup',
         on_delete=CASCADE,

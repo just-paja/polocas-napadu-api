@@ -28,3 +28,7 @@ class Match(Model):
             return self.stages.order_by('-created')[1]
         except IndexError:
             return None
+
+    def get_current_game(self):
+        stage = self.get_current_stage()
+        return stage.game

@@ -235,9 +235,38 @@ class DiscardInspiration(Mutation):
         )
 
 
+class ChangeContestantGroupScore(Mutation):
+    class Arguments:
+        contestant_group_id = Int(required=True)
+        subtract = Boolean()
+
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, contestant_group_id, subtract=False):
+        group = ContestantGroup.objects.get(pk=contestant_group_id)
+        game = group.match.get_current_game()
+        success = False
+        if game and group:
+            if subtract:
+                score_point = ScorePoint.objects.filter(contestant_group=group).last()
+                success = True
+                if score_point:
+                    score_point.delete()
+            else:
+                ScorePoint.objects.create(
+                    game=game,
+                    contestant_group=group,
+                )
+            success = True
+        return DiscardInspiration(ok=success)
+
+
 class Mutations(ObjectType):
     discard_inspiration = DiscardInspiration.Field()
     change_match_stage = ChangeMatchStage.Field()
     random_pick_inspiration = RandomPickInspiration.Field()
     rewind_match_stage = RewindMatchStage.Field()
     set_match_game = SetMatchGame.Field()
+    change_contestant_group_score = ChangeContestantGroupScore.Field()
