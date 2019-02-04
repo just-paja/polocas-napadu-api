@@ -17,6 +17,7 @@ class ContestantGroupNode(DjangoObjectType):
 
     logo = String()
     score = Int()
+    penalty_points = Int()
 
     def resolve_logo(self, info):
         if not self.band.logo:
@@ -25,6 +26,9 @@ class ContestantGroupNode(DjangoObjectType):
 
     def resolve_score(self, info):
         return self.score_points.count()
+
+    def resolve_penalty_points(self, info):
+        return self.fouls.count()
 
 
 class FoulNode(DjangoObjectType):
