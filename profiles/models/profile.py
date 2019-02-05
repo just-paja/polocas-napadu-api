@@ -20,3 +20,6 @@ class Profile(NameMixin, TimeStampedModel, VisibilityMixin):
         null=True,
         on_delete=PROTECT,
     )
+
+    def get_avatar(self):
+        return self.photos.first()
