@@ -15,6 +15,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import sentry_sdk
 
+from urllib.parse import urlparse
 from sentry_sdk.integrations.django import DjangoIntegration
 from django.utils.translation import gettext_lazy as _
 
@@ -199,8 +200,6 @@ DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = None
 
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1',
-    'localhost:3000',
-    'localhost:3001',
     'localhost:8000',
     'localhost:8080',
 )
@@ -210,6 +209,9 @@ try:
     from local_settings import * # noqa
 except ImportError:
     pass
+
+CORS_ORIGIN_WHITELIST += (urlparse(APP_REFEREE_URL).netloc, )
+CORS_ORIGIN_WHITELIST += (urlparse(APP_SCOREBOARD_URL).netloc, )
 
 if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
