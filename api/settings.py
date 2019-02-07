@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # noqa
 
+from urllib.parse import urlparse
+
 import os
 import sentry_sdk
 
-from urllib.parse import urlparse
 from sentry_sdk.integrations.django import DjangoIntegration
 from django.utils.translation import gettext_lazy as _
 
