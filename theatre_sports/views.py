@@ -11,15 +11,15 @@ from .models import Match
 def match_control(request, match_id):
     match = get_object_or_404(Match, pk=match_id, show__visibility=VISIBILITY_PUBLIC)
     token = get_token(request.user)
-    return redirect('%s/match/%s?token=%s' % (
+    return redirect('%s?token=%s#/match/%s' % (
         settings.APP_REFEREE_URL,
-        match.pk,
-        token
+        token,
+        match.pk
     ))
 
 def match_scoreboard(request, match_id):
     match = get_object_or_404(Match, pk=match_id, show__visibility=VISIBILITY_PUBLIC)
-    return redirect('%s/match/%s' % (
+    return redirect('%s#/match/%s' % (
         settings.APP_SCOREBOARD_URL,
         match.pk,
     ))
