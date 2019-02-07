@@ -52,6 +52,12 @@ DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = '{{lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIE
 {% if lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET') %}
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = '{{lookup('env', 'DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET')}}'
 {% endif %}
+{% if lookup('env', 'APP_REFEREE_URL') %}
+APP_REFEREE_URL = '{{lookup('env', 'APP_REFEREE_URL')}}'
+{% endif %}
+{% if lookup('env', 'APP_SCOREBOARD_URL') %}
+APP_SCOREBOARD_URL = '{{lookup('env', 'APP_SCOREBOARD_URL')}}'
+{% endif %}
 {% if lookup('env', 'DB_NAME') %}
 DATABASES = {
     'default': {
