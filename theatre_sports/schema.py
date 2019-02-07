@@ -8,7 +8,14 @@ from games.schema import GameNode
 from inspirations.models import Inspiration
 from inspirations.schema import InspirationNode
 
-from .models import ContestantGroup, Foul, Match, MatchStage, ScorePoint
+from .models import (
+    ContestantGroup,
+    Foul,
+    FoulType,
+    Match,
+    MatchStage,
+    ScorePoint,
+)
 
 
 class ContestantGroupNode(DjangoObjectType):
@@ -29,6 +36,11 @@ class ContestantGroupNode(DjangoObjectType):
 
     def resolve_penalty_points(self, info):
         return self.fouls.count()
+
+
+class FoulTypeNode(DjangoObjectType):
+    class Meta:
+        model = FoulType
 
 
 class FoulNode(DjangoObjectType):
@@ -68,8 +80,12 @@ class ScorePointNode(DjangoObjectType):
 
 
 class Query:
+    foul_type_list = List(FoulTypeNode)
     match = Field(MatchNode, id=Int())
     match_list = List(MatchNode)
+
+    def resolve_foul_type_list(self, info, **kwargs):
+        return FoulType.objects.all()
 
     def resolve_match(self, info, **kwargs):
         return Match.objects.get(pk=kwargs.get('id'))
@@ -263,10 +279,41 @@ class ChangeContestantGroupScore(Mutation):
         return DiscardInspiration(ok=success)
 
 
+class AddFoulPoint(Mutation):
+    class Arguments:
+        contestant_group_id = Int(required=True)
+        foul_type_id = Int(required=True)
+        player_id = Int()
+
+    ok = Boolean()
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, contestant_group_id, foul_type_id, player_id=None):
+        group = ContestantGroup.objects.get(pk=contestant_group_id)
+        foul_type = FoulType.objects.get(pk=foul_type_id)
+        game = group.match.get_current_game()
+        result = False
+        if player_id:
+            player = group.players.get(pk=player_id)
+        else:
+            player = None
+        if group and foul_type:
+            Foul.objects.create(
+                contestant_group=group,
+                game=game,
+                player=player,
+                foul_type=foul_type,
+            )
+            result = True
+        return AddFoulPoint(ok=result)
+
+
 class Mutations(ObjectType):
+    add_foul_point = AddFoulPoint.Field()
     discard_inspiration = DiscardInspiration.Field()
+    change_contestant_group_score = ChangeContestantGroupScore.Field()
     change_match_stage = ChangeMatchStage.Field()
     random_pick_inspiration = RandomPickInspiration.Field()
     rewind_match_stage = RewindMatchStage.Field()
     set_match_game = SetMatchGame.Field()
-    change_contestant_group_score = ChangeContestantGroupScore.Field()

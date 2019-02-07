@@ -9,11 +9,6 @@ class Foul(TimeStampedModel):
         verbose_name = _('Foul')
         verbose_name_plural = _('Fouls')
 
-    match = ForeignKey(
-        'Match',
-        on_delete=CASCADE,
-        related_name='fouls',
-    )
     contestant_group = ForeignKey(
         'ContestantGroup',
         on_delete=CASCADE,
@@ -24,6 +19,13 @@ class Foul(TimeStampedModel):
         on_delete=CASCADE,
         null=True,
         blank=True,
+        related_name='fouls',
+    )
+    player = ForeignKey(
+        'shows.ShowParticipant',
+        blank=True,
+        null=True,
+        on_delete=CASCADE,
         related_name='fouls',
     )
     foul_type = ForeignKey(
