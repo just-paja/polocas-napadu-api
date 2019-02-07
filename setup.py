@@ -1,6 +1,7 @@
 import os
 
 from setuptools import find_packages, setup
+from version import PACKAGE_VERSION
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
@@ -9,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='polocas-napadu-api',
-    version='1.0.1',
+    version=PACKAGE_VERSION,
     packages=find_packages(),
     include_package_data=True,
     description="API for improv group website",

@@ -102,6 +102,7 @@ jobs:
           name: Deploy to Staging
           command: >
             env
+            PACKAGE_VERSION=$(python -c 'import version; print(version.PACKAGE_VERSION)')
             ALLOWED_HOSTS="$STAGING_ALLOWED_HOSTS"
             AWS_ACCESS_KEY_ID="$STAGING_AWS_ACCESS_KEY_ID"
             AWS_S3_REGION_NAME="$STAGING_AWS_S3_REGION_NAME"
@@ -138,6 +139,7 @@ jobs:
           name: Deploy to Production
           command: >
             env
+            PACKAGE_VERSION=$(python -c 'import version; print(version.PACKAGE_VERSION)')
             ALLOWED_HOSTS="$PRODUCTION_ALLOWED_HOSTS"
             AWS_ACCESS_KEY_ID="$PRODUCTION_AWS_ACCESS_KEY_ID"
             AWS_S3_REGION_NAME="$PRODUCTION_AWS_S3_REGION_NAME"
