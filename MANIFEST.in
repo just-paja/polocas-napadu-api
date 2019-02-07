@@ -2,12 +2,16 @@ recursive-include api *
 recursive-include bands *
 recursive-include events *
 recursive-include fields *
+recursive-include games *
+recursive-include gsuite *
+recursive-include inspirations *
 recursive-include locale *
 recursive-include locations *
 recursive-include management *
 recursive-include photos *
 recursive-include profiles *
 recursive-include shows *
+recursive-include theatre_sports *
 include requirements.txt
 include README.md
 include manage.py
