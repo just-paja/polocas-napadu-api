@@ -24,6 +24,7 @@ class ContestantGroupNode(DjangoObjectType):
 
     logo = String()
     score = Int()
+    score_points = Int()
     penalty_points = Int()
 
     def resolve_logo(self, info):
@@ -32,10 +33,13 @@ class ContestantGroupNode(DjangoObjectType):
         return append_host_from_context(self.band.logo.url, info.context)
 
     def resolve_score(self, info):
+        return self.score_points.count() + self.get_penalty_points_addition()
+
+    def resolve_score_points(self, info):
         return self.score_points.count()
 
     def resolve_penalty_points(self, info):
-        return self.fouls.count()
+        return self.get_penalty_points()
 
 
 class FoulTypeNode(DjangoObjectType):

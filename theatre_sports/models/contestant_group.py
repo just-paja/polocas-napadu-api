@@ -43,3 +43,26 @@ class ContestantGroup(Model):
 
     def __str__(self):
         return self.band.name
+
+    def get_other_side(self):
+        if self.contestant_type == TEAM_HOME:
+            return TEAM_GUEST
+        if self.contestant_type == TEAM_GUEST:
+            return TEAM_HOME
+        return None
+
+    def get_foes(self):
+        other_side = self.get_other_side()
+        if other_side:
+            return self.match.contestant_groups.filter(contestant_type=other_side)
+        return []
+
+    def get_penalty_points(self):
+        return self.fouls.count() % 3
+
+    def get_penalty_points_addition(self):
+        total = 0
+        foes = self.get_foes()
+        for foe in foes:
+            total += foe.fouls.count() // 3
+        return total
