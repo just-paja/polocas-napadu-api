@@ -26,7 +26,7 @@ from theatre_sports import urls as theatre_sports
 
 urlpatterns = [
     path('admin/', ADMIN_SITE.urls),
-    path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True)), name='api_public'),
+    path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG)), name='api_public'),
     path('shows/', include(shows.urlpatterns)),
     path('theatre-sports/', include(theatre_sports.urlpatterns)),
     path('', gauth),
