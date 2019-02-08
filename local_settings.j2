@@ -58,6 +58,9 @@ APP_REFEREE_URL = '{{lookup('env', 'APP_REFEREE_URL')}}'
 {% if lookup('env', 'APP_SCOREBOARD_URL') %}
 APP_SCOREBOARD_URL = '{{lookup('env', 'APP_SCOREBOARD_URL')}}'
 {% endif %}
+{% if lookup('env', 'APP_INSPIRATIONS_URL') %}
+APP_INSPIRATIONS_URL = '{{lookup('env', 'APP_INSPIRATIONS_URL')}}'
+{% endif %}
 {% if lookup('env', 'DB_NAME') %}
 DATABASES = {
     'default': {

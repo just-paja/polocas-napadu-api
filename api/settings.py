@@ -196,6 +196,7 @@ AWS_S3_FILE_OVERWRITE = False
 
 APP_SCOREBOARD_URL = 'http://localhost:3000'
 APP_REFEREE_URL = 'http://localhost:3001'
+APP_INSPIRATIONS_URL = 'http://localhost:3002'
 
 DJANGO_ADMIN_SSO = False
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
@@ -213,6 +214,7 @@ try:
 except ImportError:
     pass
 
+CORS_ORIGIN_WHITELIST += (urlparse(APP_INSPIRATIONS_URL).netloc, )
 CORS_ORIGIN_WHITELIST += (urlparse(APP_REFEREE_URL).netloc, )
 CORS_ORIGIN_WHITELIST += (urlparse(APP_SCOREBOARD_URL).netloc, )
 
