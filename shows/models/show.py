@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db.models import ForeignKey, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
