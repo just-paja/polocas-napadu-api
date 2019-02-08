@@ -75,6 +75,7 @@ class MatchNode(DjangoObjectType):
         return self.show.inspirations.filter(
             discarded=False,
             stages=None,
+            inspiration_games=None,
         ).count()
 
 
@@ -224,6 +225,7 @@ class RandomPickInspiration(Mutation):
         inspiration = match.show.inspirations.filter(
             discarded=False,
             stages=None,
+            inspiration_games=None,
         ).order_by('?').first()
         if inspiration:
             stage.inspirations.add(inspiration)
