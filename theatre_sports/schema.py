@@ -313,8 +313,28 @@ class AddFoulPoint(Mutation):
         return AddFoulPoint(ok=result)
 
 
+class AddAndUseInspiration(Mutation):
+    class Arguments:
+        match_id = Int(required=True)
+        inspiration_text = String(required=True)
+
+    ok = Boolean()
+
+    @staticmethod
+    def mutate(root, info, match_id, inspiration_text):
+        match = Match.objects.get(pk=match_id)
+        stage = match.get_current_stage()
+        inspiration = Inspiration.objects.create(
+            show=match.show,
+            text=inspiration_text,
+        )
+        stage.inspirations.add(inspiration)
+        return AddAndUseInspiration(ok=True)
+
+
 class Mutations(ObjectType):
     add_foul_point = AddFoulPoint.Field()
+    add_and_use_inspiration = AddAndUseInspiration.Field()
     discard_inspiration = DiscardInspiration.Field()
     change_contestant_group_score = ChangeContestantGroupScore.Field()
     change_match_stage = ChangeMatchStage.Field()
