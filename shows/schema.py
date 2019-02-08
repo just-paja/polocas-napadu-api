@@ -1,9 +1,12 @@
 from django.urls import reverse
-from graphene import Int, List, Node, String
+from graphql import GraphQLError
+from graphene import Boolean, Int, List, Node, ObjectType, String, Mutation
 
 from graphene_django.types import DjangoObjectType
 
 from fields import append_host_from_context
+from inspirations.models import Inspiration
+
 from .models import Show, ShowParticipant, ShowPhoto, ShowType, ShowTypePhoto
 
 
@@ -48,6 +51,26 @@ class ShowTypeNode(DjangoObjectType):
         model = ShowType
 
 
+class AddInspiration(Mutation):
+    class Arguments:
+        show_id = Int(required=True)
+        inspiration_text = String(required=True)
+
+    ok = Boolean()
+
+    @staticmethod
+    def mutate(root, info, show_id, inspiration_text):
+        show = Show.objects.get(pk=show_id)
+        exists = show.inspirations.filter(text=inspiration_text).count() > 0
+        if exists:
+            return GraphQLError('already-exists')
+        Inspiration.objects.create(
+            show=show,
+            text=inspiration_text,
+        )
+        return AddInspiration(ok=True)
+
+
 class Query:
     show = Node.Field(ShowNode)
     show_type = Node.Field(ShowTypeNode)
@@ -59,3 +82,7 @@ class Query:
 
     def resolve_show_type_list(self, info):
         return ShowType.objects.get_visible()
+
+
+class Mutations(ObjectType):
+    add_inspiration = AddInspiration.Field()

@@ -24,6 +24,7 @@ class PublicQuery(
 
 class Mutation(
     theatre_sports.schema.Mutations,
+    shows.schema.Mutations,
     graphene.ObjectType
 ):
     verify_token = graphql_jwt.Verify.Field()
