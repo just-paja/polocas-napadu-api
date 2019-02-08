@@ -21,15 +21,11 @@ class ShowPhotoNode(DjangoObjectType):
 
 
 class ShowNode(DjangoObjectType):
-    inspiration_url = String()
     inspiration_qr_url = String()
     total_inspirations = Int()
 
     class Meta:
         model = Show
-
-    def resolve_inspiration_url(self, info):
-        return self.get_inspiration_url()
 
     def resolve_inspiration_qr_url(self, info):
         path = reverse('show_inspiration_qr', kwargs={

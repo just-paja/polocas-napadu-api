@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db.models import ForeignKey, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,6 +12,3 @@ class Show(Event):
         verbose_name_plural = _('Shows')
 
     show_type = ForeignKey('showType', on_delete=PROTECT)
-
-    def get_inspiration_url(self):
-        return 'https://tema.polocas-napadu.cz'
