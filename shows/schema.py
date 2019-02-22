@@ -1,6 +1,6 @@
 from django.urls import reverse
 from graphql import GraphQLError
-from graphene import Boolean, Int, List, Node, ObjectType, String, Mutation
+from graphene import Boolean, Field, Int, List, Node, ObjectType, String, Mutation
 
 from graphene_django.types import DjangoObjectType
 
@@ -68,10 +68,13 @@ class AddInspiration(Mutation):
 
 
 class Query:
-    show = Node.Field(ShowNode)
+    show = Field(ShowNode, id=Int())
     show_type = Node.Field(ShowTypeNode)
     show_list = List(ShowNode)
     show_type_list = List(ShowTypeNode)
+
+    def resolve_show(self, info, id):
+        return Show.objects.get_visible().get(pk=id)
 
     def resolve_show_list(self, info):
         return Show.objects.get_visible()
