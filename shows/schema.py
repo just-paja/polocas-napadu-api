@@ -68,12 +68,14 @@ class AddInspiration(Mutation):
 
 
 class Query:
-    show = Field(ShowNode, id=Int())
+    show = Field(ShowNode, id=Int(), slug=String())
     show_type = Node.Field(ShowTypeNode)
     show_list = List(ShowNode)
     show_type_list = List(ShowTypeNode)
 
-    def resolve_show(self, info, id):
+    def resolve_show(self, info, id=None, slug=None):
+        if slug:
+            return Show.objects.get_visible().get(slug=slug)
         return Show.objects.get_visible().get(pk=id)
 
     def resolve_show_list(self, info):
