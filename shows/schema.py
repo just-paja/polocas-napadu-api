@@ -74,9 +74,12 @@ class Query:
     show_type_list = List(ShowTypeNode)
 
     def resolve_show(self, info, id=None, slug=None):
-        if slug:
-            return Show.objects.get_visible().get(slug=slug)
-        return Show.objects.get_visible().get(pk=id)
+        try:
+            if slug:
+                return Show.objects.get_visible().get(slug=slug)
+            return Show.objects.get_visible().get(pk=id)
+        except Show.DoesNotExist:
+            return None
 
     def resolve_show_list(self, info):
         return Show.objects.get_visible()
