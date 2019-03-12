@@ -93,7 +93,10 @@ class Query:
         return FoulType.objects.all()
 
     def resolve_match(self, info, **kwargs):
-        return Match.objects.get(pk=kwargs.get('id'))
+        try:
+            return Match.objects.get(pk=kwargs.get('id'))
+        except Match.DoesNotExist:
+            return None
 
     def resolve_match_list(self, info):
         return Match.objects.filter(show__visibility=VISIBILITY_PUBLIC).all()
