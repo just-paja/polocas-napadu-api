@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
-from management.admin import ADMIN_SITE
+from api_admin.admin import ADMIN_SITE
 from gsuite.views import gauth
 from shows import urls as shows
 from theatre_sports import urls as theatre_sports

@@ -1,6 +1,6 @@
-from bands.models import BandPhoto
+from fields.admin import BaseAdminModel, BaseInlineAdminModel
 
-from .base import BaseAdminModel, BaseInlineAdminModel
+from .models import Band, BandPhoto
 
 
 class BandPhotoAdmin(BaseInlineAdminModel):
@@ -11,6 +11,8 @@ class BandPhotoAdmin(BaseInlineAdminModel):
 
 class BandAdmin(BaseAdminModel):
     """Admin model for bands."""
+
+    model = Band
     inlines = [
         BandPhotoAdmin,
     ]

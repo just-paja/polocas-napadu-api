@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'inspirations.InspirationsConfig',
     'games.GamesConfig',
     'theatre_sports.TheatreSportsConfig',
-    'management',
+    'api_admin.ApiAdminConfig',
     'graphene_django',
     'graphql_jwt.refresh_token',
     'admin_sso',

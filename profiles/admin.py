@@ -1,11 +1,11 @@
-from profiles.models import ProfilePhoto
+from fields.admin import BaseAdminModel, BaseInlineAdminModel
 
-from .base import BaseAdminModel, BaseInlineAdminModel
-
+from .models import Profile, ProfileGroup, ProfilePhoto
 
 class ProfileGroupAdmin(BaseAdminModel):
     """Admin model for profile groups."""
 
+    model = ProfileGroup
     search_fields = ('name',)
 
 
@@ -17,6 +17,8 @@ class ProfilePhotoAdmin(BaseInlineAdminModel):
 
 class ProfileAdmin(BaseAdminModel):
     """Admin model for profiles."""
+
+    model = Profile
     inlines = [
         ProfilePhotoAdmin,
     ]

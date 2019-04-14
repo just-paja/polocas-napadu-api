@@ -1,6 +1,6 @@
-from locations.models import LocationPhoto
+from fields.admin import BaseAdminModel, BaseInlineAdminModel
 
-from .base import BaseAdminModel, BaseInlineAdminModel
+from .models import Location, LocationPhoto
 
 
 class LocationPhotoAdmin(BaseInlineAdminModel):
@@ -11,6 +11,8 @@ class LocationPhotoAdmin(BaseInlineAdminModel):
 
 class LocationAdmin(BaseAdminModel):
     """Admin model for locations."""
+
+    model = Location
     inlines = [
         LocationPhotoAdmin,
     ]

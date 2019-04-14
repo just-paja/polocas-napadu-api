@@ -1,11 +1,14 @@
-from shows.models import (
+from fields.admin import BaseAdminModel, BaseInlineAdminModel
+
+from .models import (
+    Show,
+    ShowRole,
+    ShowType,
     ShowBand,
     ShowParticipant,
     ShowPhoto,
     ShowTypePhoto,
 )
-
-from .base import BaseAdminModel, BaseInlineAdminModel
 
 
 class ShowPhotoAdmin(BaseInlineAdminModel):
@@ -24,6 +27,7 @@ class ShowParticipantAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
     model = ShowParticipant
+    autocomplete_fields = ['profile']
 
 
 class ShowBandAdmin(BaseInlineAdminModel):
@@ -35,10 +39,12 @@ class ShowBandAdmin(BaseInlineAdminModel):
 class ShowAdmin(BaseAdminModel):
     """Admin model for shows."""
 
+    model = Show
     inlines = [
         ShowParticipantAdmin,
         ShowPhotoAdmin,
     ]
+    autocomplete_fields = ['location']
     list_display = ('name', 'location', 'start', 'all_day', 'visibility')
     list_filter = ('location', 'visibility',)
     search_fields = ('name', 'all_day')
@@ -58,12 +64,14 @@ class ShowAdmin(BaseAdminModel):
 class ShowRoleAdmin(BaseAdminModel):
     """Admin model for show roles."""
 
+    model = ShowRole
     search_fields = ('name',)
 
 
 class ShowTypeAdmin(BaseAdminModel):
     """Admin model for show types."""
 
+    model = ShowType
     inlines = [
         ShowTypePhotoAdmin,
     ]

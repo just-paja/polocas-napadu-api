@@ -1,31 +1,46 @@
-from theatre_sports.models import ContestantGroup
+from fields.admin import BaseAdminModel, BaseStackedAdminModel
 
-from .base import BaseAdminModel, BaseStackedAdminModel
+from .models import (
+    ContestantGroup,
+    Foul,
+    FoulType,
+    Match,
+    MatchStage,
+    ScorePoint,
+)
 
 
 class FoulTypeAdmin(BaseAdminModel):
-    pass
+
+    model = FoulType
 
 
 class FoulAdmin(BaseAdminModel):
-    pass
+
+    model = Foul
 
 
 class ContestantGroupAdmin(BaseStackedAdminModel):
+
     model = ContestantGroup
     extra = 0
 
 
 class ScorePointAdmin(BaseAdminModel):
-    pass
+
+    model = ScorePoint
 
 
 class MatchStageAdmin(BaseAdminModel):
+
+    model = MatchStage
     list_filter = ('match__show__name',)
     list_display = ('match', 'type', 'created')
 
 
 class MatchAdmin(BaseAdminModel):
+
+    model = Match
     change_form_template = 'admin/match_change_form.html'
     inlines = [
         ContestantGroupAdmin,
