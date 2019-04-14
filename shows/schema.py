@@ -68,16 +68,16 @@ class AddInspiration(Mutation):
 
 
 class Query:
-    show = Field(ShowNode, id=Int(), slug=String())
+    show = Field(ShowNode, show_id=Int(), slug=String())
     show_type = Node.Field(ShowTypeNode)
     show_list = List(ShowNode)
     show_type_list = List(ShowTypeNode)
 
-    def resolve_show(self, info, id=None, slug=None):
+    def resolve_show(self, info, show_id=None, slug=None):
         try:
             if slug:
                 return Show.objects.get_visible().get(slug=slug)
-            return Show.objects.get_visible().get(pk=id)
+            return Show.objects.get_visible().get(pk=show_id)
         except Show.DoesNotExist:
             return None
 
