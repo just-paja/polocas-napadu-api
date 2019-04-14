@@ -23,7 +23,14 @@ class ShowTypePhotoAdmin(BaseInlineAdminModel):
     model = ShowTypePhoto
 
 
-class ShowParticipantAdmin(BaseInlineAdminModel):
+class ShowParticipantAdmin(BaseAdminModel):
+    """Admin model for show photos."""
+
+    model = ShowParticipant
+    search_fields = ['profile__name']
+
+
+class ShowParticipantInlineAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
     model = ShowParticipant
@@ -41,7 +48,7 @@ class ShowAdmin(BaseAdminModel):
 
     model = Show
     inlines = [
-        ShowParticipantAdmin,
+        ShowParticipantInlineAdmin,
         ShowPhotoAdmin,
     ]
     autocomplete_fields = ['location']

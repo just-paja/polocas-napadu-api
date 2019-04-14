@@ -12,5 +12,5 @@ class FoulType(NameMixin, TimeStampedModel):
         verbose_name_plural = _('Foul Types')
 
     description = TextField(
-        verbose_name=_('Textual inspiration'),
+        verbose_name=_('Textual description'),
     )

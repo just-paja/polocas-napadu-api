@@ -12,6 +12,9 @@ class GameAdmin(BaseAdminModel):
 
     model = Game
     inlines = [GameActorAdmin]
+    search_fields = [
+        'rules__name',
+    ]
 
 
 class GameRulesAdmin(BaseAdminModel):

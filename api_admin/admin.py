@@ -10,9 +10,15 @@ from games.admin import GameAdmin, GameRulesAdmin
 from inspirations.admin import InspirationAdmin
 from locations.admin import LocationAdmin
 from profiles.admin import ProfileAdmin, ProfileGroupAdmin
-from shows.admin import ShowAdmin, ShowRoleAdmin, ShowTypeAdmin
 from gsuite.views import gauth
+from shows.admin import (
+    ShowAdmin,
+    ShowParticipantAdmin,
+    ShowRoleAdmin,
+    ShowTypeAdmin,
+)
 from theatre_sports.admin import (
+    ContestantGroupAdmin,
     FoulAdmin,
     FoulTypeAdmin,
     MatchAdmin,
@@ -33,6 +39,7 @@ class ImprovAdminSite(AdminSite):
 ADMIN_SITE = ImprovAdminSite()
 
 ADMIN_SITE.register(BandAdmin.model, BandAdmin)
+ADMIN_SITE.register(ContestantGroupAdmin.model, ContestantGroupAdmin)
 ADMIN_SITE.register(FoulAdmin.model, FoulAdmin)
 ADMIN_SITE.register(FoulTypeAdmin.model, FoulTypeAdmin)
 ADMIN_SITE.register(GameAdmin.model, GameAdmin)
@@ -45,6 +52,7 @@ ADMIN_SITE.register(ProfileAdmin.model, ProfileAdmin)
 ADMIN_SITE.register(ProfileGroupAdmin.model, ProfileGroupAdmin)
 ADMIN_SITE.register(ScorePointAdmin.model, ScorePointAdmin)
 ADMIN_SITE.register(ShowAdmin.model, ShowAdmin)
+ADMIN_SITE.register(ShowParticipantAdmin.model, ShowParticipantAdmin)
 ADMIN_SITE.register(ShowRoleAdmin.model, ShowRoleAdmin)
 ADMIN_SITE.register(ShowTypeAdmin.model, ShowTypeAdmin)
 
