@@ -8,4 +8,5 @@ class InspirationAdmin(BaseAdminModel):
     model = Inspiration
     list_display = ('show', 'text', 'discarded')
     list_filter = ('discarded',)
-    search_fields = ('show.name', 'text')
+    search_fields = ('show__name', 'text')
+    autocomplete_fields = ['show']
