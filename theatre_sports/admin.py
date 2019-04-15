@@ -58,6 +58,11 @@ class MatchStageAdmin(BaseAdminModel):
     model = MatchStage
     list_filter = ('match__show__name',)
     list_display = ('match', 'type', 'created')
+    autocomplete_fields = [
+        'game',
+        'match',
+        'inspirations',
+    ]
 
 
 class MatchAdmin(BaseAdminModel):
@@ -66,4 +71,9 @@ class MatchAdmin(BaseAdminModel):
     change_form_template = 'admin/match_change_form.html'
     inlines = [
         ContestantGroupInlineAdmin,
+    ]
+    search_fields = [
+        'show__name',
+        'show__start',
+        'show__location__name',
     ]
