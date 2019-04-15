@@ -47,6 +47,10 @@ jobs:
           at: *workspace_root
 
       - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+
+      - run:
           name: Compile messages
           command: ./.venv/bin/vrun pipenv run ./manage.py compilemessages
 
