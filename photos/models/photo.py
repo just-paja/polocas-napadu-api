@@ -1,12 +1,15 @@
 """Import Django models."""
-from django.db.models import CharField, ImageField, PositiveIntegerField
-from django.utils.translation import ugettext_lazy as _
+from django.db.models import ImageField, PositiveIntegerField
 from django_extensions.db.models import TimeStampedModel
 
-from fields import VisibilityMixin
+from fields import DescriptionMixin, VisibilityMixin
 
 
-class Photo(TimeStampedModel, VisibilityMixin):
+class Photo(
+    TimeStampedModel,
+    DescriptionMixin,
+    VisibilityMixin
+):
     """Stores photos."""
 
     class Meta:
@@ -30,10 +33,4 @@ class Photo(TimeStampedModel, VisibilityMixin):
         blank=True,
         editable=False,
         default=100,
-    )
-    description = CharField(
-        verbose_name=_("Description"),
-        max_length=255,
-        null=True,
-        blank=True,
     )

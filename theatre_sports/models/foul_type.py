@@ -3,14 +3,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
 
-from fields import NameMixin
+from fields import DescriptionMixin, NameMixin
 
-class FoulType(NameMixin, TimeStampedModel):
-
+class FoulType(
+    NameMixin,
+    DescriptionMixin,
+    TimeStampedModel
+):
     class Meta:
         verbose_name = _('FoulType')
         verbose_name_plural = _('Foul Types')
-
-    description = TextField(
-        verbose_name=_('Textual description'),
-    )
