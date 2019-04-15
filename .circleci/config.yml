@@ -48,7 +48,7 @@ jobs:
 
       - run:
           name: Compile messages
-          command: ./.venv/bin/vrun pipenv ./manage.py compilemessages
+          command: ./.venv/bin/vrun pipenv run ./manage.py compilemessages
 
       - run:
           name: Lock requirements
