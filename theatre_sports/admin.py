@@ -47,6 +47,10 @@ class ContestantGroupInlineAdmin(BaseStackedAdminModel):
 
     model = ContestantGroup
     extra = 0
+    autocomplete_fields = [
+        'band',
+        'players',
+    ]
 
 
 class ScorePointAdmin(BaseAdminModel):
