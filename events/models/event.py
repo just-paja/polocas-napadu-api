@@ -1,15 +1,13 @@
 from django_extensions.db.fields import AutoSlugField
-from django_extensions.db.models import TimeStampedModel
 from django.db.models import (
     BooleanField,
     DateTimeField,
     ForeignKey,
     PROTECT,
-    TextField,
 )
 from django.utils.translation import ugettext_lazy as _
 
-from fields import DescriptionMixin, NameMixin, VisibilityManager, VisibilityMixin
+from fields import PublicResourceMixin, VisibilityManager
 
 
 class EventManager(VisibilityManager):
@@ -17,12 +15,7 @@ class EventManager(VisibilityManager):
         return self.get_visible().order('-start')
 
 
-class Event(
-    TimeStampedModel,
-    NameMixin,
-    DescriptionMixin,
-    VisibilityMixin
-):
+class Event(PublicResourceMixin):
     slug = AutoSlugField(_('Slug'), populate_from='name')
     start = DateTimeField()
     end = DateTimeField(null=True, blank=True)

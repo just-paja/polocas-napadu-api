@@ -1,15 +1,11 @@
 """Import Django models."""
-from django.db.models import ImageField, PositiveIntegerField
+from django.db.models import ImageField, PositiveIntegerField, TextField
 from django_extensions.db.models import TimeStampedModel
 
-from fields import DescriptionMixin, VisibilityMixin
+from fields import VisibilityMixin
 
 
-class Photo(
-    TimeStampedModel,
-    DescriptionMixin,
-    VisibilityMixin
-):
+class Photo(TimeStampedModel, VisibilityMixin):
     """Stores photos."""
 
     class Meta:
@@ -34,3 +30,4 @@ class Photo(
         editable=False,
         default=100,
     )
+    description = TextField()
