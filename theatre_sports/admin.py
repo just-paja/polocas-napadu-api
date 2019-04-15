@@ -81,6 +81,7 @@ class MatchAdmin(BaseAdminModel):
     inlines = [
         ContestantGroupInlineAdmin,
     ]
+    autocomplete_fields = ['show']
     search_fields = [
         'show__name',
         'show__start',
