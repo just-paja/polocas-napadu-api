@@ -172,11 +172,14 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
     os.path.join(BASE_DIR, 'bands/locale'),
     os.path.join(BASE_DIR, 'events/locale'),
+    os.path.join(BASE_DIR, 'games/locale'),
     os.path.join(BASE_DIR, 'fields/locale'),
+    os.path.join(BASE_DIR, 'inspirations/locale'),
     os.path.join(BASE_DIR, 'locations/locale'),
     os.path.join(BASE_DIR, 'photos/locale'),
     os.path.join(BASE_DIR, 'profiles/locale'),
     os.path.join(BASE_DIR, 'shows/locale'),
+    os.path.join(BASE_DIR, 'theatre_sports/locale'),
 ]
 
 if DEBUG:
