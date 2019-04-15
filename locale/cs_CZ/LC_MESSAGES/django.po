@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-13 17:02+0000\n"
+"POT-Creation-Date: 2019-04-15 00:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api/settings.py:127
+#: api/settings.py:137
 msgid "Czech"
 msgstr "Czech"
 
-#: api/settings.py:128
+#: api/settings.py:138
 msgid "English"
 msgstr "English"
 
-#: gsuite/__init__.py:77
+#: api_admin/__init__.py:7
+msgid "Admin"
+msgstr ""
+
+#: gsuite/__init__.py:80
 msgid "Gsuite"
 msgstr ""
 

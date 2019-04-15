@@ -32,7 +32,6 @@ MODELS_BASE = [
     'ProfilePhoto',
     'ScorePoint',
     'Show',
-    'ShowBand',
     'ShowParticipant',
     'ShowPhoto',
     'ShowRole',

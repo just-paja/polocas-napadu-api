@@ -1,8 +1,14 @@
 from django_extensions.db.models import TimeStampedModel
 from django.db.models import ForeignKey, CASCADE
+from django.utils.translation import ugettext_lazy as _
 
 
 class ShowParticipant(TimeStampedModel):
+
+    class Meta:
+        verbose_name = _('Show participant')
+        verbose_name_plural = _('Show participants')
+
     show = ForeignKey(
         'Show',
         on_delete=CASCADE,

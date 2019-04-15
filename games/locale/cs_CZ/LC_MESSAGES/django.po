@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-13 17:02+0000\n"
+"POT-Creation-Date: 2019-04-15 00:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: inspirations/__init__.py:7 inspirations/models/inspiration.py:11
-msgid "Inspirations"
-msgstr "Inspirace"
+#: games/__init__.py:7 games/models/game.py:17
+msgid "Games"
+msgstr "Hry"
 
-#: inspirations/models/inspiration.py:10
-msgid "Inspiration"
-msgstr "Inspirace"
+#: games/models/game.py:16
+msgid "Game"
+msgstr "Hra"
 
-#: inspirations/models/inspiration.py:16
-msgid "Textual inspiration"
-msgstr "Textová inspirace"
+#: games/models/game_actor.py:8
+msgid "Game Actor"
+msgstr "Hráč"
 
-#: inspirations/models/inspiration.py:17
-msgid "Enter words that will serve as an inspiration for this improvisation"
-msgstr "Napište slova, která budou použita jako inspirace do této improvizace"
+#: games/models/game_actor.py:9
+msgid "Game Actors"
+msgstr "Hráči"
+
+#: games/models/game_rules.py:11
+msgid "Game Rule"
+msgstr "Pravidla"
+
+#: games/models/game_rules.py:12
+msgid "Game Rules"
+msgstr "Pravidla"

@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 00:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: theatre_sports/__init__.py:7
+msgid "Theatre sports"
+msgstr "Zápasy"
+
+#: theatre_sports/models/contestant_group.py:15
+msgid "team-home"
+msgstr "Domácí tým"
+
+#: theatre_sports/models/contestant_group.py:16
+msgid "team-guest"
+msgstr "Hostující tým"
+
+#: theatre_sports/models/contestant_group.py:22
+msgid "Contestant Group"
+msgstr "Soupeř"
+
+#: theatre_sports/models/contestant_group.py:23
+msgid "Contestant Groups"
+msgstr "Soupeři"
+
+#: theatre_sports/models/foul.py:9
+msgid "Foul"
+msgstr "Faul"
+
+#: theatre_sports/models/foul.py:10
+msgid "Fouls"
+msgstr "Fauly"
+
+#: theatre_sports/models/foul.py:40
+msgid "Comment"
+msgstr "Komentář"
+
+#: theatre_sports/models/foul.py:41
+msgid "Describe what was the foul play"
+msgstr "Popiš improvizační chybu"
+
+#: theatre_sports/models/foul_type.py:11
+msgid "FoulType"
+msgstr "Typ faulu"
+
+#: theatre_sports/models/foul_type.py:12
+msgid "Foul Types"
+msgstr "Typy faulů"
+
+#: theatre_sports/models/foul_type.py:15
+msgid "Textual description"
+msgstr "Popis"
+
+#: theatre_sports/models/match.py:8 theatre_sports/models/match.py:21
+msgid "Match"
+msgstr "Zápas"
+
+#: theatre_sports/models/match.py:9
+msgid "Matches"
+msgstr "Zápasy"
+
+#: theatre_sports/models/match_stage.py:16
+msgid "stage-show-setup"
+msgstr "Nastavení zápasu"
+
+#: theatre_sports/models/match_stage.py:17
+msgid "stage-intro"
+msgstr "Intro"
+
+#: theatre_sports/models/match_stage.py:18
+msgid "stage-game-setup"
+msgstr "Výběr kategorie"
+
+#: theatre_sports/models/match_stage.py:19
+msgid "stage-game"
+msgstr "Hra"
+
+#: theatre_sports/models/match_stage.py:20
+msgid "stage-voting"
+msgstr "Hlasování"
+
+#: theatre_sports/models/match_stage.py:21
+msgid "stage-game-results"
+msgstr "Výsledky hlasování"
+
+#: theatre_sports/models/match_stage.py:22
+msgid "stage-pause"
+msgstr "Přestávka"
+
+#: theatre_sports/models/match_stage.py:23
+msgid "stage-finale"
+msgstr "Finále"
+
+#: theatre_sports/models/match_stage.py:29
+msgid "Match Stage"
+msgstr "Fáze zápasu"
+
+#: theatre_sports/models/match_stage.py:30
+msgid "Match Stages"
+msgstr "Fáze zápasu"
+
+#: theatre_sports/models/score_point.py:9
+msgid "ScorePoint"
+msgstr "Body skóre"
+
+#: theatre_sports/models/score_point.py:10
+msgid "ScorePoints"
+msgstr "Body skóre"
+
+#: theatre_sports/templates/admin/match_change_form.html:8
+msgid "Control match"
+msgstr "Ovládat zápas"
+
+#: theatre_sports/templates/admin/match_change_form.html:9
+msgid "Watch match"
+msgstr "Sledovat zápas"

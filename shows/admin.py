@@ -4,7 +4,6 @@ from .models import (
     Show,
     ShowRole,
     ShowType,
-    ShowBand,
     ShowParticipant,
     ShowPhoto,
     ShowTypePhoto,
@@ -35,12 +34,6 @@ class ShowParticipantInlineAdmin(BaseInlineAdminModel):
 
     model = ShowParticipant
     autocomplete_fields = ['profile']
-
-
-class ShowBandAdmin(BaseInlineAdminModel):
-    """Admin model for show photos."""
-
-    model = ShowBand
 
 
 class ShowAdmin(BaseAdminModel):
