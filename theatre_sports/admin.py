@@ -47,6 +47,10 @@ class ContestantGroupInlineAdmin(BaseStackedAdminModel):
 class ScorePointAdmin(BaseAdminModel):
 
     model = ScorePoint
+    autocomplete_fields = [
+        'contestant_group',
+        'game',
+    ]
 
 
 class MatchStageAdmin(BaseAdminModel):
