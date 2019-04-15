@@ -36,6 +36,11 @@ class ContestantGroupAdmin(BaseAdminModel):
         'contestant_type',
         'match__show__name',
     ]
+    autocomplete_fields = [
+        'band',
+        'match',
+        'players',
+    ]
 
 
 class ContestantGroupInlineAdmin(BaseStackedAdminModel):
