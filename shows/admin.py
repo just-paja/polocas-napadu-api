@@ -27,6 +27,11 @@ class ShowParticipantAdmin(BaseAdminModel):
 
     model = ShowParticipant
     search_fields = ['profile__name']
+    autocomplete_fields = [
+        'show',
+        'profile',
+        'role',
+    ]
 
 
 class ShowParticipantInlineAdmin(BaseInlineAdminModel):
