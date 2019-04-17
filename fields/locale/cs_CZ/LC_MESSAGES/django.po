@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-17 13:41+0000\n"
+"POT-Creation-Date: 2019-04-17 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,11 @@ msgstr ""
 
 #: fields/description.py:10
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: fields/description.py:11
-#, fuzzy
-#| msgid "nameHelpText"
 msgid "nameDescriptionText"
-msgstr "Napište krátký název, který pomůže uživateli identifikovat objekt"
+msgstr "Popište detailně objekt. Můžete použít Markdown."
 
 #: fields/name.py:11
 msgid "Name"
@@ -41,7 +39,7 @@ msgstr "Privátní"
 
 #: fields/visibility.py:11
 msgid "Public"
-msgstr "Veřené"
+msgstr "Veřejné"
 
 #: fields/visibility.py:12
 msgid "Deleted"
