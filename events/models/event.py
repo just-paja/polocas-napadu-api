@@ -5,6 +5,7 @@ from django.db.models import (
     ForeignKey,
     PROTECT,
 )
+from django.utils.formats import date_format
 from django.utils.translation import ugettext_lazy as _
 
 from fields import PublicResourceMixin, VisibilityManager
@@ -25,3 +26,9 @@ class Event(PublicResourceMixin):
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        return '%s, %s' % (
+            self.name,
+            date_format(self.start, 'DATE_FORMAT'),
+        )
