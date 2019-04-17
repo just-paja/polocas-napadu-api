@@ -1,4 +1,4 @@
-from fields.admin import BaseAdminModel, BaseInlineAdminModel
+from fields.admin import BaseAdminModel, BaseInlineAdminModel, ShowFilter
 
 from .models import Game, GameActor, GameRules
 
@@ -20,9 +20,19 @@ class GameAdmin(BaseAdminModel):
         'rules',
         'inspirations',
     ]
+    list_display = [
+        'rules',
+        'get_show_name',
+        'get_show_date',
+        'modified',
+    ]
+    list_filter = [ShowFilter]
     search_fields = [
         'rules__name',
     ]
+
+    class Media:
+        pass
 
 
 class GameRulesAdmin(BaseAdminModel):

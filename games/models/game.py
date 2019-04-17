@@ -38,3 +38,12 @@ class Game(TimeStampedModel):
 
     def __str__(self):
         return '%s (%s)' % (self.rules.name, self.show.name)
+
+    def get_show_name(self):
+        return self.show.name
+
+    def get_show_date(self):
+        return self.show.start
+
+Game.get_show_date.short_description = _('Date')
+Game.get_show_name.short_description = _('Show')

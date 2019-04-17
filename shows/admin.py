@@ -1,4 +1,9 @@
-from fields.admin import BaseAdminModel, BaseInlineAdminModel
+from fields.admin import (
+    BaseAdminModel,
+    BaseInlineAdminModel,
+    LocationFilter,
+    ShowFilter,
+)
 
 from .models import (
     Show,
@@ -26,14 +31,22 @@ class ShowParticipantAdmin(BaseAdminModel):
     """Admin model for show photos."""
 
     model = ShowParticipant
-    list_display = ('profile', 'show', 'role')
-    list_filter = ('role',)
+    list_display = (
+        'profile',
+        'role',
+        'get_show_name',
+        'get_show_date',
+    )
+    list_filter = (ShowFilter, 'role')
     search_fields = ['profile__name']
     autocomplete_fields = [
         'show',
         'profile',
         'role',
     ]
+
+    class Media:
+        pass
 
 
 class ShowParticipantInlineAdmin(BaseInlineAdminModel):
@@ -53,7 +66,7 @@ class ShowAdmin(BaseAdminModel):
     ]
     autocomplete_fields = ['location']
     list_display = ('name', 'location', 'start', 'all_day', 'visibility')
-    list_filter = ('location', 'visibility',)
+    list_filter = (LocationFilter, 'visibility')
     search_fields = ('name', 'all_day')
     fieldsets = (
         (None, {
@@ -66,6 +79,9 @@ class ShowAdmin(BaseAdminModel):
             'fields': ('location', 'description'),
         })
     )
+
+    class Media:
+        pass
 
 
 class ShowRoleAdmin(BaseAdminModel):
