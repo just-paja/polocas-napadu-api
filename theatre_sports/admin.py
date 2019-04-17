@@ -20,6 +20,12 @@ class FoulAdmin(BaseAdminModel):
 
     model = Foul
     search_fields = ['foul__name', 'foul__description']
+    list_display = [
+        'foul_type',
+        'contestant_group',
+        'player',
+        'game',
+    ]
     autocomplete_fields = [
         'contestant_group',
         'foul_type',
