@@ -40,3 +40,9 @@ class Foul(TimeStampedModel):
         verbose_name=_('Comment'),
         help_text=_('Describe what was the foul play'),
     )
+
+    def __str__(self):
+        return '%s, %s' % (
+            self.foul_type.name,
+            self.player or self.contestant_group
+        )
