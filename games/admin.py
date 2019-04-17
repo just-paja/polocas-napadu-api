@@ -32,3 +32,8 @@ class GameRulesAdmin(BaseAdminModel):
         'name',
         'description',
     ]
+    list_display = [
+        'name',
+        'visibility',
+        'modified',
+    ]
