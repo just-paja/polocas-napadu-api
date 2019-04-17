@@ -50,6 +50,12 @@ class MatchStage(TimeStampedModel):
         related_name='stages',
     )
 
+    def __str__(self):
+        return '%s, %s' % (
+            self.get_type_display(),
+            self.match.show,
+        )
+
     def pass_game_to_next_stage(self):
         return self.type in [
             STAGE_GAME_SETUP,

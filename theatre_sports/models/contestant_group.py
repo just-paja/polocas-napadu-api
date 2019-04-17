@@ -46,10 +46,10 @@ class ContestantGroup(Model):
         return self.band.name
 
     def show_name(self):
-        return self.match.show.name
+        return self.match.get_show_name()
 
     def show_date(self):
-        return self.match.show.start
+        return self.match.get_show_date()
 
     def color_block(self):
         return mark_safe('''

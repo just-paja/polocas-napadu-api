@@ -102,6 +102,12 @@ class MatchAdmin(BaseAdminModel):
     inlines = [
         ContestantGroupInlineAdmin,
     ]
+    list_display = [
+        'get_show_name',
+        'get_show_date',
+        'closed',
+        'get_current_stage_name',
+    ]
     autocomplete_fields = ['show']
     search_fields = [
         'show__name',
