@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-17 13:41+0000\n"
+"POT-Creation-Date: 2019-04-17 14:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,7 @@ msgstr "Barva"
 #: theatre_sports/models/contestant_group.py:97
 #: theatre_sports/models/match.py:8 theatre_sports/models/match.py:22
 #: theatre_sports/models/match.py:49 theatre_sports/models/match_stage.py:36
+#: theatre_sports/models/score_point.py:44
 msgid "Match"
 msgstr "Zápas"
 
@@ -62,7 +63,7 @@ msgid "Players"
 msgstr "Hráči"
 
 #: theatre_sports/models/contestant_group.py:96
-#: theatre_sports/models/match.py:50
+#: theatre_sports/models/match.py:50 theatre_sports/models/score_point.py:43
 msgid "Date"
 msgstr "Datum"
 
@@ -74,12 +75,13 @@ msgstr "Faul"
 msgid "Fouls"
 msgstr "Fauly"
 
-#: theatre_sports/models/foul.py:16
+#: theatre_sports/models/foul.py:16 theatre_sports/models/score_point.py:40
 msgid "Contestant"
 msgstr "Soupeř"
 
 #: theatre_sports/models/foul.py:24 theatre_sports/models/match_stage.py:44
 #: theatre_sports/models/match_stage.py:86
+#: theatre_sports/models/score_point.py:41
 msgid "Game"
 msgstr "Hra"
 
@@ -173,11 +175,15 @@ msgstr "Délka"
 
 #: theatre_sports/models/score_point.py:9
 msgid "ScorePoint"
-msgstr "Body skóre"
+msgstr "Bod skóre"
 
 #: theatre_sports/models/score_point.py:10
 msgid "ScorePoints"
 msgstr "Body skóre"
+
+#: theatre_sports/models/score_point.py:42
+msgid "Score"
+msgstr "Skóre"
 
 #: theatre_sports/templates/admin/match_change_form.html:8
 msgid "Control match"

@@ -75,6 +75,13 @@ class ScorePointAdmin(BaseAdminModel):
         'contestant_group',
         'game',
     ]
+    list_display = [
+        'get_contestant_group_name',
+        'get_score_snapshot',
+        'get_game_name',
+        'get_show_name',
+        'get_show_date',
+    ]
 
 
 class MatchStageAdmin(BaseAdminModel):
