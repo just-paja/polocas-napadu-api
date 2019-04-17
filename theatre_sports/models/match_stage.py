@@ -56,3 +56,19 @@ class MatchStage(TimeStampedModel):
             STAGE_GAME,
             STAGE_VOTING,
         ]
+
+    def game_name(self):
+        if self.game:
+            return self.game.rules.name
+        return None
+
+    def show(self):
+        return self.match.show
+
+    def duration(self):
+        next_stage = self.match.stages.filter(
+            created__gt=self.created
+        ).order_by('created').first()
+        if next_stage:
+            return next_stage.created - self.created
+        return None

@@ -72,7 +72,13 @@ class MatchStageAdmin(BaseAdminModel):
 
     model = MatchStage
     list_filter = ('match__show__name',)
-    list_display = ('match', 'type', 'created')
+    list_display = (
+        'show',
+        'type',
+        'game_name',
+        'duration',
+        'created'
+    )
     autocomplete_fields = [
         'game',
         'match',
