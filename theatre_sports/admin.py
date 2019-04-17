@@ -14,6 +14,7 @@ class FoulTypeAdmin(BaseAdminModel):
 
     model = FoulType
     search_fields = ['name', 'description']
+    list_display = ['name', 'visibility']
 
 
 class FoulAdmin(BaseAdminModel):
