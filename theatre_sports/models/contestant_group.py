@@ -5,6 +5,7 @@ from django.db.models import (
     PositiveIntegerField,
     CASCADE
 )
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from colorfield.fields import ColorField
 
@@ -43,6 +44,23 @@ class ContestantGroup(Model):
 
     def __str__(self):
         return self.band.name
+
+    def show_name(self):
+        return self.match.show.name
+
+    def show_date(self):
+        return self.match.show.start
+
+    def color_block(self):
+        return mark_safe('''
+            <div
+                style="
+                    background: %s;
+                    width: 3rem;
+                    height: 1rem
+                "
+            ></div>
+        ''' % (self.color))
 
     def get_other_side(self):
         if self.contestant_type == TEAM_HOME:

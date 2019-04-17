@@ -42,6 +42,14 @@ class ContestantGroupAdmin(BaseAdminModel):
         'contestant_type',
         'match__show__name',
     ]
+    list_display = [
+        'band',
+        'color_block',
+        'contestant_type',
+        'show_name',
+        'show_date',
+    ]
+    list_filter = ['contestant_type']
     autocomplete_fields = [
         'band',
         'match',
