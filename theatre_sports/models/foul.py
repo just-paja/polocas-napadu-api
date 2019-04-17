@@ -13,6 +13,7 @@ class Foul(TimeStampedModel):
         'ContestantGroup',
         on_delete=CASCADE,
         related_name='fouls',
+        verbose_name=_('Contestant'),
     )
     game = ForeignKey(
         'games.Game',
@@ -20,6 +21,7 @@ class Foul(TimeStampedModel):
         null=True,
         blank=True,
         related_name='fouls',
+        verbose_name=_('Game'),
     )
     player = ForeignKey(
         'shows.ShowParticipant',
@@ -27,6 +29,7 @@ class Foul(TimeStampedModel):
         null=True,
         on_delete=CASCADE,
         related_name='fouls',
+        verbose_name=_('Player'),
     )
     foul_type = ForeignKey(
         'FoulType',
@@ -34,6 +37,7 @@ class Foul(TimeStampedModel):
         null=True,
         blank=True,
         related_name='fouls',
+        verbose_name=_('Foul type'),
     )
     comment = TextField(
         blank=True,

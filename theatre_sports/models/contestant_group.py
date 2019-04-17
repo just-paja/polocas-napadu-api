@@ -25,33 +25,40 @@ class ContestantGroup(Model):
 
     contestant_type = PositiveIntegerField(
         choices=TYPE_CHOICES,
+        verbose_name=_('Contestant Type'),
     )
     band = ForeignKey(
         'bands.Band',
         on_delete=CASCADE,
         related_name='contestant_groups',
+        verbose_name=_('Band'),
     )
-    color = ColorField(default='#ccc')
+    color = ColorField(
+        default='#ccc',
+        verbose_name=_('Color'),
+    )
     match = ForeignKey(
         'Match',
         on_delete=CASCADE,
         related_name='contestant_groups',
+        verbose_name=_('Match'),
     )
     players = ManyToManyField(
         'shows.ShowParticipant',
         related_name='contestant_groups',
+        verbose_name=_('Players'),
     )
 
     def __str__(self):
         return self.band.name
 
-    def show_name(self):
+    def get_show_name(self):
         return self.match.get_show_name()
 
-    def show_date(self):
+    def get_show_date(self):
         return self.match.get_show_date()
 
-    def color_block(self):
+    def get_color_block(self):
         return mark_safe('''
             <div
                 style="
@@ -84,3 +91,7 @@ class ContestantGroup(Model):
         for foe in foes:
             total += foe.fouls.count() // 3
         return total
+
+ContestantGroup.get_color_block.short_description = _('Color')
+ContestantGroup.get_show_date.short_description = _('Date')
+ContestantGroup.get_show_name.short_description = _('Match')

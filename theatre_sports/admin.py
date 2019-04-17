@@ -45,10 +45,10 @@ class ContestantGroupAdmin(BaseAdminModel):
     ]
     list_display = [
         'band',
-        'color_block',
+        'get_color_block',
         'contestant_type',
-        'show_name',
-        'show_date',
+        'get_show_name',
+        'get_show_date',
     ]
     list_filter = ['contestant_type']
     autocomplete_fields = [
@@ -84,8 +84,8 @@ class MatchStageAdmin(BaseAdminModel):
     list_display = (
         'show',
         'type',
-        'game_name',
-        'duration',
+        'get_game_name',
+        'get_duration',
         'created'
     )
     autocomplete_fields = [

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 00:02+0000\n"
+"POT-Creation-Date: 2019-04-17 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,10 +41,10 @@ msgstr "Role"
 msgid "Show roles"
 msgstr "Role"
 
-#: shows/models/show_type.py:11
+#: shows/models/show_type.py:8
 msgid "Show type"
 msgstr "Formát představení"
 
-#: shows/models/show_type.py:12
+#: shows/models/show_type.py:9
 msgid "Show types"
 msgstr "Formáty představení"

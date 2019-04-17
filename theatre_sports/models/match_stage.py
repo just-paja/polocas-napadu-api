@@ -33,6 +33,7 @@ class MatchStage(TimeStampedModel):
         'Match',
         on_delete=CASCADE,
         related_name='stages',
+        verbose_name=_('Match'),
     )
     game = ForeignKey(
         'games.Game',
@@ -40,14 +41,17 @@ class MatchStage(TimeStampedModel):
         null=True,
         on_delete=PROTECT,
         related_name='stages',
+        verbose_name=_('Game'),
     )
     type = PositiveIntegerField(
         choices=STAGE_CHOICES,
+        verbose_name=_('Stage Type'),
     )
     inspirations = ManyToManyField(
         'inspirations.Inspiration',
         blank=True,
         related_name='stages',
+        verbose_name=_('Inspirations'),
     )
 
     def __str__(self):
@@ -63,7 +67,7 @@ class MatchStage(TimeStampedModel):
             STAGE_VOTING,
         ]
 
-    def game_name(self):
+    def get_game_name(self):
         if self.game:
             return self.game.rules.name
         return None
@@ -71,10 +75,13 @@ class MatchStage(TimeStampedModel):
     def show(self):
         return self.match.show
 
-    def duration(self):
+    def get_duration(self):
         next_stage = self.match.stages.filter(
             created__gt=self.created
         ).order_by('created').first()
         if next_stage:
             return next_stage.created - self.created
         return None
+
+MatchStage.get_game_name.short_description = _('Game')
+MatchStage.get_duration.short_description = _('Duration')
