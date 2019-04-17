@@ -26,6 +26,8 @@ class ShowParticipantAdmin(BaseAdminModel):
     """Admin model for show photos."""
 
     model = ShowParticipant
+    list_display = ('profile', 'show', 'role')
+    list_filter = ('role',)
     search_fields = ['profile__name']
     autocomplete_fields = [
         'show',
