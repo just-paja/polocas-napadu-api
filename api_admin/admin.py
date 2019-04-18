@@ -8,7 +8,7 @@ from admin_sso.models import Assignment
 from bands.admin import BandAdmin
 from games.admin import GameAdmin, GameRulesAdmin
 from inspirations.admin import InspirationAdmin
-from locations.admin import LocationAdmin
+from locations.admin import LocationAdmin, UsualPlaceAdmin
 from profiles.admin import ProfileAdmin, ProfileGroupAdmin
 from gsuite.views import gauth
 from shows.admin import (
@@ -55,6 +55,7 @@ ADMIN_SITE.register(ShowAdmin.model, ShowAdmin)
 ADMIN_SITE.register(ShowParticipantAdmin.model, ShowParticipantAdmin)
 ADMIN_SITE.register(ShowRoleAdmin.model, ShowRoleAdmin)
 ADMIN_SITE.register(ShowTypeAdmin.model, ShowTypeAdmin)
+ADMIN_SITE.register(UsualPlaceAdmin.model, UsualPlaceAdmin)
 
 ADMIN_SITE.register(auth_admin.Group, auth_admin.GroupAdmin)
 ADMIN_SITE.register(auth_admin.User, auth_admin.UserAdmin)

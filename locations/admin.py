@@ -1,6 +1,6 @@
 from fields.admin import BaseAdminModel, BaseInlineAdminModel
 
-from .models import Location, LocationPhoto
+from .models import Location, LocationPhoto, UsualPlace
 
 
 class LocationPhotoAdmin(BaseInlineAdminModel):
@@ -19,3 +19,29 @@ class LocationAdmin(BaseAdminModel):
     list_display = ('name', 'address', 'website', 'visibility')
     list_filter = ('visibility',)
     search_fields = ('name', 'address')
+    fields = (
+        'name',
+        'address',
+        'visibility',
+        'gps',
+        'website',
+        'description',
+    )
+
+
+class UsualPlaceAdmin(BaseAdminModel):
+
+    model = UsualPlace
+    list_display = (
+        'name',
+        'get_location_name',
+        'visibility',
+    )
+    list_filter = ('visibility',)
+    search_fields = (
+        'name',
+        'location__name',
+        'location__address',
+    )
+    autocomplete_fields = ('location',)
+    fields = ('name', 'location', 'visibility', 'description')
