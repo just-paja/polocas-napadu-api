@@ -208,6 +208,7 @@ DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = None
 
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1',
+    'localhost:3000',
     'localhost:8000',
     'localhost:8080',
 )
