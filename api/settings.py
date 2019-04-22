@@ -198,9 +198,10 @@ AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_FILE_OVERWRITE = False
 
-APP_SCOREBOARD_URL = 'http://localhost:3000'
-APP_REFEREE_URL = 'http://localhost:3001'
-APP_INSPIRATIONS_URL = 'http://localhost:3002'
+APP_SCOREBOARD_URL = 'http://localhost:3001'
+APP_REFEREE_URL = 'http://localhost:3002'
+APP_INSPIRATIONS_URL = 'http://localhost:3003'
+APP_WEBSITE_URL = 'http://localhost:3000'
 
 DJANGO_ADMIN_SSO = False
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
@@ -222,6 +223,7 @@ except ImportError:
 CORS_ORIGIN_WHITELIST += (urlparse(APP_INSPIRATIONS_URL).netloc, )
 CORS_ORIGIN_WHITELIST += (urlparse(APP_REFEREE_URL).netloc, )
 CORS_ORIGIN_WHITELIST += (urlparse(APP_SCOREBOARD_URL).netloc, )
+CORS_ORIGIN_WHITELIST += (urlparse(APP_WEBSITE_URL).netloc, )
 
 if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
