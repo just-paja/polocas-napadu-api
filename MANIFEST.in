@@ -12,6 +12,7 @@ recursive-include photos *
 recursive-include profiles *
 recursive-include shows *
 recursive-include theatre_sports *
+recursive-include voting *
 include requirements.txt
 include README.md
 include manage.py

@@ -15,6 +15,8 @@ from .models import (
     Match,
     MatchStage,
     ScorePoint,
+    ScorePointPoll,
+    ScorePointPollVoting,
 )
 
 
@@ -82,6 +84,16 @@ class MatchNode(DjangoObjectType):
 class ScorePointNode(DjangoObjectType):
     class Meta:
         model = ScorePoint
+
+
+class ScorePointPollNode(DjangoObjectType):
+    class Meta:
+        model = ScorePointPoll
+
+
+class ScorePointPollVotingNode(DjangoObjectType):
+    class Meta:
+        model = ScorePointPollVoting
 
 
 class Query:

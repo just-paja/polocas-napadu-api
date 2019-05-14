@@ -7,6 +7,8 @@ from .models import (
     Match,
     MatchStage,
     ScorePoint,
+    ScorePointPoll,
+    ScorePointPollVoting,
 )
 
 
@@ -82,6 +84,18 @@ class ScorePointAdmin(BaseAdminModel):
         'get_show_name',
         'get_show_date',
     ]
+
+
+class ScorePointPollVotingInlineAdmin(BaseStackedAdminModel):
+
+    model = ScorePointPollVoting
+
+
+class ScorePointPollAdmin(BaseAdminModel):
+
+    model = ScorePointPoll
+    inlines = [ScorePointPollVotingInlineAdmin]
+    list_display = ('pk', 'poll_type', 'match', 'game', 'winner')
 
 
 class MatchStageAdmin(BaseAdminModel):

@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'inspirations.InspirationsConfig',
     'games.GamesConfig',
     'theatre_sports.TheatreSportsConfig',
+    'voting.VotingConfig',
     'api_admin.ApiAdminConfig',
     'graphene_django',
     'graphql_jwt.refresh_token',
@@ -181,6 +182,7 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'profiles/locale'),
     os.path.join(BASE_DIR, 'shows/locale'),
     os.path.join(BASE_DIR, 'theatre_sports/locale'),
+    os.path.join(BASE_DIR, 'voting/locale'),
 ]
 
 if DEBUG:

@@ -23,7 +23,12 @@ from theatre_sports.admin import (
     FoulTypeAdmin,
     MatchAdmin,
     MatchStageAdmin,
-    ScorePointAdmin
+    ScorePointAdmin,
+    ScorePointPollAdmin,
+)
+from voting.admin import (
+    LivePollVotingAdmin,
+    VolumeScrapeAdmin,
 )
 
 
@@ -45,17 +50,20 @@ ADMIN_SITE.register(FoulTypeAdmin.model, FoulTypeAdmin)
 ADMIN_SITE.register(GameAdmin.model, GameAdmin)
 ADMIN_SITE.register(GameRulesAdmin.model, GameRulesAdmin)
 ADMIN_SITE.register(InspirationAdmin.model, InspirationAdmin)
+ADMIN_SITE.register(LivePollVotingAdmin.model, LivePollVotingAdmin)
 ADMIN_SITE.register(LocationAdmin.model, LocationAdmin)
 ADMIN_SITE.register(MatchAdmin.model, MatchAdmin)
 ADMIN_SITE.register(MatchStageAdmin.model, MatchStageAdmin)
 ADMIN_SITE.register(ProfileAdmin.model, ProfileAdmin)
 ADMIN_SITE.register(ProfileGroupAdmin.model, ProfileGroupAdmin)
 ADMIN_SITE.register(ScorePointAdmin.model, ScorePointAdmin)
+ADMIN_SITE.register(ScorePointPollAdmin.model, ScorePointPollAdmin)
 ADMIN_SITE.register(ShowAdmin.model, ShowAdmin)
 ADMIN_SITE.register(ShowParticipantAdmin.model, ShowParticipantAdmin)
 ADMIN_SITE.register(ShowRoleAdmin.model, ShowRoleAdmin)
 ADMIN_SITE.register(ShowTypeAdmin.model, ShowTypeAdmin)
 ADMIN_SITE.register(UsualPlaceAdmin.model, UsualPlaceAdmin)
+ADMIN_SITE.register(VolumeScrapeAdmin.model, VolumeScrapeAdmin)
 
 ADMIN_SITE.register(auth_admin.Group, auth_admin.GroupAdmin)
 ADMIN_SITE.register(auth_admin.User, auth_admin.UserAdmin)

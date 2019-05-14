@@ -16,12 +16,14 @@ MODEL_ACTIONS = [
 ]
 
 MODELS_BASE = [
+    'AudibleVoteScrape',
     'Band',
     'BandPhoto',
     'ContestantGroup',
     'Foul',
     'FoulType',
     'Inspiration',
+    'LivePollVoting',
     'Location',
     'LocationPhoto',
     'LogEntry',
@@ -37,6 +39,7 @@ MODELS_BASE = [
     'ShowRole',
     'ShowType',
     'ShowTypePhoto',
+    'VolumeScrape',
 ]
 
 GROUP_DEFAULT = 'Uživatelé domény'
