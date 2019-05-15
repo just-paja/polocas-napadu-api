@@ -16,7 +16,6 @@ MODEL_ACTIONS = [
 ]
 
 MODELS_BASE = [
-    'AudibleVoteScrape',
     'Band',
     'BandPhoto',
     'ContestantGroup',
