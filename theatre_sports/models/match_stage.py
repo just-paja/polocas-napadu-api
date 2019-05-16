@@ -60,6 +60,9 @@ class MatchStage(TimeStampedModel):
             self.match.show,
         )
 
+    def can_vote_on_score_points(self):
+        return self.type == STAGE_VOTING
+
     def pass_game_to_next_stage(self):
         return self.type in [
             STAGE_GAME_SETUP,

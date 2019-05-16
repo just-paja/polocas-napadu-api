@@ -141,19 +141,18 @@ class ChangeMatchStage(Mutation):
         match = Match.objects.get(pk=match_id)
         prev_stage = match.get_current_stage()
         stage_type = int(stage.split('_')[1])
+        game = None
+        inspirations = []
         if prev_stage and prev_stage.pass_game_to_next_stage():
-            stage = MatchStage.objects.create(
-                game=prev_stage.game,
-                match=match,
-                type=stage_type,
-            )
-            stage.inspirations.set(prev_stage.inspirations.all())
-            prev_stage.game.inspirations.set(prev_stage.inspirations.all())
-        else:
-            stage = MatchStage.objects.create(
-                match=match,
-                type=stage_type,
-            )
+            game = prev_stage.game
+            inspirations = prev_stage.inspirations.all()
+            if inspirations:
+                game.inspirations.set(inspirations)
+        stage = MatchStage.objects.create(
+            game=game,
+            match=match,
+            type=stage_type,
+        )
         return ChangeMatchStage(
             stage=stage,
             ok=True
@@ -349,12 +348,44 @@ class AddAndUseInspiration(Mutation):
         return AddAndUseInspiration(ok=True)
 
 
+class StartScorePointVoting(Mutation):
+    class Arguments:
+        contestant_group_id = Int(required=True)
+
+    voting = Field(lambda: ScorePointPollVotingNode)
+
+    @staticmethod
+    def mutate(root, info, contestant_group_id):
+        contestant_group = ContestantGroup.objects.get(pk=contestant_group_id)
+        match = contestant_group.match
+
+        if match.closed:
+            return StartScorePointVoting()
+
+        stage = match.get_current_stage()
+
+        if not stage.can_vote_on_score_points():
+            return StartScorePointVoting()
+
+        try:
+            poll = ScorePointPoll.objects.get(stage=stage)
+        except ScorePointPoll.DoesNotExist:
+            poll = ScorePointPoll.objects.create(stage=stage)
+
+        voting = ScorePointPollVoting.objects.create(
+            poll=poll,
+            contestant_group=contestant_group,
+        )
+        return StartScorePointVoting(voting=voting)
+
+
 class Mutations(ObjectType):
-    add_foul_point = AddFoulPoint.Field()
     add_and_use_inspiration = AddAndUseInspiration.Field()
+    add_foul_point = AddFoulPoint.Field()
     discard_inspiration = DiscardInspiration.Field()
     change_contestant_group_score = ChangeContestantGroupScore.Field()
     change_match_stage = ChangeMatchStage.Field()
     random_pick_inspiration = RandomPickInspiration.Field()
     rewind_match_stage = RewindMatchStage.Field()
     set_match_game = SetMatchGame.Field()
+    start_score_point_voting = StartScorePointVoting.Field()
