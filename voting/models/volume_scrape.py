@@ -5,7 +5,7 @@ from django_extensions.db.models import TimeStampedModel
 from .live_poll_voting import LivePollVoting
 
 class VolumeScrape(TimeStampedModel):
-    vote = ForeignKey(
+    poll = ForeignKey(
         'LivePollVoting',
         on_delete=CASCADE,
         related_name='volume_scrapes',
@@ -20,7 +20,7 @@ class VolumeScrape(TimeStampedModel):
         verbose_name_plural = _('Volume scrapes')
 
     def clean(self, *args, **kwargs):
-        if self.vote.closed:
+        if self.poll.closed:
             raise LivePollVoting.AlreadyClosed(
-                'Poll %s is already closed' % self.vote.pk
+                'Poll %s is already closed' % self.poll.pk
             )
