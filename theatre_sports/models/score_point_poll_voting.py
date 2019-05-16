@@ -1,7 +1,7 @@
 from django.db.models import ForeignKey, CASCADE
 from django.utils.translation import ugettext_lazy as _
 
-from voting.models import LivePollVoting
+from voting.models import AlreadyClosed, LivePollVoting
 
 class ScorePointPollVoting(LivePollVoting):
 
@@ -21,3 +21,9 @@ class ScorePointPollVoting(LivePollVoting):
         related_name='score_point_poll_votings',
         verbose_name=_('Contestant Group'),
     )
+
+    def clean(self, *args, **kwargs):
+        if not self.pk and self.poll.closed:
+            raise AlreadyClosed(
+                'Score Point Poll %s is already closed' % self.poll.pk
+            )

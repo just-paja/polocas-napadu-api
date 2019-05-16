@@ -1,4 +1,4 @@
-from django.db.models import Model, ForeignKey, CASCADE
+from django.db.models import BooleanField, Model, ForeignKey, CASCADE
 from django.utils.translation import ugettext_lazy as _
 
 from voting.models import LivePollTypeField
@@ -24,6 +24,11 @@ class ScorePointPoll(Model):
         blank=True,
     )
     poll_type = LivePollTypeField()
+    closed = BooleanField(
+        default=False,
+        verbose_name=_('Closed'),
+    )
+
 
     def match(self):
         return self.stage.match.show.name
