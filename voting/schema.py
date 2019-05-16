@@ -1,7 +1,21 @@
-from graphene import DateTime, Int, List
+from graphene import DateTime, Int, Field, Float, List, ObjectType, Mutation
 from graphene_django.types import DjangoObjectType
 
 from .models import VolumeScrape, LivePollVoting
+
+
+def check_auth(args, pred):
+    _, info = args
+    if not pred(info.context):
+        raise Exception("Unauthorized")
+
+
+def is_staff(func):
+    def wrapper(*args, **kwargs):
+        check_auth(args, lambda context: context.user.is_staff)
+        return func(*args, **kwargs)
+    return wrapper
+
 
 class VolumeScrapeNode(DjangoObjectType):
     class Meta:
@@ -25,3 +39,25 @@ class Query:
         if last_scrape:
             source = source.filter(created__gt=last_scrape)
         return source.all()
+
+
+class ScrapeStageVolume(Mutation):
+    class Arguments:
+        live_poll_voting_id = Int(required=True)
+        volume = Float(required=True)
+
+    volume_scrape = Field(lambda: VolumeScrapeNode)
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, live_poll_voting_id, volume):
+        voting = LivePollVoting.objects.get(pk=live_poll_voting_id)
+        volume_scrape = VolumeScrape.objects.create(
+            voting=voting,
+            volume=volume,
+        )
+        return ScrapeStageVolume(volume_scrape=volume_scrape)
+
+
+class Mutations(ObjectType):
+    scrape_stage_volume = ScrapeStageVolume.Field()

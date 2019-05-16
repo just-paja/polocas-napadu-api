@@ -22,7 +22,7 @@ class ScorePointPollVoting(LivePollVoting):
         verbose_name=_('Contestant Group'),
     )
 
-    def clean(self, *args, **kwargs):
+    def clean(self):
         if not self.pk and self.poll.closed:
             raise AlreadyClosed(
                 'Score Point Poll %s is already closed' % self.poll.pk

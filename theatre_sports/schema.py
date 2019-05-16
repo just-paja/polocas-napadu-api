@@ -355,6 +355,7 @@ class StartScorePointVoting(Mutation):
     voting = Field(lambda: ScorePointPollVotingNode)
 
     @staticmethod
+    @is_staff
     def mutate(root, info, contestant_group_id):
         contestant_group = ContestantGroup.objects.get(pk=contestant_group_id)
         match = contestant_group.match

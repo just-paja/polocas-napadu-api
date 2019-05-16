@@ -19,7 +19,7 @@ class VolumeScrape(TimeStampedModel):
         verbose_name = _('Volume scrape')
         verbose_name_plural = _('Volume scrapes')
 
-    def clean(self, *args, **kwargs):
+    def clean(self):
         if self.voting.closed:
             raise AlreadyClosed(
                 'Poll voting %s is already closed' % self.voting.pk
