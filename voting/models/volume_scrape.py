@@ -2,10 +2,10 @@ from django.db.models import FloatField, ForeignKey, CASCADE
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
-from .live_poll_voting import LivePollVoting
+from .already_closed import AlreadyClosed
 
 class VolumeScrape(TimeStampedModel):
-    poll = ForeignKey(
+    voting = ForeignKey(
         'LivePollVoting',
         on_delete=CASCADE,
         related_name='volume_scrapes',
@@ -20,7 +20,7 @@ class VolumeScrape(TimeStampedModel):
         verbose_name_plural = _('Volume scrapes')
 
     def clean(self, *args, **kwargs):
-        if self.poll.closed:
-            raise LivePollVoting.AlreadyClosed(
-                'Poll %s is already closed' % self.poll.pk
+        if self.voting.closed:
+            raise AlreadyClosed(
+                'Poll voting %s is already closed' % self.voting.pk
             )

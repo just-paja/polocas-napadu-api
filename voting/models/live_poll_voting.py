@@ -1,5 +1,4 @@
 from django.db.models import BooleanField
-from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
@@ -16,6 +15,3 @@ class LivePollVoting(TimeStampedModel):
     class Meta:
         verbose_name = _('Live Poll Voting')
         verbose_name_plural = _('Live Poll Votings')
-
-    class AlreadyClosed(ValidationError):
-        pass
