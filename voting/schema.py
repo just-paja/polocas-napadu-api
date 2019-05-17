@@ -22,6 +22,11 @@ class VolumeScrapeNode(DjangoObjectType):
         model = VolumeScrape
 
 
+class LivePollVotingNode(DjangoObjectType):
+    class Meta:
+        model = LivePollVoting
+
+
 class Query:
     volume_scrape_list = List(
         VolumeScrapeNode,
@@ -52,12 +57,29 @@ class ScrapeStageVolume(Mutation):
     @is_staff
     def mutate(root, info, live_poll_voting_id, volume):
         voting = LivePollVoting.objects.get(pk=live_poll_voting_id)
-        volume_scrape = VolumeScrape.objects.create(
+        volume_scrape = VolumeScrape(
             voting=voting,
             volume=volume,
         )
+        volume_scrape.clean()
+        volume_scrape.save()
         return ScrapeStageVolume(volume_scrape=volume_scrape)
+
+
+class CloseLivePollVoting(Mutation):
+    class Arguments:
+        live_poll_voting_id = Int(required=True)
+
+    live_poll_voting = Field(lambda: LivePollVotingNode)
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, live_poll_voting_id):
+        voting = LivePollVoting.objects.get(pk=live_poll_voting_id)
+        voting.closed = True
+        return CloseLivePollVoting(live_poll_voting=voting)
 
 
 class Mutations(ObjectType):
     scrape_stage_volume = ScrapeStageVolume.Field()
+    close_live_poll_voting = CloseLivePollVoting.Field()
