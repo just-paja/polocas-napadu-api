@@ -37,3 +37,14 @@ class ScorePointPoll(Model):
         if self.stage.game:
             return self.stage.game.rules.name
         return None
+
+    def get_winning_option(self):
+        winner = None
+        loudest = 0
+        votings = self.votings.all()
+        for voting in votings:
+            loudness = voting.get_average_loudness()
+            if loudness != None and (not winner or loudest < loudness):
+                winner = voting
+                loudest = loudness
+        return winner

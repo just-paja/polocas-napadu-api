@@ -380,9 +380,26 @@ class StartScorePointVoting(Mutation):
         return StartScorePointVoting(voting=voting)
 
 
+class CloseScorePointPoll(Mutation):
+    class Arguments:
+        score_point_poll_id = Int(required=True)
+
+    score_point_poll = Field(lambda: ScorePointPollNode)
+
+    @staticmethod
+    @is_staff
+    def mutate(root, info, score_point_poll_id):
+        voting = ScorePointPoll.objects.get(pk=score_point_poll_id)
+        voting.winner = voting.get_winning_option()
+        voting.closed = True
+        voting.save()
+        return CloseScorePointPoll(score_point_poll=voting)
+
+
 class Mutations(ObjectType):
     add_and_use_inspiration = AddAndUseInspiration.Field()
     add_foul_point = AddFoulPoint.Field()
+    close_score_point_poll = CloseScorePointPoll.Field()
     discard_inspiration = DiscardInspiration.Field()
     change_contestant_group_score = ChangeContestantGroupScore.Field()
     change_match_stage = ChangeMatchStage.Field()
