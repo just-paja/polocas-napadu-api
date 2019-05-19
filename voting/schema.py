@@ -1,20 +1,8 @@
 from graphene import DateTime, Int, Field, Float, List, ObjectType, Mutation
 from graphene_django.types import DjangoObjectType
 
+from fields import is_staff
 from .models import VolumeScrape, LivePollVoting
-
-
-def check_auth(args, pred):
-    _, info = args
-    if not pred(info.context):
-        raise Exception("Unauthorized")
-
-
-def is_staff(func):
-    def wrapper(*args, **kwargs):
-        check_auth(args, lambda context: context.user.is_staff)
-        return func(*args, **kwargs)
-    return wrapper
 
 
 class VolumeScrapeNode(DjangoObjectType):
