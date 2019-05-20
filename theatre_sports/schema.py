@@ -382,6 +382,7 @@ class StartScorePointVoting(Mutation):
             voting = poll.votings.get(contestant_group=contestant_group_id)
             voting.closed = False
             voting.save()
+            voting.volume_scrapes.all().delete()
         except ScorePointPollVoting.DoesNotExist:
             voting = ScorePointPollVoting.objects.create(
                 poll=poll,
