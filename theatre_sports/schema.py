@@ -7,6 +7,7 @@ from games.models import Game, GameRules
 from games.schema import GameNode
 from inspirations.models import Inspiration
 from inspirations.schema import InspirationNode
+from voting.schema import VolumeScrapeNode
 
 from .models import (
     ContestantGroup,
@@ -92,14 +93,20 @@ class ScorePointPollNode(DjangoObjectType):
 
 
 class ScorePointPollVotingNode(DjangoObjectType):
+    volume_scrapes = List(VolumeScrapeNode)
+
     class Meta:
         model = ScorePointPollVoting
+
+    def resolve_volume_scrapes(self, info):
+        return self.volume_scrapes.all()
 
 
 class Query:
     foul_type_list = List(FoulTypeNode)
     match = Field(MatchNode, id=Int())
     match_list = List(MatchNode)
+    score_point_poll = Field(ScorePointPollNode, match_stage_id=Int())
 
     def resolve_foul_type_list(self, info, **kwargs):
         return FoulType.objects.all()
@@ -112,6 +119,17 @@ class Query:
 
     def resolve_match_list(self, info):
         return Match.objects.filter(show__visibility=VISIBILITY_PUBLIC).all()
+
+    def resolve_score_point_poll(self, info, **kwargs):
+        print(kwargs.get('match_stage_id'))
+        try:
+            stage = MatchStage.objects.get(pk=kwargs.get('match_stage_id'))
+        except MatchStage.DoesNotExist:
+            return None
+        try:
+            return stage.score_point_poll
+        except ScorePointPoll.DoesNotExist:
+            return None
 
 
 class ChangeMatchStage(Mutation):
@@ -360,10 +378,15 @@ class StartScorePointVoting(Mutation):
         except ScorePointPoll.DoesNotExist:
             poll = ScorePointPoll.objects.create(stage=stage)
 
-        voting = ScorePointPollVoting.objects.create(
-            poll=poll,
-            contestant_group=contestant_group,
-        )
+        try:
+            voting = poll.votings.get(contestant_group=contestant_group_id)
+            voting.closed = False
+            voting.save()
+        except ScorePointPollVoting.DoesNotExist:
+            voting = ScorePointPollVoting.objects.create(
+                poll=poll,
+                contestant_group=contestant_group,
+            )
         return StartScorePointVoting(voting=voting)
 
 

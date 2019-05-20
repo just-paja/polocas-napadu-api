@@ -1,4 +1,10 @@
-from django.db.models import BooleanField, Model, ForeignKey, CASCADE
+from django.db.models import (
+    BooleanField,
+    CASCADE,
+    ForeignKey,
+    Model,
+    OneToOneField,
+)
 from django.utils.translation import ugettext_lazy as _
 
 from voting.models import LivePollTypeField
@@ -9,10 +15,10 @@ class ScorePointPoll(Model):
         verbose_name = _('Score Point Poll')
         verbose_name_plural = _('Score Point Polls')
 
-    stage = ForeignKey(
+    stage = OneToOneField(
         'MatchStage',
         on_delete=CASCADE,
-        related_name='score_point_polls',
+        related_name='score_point_poll',
         verbose_name=_('Match Stage'),
     )
     winner = ForeignKey(
@@ -44,7 +50,7 @@ class ScorePointPoll(Model):
         votings = self.votings.all()
         for voting in votings:
             loudness = voting.get_average_loudness()
-            if loudness != None and (not winner or loudest < loudness):
+            if loudness is None and (not winner or loudest < loudness):
                 winner = voting
                 loudest = loudness
         return winner

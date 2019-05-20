@@ -61,7 +61,10 @@ class MatchStage(TimeStampedModel):
         )
 
     def can_vote_on_score_points(self):
-        return self.type == STAGE_VOTING
+        return self.type in [
+            STAGE_VOTING,
+            STAGE_GAME_RESULTS,
+        ]
 
     def pass_game_to_next_stage(self):
         return self.type in [
