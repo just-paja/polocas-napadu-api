@@ -64,8 +64,7 @@ class CloseLivePollVoting(Mutation):
     @is_staff
     def mutate(root, info, live_poll_voting_id):
         voting = LivePollVoting.objects.get(pk=live_poll_voting_id)
-        voting.closed = True
-        voting.save()
+        voting.close()
         return CloseLivePollVoting(live_poll_voting=voting)
 
 
