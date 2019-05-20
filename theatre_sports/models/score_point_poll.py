@@ -1,15 +1,9 @@
-from django.db.models import (
-    BooleanField,
-    CASCADE,
-    ForeignKey,
-    Model,
-    OneToOneField,
-)
+from django.db.models import CASCADE, ForeignKey, OneToOneField
 from django.utils.translation import ugettext_lazy as _
 
-from voting.models import LivePollTypeField
+from voting.models import LivePoll
 
-class ScorePointPoll(Model):
+class ScorePointPoll(LivePoll):
 
     class Meta:
         verbose_name = _('Score Point Poll')
@@ -29,12 +23,6 @@ class ScorePointPoll(Model):
         null=True,
         blank=True,
     )
-    poll_type = LivePollTypeField()
-    closed = BooleanField(
-        default=False,
-        verbose_name=_('Closed'),
-    )
-
 
     def match(self):
         return self.stage.match.show.name
@@ -43,14 +31,3 @@ class ScorePointPoll(Model):
         if self.stage.game:
             return self.stage.game.rules.name
         return None
-
-    def get_winning_option(self):
-        winner = None
-        loudest = 0
-        votings = self.votings.all()
-        for voting in votings:
-            loudness = voting.get_average_loudness()
-            if loudness is None and (not winner or loudest < loudness):
-                winner = voting
-                loudest = loudness
-        return winner
