@@ -121,7 +121,6 @@ class Query:
         return Match.objects.filter(show__visibility=VISIBILITY_PUBLIC).all()
 
     def resolve_score_point_poll(self, info, **kwargs):
-        print(kwargs.get('match_stage_id'))
         try:
             stage = MatchStage.objects.get(pk=kwargs.get('match_stage_id'))
         except MatchStage.DoesNotExist:
