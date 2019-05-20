@@ -210,10 +210,10 @@ DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
 DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = None
 
 CORS_ORIGIN_WHITELIST = (
-    '127.0.0.1',
-    'localhost:3000',
-    'localhost:8000',
-    'localhost:8080',
+    'http://127.0.0.1',
+    'http://localhost',
+    'http://localhost:8000',
+    'http://localhost:8080',
 )
 
 try:
@@ -222,10 +222,10 @@ try:
 except ImportError:
     pass
 
-CORS_ORIGIN_WHITELIST += (urlparse(APP_INSPIRATIONS_URL).netloc, )
-CORS_ORIGIN_WHITELIST += (urlparse(APP_REFEREE_URL).netloc, )
-CORS_ORIGIN_WHITELIST += (urlparse(APP_SCOREBOARD_URL).netloc, )
-CORS_ORIGIN_WHITELIST += (urlparse(APP_WEBSITE_URL).netloc, )
+CORS_ORIGIN_WHITELIST += (APP_INSPIRATIONS_URL, )
+CORS_ORIGIN_WHITELIST += (APP_REFEREE_URL, )
+CORS_ORIGIN_WHITELIST += (APP_SCOREBOARD_URL, )
+CORS_ORIGIN_WHITELIST += (APP_WEBSITE_URL, )
 
 if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
