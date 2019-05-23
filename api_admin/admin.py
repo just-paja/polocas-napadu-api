@@ -16,6 +16,8 @@ from shows.admin import (
     ShowParticipantAdmin,
     ShowRoleAdmin,
     ShowTypeAdmin,
+    ShowVolumeCalibrationAdmin,
+    ShowVolumeCalibrationVotingAdmin,
 )
 from theatre_sports.admin import (
     ContestantGroupAdmin,
@@ -62,6 +64,8 @@ ADMIN_SITE.register(ShowAdmin.model, ShowAdmin)
 ADMIN_SITE.register(ShowParticipantAdmin.model, ShowParticipantAdmin)
 ADMIN_SITE.register(ShowRoleAdmin.model, ShowRoleAdmin)
 ADMIN_SITE.register(ShowTypeAdmin.model, ShowTypeAdmin)
+ADMIN_SITE.register(ShowVolumeCalibrationAdmin.model, ShowVolumeCalibrationAdmin)
+ADMIN_SITE.register(ShowVolumeCalibrationVotingAdmin.model, ShowVolumeCalibrationVotingAdmin)
 ADMIN_SITE.register(UsualPlaceAdmin.model, UsualPlaceAdmin)
 ADMIN_SITE.register(VolumeScrapeAdmin.model, VolumeScrapeAdmin)
 

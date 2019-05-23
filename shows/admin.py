@@ -7,11 +7,13 @@ from fields.admin import (
 
 from .models import (
     Show,
-    ShowRole,
-    ShowType,
     ShowParticipant,
     ShowPhoto,
+    ShowRole,
+    ShowType,
     ShowTypePhoto,
+    ShowVolumeCalibration,
+    ShowVolumeCalibrationVoting,
 )
 
 
@@ -101,3 +103,13 @@ class ShowTypeAdmin(BaseAdminModel):
     list_display = ('name', 'visibility')
     list_filter = ('visibility',)
     search_fields = ('name',)
+
+
+class ShowVolumeCalibrationAdmin(BaseAdminModel):
+
+    model = ShowVolumeCalibration
+
+
+class ShowVolumeCalibrationVotingAdmin(BaseAdminModel):
+
+    model = ShowVolumeCalibrationVoting

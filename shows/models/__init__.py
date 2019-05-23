@@ -6,6 +6,8 @@ from .show_photo import ShowPhoto
 from .show_role import ShowRole
 from .show_type import ShowType
 from .show_type_photo import ShowTypePhoto
+from .show_volume_calibration import ShowVolumeCalibration
+from .show_volume_calibration_voting import ShowVolumeCalibrationVoting
 
 __all__ = (
     'Show',
@@ -14,4 +16,6 @@ __all__ = (
     'ShowRole',
     'ShowType',
     'ShowTypePhoto',
+    'ShowVolumeCalibration',
+    'ShowVolumeCalibrationVoting',
 )
