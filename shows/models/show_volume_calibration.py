@@ -1,4 +1,4 @@
-from django.db.models import BooleanField, FloatField, ForeignKey, CASCADE
+from django.db.models import BooleanField, FloatField, ForeignKey, CASCADE, Sum
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
@@ -40,14 +40,14 @@ class ShowVolumeCalibration(TimeStampedModel):
     def close(self):
         votings = self.calibration_votings.order_by('avg_volume')
         total = votings.count()
-        sum = votings.aggregate(Sum('avg_volume')).values()[0]
+        volume_sum = votings.aggregate(Sum('avg_volume')).values()[0]
         first = votings.first()
         last = votings.last()
         self.max = last.volume
         if first == last:
             self.min = 0
-            self.mid = sum/2
+            self.mid = volume_sum/2
         else:
             self.min = first.volume
-            self.mid = sum/total
+            self.mid = volume_sum/total
         self.save()

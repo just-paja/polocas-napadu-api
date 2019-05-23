@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # noqa
 
-from urllib.parse import urlparse
-
 import os
 import sentry_sdk
 
@@ -22,7 +20,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Disable promise threading because of bug
 # https://github.com/syrusakbary/promise/issues/57
-from promise import promise;
+from promise import promise
 promise.async_instance.disable_trampoline()
 
 
