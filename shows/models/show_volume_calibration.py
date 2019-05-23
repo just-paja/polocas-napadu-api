@@ -1,4 +1,4 @@
-from django.db.models import FloatField, ForeignKey, CASCADE
+from django.db.models import BooleanField, FloatField, ForeignKey, CASCADE
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
@@ -27,6 +27,10 @@ class ShowVolumeCalibration(TimeStampedModel):
         blank=True,
         verbose_name=_('Maximum volume'),
         help_text=_('maximumAudioHelpText'),
+    )
+    closed = BooleanField(
+        default=False,
+        verbose_name=_('Closed'),
     )
 
     class Meta:
