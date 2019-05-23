@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # noqa
 
+from urllib.parse import urlparse
+
 import os
 import sentry_sdk
 
@@ -225,10 +227,16 @@ try:
 except ImportError:
     pass
 
-CORS_ORIGIN_WHITELIST += (APP_INSPIRATIONS_URL, )
-CORS_ORIGIN_WHITELIST += (APP_REFEREE_URL, )
-CORS_ORIGIN_WHITELIST += (APP_SCOREBOARD_URL, )
-CORS_ORIGIN_WHITELIST += (APP_WEBSITE_URL, )
+
+def get_schemed_netloc(url):
+    parsed = urlparse(url)
+    return '%s://%s' % (parsed.scheme, parsed.netloc)
+
+
+CORS_ORIGIN_WHITELIST += (get_schemed_netloc(APP_INSPIRATIONS_URL), )
+CORS_ORIGIN_WHITELIST += (get_schemed_netloc(APP_REFEREE_URL), )
+CORS_ORIGIN_WHITELIST += (get_schemed_netloc(APP_SCOREBOARD_URL), )
+CORS_ORIGIN_WHITELIST += (get_schemed_netloc(APP_WEBSITE_URL), )
 
 if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
