@@ -89,5 +89,6 @@ class MatchStage(TimeStampedModel):
             return next_stage.created - self.created
         return None
 
+
 MatchStage.get_game_name.short_description = _('Game')
 MatchStage.get_duration.short_description = _('Duration')

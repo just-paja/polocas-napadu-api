@@ -37,6 +37,7 @@ class ScorePoint(TimeStampedModel):
     def get_show_date(self):
         return self.game.show.start
 
+
 ScorePoint.get_contestant_group_name.short_description = _('Contestant')
 ScorePoint.get_game_name.short_description = _('Game')
 ScorePoint.get_score_snapshot.short_description = _('Score')

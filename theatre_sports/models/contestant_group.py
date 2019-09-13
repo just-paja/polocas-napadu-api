@@ -92,6 +92,7 @@ class ContestantGroup(Model):
             total += foe.fouls.count() // 3
         return total
 
+
 ContestantGroup.get_color_block.short_description = _('Color')
 ContestantGroup.get_show_date.short_description = _('Date')
 ContestantGroup.get_show_name.short_description = _('Match')

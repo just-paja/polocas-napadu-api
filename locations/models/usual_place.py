@@ -18,4 +18,5 @@ class UsualPlace(PublicResourceMixin):
     def get_location_name(self):
         return self.location.name
 
+
 UsualPlace.get_location_name.short_description = _('Location')

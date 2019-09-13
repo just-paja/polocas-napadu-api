@@ -46,6 +46,7 @@ class Match(Model):
             return stage.get_type_display()
         return None
 
+
 Match.get_show_name.short_description = _('Match')
 Match.get_show_date.short_description = _('Date')
 Match.get_current_stage_name.short_description = _('Stage')

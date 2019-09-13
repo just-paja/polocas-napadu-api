@@ -27,5 +27,6 @@ class Inspiration(TimeStampedModel):
     def get_show_date(self):
         return self.show.start
 
+
 Inspiration.get_show_date.short_description = _('Date')
 Inspiration.get_show_name.short_description = _('Show')
