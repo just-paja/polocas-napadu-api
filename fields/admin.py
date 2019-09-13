@@ -25,3 +25,8 @@ class LocationFilter(AutocompleteFilter):
 class ShowFilter(AutocompleteFilter):
     title = _('Show')
     field_name = 'show'
+
+
+class ShowTypeFilter(AutocompleteFilter):
+    title = _('Show type')
+    field_name = 'show_type'

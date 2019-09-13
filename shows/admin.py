@@ -2,6 +2,7 @@ from fields.admin import (
     BaseAdminModel,
     BaseInlineAdminModel,
     LocationFilter,
+    ShowTypeFilter,
     ShowFilter,
 )
 
@@ -68,7 +69,7 @@ class ShowAdmin(BaseAdminModel):
     ]
     autocomplete_fields = ['location']
     list_display = ('name', 'location', 'start', 'all_day', 'visibility')
-    list_filter = (LocationFilter, 'visibility')
+    list_filter = (ShowTypeFilter, LocationFilter, 'visibility')
     search_fields = ('name', 'all_day')
     fieldsets = (
         (None, {
