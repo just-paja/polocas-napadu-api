@@ -22,6 +22,10 @@ jobs:
             - dependencies-{{ checksum "Pipfile.lock" }}
 
       - run:
+          name: Install graphviz
+          command: sudo apt-get install python-dev graphviz libgraphviz-dev pkg-config
+
+      - run:
           name: Install dependencies
           command: |
             python3 -m venv .venv
