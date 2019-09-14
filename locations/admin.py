@@ -34,14 +34,16 @@ class UsualPlaceAdmin(BaseAdminModel):
     model = UsualPlace
     list_display = (
         'name',
+        'place_type',
         'get_location_name',
         'visibility',
     )
-    list_filter = ('visibility',)
+    list_filter = ('place_type', 'visibility')
     search_fields = (
         'name',
+        'place_type',
         'location__name',
         'location__address',
     )
     autocomplete_fields = ('location',)
-    fields = ('name', 'location', 'visibility', 'description')
+    fields = ('name', 'place_type', 'location', 'visibility', 'description')

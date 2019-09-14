@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-14 11:23+0000\n"
+"POT-Creation-Date: 2019-09-14 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,39 @@ msgstr ""
 msgid "Locations"
 msgstr "Lokace"
 
-#: locations/models/location.py:9 locations/models/usual_place.py:15
-#: locations/models/usual_place.py:22
+#: locations/models/location.py:9 locations/models/usual_place.py:21
+#: locations/models/usual_place.py:35
 msgid "Location"
 msgstr "Lokace"
 
+#: locations/models/location.py:14
+msgid "Address"
+msgstr "Adresa"
+
+#: locations/models/location.py:20
+msgid "City"
+msgstr "Město"
+
+#: locations/models/location.py:26
+msgid "GPS coordinates"
+msgstr "GPS souřadnice"
+
+#: locations/models/location.py:31
+msgid "Website"
+msgstr "Webové stránky"
+
 #: locations/models/usual_place.py:9
+msgid "usualStage"
+msgstr "Obvyklý scéna"
+
+#: locations/models/usual_place.py:15
 msgid "Usual Place"
 msgstr "Obvyklé místo"
 
-#: locations/models/usual_place.py:10
+#: locations/models/usual_place.py:16
 msgid "Usual Places"
 msgstr "Obvyklá místa"
+
+#: locations/models/usual_place.py:28
+msgid "Place type"
+msgstr "Účel místa"

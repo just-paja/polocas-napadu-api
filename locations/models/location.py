@@ -9,6 +9,24 @@ class Location(PublicResourceMixin):
         verbose_name = _('Location')
         verbose_name_plural = _('Locations')
 
-    address = CharField(max_length=255)
-    gps = CharField(max_length=127, blank=True, null=True)
-    website = URLField(blank=True, null=True)
+    address = CharField(
+        max_length=255,
+        verbose_name=_('Address')
+    )
+    city = CharField(
+        blank=True,
+        max_length=127,
+        null=True,
+        verbose_name=_('City'),
+    )
+    gps = CharField(
+        blank=True,
+        max_length=127,
+        null=True,
+        verbose_name=_('GPS coordinates'),
+    )
+    website = URLField(
+        blank=True,
+        null=True,
+        verbose_name=_('Website')
+    )
