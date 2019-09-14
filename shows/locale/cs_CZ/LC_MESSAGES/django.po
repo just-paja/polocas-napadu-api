@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 09:54+0000\n"
+"POT-Creation-Date: 2019-09-14 11:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgid "Shows"
 msgstr "Představení"
 
 #: shows/models/show.py:10 shows/models/show_participant.py:16
-#: shows/models/show_participant.py:41
+#: shows/models/show_participant.py:42
+#: shows/models/show_volume_calibration.py:9
 msgid "Show"
 msgstr "Představení"
 
@@ -42,7 +43,7 @@ msgstr ""
 msgid "Role"
 msgstr ""
 
-#: shows/models/show_participant.py:40
+#: shows/models/show_participant.py:41
 msgid "Date"
 msgstr ""
 
@@ -61,3 +62,47 @@ msgstr "Formát představení"
 #: shows/models/show_type.py:9
 msgid "Show types"
 msgstr "Formáty představení"
+
+#: shows/models/show_volume_calibration.py:16
+msgid "Minimum volume"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:17
+msgid "minimalAudioHelpText"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:22
+msgid "Medium volume"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:23
+msgid "mediumAudioHelpText"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:28
+msgid "Maximum volume"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:29
+msgid "maximumAudioHelpText"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:33
+msgid "Closed"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:37
+msgid "Show volume calibration"
+msgstr ""
+
+#: shows/models/show_volume_calibration.py:38
+msgid "Show volume calibrations"
+msgstr ""
+
+#: shows/models/show_volume_calibration_voting.py:14
+msgid "Show volume calibration voting"
+msgstr ""
+
+#: shows/models/show_volume_calibration_voting.py:15
+msgid "Show volume calibrations voting"
+msgstr ""

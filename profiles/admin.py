@@ -22,6 +22,7 @@ class ProfileAdmin(BaseAdminModel):
     inlines = [
         ProfilePhotoAdmin,
     ]
-    list_display = ('name', 'group', 'visibility')
+    fields = ('name', 'alias', 'group', 'visibility', 'about')
+    list_display = ('name', 'alias', 'group', 'visibility')
     list_filter = ('group', 'visibility')
-    search_fields = ('name',)
+    search_fields = ('name', 'alias')

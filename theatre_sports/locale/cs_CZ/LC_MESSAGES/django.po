@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 09:54+0000\n"
+"POT-Creation-Date: 2019-09-14 11:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,7 @@ msgid "team-guest"
 msgstr "Hostující tým"
 
 #: theatre_sports/models/contestant_group.py:23
+#: theatre_sports/models/score_point_poll_voting.py:22
 msgid "Contestant Group"
 msgstr "Soupeř"
 
@@ -46,15 +47,15 @@ msgid "Band"
 msgstr "Skupina"
 
 #: theatre_sports/models/contestant_group.py:38
-#: theatre_sports/models/contestant_group.py:95
+#: theatre_sports/models/contestant_group.py:96
 msgid "Color"
 msgstr "Barva"
 
 #: theatre_sports/models/contestant_group.py:44
-#: theatre_sports/models/contestant_group.py:97
+#: theatre_sports/models/contestant_group.py:98
 #: theatre_sports/models/match.py:8 theatre_sports/models/match.py:22
-#: theatre_sports/models/match.py:49 theatre_sports/models/match_stage.py:36
-#: theatre_sports/models/score_point.py:44
+#: theatre_sports/models/match.py:50 theatre_sports/models/match_stage.py:36
+#: theatre_sports/models/score_point.py:45
 msgid "Match"
 msgstr "Zápas"
 
@@ -62,8 +63,8 @@ msgstr "Zápas"
 msgid "Players"
 msgstr "Hráči"
 
-#: theatre_sports/models/contestant_group.py:96
-#: theatre_sports/models/match.py:50 theatre_sports/models/score_point.py:43
+#: theatre_sports/models/contestant_group.py:97
+#: theatre_sports/models/match.py:51 theatre_sports/models/score_point.py:44
 msgid "Date"
 msgstr "Datum"
 
@@ -75,13 +76,13 @@ msgstr "Faul"
 msgid "Fouls"
 msgstr "Fauly"
 
-#: theatre_sports/models/foul.py:16 theatre_sports/models/score_point.py:40
+#: theatre_sports/models/foul.py:16 theatre_sports/models/score_point.py:41
 msgid "Contestant"
 msgstr "Soupeř"
 
 #: theatre_sports/models/foul.py:24 theatre_sports/models/match_stage.py:44
-#: theatre_sports/models/match_stage.py:86
-#: theatre_sports/models/score_point.py:41
+#: theatre_sports/models/match_stage.py:93
+#: theatre_sports/models/score_point.py:42
 msgid "Game"
 msgstr "Hra"
 
@@ -117,7 +118,7 @@ msgstr "Zápasy"
 msgid "Closed"
 msgstr "Uzavřeno"
 
-#: theatre_sports/models/match.py:51
+#: theatre_sports/models/match.py:52
 msgid "Stage"
 msgstr "Fáze"
 
@@ -154,6 +155,7 @@ msgid "stage-finale"
 msgstr "Finále"
 
 #: theatre_sports/models/match_stage.py:29
+#: theatre_sports/models/score_point_poll.py:16
 msgid "Match Stage"
 msgstr "Fáze zápasu"
 
@@ -169,7 +171,7 @@ msgstr "Název fáze"
 msgid "Inspirations"
 msgstr "Inspirace"
 
-#: theatre_sports/models/match_stage.py:87
+#: theatre_sports/models/match_stage.py:94
 msgid "Duration"
 msgstr "Délka"
 
@@ -181,9 +183,34 @@ msgstr "Bod skóre"
 msgid "ScorePoints"
 msgstr "Body skóre"
 
-#: theatre_sports/models/score_point.py:42
+#: theatre_sports/models/score_point.py:43
 msgid "Score"
 msgstr "Skóre"
+
+#: theatre_sports/models/score_point_poll.py:9
+#: theatre_sports/models/score_point_poll_voting.py:16
+#, fuzzy
+#| msgid "ScorePoint"
+msgid "Score Point Poll"
+msgstr "Bod skóre"
+
+#: theatre_sports/models/score_point_poll.py:10
+#, fuzzy
+#| msgid "ScorePoints"
+msgid "Score Point Polls"
+msgstr "Body skóre"
+
+#: theatre_sports/models/score_point_poll.py:22
+msgid "Winner"
+msgstr ""
+
+#: theatre_sports/models/score_point_poll_voting.py:9
+msgid "Score point poll voting"
+msgstr ""
+
+#: theatre_sports/models/score_point_poll_voting.py:10
+msgid "Score point poll votings"
+msgstr ""
 
 #: theatre_sports/templates/admin/match_change_form.html:8
 msgid "Control match"

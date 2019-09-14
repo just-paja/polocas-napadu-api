@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 09:54+0000\n"
+"POT-Creation-Date: 2019-09-14 11:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,15 @@ msgstr "Herecký profil"
 msgid "Actor profiles"
 msgstr "Herecké profily"
 
-#: profiles/models/profile.py:15
+#: profiles/models/profile.py:19
+msgid "artistAliasHelpText"
+msgstr "Při zobrazení bude preferováno před civilním jménem"
+
+#: profiles/models/profile.py:20
+msgid "Artist alias"
+msgstr "Umělecké jméno"
+
+#: profiles/models/profile.py:22
 msgid "Slug"
 msgstr ""
 

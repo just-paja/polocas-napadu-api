@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 09:54+0000\n"
+"POT-Creation-Date: 2019-09-14 11:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api/settings.py:138
+#: api/settings.py:144
 msgid "Czech"
 msgstr "Czech"
 
-#: api/settings.py:139
+#: api/settings.py:145
 msgid "English"
 msgstr "English"
 
 #: api_admin/__init__.py:7
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: gsuite/__init__.py:80
 msgid "Gsuite"
+msgstr "Gsuite"
+
+#: voting/__init__.py:7
+msgid "Voting"
+msgstr "Hlasování"
+
+#: voting/models/live_poll.py:12 voting/models/live_poll_voting.py:12
+msgid "Closed"
+msgstr "Uzavřeno"
+
+#: voting/models/live_poll_type_field.py:7
+msgid "Audible vote"
+msgstr "Akustické hlasování"
+
+#: voting/models/live_poll_type_field.py:15
+msgid "Poll Type"
+msgstr "Typ hlasování"
+
+#: voting/models/live_poll_type_field.py:16
+msgid "pollTypeHelpText"
 msgstr ""
+
+#: voting/models/live_poll_voting.py:16
+msgid "avgVolumeHelpText"
+msgstr "Průměrná hlasitost vypočítaná ze všek snímků hlasitosti"
+
+#: voting/models/live_poll_voting.py:18
+msgid "Average volume"
+msgstr "Průměrná hlasitost"
+
+#: voting/models/live_poll_voting.py:22 voting/models/volume_scrape.py:12
+msgid "Live Poll Voting"
+msgstr "Hlasování s publikem"
+
+#: voting/models/live_poll_voting.py:23
+msgid "Live Poll Votings"
+msgstr "Hlasování s publikem"
+
+#: voting/models/volume_scrape.py:15
+msgid "Recorded volume"
+msgstr "Sejmutá hlasitost"
+
+#: voting/models/volume_scrape.py:19
+msgid "Volume scrape"
+msgstr "Snímek hlasitosti"
+
+#: voting/models/volume_scrape.py:20
+msgid "Volume scrapes"
+msgstr "Snímky hlasitosti"
