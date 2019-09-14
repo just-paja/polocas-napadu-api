@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from django.urls import reverse
 from graphql import GraphQLError
 from graphene import Boolean, Field, Int, List, Node, ObjectType, String, Mutation
@@ -70,7 +71,7 @@ class AddInspiration(Mutation):
 class Query:
     show = Field(ShowNode, show_id=Int(), slug=String())
     show_type = Node.Field(ShowTypeNode)
-    show_list = List(ShowNode)
+    show_list = List(ShowNode, future=Boolean(required=False), past=Boolean(required=False))
     show_type_list = List(ShowTypeNode)
 
     def resolve_show(self, info, show_id=None, slug=None):
@@ -81,8 +82,15 @@ class Query:
         except Show.DoesNotExist:
             return None
 
-    def resolve_show_list(self, info):
-        return Show.objects.get_visible()
+    def resolve_show_list(self, info, future=False, past=False):
+        source = Show.objects.get_visible()
+        if future:
+            yesterday = datetime.now() - timedelta(days=1)
+            source = source.filter(start__gte=yesterday)
+        if past:
+            yesterday = datetime.now() - timedelta(days=1)
+            source = source.filter(start__lt=yesterday)
+        return source
 
     def resolve_show_type_list(self, info):
         return ShowType.objects.get_visible()
