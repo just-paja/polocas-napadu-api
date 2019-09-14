@@ -71,8 +71,13 @@ class AddInspiration(Mutation):
 class Query:
     show = Field(ShowNode, show_id=Int(), slug=String())
     show_type = Node.Field(ShowTypeNode)
-    show_list = List(ShowNode, future=Boolean(required=False), past=Boolean(required=False))
     show_type_list = List(ShowTypeNode)
+    show_list = List(
+        ShowNode,
+        future=Boolean(),
+        limit=Int(),
+        past=Boolean()
+    )
 
     def resolve_show(self, info, show_id=None, slug=None):
         try:
@@ -82,7 +87,7 @@ class Query:
         except Show.DoesNotExist:
             return None
 
-    def resolve_show_list(self, info, future=False, past=False):
+    def resolve_show_list(self, info, future=False, past=False, limit=None):
         source = Show.objects.get_visible()
         if future:
             yesterday = datetime.now() - timedelta(days=1)
@@ -90,6 +95,8 @@ class Query:
         if past:
             yesterday = datetime.now() - timedelta(days=1)
             source = source.filter(start__lt=yesterday)
+        if limit:
+            source = source[:limit]
         return source
 
     def resolve_show_type_list(self, info):
