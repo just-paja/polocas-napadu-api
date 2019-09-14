@@ -1,7 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.urls import reverse
-from graphql import GraphQLError
+from django.utils import timezone
 from graphene import Boolean, Field, Int, List, Node, ObjectType, String, Mutation
+from graphql import GraphQLError
 
 from graphene_django.types import DjangoObjectType
 
@@ -89,11 +90,10 @@ class Query:
 
     def resolve_show_list(self, info, future=False, past=False, limit=None):
         source = Show.objects.get_visible()
+        yesterday = timezone.now() - timedelta(days=1)
         if future:
-            yesterday = datetime.now() - timedelta(days=1)
             source = source.filter(start__gte=yesterday)
         if past:
-            yesterday = datetime.now() - timedelta(days=1)
             source = source.filter(start__lt=yesterday)
         if limit:
             source = source[:limit]
