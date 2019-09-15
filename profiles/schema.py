@@ -37,4 +37,4 @@ class Query:
         return source
 
     def resolve_profile_group_list(self, info):
-        return ProfileGroup.objects.get_visible()
+        return ProfileGroup.objects.get_visible().order_by('weight')

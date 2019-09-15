@@ -7,7 +7,10 @@ class ProfileGroupAdmin(BaseAdminModel):
 
     model = ProfileGroup
     search_fields = ('name','description')
-    fields = ('name', 'description', 'visibility')
+    fields = ('name', 'description', 'visibility', 'weight')
+    list_display = ('name', 'visibility', 'weight')
+    list_filter = ('visibility',)
+    ordering = ('weight',)
 
 
 class ProfilePhotoAdmin(BaseInlineAdminModel):

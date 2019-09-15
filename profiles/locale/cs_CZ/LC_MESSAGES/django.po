@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-14 17:09+0000\n"
+"POT-Creation-Date: 2019-09-15 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,3 +48,11 @@ msgstr "Herecká skupina"
 #: profiles/models/profile_group.py:11
 msgid "Actor groups"
 msgstr "Herecké skupiny"
+
+#: profiles/models/profile_group.py:15
+msgid "weightHelpText"
+msgstr "Těžší položky se objeví níže v seznamu"
+
+#: profiles/models/profile_group.py:16
+msgid "Weight"
+msgstr "Váha"
