@@ -1,4 +1,4 @@
-from django.db.models import BooleanField, IntegerField
+from django.db.models import IntegerField
 from django.utils.translation import ugettext_lazy as _
 
 from fields import DescriptionMixin, NameMixin, VisibilityMixin

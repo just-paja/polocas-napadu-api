@@ -6,7 +6,7 @@ class ProfileGroupAdmin(BaseAdminModel):
     """Admin model for profile groups."""
 
     model = ProfileGroup
-    search_fields = ('name','description')
+    search_fields = ('name', 'description')
     fields = ('name', 'description', 'visibility', 'weight')
     list_display = ('name', 'visibility', 'weight')
     list_filter = ('visibility',)
