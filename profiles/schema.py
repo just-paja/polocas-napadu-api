@@ -1,4 +1,4 @@
-from graphene import Int, List, relay
+from graphene import Field, Int, List, String, relay
 
 from graphene_django.types import DjangoObjectType
 
@@ -26,9 +26,12 @@ class ProfileNode(DjangoObjectType):
 
 
 class Query:
-    profile = relay.Node.Field(ProfileNode)
+    profile = Field(ProfileNode, slug=String())
     profile_list = List(ProfileNode, group=Int())
     profile_group_list = List(ProfileGroupNode)
+
+    def resolve_profile(self, info, slug):
+        return Profile.objects.get_visible().filter(slug=slug).first()
 
     def resolve_profile_list(self, info, group=None):
         source = Profile.objects.get_visible()
