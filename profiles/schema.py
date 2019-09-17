@@ -14,6 +14,9 @@ class ProfilePhotoNode(DjangoObjectType):
     class Meta:
         model = ProfilePhoto
 
+    def resolve_image(self, *_):
+        return self.image.url
+
 
 class ProfileNode(DjangoObjectType):
     class Meta:
