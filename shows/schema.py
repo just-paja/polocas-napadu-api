@@ -9,7 +9,12 @@ from graphene_django.types import DjangoObjectType
 from fields import append_host_from_context
 from inspirations.models import Inspiration
 
-from .models import Show, ShowParticipant, ShowPhoto, ShowType, ShowTypePhoto
+from .models import Show, ShowParticipant, ShowPhoto, ShowRole, ShowType, ShowTypePhoto
+
+
+class SHowRoleNode(DjangoObjectType):
+    class Meta:
+        model = ShowRole
 
 
 class ShowParticipantNode(DjangoObjectType):

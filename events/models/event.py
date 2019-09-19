@@ -3,6 +3,7 @@ from django.db.models import (
     BooleanField,
     DateTimeField,
     ForeignKey,
+    URLField,
     PROTECT,
 )
 from django.utils.formats import date_format
@@ -19,10 +20,13 @@ class EventManager(VisibilityManager):
 class Event(PublicResourceMixin):
     slug = AutoSlugField(_('Slug'), populate_from='name')
     start = DateTimeField()
-    end = DateTimeField(null=True, blank=True)
+    end = DateTimeField(blank=True, null=True)
     all_day = BooleanField(default=False)
     location = ForeignKey('locations.Location', on_delete=PROTECT)
     objects = EventManager()
+    link_facebook = URLField(blank=True, null=True)
+    link_reservations = URLField(blank=True, null=True)
+    link_tickets = URLField(blank=True, null=True)
 
     class Meta:
         abstract = True

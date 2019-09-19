@@ -101,6 +101,7 @@ class ShowTypeAdmin(BaseAdminModel):
     inlines = [
         ShowTypePhotoAdmin,
     ]
+    fields = ('name', 'visibility', 'short_description', 'description')
     list_display = ('name', 'visibility')
     list_filter = ('visibility',)
     search_fields = ('name',)
