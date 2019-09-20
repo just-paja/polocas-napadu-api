@@ -1,3 +1,4 @@
+from django_extensions.db.fields import AutoSlugField
 from django.db.models import TextField
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,4 +10,9 @@ class ShowType(PublicResourceMixin):
         verbose_name = _('Show type')
         verbose_name_plural = _('Show types')
 
-    short_description = TextField(blank=False, null=False)
+    slug = AutoSlugField(_('Slug'), populate_from='name')
+    short_description = TextField(
+        verbose_name=_('Short Description'),
+        blank=False,
+        null=False,
+    )
