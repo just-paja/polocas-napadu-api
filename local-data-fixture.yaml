@@ -1837,6 +1837,7 @@
     fields:
       description: "."
       name: "Úplně obyčejné zprávy"
+      slug: "uplne-obycejne-zpravy"
       created: "2019-04-15T13:35:07.049Z"
       modified: "2019-04-16T08:31:16.473Z"
       visibility: 2
@@ -4939,6 +4940,7 @@
     fields:
       description: "Dva impro týmy proti sobě, představení připomíná malý hokejový zápas. Diváci zadávají témata a po každé hře hlasují který tým se jim líbil více. Na místě je rozhodčí, který kontroluje dodržování improvizačních pravidel podle České improvizační ligy. Vítěz může být jenom jeden.\r\n\r\n* Celovečerní\r\n* 3 - 4 herci za každý tým"
       name: "Improvizační zápas"
+      slug: "improvizacni-zapas"
       created: "2019-02-08T07:46:01.871Z"
       modified: "2019-02-08T07:46:01.871Z"
       visibility: 2
@@ -4948,6 +4950,7 @@
     fields:
       description: "Příběhy, které vzniknou někde mezi modrou sférou a rádiovým éterem bez jakéhokoliv dopředu vymyšleného scénáře a volně přejdou do našeho světa za pomoci reproduktorů.\r\n\r\n* 45 minut - 75 minut\r\n* 3 herci"
       name: "Rozhlasová hra"
+      slug: "rozhlasova-hra"
       created: "2019-02-08T07:46:15.079Z"
       modified: "2019-02-08T07:46:15.079Z"
       visibility: 2
@@ -4957,6 +4960,7 @@
     fields:
       description: "Volné, tematické a nebo na míru zahrané impro představení složené z krátkých příběhů inspirovaných tématy od diváků, celým večerem provází konferenciér. Pohyb, poezie, zpěv? Žádný problém.\r\n\r\n* 30 - 240 minut\r\n* 3 - 6 herců"
       name: "Improshow"
+      slug: "improshow"
       created: "2019-02-08T07:46:23.908Z"
       modified: "2019-02-08T07:46:23.908Z"
       visibility: 2
@@ -4966,6 +4970,7 @@
     fields:
       description: "Improvizované večerní zprávy typické televizní stanice. Diváci zadávají věty, které slouží jako inspirace pro všechny reportáže. Hrají dva herci, ale uvidíte mnoho postav. Dynamické\r\n\r\n* 30 - 60 minut\r\n* 2 herci"
       name: "Úplně obyčejné zprávy"
+      slug: "uplne-obycejne-zpravy"
       created: "2019-02-08T07:46:33.178Z"
       modified: "2019-02-08T07:46:33.178Z"
       visibility: 2
@@ -4975,6 +4980,7 @@
     fields:
       description: "Tři různé příběhy rozdělené na tři části v jednom motelovém pokoji. Herci mezi jednotlivými částmi posouvají příběh samostatnými vstupy. Hraje 6 hráčů, vždy dva do každého příběhu.\r\n\r\n* 45 - 60 minut\r\n* 6 herců"
       name: "Motel"
+      slug: "motel"
       created: "2019-02-08T07:46:41.293Z"
       modified: "2019-02-08T07:46:41.293Z"
       visibility: 2
@@ -4984,6 +4990,7 @@
     fields:
       description: "-"
       name: "Ostrov, který jsem přehlíd"
+      slug: "ostrov-ktery-jsem-prehlid"
       created: "2019-04-14T21:40:29.079Z"
       modified: "2019-04-14T21:40:29.079Z"
       visibility: 2
@@ -4993,6 +5000,7 @@
     fields:
       description: "Soutěž"
       name: "Slovenská Improliga"
+      slug: "slovenska-improliga"
       created: "2019-04-15T14:11:17.424Z"
       modified: "2019-04-15T14:11:17.424Z"
       visibility: 2
