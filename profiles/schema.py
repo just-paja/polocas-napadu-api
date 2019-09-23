@@ -1,4 +1,4 @@
-from graphene import Field, Int, List, String, relay
+from graphene import Field, Int, List, String
 
 from graphene_django.types import DjangoObjectType
 

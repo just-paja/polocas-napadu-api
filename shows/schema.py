@@ -1,9 +1,9 @@
 from datetime import timedelta
+from django.db.models import Count
 from django.urls import reverse
 from django.utils import timezone
 from graphene import Boolean, Field, Int, List, ObjectType, String, Mutation
 from graphql import GraphQLError
-from django.db.models import Count
 
 from graphene_django.types import DjangoObjectType
 
