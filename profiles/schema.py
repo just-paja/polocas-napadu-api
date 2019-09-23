@@ -9,23 +9,27 @@ class ProfileGroupNode(DjangoObjectType):
     class Meta:
         model = ProfileGroup
 
+def serialize_image_field(field, info):
+    try:
+        return info.context.build_absolute_uri(field.url)
+    except ValueError:
+        return None
+
 
 class ProfilePhotoNode(DjangoObjectType):
     class Meta:
         model = ProfilePhoto
 
-    def resolve_image(self, *_):
-        return self.image.url
+    def resolve_image(self, info, *_):
+        return serialize_image_field(self.image, info)
 
 
 class ProfileNode(DjangoObjectType):
     class Meta:
         model = Profile
 
-    avatar = relay.Node.Field(ProfilePhotoNode)
-
-    def resolve_avatar(self, info):
-        return self.get_avatar()
+    def resolve_avatar(self, info, *_):
+        return serialize_image_field(self.avatar, info)
 
 
 class Query:

@@ -1,6 +1,6 @@
 from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
-from django.db.models import CharField, ForeignKey, TextField, PROTECT
+from django.db.models import CharField, ForeignKey, ImageField, TextField, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin, VisibilityMixin
@@ -27,9 +27,12 @@ class Profile(NameMixin, TimeStampedModel, VisibilityMixin):
         null=True,
         on_delete=PROTECT,
     )
-
-    def get_avatar(self):
-        return self.photos.first()
+    avatar = ImageField(
+        blank=True,
+        null=True,
+        upload_to='var/avatars',
+        verbose_name=_('Avatar'),
+    )
 
     def __str__(self):
         if self.alias:
