@@ -10,4 +10,9 @@ class Show(Event):
         verbose_name = _('Show')
         verbose_name_plural = _('Shows')
 
-    show_type = ForeignKey('showType', on_delete=PROTECT)
+    show_type = ForeignKey(
+        'showType',
+        on_delete=PROTECT,
+        related_name='shows',
+        verbose_name=_('Show type'),
+    )
