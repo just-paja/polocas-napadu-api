@@ -1,7 +1,7 @@
 from datetime import timedelta
 from django.urls import reverse
 from django.utils import timezone
-from graphene import Boolean, Field, Int, List, Node, ObjectType, String, Mutation
+from graphene import Boolean, Field, Int, List, ObjectType, String, Mutation
 from graphql import GraphQLError
 
 from graphene_django.types import DjangoObjectType
@@ -12,7 +12,7 @@ from inspirations.models import Inspiration
 from .models import Show, ShowParticipant, ShowPhoto, ShowRole, ShowType, ShowTypePhoto
 
 
-class SHowRoleNode(DjangoObjectType):
+class ShowRoleNode(DjangoObjectType):
     class Meta:
         model = ShowRole
 
@@ -76,13 +76,14 @@ class AddInspiration(Mutation):
 
 class Query:
     show = Field(ShowNode, show_id=Int(), slug=String())
-    show_type = Node.Field(ShowTypeNode)
+    show_type = Field(ShowTypeNode, slug=String())
     show_type_list = List(ShowTypeNode)
     show_list = List(
         ShowNode,
         future=Boolean(),
         limit=Int(),
-        past=Boolean()
+        past=Boolean(),
+        show_type_slug=String(),
     )
 
     def resolve_show(self, info, show_id=None, slug=None):
@@ -93,9 +94,16 @@ class Query:
         except Show.DoesNotExist:
             return None
 
-    def resolve_show_list(self, info, future=False, past=False, limit=None):
-        source = Show.objects.get_visible()
+    def resolve_show_list(self, info, **kwargs):
+        future = kwargs.get('future') or False
+        limit = kwargs.get('limit') or None
+        past = kwargs.get('past') or False
+        show_type_slug = kwargs.get('show_type_slug') or None
+        source = Show.objects.get_visible().order_by('-start')
         yesterday = timezone.now() - timedelta(days=1)
+        if show_type_slug:
+            show_type = ShowType.objects.get(slug=show_type_slug)
+            source = source.filter(show_type=show_type)
         if future:
             source = source.filter(start__gte=yesterday)
         if past:
@@ -103,6 +111,12 @@ class Query:
         if limit:
             source = source[:limit]
         return source
+
+    def resolve_show_type(self, info, slug=None):
+        try:
+            return ShowType.objects.get_visible().get(slug=slug)
+        except ShowType.DoesNotExist:
+            return None
 
     def resolve_show_type_list(self, info):
         return ShowType.objects.get_visible()
