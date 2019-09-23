@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils import timezone
 from graphene import Boolean, Field, Int, List, ObjectType, String, Mutation
 from graphql import GraphQLError
+from django.db.models import Count
 
 from graphene_django.types import DjangoObjectType
 
@@ -52,6 +53,12 @@ class ShowTypePhotoNode(DjangoObjectType):
 class ShowTypeNode(DjangoObjectType):
     class Meta:
         model = ShowType
+
+    show_count = Int()
+
+    def resolve_show_count(self, *_):
+        now = timezone.now()
+        return self.shows.get_visible().filter(start__lt=now).count()
 
 
 class AddInspiration(Mutation):
@@ -119,7 +126,9 @@ class Query:
             return None
 
     def resolve_show_type_list(self, info):
-        return ShowType.objects.get_visible()
+        return ShowType.objects.get_visible().annotate(
+            count=Count('shows__id'),
+        ).order_by('-count')
 
 
 class Mutations(ObjectType):
