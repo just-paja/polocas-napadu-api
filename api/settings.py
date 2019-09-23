@@ -191,7 +191,7 @@ LOCALE_PATHS = [
 ]
 
 if DEBUG:
-    MEDIA_ROOT = '/var/tmp/polocas-napadu-api'
+    MEDIA_ROOT = BASE_DIR
     MEDIA_URL = '/media/'
 
 RAVEN_DSN = None
