@@ -109,7 +109,10 @@ class Query:
         source = Show.objects.get_visible().order_by('-start')
         yesterday = timezone.now() - timedelta(days=1)
         if show_type_slug:
-            show_type = ShowType.objects.get(slug=show_type_slug)
+            try:
+                show_type = ShowType.objects.get(slug=show_type_slug)
+            except ShowType.DoesNotExist:
+                return []
             source = source.filter(show_type=show_type)
         if future:
             source = source.filter(start__gte=yesterday)
