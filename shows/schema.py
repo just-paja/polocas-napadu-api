@@ -91,6 +91,7 @@ class Query:
         limit=Int(),
         past=Boolean(),
         show_type_slug=String(),
+        order_by=String(),
     )
 
     def resolve_show(self, info, show_id=None, slug=None):
@@ -106,7 +107,8 @@ class Query:
         limit = kwargs.get('limit') or None
         past = kwargs.get('past') or False
         show_type_slug = kwargs.get('show_type_slug') or None
-        source = Show.objects.get_visible().order_by('-start')
+        order_by = kwargs.get('order_by') or '-start'
+        source = Show.objects.get_visible().order_by(order_by)
         yesterday = timezone.now() - timedelta(days=1)
         if show_type_slug:
             try:
