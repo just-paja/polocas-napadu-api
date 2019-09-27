@@ -21,6 +21,7 @@ class LocationAdmin(BaseAdminModel):
     search_fields = ('name', 'address')
     fields = (
         'name',
+        'city',
         'address',
         'visibility',
         'gps',
