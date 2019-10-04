@@ -1,5 +1,6 @@
 recursive-include api *
 recursive-include bands *
+recursive-include blog *
 recursive-include events *
 recursive-include fields *
 recursive-include games *

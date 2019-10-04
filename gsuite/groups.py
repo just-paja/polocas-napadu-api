@@ -16,8 +16,11 @@ MODEL_ACTIONS = [
 ]
 
 MODELS_BASE = [
+    'Article',
     'Band',
     'BandPhoto',
+    'Chapter',
+    'ChapterPhoto',
     'ContestantGroup',
     'Foul',
     'FoulType',

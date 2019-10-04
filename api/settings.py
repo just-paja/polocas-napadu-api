@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'colorfield',
     'locations.LocationsConfig',
     'bands.BandsConfig',
+    'blog.BlogConfig',
     'profiles.ProfilesConfig',
     'shows.ShowsConfig',
     'inspirations.InspirationsConfig',
@@ -178,6 +179,7 @@ GRAPHENE = {
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
     os.path.join(BASE_DIR, 'bands', 'locale'),
+    os.path.join(BASE_DIR, 'blog', 'locale'),
     os.path.join(BASE_DIR, 'events', 'locale'),
     os.path.join(BASE_DIR, 'games', 'locale'),
     os.path.join(BASE_DIR, 'fields', 'locale'),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-15 13:24+0000\n"
+"POT-Creation-Date: 2019-10-04 18:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,10 @@ msgstr "Představení"
 #: shows/models/show_volume_calibration.py:9
 msgid "Show"
 msgstr "Představení"
+
+#: shows/models/show.py:17 shows/models/show_type.py:10
+msgid "Show type"
+msgstr "Formát představení"
 
 #: shows/models/show_participant.py:9
 msgid "Show participant"
@@ -55,13 +59,17 @@ msgstr "Role"
 msgid "Show roles"
 msgstr "Role"
 
-#: shows/models/show_type.py:8
-msgid "Show type"
-msgstr "Formát představení"
-
-#: shows/models/show_type.py:9
+#: shows/models/show_type.py:11
 msgid "Show types"
 msgstr "Formáty představení"
+
+#: shows/models/show_type.py:13
+msgid "Slug"
+msgstr ""
+
+#: shows/models/show_type.py:15
+msgid "Short Description"
+msgstr ""
 
 #: shows/models/show_volume_calibration.py:16
 msgid "Minimum volume"

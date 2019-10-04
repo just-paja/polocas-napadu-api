@@ -71,9 +71,10 @@ class ShowAdmin(BaseAdminModel):
     list_display = ('name', 'location', 'start', 'all_day', 'visibility')
     list_filter = (ShowTypeFilter, LocationFilter, 'visibility')
     search_fields = ('name', 'all_day')
+    readonly_fields = ('slug',)
     fieldsets = (
         (None, {
-            'fields': ('name', 'show_type')
+            'fields': ('name', 'slug', 'show_type')
         }),
         (None, {
             'fields': ('start', 'end', 'all_day'),
