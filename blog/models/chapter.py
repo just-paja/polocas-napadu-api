@@ -14,6 +14,7 @@ class Chapter(PublicResourceMixin):
     article = ForeignKey(
         'Article',
         on_delete=CASCADE,
+        related_name='chapters',
     )
     slug = AutoSlugField(_('Slug'), populate_from='name')
     weight = IntegerField(

@@ -1,4 +1,4 @@
-from .host import append_host_from_context
+from .host import append_host_from_context, serialize_image_field
 from .description import DescriptionField, DescriptionMixin
 from .name import NameField, NameMixin
 from .permissions import is_staff
@@ -22,6 +22,7 @@ __all__ = (
     'NameField',
     'NameMixin',
     'PublicResourceMixin',
+    'serialize_image_field',
     'VISIBILITY_DELETED',
     'VISIBILITY_CHOICES',
     'VISIBILITY_PRIVATE',
