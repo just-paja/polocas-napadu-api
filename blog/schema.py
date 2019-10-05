@@ -24,6 +24,9 @@ class ArticleNode(DjangoObjectType):
     class Meta:
         model = Article
 
+    def resolve_chapters(self, info, *_):
+        return self.chapters.get_visible().order_by('weight')
+
 
 class Query:
     article = Field(ArticleNode, slug=String())
