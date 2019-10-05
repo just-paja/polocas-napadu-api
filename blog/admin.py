@@ -12,11 +12,12 @@ class ChapterAdmin(BaseAdminModel):
     inlines = [
         ChapterPhotoAdmin,
     ]
-    fields = ('article', 'name', 'visibility', 'description', 'slug')
-    list_display = ('name', 'article', 'visibility')
+    fields = ('article', 'name', 'weight', 'visibility', 'description', 'slug', 'modified')
+    list_display = ('name', 'article', 'weight', 'visibility', 'modified')
     list_filter = ('visibility', 'article')
-    readonly_fields = ('slug',)
+    readonly_fields = ('slug', 'modified')
     search_fields = ('name', 'description')
+    ordering = ('weight',)
 
 
 class ChapterInlineAdmin(BaseStackedAdminModel):
@@ -29,11 +30,12 @@ class ChapterInlineAdmin(BaseStackedAdminModel):
 
 class ArticleAdmin(BaseAdminModel):
     model = Article
-    fields = ('name', 'visibility', 'site_anchor', 'description', 'slug')
-    list_display = ('name', 'site_anchor', 'visibility')
+    fields = ('name', 'visibility', 'site_anchor', 'description', 'slug', 'modified')
+    list_display = ('name', 'site_anchor', 'visibility', 'modified')
     list_filter = ('visibility', 'site_anchor')
-    readonly_fields = ('slug',)
+    readonly_fields = ('slug', 'modified')
     search_fields = ('name', 'description')
+    ordering = ('-created',)
     inlines = [
         ChapterInlineAdmin,
     ]
