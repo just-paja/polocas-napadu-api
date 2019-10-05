@@ -22,7 +22,7 @@ class ChapterAdmin(BaseAdminModel):
 
 class ChapterInlineAdmin(BaseStackedAdminModel):
     model = Chapter
-    fields = ('name', 'visibility', 'description')
+    fields = ('name', 'weight', 'visibility', 'description')
     inlines = [
         ChapterPhotoAdmin,
     ]
