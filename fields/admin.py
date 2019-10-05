@@ -1,18 +1,18 @@
 from admin_auto_filters.filters import AutocompleteFilter
-from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+import nested_admin
 
 
-class BaseAdminModel(admin.ModelAdmin):
+class BaseAdminModel(nested_admin.NestedModelAdmin):
     pass
 
 
-class BaseInlineAdminModel(admin.TabularInline):
+class BaseInlineAdminModel(nested_admin.NestedTabularInline):
     """Base admin for Inline models."""
     extra = 1
 
 
-class BaseStackedAdminModel(admin.StackedInline):
+class BaseStackedAdminModel(nested_admin.NestedStackedInline):
     """Base admin for Inline models."""
     extra = 1
 

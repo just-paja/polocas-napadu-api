@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'graphql_jwt.refresh_token',
     'admin_sso',
     'gsuite.GSuiteConfig',
+    'nested_admin',
 ]
 
 MIDDLEWARE = [

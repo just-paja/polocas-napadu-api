@@ -29,6 +29,7 @@ urlpatterns = [
     path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG)), name='api_public'),
     path('shows/', include(shows.urlpatterns)),
     path('theatre-sports/', include(theatre_sports.urlpatterns)),
+    path('nested_admin/', include('nested_admin.urls')),
     path('', gauth),
 ]
 

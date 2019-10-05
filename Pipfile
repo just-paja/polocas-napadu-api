@@ -31,6 +31,7 @@ qrcode = {extras = ["pil"],version = "*"}
 django-colorfield = "*"
 django-graphql-jwt = "*"
 django-admin-autocomplete-filter = "*"
+django-nested-admin = "*"
 
 [requires]
 python_version = "3.7"
