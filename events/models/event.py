@@ -18,7 +18,7 @@ class EventManager(VisibilityManager):
 
 
 class Event(PublicResourceMixin):
-    slug = AutoSlugField(_('Slug'), populate_from='name')
+    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
     start = DateTimeField()
     end = DateTimeField(blank=True, null=True)
     all_day = BooleanField(default=False)

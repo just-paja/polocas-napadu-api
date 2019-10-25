@@ -19,7 +19,7 @@ class Profile(NameMixin, TimeStampedModel, VisibilityMixin):
         help_text=_('artistAliasHelpText'),
         verbose_name=_('Artist alias'),
     )
-    slug = AutoSlugField(_('Slug'), populate_from='name')
+    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
     about = TextField()
     group = ForeignKey(
         'ProfileGroup',

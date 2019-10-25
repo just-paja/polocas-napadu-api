@@ -17,7 +17,7 @@ class Article(PublicResourceMixin):
         verbose_name = _('Article')
         verbose_name_plural = _('Articles')
 
-    slug = AutoSlugField(_('Slug'), populate_from='name')
+    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
     site_anchor = CharField(
         blank=True,
         choices=ANCHOR_CHOICES,

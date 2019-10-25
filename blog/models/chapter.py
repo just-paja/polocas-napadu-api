@@ -16,7 +16,7 @@ class Chapter(PublicResourceMixin):
         on_delete=CASCADE,
         related_name='chapters',
     )
-    slug = AutoSlugField(_('Slug'), populate_from='name')
+    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
     weight = IntegerField(
         default=0,
         help_text=_('weightHelpText'),

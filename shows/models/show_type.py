@@ -10,7 +10,7 @@ class ShowType(PublicResourceMixin):
         verbose_name = _('Show type')
         verbose_name_plural = _('Show types')
 
-    slug = AutoSlugField(_('Slug'), populate_from='name')
+    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
     short_description = TextField(
         verbose_name=_('Short Description'),
         blank=False,
