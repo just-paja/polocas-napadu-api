@@ -34,6 +34,7 @@ MODELS_BASE = [
     'Profile',
     'ProfileGroup',
     'ProfilePhoto',
+    'Reservation',
     'ScorePoint',
     'Show',
     'ShowParticipant',

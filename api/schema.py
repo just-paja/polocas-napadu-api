@@ -9,6 +9,7 @@ import locations.schema
 import profiles.schema
 import shows.schema
 import theatre_sports.schema
+import tickets.schema
 import voting.schema
 
 
@@ -21,6 +22,7 @@ class PublicQuery(
     profiles.schema.Query,
     shows.schema.Query,
     theatre_sports.schema.Query,
+    tickets.schema.Query,
     voting.schema.Query,
     graphene.ObjectType
 ):

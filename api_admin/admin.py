@@ -29,6 +29,7 @@ from theatre_sports.admin import (
     ScorePointAdmin,
     ScorePointPollAdmin,
 )
+from tickets.admin import ReservationAdmin
 from voting.admin import (
     LivePollVotingAdmin,
     VolumeScrapeAdmin,
@@ -61,6 +62,7 @@ ADMIN_SITE.register(MatchAdmin.model, MatchAdmin)
 ADMIN_SITE.register(MatchStageAdmin.model, MatchStageAdmin)
 ADMIN_SITE.register(ProfileAdmin.model, ProfileAdmin)
 ADMIN_SITE.register(ProfileGroupAdmin.model, ProfileGroupAdmin)
+ADMIN_SITE.register(ReservationAdmin.model, ReservationAdmin)
 ADMIN_SITE.register(ScorePointAdmin.model, ScorePointAdmin)
 ADMIN_SITE.register(ScorePointPollAdmin.model, ScorePointPollAdmin)
 ADMIN_SITE.register(ShowAdmin.model, ShowAdmin)

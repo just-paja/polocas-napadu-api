@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-29 09:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tickets/__init__.py:7
+msgid "Tickets"
+msgstr "Vstupenky"
+
+#: tickets/models/reservation.py:17
+msgid "Ordered"
+msgstr "Objednáno"
+
+#: tickets/models/reservation.py:18
+msgid "Confirmed"
+msgstr "Potvrzeno"
+
+#: tickets/models/reservation.py:19
+msgid "Canceled"
+msgstr "Zrušeno"
+
+#: tickets/models/reservation.py:28
+msgid "Whatever"
+msgstr "Kdekoliv"
+
+#: tickets/models/reservation.py:29
+msgid "First row"
+msgstr "První řada"
+
+#: tickets/models/reservation.py:30
+msgid "Middle"
+msgstr "Někde veprostřed"
+
+#: tickets/models/reservation.py:31
+msgid "Far end"
+msgstr "Úplně vzadu"
+
+#: tickets/models/reservation.py:37
+msgid "Reservation"
+msgstr "Rezervace"
+
+#: tickets/models/reservation.py:38
+msgid "Reservations"
+msgstr "Rezervace"
+
+#: tickets/models/reservation.py:46
+msgid "Customer name"
+msgstr "Jméno diváka"
+
+#: tickets/models/reservation.py:49
+msgid "Customer email"
+msgstr "E-mail diváka"
+
+#: tickets/models/reservation.py:53
+msgid "Number of seats"
+msgstr "Počet sedadel"
+
+#: tickets/models/reservation.py:57
+msgid "Seat location"
+msgstr "Kde chce sedět"
+
+#: tickets/models/reservation.py:61
+msgid "Status"
+msgstr "Stav"
+
+#: tickets/models/reservation.py:65
+msgid "Newsletter"
+msgstr "Chce dostávat newsletter"
