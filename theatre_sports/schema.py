@@ -60,6 +60,11 @@ class MatchStageNode(DjangoObjectType):
         model = MatchStage
 
 
+class ScorePointNode(DjangoObjectType):
+    class Meta:
+        model = ScorePoint
+
+
 class MatchNode(DjangoObjectType):
     class Meta:
         model = Match
@@ -67,6 +72,7 @@ class MatchNode(DjangoObjectType):
     current_stage = Field(MatchStageNode)
     prev_stage = Field(MatchStageNode)
     prepared_inspiration_count = Int()
+    score_points = List(ScorePointNode)
 
     def resolve_current_stage(self, info):
         return self.get_current_stage()
@@ -81,10 +87,8 @@ class MatchNode(DjangoObjectType):
             inspiration_games=None,
         ).count()
 
-
-class ScorePointNode(DjangoObjectType):
-    class Meta:
-        model = ScorePoint
+    def resolve_score_points(self, info):
+        return ScorePoint.objects.filter(game__show__match__id=self.id)
 
 
 class ScorePointPollNode(DjangoObjectType):
