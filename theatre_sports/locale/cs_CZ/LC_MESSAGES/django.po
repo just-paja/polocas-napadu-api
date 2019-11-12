@@ -92,7 +92,7 @@ msgstr "Hráč"
 
 #: theatre_sports/models/foul.py:40
 msgid "Foul type"
-msgstr "Typy faulu"
+msgstr "Typ faulu"
 
 #: theatre_sports/models/foul.py:44
 msgid "Comment"
