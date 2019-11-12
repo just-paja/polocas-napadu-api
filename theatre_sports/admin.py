@@ -1,3 +1,5 @@
+from django import forms
+
 from fields.admin import BaseAdminModel, BaseStackedAdminModel
 
 from .models import (
@@ -19,12 +21,31 @@ class FoulTypeAdmin(BaseAdminModel):
     list_display = ['name', 'visibility']
 
 
+class FoulForm(forms.ModelForm):
+    time = forms.DurationField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        if 'instance' in kwargs and kwargs['instance']:
+            kwargs['initial'] = {'time': kwargs['instance'].get_time()}
+        super(FoulForm, self).__init__(*args, **kwargs)
+
+
 class FoulAdmin(BaseAdminModel):
 
     model = Foul
+    form = FoulForm
     search_fields = ['foul__name', 'foul__description']
+    fields = (
+        'contestant_group',
+        'game',
+        'player',
+        'foul_type',
+        'comment',
+        'time',
+    )
     list_display = [
         'foul_type',
+        'get_time',
         'contestant_group',
         'player',
         'game',
@@ -35,6 +56,12 @@ class FoulAdmin(BaseAdminModel):
         'game',
         'player',
     ]
+
+    def save_model(self, request, obj, form, change):
+        time = form.cleaned_data.get('time')
+        if time:
+            obj.created = obj.contestant_group.match.get_actual_start() + time
+        return super(FoulAdmin, self).save_model(request, obj, form, change)
 
 
 class ContestantGroupAdmin(BaseAdminModel):

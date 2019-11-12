@@ -27,6 +27,10 @@ class Match(Model):
     def get_show_date(self):
         return self.show.start
 
+    def get_actual_start(self):
+        first_stage = self.stages.order_by('created').first()
+        return first_stage.created if first_stage else self.start
+
     def get_current_stage(self):
         return self.stages.order_by('-created').first()
 

@@ -46,7 +46,18 @@ class Foul(TimeStampedModel):
     )
 
     def __str__(self):
-        return '%s, %s' % (
-            self.foul_type.name,
-            self.player or self.contestant_group
-        )
+        if self.foul_type:
+            return '%s, %s' % (
+                self.foul_type.name,
+                self.player or self.contestant_group
+            )
+        return 'Foul#%s' % self.pk
+
+    def get_time(self):
+        if not self.created or not self.contestant_group or not self.contestant_group.match:
+            return None
+        start = self.contestant_group.match.get_actual_start()
+        return self.created - start
+
+
+Foul.get_time.short_description = _('Match time')
