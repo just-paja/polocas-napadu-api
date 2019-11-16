@@ -12,7 +12,6 @@ import theatre_sports.schema
 import tickets.schema
 import voting.schema
 
-
 class PublicQuery(
     bands.schema.Query,
     blog.schema.Query,
@@ -28,6 +27,7 @@ class PublicQuery(
 ):
     pass
 
+
 class Mutation(
     theatre_sports.schema.Mutations,
     shows.schema.Mutations,
@@ -38,4 +38,12 @@ class Mutation(
     refresh_token = graphql_jwt.Refresh.Field()
 
 
-PUBLIC = graphene.Schema(query=PublicQuery, mutation=Mutation)
+class Subscription(graphene.ObjectType):
+    on_match_change = theatre_sports.schema.MatchSubscription.Field()
+
+
+PUBLIC = graphene.Schema(
+    query=PublicQuery,
+    mutation=Mutation,
+    subscription=Subscription,
+)

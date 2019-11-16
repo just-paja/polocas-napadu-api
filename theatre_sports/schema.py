@@ -1,6 +1,7 @@
 from graphene import Boolean, Int, Field, List, String, ObjectType, Mutation
-
 from graphene_django.types import DjangoObjectType
+from channels_graphql_ws import Subscription
+
 from fields import append_host_from_context, is_staff, VISIBILITY_PUBLIC
 
 from games.models import Game, GameRules
@@ -428,3 +429,25 @@ class Mutations(ObjectType):
     rewind_match_stage = RewindMatchStage.Field()
     set_match_game = SetMatchGame.Field()
     start_score_point_voting = StartScorePointVoting.Field()
+
+
+class MatchSubscription(Subscription):
+    match = Field(MatchNode)
+    match_id = Int()
+
+    class Arguments:
+        match_id = Int(required=True)
+
+    def subscribe(self, info, match_id=None):
+        return [str(match_id)]
+
+    @staticmethod
+    def publish(payload, info, match_id):
+        return MatchSubscription(match=payload)
+
+    @classmethod
+    def update_match(cls, match):
+        cls.broadcast(
+            group=str(match.id),
+            payload=match,
+        )

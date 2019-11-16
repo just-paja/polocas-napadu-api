@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'admin_sso',
     'gsuite.GSuiteConfig',
     'nested_admin',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            '%s/api/templates' % BASE_DIR,
             '%s/theatre_sports/templates' % BASE_DIR,
         ],
         'APP_DIRS': True,
@@ -105,8 +107,8 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'api.routing.application'
 WSGI_APPLICATION = 'api.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -115,6 +117,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
     }
 }
 

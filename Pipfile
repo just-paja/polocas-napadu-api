@@ -32,6 +32,8 @@ django-colorfield = "*"
 django-graphql-jwt = "*"
 django-admin-autocomplete-filter = "*"
 django-nested-admin = "*"
+channels = "*"
+django-channels-graphql-ws = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3"
