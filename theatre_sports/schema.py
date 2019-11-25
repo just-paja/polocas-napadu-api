@@ -113,7 +113,7 @@ class Query:
     score_point_poll = Field(ScorePointPollNode, match_stage_id=Int())
 
     def resolve_foul_type_list(self, info, **kwargs):
-        return FoulType.objects.all()
+        return FoulType.objects.get_visible()
 
     def resolve_match(self, info, **kwargs):
         try:
