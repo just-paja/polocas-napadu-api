@@ -105,10 +105,10 @@ class ShowTypeAdmin(BaseAdminModel):
     inlines = [
         ShowTypePhotoAdmin,
     ]
-    fields = ('name', 'slug', 'visibility', 'short_description', 'description')
+    fields = ('name', 'slug', 'visibility', 'short_description', 'description', 'use_games', 'use_fouls')
     readonly_fields = ('slug',)
-    list_display = ('name', 'visibility')
-    list_filter = ('visibility',)
+    list_display = ('name', 'use_games', 'use_fouls', 'visibility')
+    list_filter = ('use_games', 'use_fouls', 'visibility')
     search_fields = ('name',)
 
 

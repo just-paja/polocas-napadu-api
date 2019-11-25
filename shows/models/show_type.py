@@ -16,6 +16,12 @@ class ShowType(PublicResourceMixin):
         blank=False,
         null=False,
     )
+    use_games = BooleanField(
+        blank=False,
+        default=False,
+        null=False,
+        verbose_name=_('Use games'),
+    )
     use_fouls = BooleanField(
         blank=False,
         default=False,

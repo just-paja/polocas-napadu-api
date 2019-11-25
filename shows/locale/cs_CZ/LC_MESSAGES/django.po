@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-25 08:48+0000\n"
+"POT-Creation-Date: 2019-11-25 17:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,15 +41,15 @@ msgstr "Účinkující"
 
 #: shows/models/show_participant.py:22
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: shows/models/show_participant.py:28
 msgid "Role"
-msgstr ""
+msgstr "Role"
 
 #: shows/models/show_participant.py:41
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: shows/models/show_role.py:10
 msgid "Show role"
@@ -65,15 +65,23 @@ msgstr "Formáty představení"
 
 #: shows/models/show_type.py:13
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: shows/models/show_type.py:15
 msgid "Short Description"
-msgstr ""
+msgstr "Krátký popis"
+
+#: shows/models/show_type.py:23
+msgid "Use games"
+msgstr "Používá hry"
+
+#: shows/models/show_type.py:29
+msgid "Use fouls"
+msgstr "Používá fauly"
 
 #: shows/models/show_volume_calibration.py:16
 msgid "Minimum volume"
-msgstr ""
+msgstr "Minimální hlasitost"
 
 #: shows/models/show_volume_calibration.py:17
 msgid "minimalAudioHelpText"
@@ -89,7 +97,7 @@ msgstr ""
 
 #: shows/models/show_volume_calibration.py:28
 msgid "Maximum volume"
-msgstr ""
+msgstr "Maximální hlasitost"
 
 #: shows/models/show_volume_calibration.py:29
 msgid "maximumAudioHelpText"
@@ -97,7 +105,7 @@ msgstr ""
 
 #: shows/models/show_volume_calibration.py:33
 msgid "Closed"
-msgstr ""
+msgstr "Uzavřeno"
 
 #: shows/models/show_volume_calibration.py:37
 msgid "Show volume calibration"
