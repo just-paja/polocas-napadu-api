@@ -1,3 +1,6 @@
+from django.utils.translation import ugettext_lazy as _
+
+from admin_auto_filters.filters import AutocompleteFilter
 from fields.admin import BaseAdminModel, BaseInlineAdminModel, BaseStackedAdminModel
 
 from .models import Article, Chapter, ChapterPhoto, Poem
@@ -41,7 +44,16 @@ class ArticleAdmin(BaseAdminModel):
     ]
 
 
+class AuthorFilter(AutocompleteFilter):
+    title = _('Author')
+    field_name = 'author'
+
+
 class PoemAdmin(BaseAdminModel):
+
+    class Media:
+        pass
+
     model = Poem
     fields = (
         'author',
@@ -54,7 +66,7 @@ class PoemAdmin(BaseAdminModel):
         'modified'
     )
     list_display = ('name', 'author', 'visibility', 'weight', 'created', 'modified')
-    list_filter = ('author', 'visibility')
+    list_filter = (AuthorFilter, 'visibility')
     readonly_fields = ('slug', 'created', 'modified')
     search_fields = ('name', 'description')
     ordering = ('weight',)
