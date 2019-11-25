@@ -1,5 +1,5 @@
 from django_extensions.db.fields import AutoSlugField
-from django.db.models import TextField
+from django.db.models import BooleanField, TextField
 from django.utils.translation import ugettext_lazy as _
 
 from fields import PublicResourceMixin
@@ -15,4 +15,10 @@ class ShowType(PublicResourceMixin):
         verbose_name=_('Short Description'),
         blank=False,
         null=False,
+    )
+    use_fouls = BooleanField(
+        blank=False,
+        default=False,
+        null=False,
+        verbose_name=_('Use fouls'),
     )
