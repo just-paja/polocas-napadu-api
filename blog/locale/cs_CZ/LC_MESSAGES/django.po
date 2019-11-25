@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 09:00+0000\n"
+"POT-Creation-Date: 2019-11-25 08:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,10 @@ msgstr ""
 #: blog/__init__.py:7
 msgid "Blog"
 msgstr "Blog"
+
+#: blog/admin.py:48
+msgid "Author"
+msgstr "Autor"
 
 #: blog/models/article.py:10
 msgid "Group history"
@@ -33,7 +37,7 @@ msgstr "Článek"
 msgid "Articles"
 msgstr "Články"
 
-#: blog/models/article.py:20 blog/models/chapter.py:19
+#: blog/models/article.py:20 blog/models/chapter.py:19 blog/models/poem.py:14
 msgid "Slug"
 msgstr "Slug"
 
@@ -49,10 +53,18 @@ msgstr "Kapitola"
 msgid "Chapters"
 msgstr "Kapitoly"
 
-#: blog/models/chapter.py:22
+#: blog/models/chapter.py:22 blog/models/poem.py:17
 msgid "weightHelpText"
 msgstr "Těžší objekty se objeví níže"
 
-#: blog/models/chapter.py:23
+#: blog/models/chapter.py:23 blog/models/poem.py:18
 msgid "Weight"
 msgstr "Váha"
+
+#: blog/models/poem.py:11
+msgid "Poem"
+msgstr "Báseň"
+
+#: blog/models/poem.py:12
+msgid "Poems"
+msgstr "Básně"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 09:00+0000\n"
+"POT-Creation-Date: 2019-11-25 08:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr "Barva"
 #: theatre_sports/models/contestant_group.py:44
 #: theatre_sports/models/contestant_group.py:98
 #: theatre_sports/models/match.py:8 theatre_sports/models/match.py:22
-#: theatre_sports/models/match.py:50 theatre_sports/models/match_stage.py:36
+#: theatre_sports/models/match.py:54 theatre_sports/models/match_stage.py:36
 #: theatre_sports/models/score_point.py:45
 msgid "Match"
 msgstr "Zápas"
@@ -64,7 +64,7 @@ msgid "Players"
 msgstr "Hráči"
 
 #: theatre_sports/models/contestant_group.py:97
-#: theatre_sports/models/match.py:51 theatre_sports/models/score_point.py:44
+#: theatre_sports/models/match.py:55 theatre_sports/models/score_point.py:44
 msgid "Date"
 msgstr "Datum"
 
@@ -102,6 +102,10 @@ msgstr "Komentář"
 msgid "Describe what was the foul play"
 msgstr "Popiš improvizační chybu"
 
+#: theatre_sports/models/foul.py:63
+msgid "Match time"
+msgstr "Čas zápasu"
+
 #: theatre_sports/models/foul_type.py:8
 msgid "FoulType"
 msgstr "Typ faulu"
@@ -118,7 +122,7 @@ msgstr "Zápasy"
 msgid "Closed"
 msgstr "Uzavřeno"
 
-#: theatre_sports/models/match.py:52
+#: theatre_sports/models/match.py:56
 msgid "Stage"
 msgstr "Fáze"
 
