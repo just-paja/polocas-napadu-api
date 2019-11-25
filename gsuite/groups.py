@@ -31,6 +31,7 @@ MODELS_BASE = [
     'LogEntry',
     'Match',
     'MatchStage',
+    'Poem',
     'Profile',
     'ProfileGroup',
     'ProfilePhoto',

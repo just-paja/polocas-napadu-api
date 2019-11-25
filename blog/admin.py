@@ -1,6 +1,6 @@
 from fields.admin import BaseAdminModel, BaseInlineAdminModel, BaseStackedAdminModel
 
-from .models import Article, Chapter, ChapterPhoto
+from .models import Article, Chapter, ChapterPhoto, Poem
 
 
 class ChapterPhotoAdmin(BaseInlineAdminModel):
@@ -39,3 +39,22 @@ class ArticleAdmin(BaseAdminModel):
     inlines = [
         ChapterInlineAdmin,
     ]
+
+
+class PoemAdmin(BaseAdminModel):
+    model = Poem
+    fields = (
+        'author',
+        'name',
+        'description',
+        'visibility',
+        'weight',
+        'slug',
+        'created',
+        'modified'
+    )
+    list_display = ('name', 'author', 'visibility', 'weight', 'created', 'modified')
+    list_filter = ('author', 'visibility')
+    readonly_fields = ('slug', 'created', 'modified')
+    search_fields = ('name', 'description')
+    ordering = ('weight',)
