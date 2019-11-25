@@ -38,6 +38,7 @@ class GameAdmin(BaseAdminModel):
 class GameRulesAdmin(BaseAdminModel):
 
     model = GameRules
+    fields = ('name', 'slug', 'description', 'visibility')
     search_fields = [
         'name',
         'description',
@@ -47,3 +48,4 @@ class GameRulesAdmin(BaseAdminModel):
         'visibility',
         'modified',
     ]
+    readonly_fields = ('slug',)
