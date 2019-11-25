@@ -70,3 +70,6 @@ class PoemAdmin(BaseAdminModel):
     readonly_fields = ('slug', 'created', 'modified')
     search_fields = ('name', 'description')
     ordering = ('weight',)
+    autocomplete_fields = [
+        'author',
+    ]
