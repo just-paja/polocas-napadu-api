@@ -1,4 +1,4 @@
-from graphene import List, Node, String
+from graphene import Field, List, String
 
 from graphene_django.types import DjangoObjectType
 
@@ -26,13 +26,19 @@ class GameNode(DjangoObjectType):
 
 
 class Query:
-    game = Node.Field(GameNode)
+    game = Field(GameNode)
     game_list = List(GameNode)
-    game_rules = Node.Field(GameRulesNode)
+    game_rules = Field(GameRulesNode, slug=String())
     game_rules_list = List(GameRulesNode)
 
     def resolve_game_list(self, info):
         return Game.objects.filter(show__visible=True).all()
+
+    def resolve_game_rules(self, info, slug=None):
+        try:
+            return GameRules.objects.get_visible().get(slug=slug)
+        except GameRules.DoesNotExist:
+            return None
 
     def resolve_game_rules_list(self, info):
         return GameRules.objects.get_visible().all()
