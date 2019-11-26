@@ -18,7 +18,9 @@ class FoulTypeAdmin(BaseAdminModel):
 
     model = FoulType
     search_fields = ['name', 'description']
-    list_display = ['name', 'visibility']
+    list_display = ['name', 'visibility', 'modified']
+    fields = ('name', 'slug', 'description', 'visibility', 'created', 'modified')
+    readonly_fields = ('slug', 'modified', 'created')
 
 
 class FoulForm(forms.ModelForm):
