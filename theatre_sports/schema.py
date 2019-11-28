@@ -107,10 +107,17 @@ class ScorePointPollVotingNode(DjangoObjectType):
 
 
 class Query:
+    foul_type = Field(FoulTypeNode, slug=String())
     foul_type_list = List(FoulTypeNode)
     match = Field(MatchNode, id=Int())
     match_list = List(MatchNode)
     score_point_poll = Field(ScorePointPollNode, match_stage_id=Int())
+
+    def resolve_foul_type(self, info, slug=None):
+        try:
+            return FoulType.objects.get_visible().get(slug=slug)
+        except FoulType.DoesNotExist:
+            return None
 
     def resolve_foul_type_list(self, info, **kwargs):
         return FoulType.objects.get_visible()
