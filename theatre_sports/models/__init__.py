@@ -10,12 +10,12 @@ from .score_point_poll import ScorePointPoll
 from .score_point_poll_voting import ScorePointPollVoting
 
 __all__ = (
-    'ContestantGroup',
-    'Foul',
-    'FoulType',
-    'Match',
-    'MatchStage',
-    'ScorePoint',
-    'ScorePointPoll',
-    'ScorePointPollVoting',
+    "ContestantGroup",
+    "Foul",
+    "FoulType",
+    "Match",
+    "MatchStage",
+    "ScorePoint",
+    "ScorePointPoll",
+    "ScorePointPollVoting",
 )

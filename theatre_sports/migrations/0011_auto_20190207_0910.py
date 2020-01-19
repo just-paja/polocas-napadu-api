@@ -7,18 +7,21 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0003_auto_20190113_1759'),
-        ('theatre_sports', '0010_remove_scorepoint_match'),
+        ("shows", "0003_auto_20190113_1759"),
+        ("theatre_sports", "0010_remove_scorepoint_match"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='foul',
-            name='match',
-        ),
+        migrations.RemoveField(model_name="foul", name="match",),
         migrations.AddField(
-            model_name='foul',
-            name='player',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='fouls', to='shows.ShowParticipant'),
+            model_name="foul",
+            name="player",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="fouls",
+                to="shows.ShowParticipant",
+            ),
         ),
     ]

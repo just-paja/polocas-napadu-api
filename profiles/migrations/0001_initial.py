@@ -11,72 +11,157 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('name', models.CharField(max_length=127)),
-                ('about', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                ("name", models.CharField(max_length=127)),
+                ("about", models.TextField()),
             ],
             options={
-                'ordering': ('-modified', '-created'),
-                'get_latest_by': 'modified',
-                'abstract': False,
+                "ordering": ("-modified", "-created"),
+                "get_latest_by": "modified",
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='ProfileGroup',
+            name="ProfileGroup",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', fields.name.NameField(max_length=63)),
-                ('public', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", fields.name.NameField(max_length=63)),
+                ("public", models.BooleanField(default=False)),
             ],
         ),
         migrations.AddField(
-            model_name='profile',
-            name='group',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to='profiles.ProfileGroup'),
+            model_name="profile",
+            name="group",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                to="profiles.ProfileGroup",
+            ),
         ),
         migrations.CreateModel(
-            name='ProfilePhoto',
+            name="ProfilePhoto",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('image', models.ImageField(height_field='height', upload_to='var/photos', width_field='width')),
-                ('height', models.PositiveIntegerField(blank=True, default=100, editable=False, null=True)),
-                ('width', models.PositiveIntegerField(blank=True, default=100, editable=False, null=True)),
-                ('description', models.CharField(blank=True, max_length=255, null=True, verbose_name='Description')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2)),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='photos', to='profiles.Profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        height_field="height",
+                        upload_to="var/photos",
+                        width_field="width",
+                    ),
+                ),
+                (
+                    "height",
+                    models.PositiveIntegerField(
+                        blank=True, default=100, editable=False, null=True
+                    ),
+                ),
+                (
+                    "width",
+                    models.PositiveIntegerField(
+                        blank=True, default=100, editable=False, null=True
+                    ),
+                ),
+                (
+                    "description",
+                    models.CharField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        verbose_name="Description",
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="photos",
+                        to="profiles.Profile",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
         migrations.AddField(
-            model_name='profile',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='name', verbose_name='Slug'),
+            model_name="profile",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="name", verbose_name="Slug"
+            ),
         ),
         migrations.AddField(
-            model_name='profile',
-            name='visibility',
-            field=fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2),
+            model_name="profile",
+            name="visibility",
+            field=fields.visibility.VisibilityField(
+                choices=[(1, "Private"), (2, "Public"), (3, "Deleted")], default=2
+            ),
         ),
-        migrations.AlterModelOptions(
-            name='profile',
-            options={},
-        ),
+        migrations.AlterModelOptions(name="profile", options={},),
         migrations.AlterField(
-            model_name='profile',
-            name='name',
+            model_name="profile",
+            name="name",
             field=fields.name.NameField(max_length=63),
         ),
     ]

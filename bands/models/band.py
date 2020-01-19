@@ -6,11 +6,10 @@ from fields import NameMixin, VisibilityMixin
 
 
 class Band(TimeStampedModel, NameMixin, VisibilityMixin):
-
     class Meta:
-        verbose_name = _('Band')
-        verbose_name_plural = _('Bands')
+        verbose_name = _("Band")
+        verbose_name_plural = _("Bands")
 
     city = CharField(max_length=127)
     website = URLField(blank=True, null=True)
-    logo = ImageField(upload_to='bands', blank=True, null=True)
+    logo = ImageField(upload_to="bands", blank=True, null=True)

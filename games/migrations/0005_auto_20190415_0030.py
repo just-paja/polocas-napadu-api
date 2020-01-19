@@ -7,13 +7,15 @@ import fields.description
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('games', '0004_auto_20190204_1920'),
+        ("games", "0004_auto_20190204_1920"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='gamerules',
-            name='description',
-            field=fields.description.DescriptionField(help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="gamerules",
+            name="description",
+            field=fields.description.DescriptionField(
+                help_text="nameDescriptionText", verbose_name="Description"
+            ),
         ),
     ]

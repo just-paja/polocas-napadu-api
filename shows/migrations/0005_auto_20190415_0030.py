@@ -7,30 +7,42 @@ import fields.description
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0004_auto_20190415_0024'),
+        ("shows", "0004_auto_20190415_0024"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='show',
-            name='description',
-            field=fields.description.DescriptionField(help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="show",
+            name="description",
+            field=fields.description.DescriptionField(
+                help_text="nameDescriptionText", verbose_name="Description"
+            ),
         ),
         migrations.AlterField(
-            model_name='showphoto',
-            name='description',
-            field=fields.description.DescriptionField(default=None, help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="showphoto",
+            name="description",
+            field=fields.description.DescriptionField(
+                default=None,
+                help_text="nameDescriptionText",
+                verbose_name="Description",
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='showtype',
-            name='description',
-            field=fields.description.DescriptionField(help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="showtype",
+            name="description",
+            field=fields.description.DescriptionField(
+                help_text="nameDescriptionText", verbose_name="Description"
+            ),
         ),
         migrations.AlterField(
-            model_name='showtypephoto',
-            name='description',
-            field=fields.description.DescriptionField(default=None, help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="showtypephoto",
+            name="description",
+            field=fields.description.DescriptionField(
+                default=None,
+                help_text="nameDescriptionText",
+                verbose_name="Description",
+            ),
             preserve_default=False,
         ),
     ]

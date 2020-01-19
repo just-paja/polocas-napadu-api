@@ -4,28 +4,27 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ShowParticipant(TimeStampedModel):
-
     class Meta:
-        verbose_name = _('Show participant')
-        verbose_name_plural = _('Show participants')
+        verbose_name = _("Show participant")
+        verbose_name_plural = _("Show participants")
 
     show = ForeignKey(
-        'Show',
+        "Show",
         on_delete=CASCADE,
-        related_name='showsParticipants',
-        verbose_name=_('Show'),
+        related_name="showsParticipants",
+        verbose_name=_("Show"),
     )
     profile = ForeignKey(
-        'profiles.Profile',
+        "profiles.Profile",
         on_delete=CASCADE,
-        related_name='showsParticipated',
-        verbose_name=_('Profile'),
+        related_name="showsParticipated",
+        verbose_name=_("Profile"),
     )
     role = ForeignKey(
-        'ShowRole',
+        "ShowRole",
         on_delete=CASCADE,
-        related_name='showsParticipants',
-        verbose_name=_('Role'),
+        related_name="showsParticipants",
+        verbose_name=_("Role"),
     )
 
     def __str__(self):
@@ -38,5 +37,5 @@ class ShowParticipant(TimeStampedModel):
         return self.show.start
 
 
-ShowParticipant.get_show_date.short_description = _('Date')
-ShowParticipant.get_show_name.short_description = _('Show')
+ShowParticipant.get_show_date.short_description = _("Date")
+ShowParticipant.get_show_name.short_description = _("Show")

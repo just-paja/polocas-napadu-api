@@ -82,9 +82,7 @@ class MatchNode(DjangoObjectType):
 
     def resolve_prepared_inspiration_count(self, info):
         return self.show.inspirations.filter(
-            discarded=False,
-            stages=None,
-            inspiration_games=None,
+            discarded=False, stages=None, inspiration_games=None,
         ).count()
 
     def resolve_score_points(self, info):
@@ -124,7 +122,7 @@ class Query:
 
     def resolve_match(self, info, **kwargs):
         try:
-            return Match.objects.get(pk=kwargs.get('id'))
+            return Match.objects.get(pk=kwargs.get("id"))
         except Match.DoesNotExist:
             return None
 
@@ -133,7 +131,7 @@ class Query:
 
     def resolve_score_point_poll(self, info, **kwargs):
         try:
-            stage = MatchStage.objects.get(pk=kwargs.get('match_stage_id'))
+            stage = MatchStage.objects.get(pk=kwargs.get("match_stage_id"))
         except MatchStage.DoesNotExist:
             return None
         try:
@@ -155,7 +153,7 @@ class ChangeMatchStage(Mutation):
     def mutate(root, info, match_id=None, stage=None):
         match = Match.objects.get(pk=match_id)
         prev_stage = match.get_current_stage()
-        stage_type = int(stage.split('_')[1])
+        stage_type = int(stage.split("_")[1])
         game = None
         inspirations = []
         if prev_stage and prev_stage.pass_game_to_next_stage():
@@ -163,15 +161,8 @@ class ChangeMatchStage(Mutation):
             inspirations = prev_stage.inspirations.all()
             if inspirations:
                 game.inspirations.set(inspirations)
-        stage = MatchStage.objects.create(
-            game=game,
-            match=match,
-            type=stage_type,
-        )
-        return ChangeMatchStage(
-            stage=stage,
-            ok=True
-        )
+        stage = MatchStage.objects.create(game=game, match=match, type=stage_type,)
+        return ChangeMatchStage(stage=stage, ok=True)
 
 
 class RewindMatchStage(Mutation):
@@ -187,10 +178,7 @@ class RewindMatchStage(Mutation):
         match = Match.objects.get(pk=match_id)
         current_stage = match.get_current_stage()
         current_stage.delete()
-        return ChangeMatchStage(
-            stage=match.get_current_stage(),
-            ok=True
-        )
+        return ChangeMatchStage(stage=match.get_current_stage(), ok=True)
 
 
 class SetMatchGame(Mutation):
@@ -213,10 +201,7 @@ class SetMatchGame(Mutation):
                 stage.game.rules = rules
                 stage.game.save()
             else:
-                game = Game.objects.create(
-                    show=match.show,
-                    rules=rules,
-                )
+                game = Game.objects.create(show=match.show, rules=rules,)
                 stage.game = game
                 stage.save()
         elif stage.game:
@@ -224,11 +209,7 @@ class SetMatchGame(Mutation):
             stage.game = None
             stage.save()
             game.delete()
-        return SetMatchGame(
-            game=stage.game,
-            stage=stage,
-            ok=True
-        )
+        return SetMatchGame(game=stage.game, stage=stage, ok=True)
 
 
 class RandomPickInspiration(Mutation):
@@ -251,18 +232,17 @@ class RandomPickInspiration(Mutation):
                 insp.save()
             stage.inspirations.clear()
             stage.save()
-        inspiration = match.show.inspirations.filter(
-            discarded=False,
-            stages=None,
-            inspiration_games=None,
-        ).order_by('?').first()
+        inspiration = (
+            match.show.inspirations.filter(
+                discarded=False, stages=None, inspiration_games=None,
+            )
+            .order_by("?")
+            .first()
+        )
         if inspiration:
             stage.inspirations.add(inspiration)
             stage.save()
-        return RandomPickInspiration(
-            stage=stage,
-            ok=True
-        )
+        return RandomPickInspiration(stage=stage, ok=True)
 
 
 class DiscardInspiration(Mutation):
@@ -280,10 +260,7 @@ class DiscardInspiration(Mutation):
             inspiration.discarded = True
             inspiration.stages.clear()
             inspiration.save()
-        return DiscardInspiration(
-            inspiration=inspiration,
-            ok=True
-        )
+        return DiscardInspiration(inspiration=inspiration, ok=True)
 
 
 class ChangeContestantGroupScore(Mutation):
@@ -307,8 +284,7 @@ class ChangeContestantGroupScore(Mutation):
                     score_point.delete()
             else:
                 ScorePoint.objects.create(
-                    game=game,
-                    contestant_group=group,
+                    game=game, contestant_group=group,
                 )
             success = True
         return DiscardInspiration(ok=success)
@@ -335,10 +311,7 @@ class AddFoulPoint(Mutation):
             player = None
         if group and foul_type:
             Foul.objects.create(
-                contestant_group=group,
-                game=game,
-                player=player,
-                foul_type=foul_type,
+                contestant_group=group, game=game, player=player, foul_type=foul_type,
             )
             result = True
         return AddFoulPoint(ok=result)
@@ -356,8 +329,7 @@ class AddAndUseInspiration(Mutation):
         match = Match.objects.get(pk=match_id)
         stage = match.get_current_stage()
         inspiration = Inspiration.objects.create(
-            show=match.show,
-            text=inspiration_text,
+            show=match.show, text=inspiration_text,
         )
         stage.inspirations.add(inspiration)
         return AddAndUseInspiration(ok=True)
@@ -395,8 +367,7 @@ class StartScorePointVoting(Mutation):
             voting.volume_scrapes.all().delete()
         except ScorePointPollVoting.DoesNotExist:
             voting = ScorePointPollVoting.objects.create(
-                poll=poll,
-                contestant_group=contestant_group,
+                poll=poll, contestant_group=contestant_group,
             )
         return StartScorePointVoting(voting=voting)
 

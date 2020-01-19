@@ -12,73 +12,158 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('inspirations', '0002_inspiration_discarded'),
-        ('shows', '0003_auto_20190113_1759'),
+        ("inspirations", "0002_inspiration_discarded"),
+        ("shows", "0003_auto_20190113_1759"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Game',
+            name="Game",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('time_limit', models.PositiveIntegerField(blank=True, null=True)),
-                ('start', models.DateTimeField(blank=True, null=True)),
-                ('end', models.DateTimeField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                ("time_limit", models.PositiveIntegerField(blank=True, null=True)),
+                ("start", models.DateTimeField(blank=True, null=True)),
+                ("end", models.DateTimeField(blank=True, null=True)),
+            ],
+            options={"verbose_name": "Game", "verbose_name_plural": "Games",},
+        ),
+        migrations.CreateModel(
+            name="GameRules",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "name",
+                    fields.name.NameField(
+                        help_text="nameHelpText", max_length=63, verbose_name="Name"
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                        help_text="visibilityHelpText",
+                        verbose_name="Visibility",
+                    ),
+                ),
+                ("description", models.TextField(max_length=255)),
+            ],
+            options={"verbose_name": "Game Rule", "verbose_name_plural": "Game Rules",},
+        ),
+        migrations.CreateModel(
+            name="GameInspiration",
+            fields=[
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "game",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="games.Game"
+                    ),
+                ),
+                (
+                    "inspiration",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="inspirations.Inspiration",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Game',
-                'verbose_name_plural': 'Games',
+                "verbose_name": "Game Inspiration",
+                "verbose_name_plural": "Game Inspirations",
             },
         ),
         migrations.CreateModel(
-            name='GameRules',
+            name="GameActor",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('name', fields.name.NameField(help_text='nameHelpText', max_length=63, verbose_name='Name')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility')),
-                ('description', models.TextField(max_length=255)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "game",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="games.Game"
+                    ),
+                ),
+                (
+                    "participant",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shows.ShowParticipant",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Game Rule',
-                'verbose_name_plural': 'Game Rules',
-            },
-        ),
-        migrations.CreateModel(
-            name='GameInspiration',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.Game')),
-                ('inspiration', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='inspirations.Inspiration')),
-            ],
-            options={
-                'verbose_name': 'Game Inspiration',
-                'verbose_name_plural': 'Game Inspirations',
-            },
-        ),
-        migrations.CreateModel(
-            name='GameActor',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.Game')),
-                ('participant', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shows.ShowParticipant')),
-            ],
-            options={
-                'verbose_name': 'Game Actor',
-                'verbose_name_plural': 'Game Actors',
+                "verbose_name": "Game Actor",
+                "verbose_name_plural": "Game Actors",
             },
         ),
         migrations.AddField(
-            model_name='game',
-            name='rules',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='games.GameRules'),
+            model_name="game",
+            name="rules",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT, to="games.GameRules"
+            ),
         ),
         migrations.AddField(
-            model_name='game',
-            name='show',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shows.Show'),
+            model_name="game",
+            name="show",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="shows.Show"
+            ),
         ),
     ]

@@ -6,16 +6,22 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0001_initial'),
+        ("profiles", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='profile',
-            options={'verbose_name': 'Actor profile', 'verbose_name_plural': 'Actor profiles'},
+            name="profile",
+            options={
+                "verbose_name": "Actor profile",
+                "verbose_name_plural": "Actor profiles",
+            },
         ),
         migrations.AlterModelOptions(
-            name='profilegroup',
-            options={'verbose_name': 'Actor group', 'verbose_name_plural': 'Actor groups'},
+            name="profilegroup",
+            options={
+                "verbose_name": "Actor group",
+                "verbose_name_plural": "Actor groups",
+            },
         ),
     ]

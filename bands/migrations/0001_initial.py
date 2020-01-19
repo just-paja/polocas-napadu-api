@@ -11,56 +11,127 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Band',
+            name="Band",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('name', models.CharField(max_length=127)),
-                ('website', models.URLField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                ("name", models.CharField(max_length=127)),
+                ("website", models.URLField(blank=True, null=True)),
             ],
             options={
-                'ordering': ('-modified', '-created'),
-                'get_latest_by': 'modified',
-                'abstract': False,
+                "ordering": ("-modified", "-created"),
+                "get_latest_by": "modified",
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='BandPhoto',
+            name="BandPhoto",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('image', models.ImageField(height_field='height', upload_to='var/photos', width_field='width')),
-                ('height', models.PositiveIntegerField(blank=True, default=100, editable=False, null=True)),
-                ('width', models.PositiveIntegerField(blank=True, default=100, editable=False, null=True)),
-                ('description', models.CharField(blank=True, max_length=255, null=True, verbose_name='Description')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2)),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='photos', to='bands.Band')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        height_field="height",
+                        upload_to="var/photos",
+                        width_field="width",
+                    ),
+                ),
+                (
+                    "height",
+                    models.PositiveIntegerField(
+                        blank=True, default=100, editable=False, null=True
+                    ),
+                ),
+                (
+                    "width",
+                    models.PositiveIntegerField(
+                        blank=True, default=100, editable=False, null=True
+                    ),
+                ),
+                (
+                    "description",
+                    models.CharField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        verbose_name="Description",
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="photos",
+                        to="bands.Band",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
         migrations.AddField(
-            model_name='band',
-            name='city',
+            model_name="band",
+            name="city",
             field=models.CharField(default=None, max_length=127),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='band',
-            name='visibility',
-            field=fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2),
+            model_name="band",
+            name="visibility",
+            field=fields.visibility.VisibilityField(
+                choices=[(1, "Private"), (2, "Public"), (3, "Deleted")], default=2
+            ),
         ),
         migrations.AlterField(
-            model_name='band',
-            name='name',
-            field=fields.name.NameField(max_length=63),
+            model_name="band", name="name", field=fields.name.NameField(max_length=63),
         ),
     ]

@@ -3,23 +3,23 @@ from django.utils.translation import ugettext_lazy as _
 
 from voting.models import LivePoll
 
-class ScorePointPoll(LivePoll):
 
+class ScorePointPoll(LivePoll):
     class Meta:
-        verbose_name = _('Score Point Poll')
-        verbose_name_plural = _('Score Point Polls')
+        verbose_name = _("Score Point Poll")
+        verbose_name_plural = _("Score Point Polls")
 
     stage = OneToOneField(
-        'MatchStage',
+        "MatchStage",
         on_delete=CASCADE,
-        related_name='score_point_poll',
-        verbose_name=_('Match Stage'),
+        related_name="score_point_poll",
+        verbose_name=_("Match Stage"),
     )
     winner = ForeignKey(
-        'ScorePointPollVoting',
+        "ScorePointPollVoting",
         on_delete=CASCADE,
-        related_name='winning_polls',
-        verbose_name=_('Winner'),
+        related_name="winning_polls",
+        verbose_name=_("Winner"),
         null=True,
         blank=True,
     )

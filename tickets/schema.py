@@ -20,8 +20,7 @@ class Query:
             show = Show.objects.get(slug=show_slug)
         except Show.DoesNotExist:
             return 0
-        obj = Reservation.objects.filter(
-            show=show,
-            status=STATUS_CONFIRMED,
-        ).aggregate(Sum('seat_count'))
-        return obj['seat_count__sum'] or 0
+        obj = Reservation.objects.filter(show=show, status=STATUS_CONFIRMED,).aggregate(
+            Sum("seat_count")
+        )
+        return obj["seat_count__sum"] or 0

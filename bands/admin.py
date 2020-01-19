@@ -16,6 +16,6 @@ class BandAdmin(BaseAdminModel):
     inlines = [
         BandPhotoAdmin,
     ]
-    list_display = ('name', 'city', 'website', 'visibility')
-    list_filter = ('visibility',)
-    search_fields = ('name', 'city')
+    list_display = ("name", "city", "website", "visibility")
+    list_filter = ("visibility",)
+    search_fields = ("name", "city")

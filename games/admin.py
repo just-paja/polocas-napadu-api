@@ -7,7 +7,7 @@ class GameActorAdmin(BaseInlineAdminModel):
 
     model = GameActor
     autocomplete_fields = [
-        'participant',
+        "participant",
     ]
 
 
@@ -16,19 +16,19 @@ class GameAdmin(BaseAdminModel):
     model = Game
     inlines = [GameActorAdmin]
     autocomplete_fields = [
-        'show',
-        'rules',
-        'inspirations',
+        "show",
+        "rules",
+        "inspirations",
     ]
     list_display = [
-        'rules',
-        'get_show_name',
-        'get_show_date',
-        'modified',
+        "rules",
+        "get_show_name",
+        "get_show_date",
+        "modified",
     ]
     list_filter = [ShowFilter]
     search_fields = [
-        'rules__name',
+        "rules__name",
     ]
 
     class Media:
@@ -38,14 +38,14 @@ class GameAdmin(BaseAdminModel):
 class GameRulesAdmin(BaseAdminModel):
 
     model = GameRules
-    fields = ('name', 'slug', 'description', 'visibility')
+    fields = ("name", "slug", "description", "visibility")
     search_fields = [
-        'name',
-        'description',
+        "name",
+        "description",
     ]
     list_display = [
-        'name',
-        'visibility',
-        'modified',
+        "name",
+        "visibility",
+        "modified",
     ]
-    readonly_fields = ('slug',)
+    readonly_fields = ("slug",)

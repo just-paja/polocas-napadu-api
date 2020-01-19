@@ -7,23 +7,38 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0006_auto_20190415_0053'),
+        ("shows", "0006_auto_20190415_0053"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='showparticipant',
-            name='profile',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='showsParticipated', to='profiles.Profile', verbose_name='Profile'),
+            model_name="showparticipant",
+            name="profile",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="showsParticipated",
+                to="profiles.Profile",
+                verbose_name="Profile",
+            ),
         ),
         migrations.AlterField(
-            model_name='showparticipant',
-            name='role',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='showsParticipants', to='shows.ShowRole', verbose_name='Role'),
+            model_name="showparticipant",
+            name="role",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="showsParticipants",
+                to="shows.ShowRole",
+                verbose_name="Role",
+            ),
         ),
         migrations.AlterField(
-            model_name='showparticipant',
-            name='show',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='showsParticipants', to='shows.Show', verbose_name='Show'),
+            model_name="showparticipant",
+            name="show",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="showsParticipants",
+                to="shows.Show",
+                verbose_name="Show",
+            ),
         ),
     ]

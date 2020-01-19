@@ -7,14 +7,18 @@ import fields.description
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bands', '0003_band_logo'),
+        ("bands", "0003_band_logo"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bandphoto',
-            name='description',
-            field=fields.description.DescriptionField(default=None, help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="bandphoto",
+            name="description",
+            field=fields.description.DescriptionField(
+                default=None,
+                help_text="nameDescriptionText",
+                verbose_name="Description",
+            ),
             preserve_default=False,
         ),
     ]

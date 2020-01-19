@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-25 17:55+0000\n"
+"POT-Creation-Date: 2020-01-08 08:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api/settings.py:147
+#: api/settings.py:148
 msgid "Czech"
 msgstr "Czech"
 
-#: api/settings.py:148
+#: api/settings.py:149
 msgid "English"
 msgstr "English"
 
@@ -80,3 +80,8 @@ msgstr "Snímek hlasitosti"
 #: voting/models/volume_scrape.py:20
 msgid "Volume scrapes"
 msgstr "Snímky hlasitosti"
+
+#, fuzzy
+#~| msgid "Voting"
+#~ msgid "Accounting"
+#~ msgstr "Hlasování"

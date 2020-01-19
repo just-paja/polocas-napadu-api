@@ -24,15 +24,16 @@ class PublicQuery(
     theatre_sports.schema.Query,
     tickets.schema.Query,
     voting.schema.Query,
-    graphene.ObjectType
+    graphene.ObjectType,
 ):
     pass
+
 
 class Mutation(
     theatre_sports.schema.Mutations,
     shows.schema.Mutations,
     voting.schema.Mutations,
-    graphene.ObjectType
+    graphene.ObjectType,
 ):
     verify_token = graphql_jwt.Verify.Field()
     refresh_token = graphql_jwt.Refresh.Field()

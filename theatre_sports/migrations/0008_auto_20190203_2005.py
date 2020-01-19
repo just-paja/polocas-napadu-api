@@ -6,19 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('inspirations', '0003_auto_20190126_1402'),
-        ('theatre_sports', '0007_auto_20190127_1604'),
+        ("inspirations", "0003_auto_20190126_1402"),
+        ("theatre_sports", "0007_auto_20190127_1604"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='matchstage',
-            name='inspirations',
-            field=models.ManyToManyField(blank=True, related_name='stages', to='inspirations.Inspiration'),
+            model_name="matchstage",
+            name="inspirations",
+            field=models.ManyToManyField(
+                blank=True, related_name="stages", to="inspirations.Inspiration"
+            ),
         ),
         migrations.AlterField(
-            model_name='matchstage',
-            name='type',
-            field=models.PositiveIntegerField(choices=[(1, 'stage-show-setup'), (2, 'stage-intro'), (3, 'stage-game-setup'), (4, 'stage-game'), (5, 'stage-voting'), (6, 'stage-game-results'), (7, 'stage-pause'), (8, 'stage-finale')]),
+            model_name="matchstage",
+            name="type",
+            field=models.PositiveIntegerField(
+                choices=[
+                    (1, "stage-show-setup"),
+                    (2, "stage-intro"),
+                    (3, "stage-game-setup"),
+                    (4, "stage-game"),
+                    (5, "stage-voting"),
+                    (6, "stage-game-results"),
+                    (7, "stage-pause"),
+                    (8, "stage-finale"),
+                ]
+            ),
         ),
     ]

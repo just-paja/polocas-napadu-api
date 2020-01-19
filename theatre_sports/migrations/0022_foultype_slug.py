@@ -7,13 +7,19 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theatre_sports', '0021_auto_20190520_1928'),
+        ("theatre_sports", "0021_auto_20190520_1928"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='foultype',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, overwrite=True, populate_from='name', verbose_name='Slug'),
+            model_name="foultype",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True,
+                editable=False,
+                overwrite=True,
+                populate_from="name",
+                verbose_name="Slug",
+            ),
         ),
     ]

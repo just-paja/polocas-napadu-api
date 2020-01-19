@@ -6,13 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0007_profilegroup_weight'),
+        ("profiles", "0007_profilegroup_weight"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='avatar',
-            field=models.ImageField(blank=True, height_field='height', null=True, upload_to='var/avatars', verbose_name='Avatar', width_field='width'),
+            model_name="profile",
+            name="avatar",
+            field=models.ImageField(
+                blank=True,
+                height_field="height",
+                null=True,
+                upload_to="var/avatars",
+                verbose_name="Avatar",
+                width_field="width",
+            ),
         ),
     ]

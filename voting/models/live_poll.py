@@ -7,10 +7,7 @@ from .live_poll_type_field import LivePollTypeField
 
 class LivePoll(TimeStampedModel):
     poll_type = LivePollTypeField()
-    closed = BooleanField(
-        default=False,
-        verbose_name=_('Closed'),
-    )
+    closed = BooleanField(default=False, verbose_name=_("Closed"),)
 
     class Meta:
         abstract = True
@@ -21,8 +18,7 @@ class LivePoll(TimeStampedModel):
         votings = self.votings.all()
         for voting in votings:
             if voting.avg_volume is not None and (
-                not winner
-                or loudest < voting.avg_volume
+                not winner or loudest < voting.avg_volume
             ):
                 winner = voting
                 loudest = voting.avg_volume

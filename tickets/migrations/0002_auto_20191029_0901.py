@@ -6,38 +6,51 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tickets', '0001_initial'),
+        ("tickets", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='reservation',
-            name='customer_email',
-            field=models.EmailField(max_length=254, verbose_name='Customer email'),
+            model_name="reservation",
+            name="customer_email",
+            field=models.EmailField(max_length=254, verbose_name="Customer email"),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='customer_name',
-            field=models.CharField(max_length=63, verbose_name='Customer name'),
+            model_name="reservation",
+            name="customer_name",
+            field=models.CharField(max_length=63, verbose_name="Customer name"),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='newsletter',
-            field=models.BooleanField(default=False, verbose_name='Newsletter'),
+            model_name="reservation",
+            name="newsletter",
+            field=models.BooleanField(default=False, verbose_name="Newsletter"),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='seat_count',
-            field=models.PositiveIntegerField(default=1, verbose_name='Number of seats'),
+            model_name="reservation",
+            name="seat_count",
+            field=models.PositiveIntegerField(
+                default=1, verbose_name="Number of seats"
+            ),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='seat_location',
-            field=models.PositiveIntegerField(choices=[(1, 'Whatever'), (2, 'First row'), (3, 'Middle'), (4, 'Far end')], verbose_name='Seat location'),
+            model_name="reservation",
+            name="seat_location",
+            field=models.PositiveIntegerField(
+                choices=[
+                    (1, "Whatever"),
+                    (2, "First row"),
+                    (3, "Middle"),
+                    (4, "Far end"),
+                ],
+                verbose_name="Seat location",
+            ),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='status',
-            field=models.PositiveIntegerField(choices=[(1, 'Ordered'), (2, 'Confirmed'), (3, 'Canceled')], verbose_name='Status'),
+            model_name="reservation",
+            name="status",
+            field=models.PositiveIntegerField(
+                choices=[(1, "Ordered"), (2, "Confirmed"), (3, "Canceled")],
+                verbose_name="Status",
+            ),
         ),
     ]

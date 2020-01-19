@@ -6,24 +6,24 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0001_initial'),
+        ("shows", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='matchresults',
-            options={'verbose_name': 'Match results', 'verbose_name_plural': 'Matches results'},
+            name="matchresults",
+            options={
+                "verbose_name": "Match results",
+                "verbose_name_plural": "Matches results",
+            },
         ),
         migrations.AlterModelOptions(
-            name='show',
-            options={'verbose_name': 'Show', 'verbose_name_plural': 'Shows'},
+            name="show",
+            options={"verbose_name": "Show", "verbose_name_plural": "Shows"},
         ),
+        migrations.AlterModelOptions(name="showrole", options={},),
         migrations.AlterModelOptions(
-            name='showrole',
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name='showtype',
-            options={'verbose_name': 'Show type', 'verbose_name_plural': 'Show types'},
+            name="showtype",
+            options={"verbose_name": "Show type", "verbose_name_plural": "Show types"},
         ),
     ]

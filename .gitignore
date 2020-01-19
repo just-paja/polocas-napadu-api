@@ -3,6 +3,9 @@ local_settings.py
 requirements.txt
 /var
 /dist
+/htmlcov
+/cc-test-reporter
+/coverage.xml
 *.egg-info
 *.mo
 .pytest_cache

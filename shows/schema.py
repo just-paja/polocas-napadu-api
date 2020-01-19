@@ -36,9 +36,7 @@ class ShowNode(DjangoObjectType):
         model = Show
 
     def resolve_inspiration_qr_url(self, info):
-        path = reverse('show_inspiration_qr', kwargs={
-            'show_id': self.id,
-        })
+        path = reverse("show_inspiration_qr", kwargs={"show_id": self.id, })
         return append_host_from_context(path, info.context)
 
     def resolve_total_inspirations(self, info):
@@ -73,10 +71,9 @@ class AddInspiration(Mutation):
         show = Show.objects.get(pk=show_id)
         exists = show.inspirations.filter(text=inspiration_text).count() > 0
         if exists:
-            return GraphQLError('already-exists')
+            return GraphQLError("already-exists")
         Inspiration.objects.create(
-            show=show,
-            text=inspiration_text,
+            show=show, text=inspiration_text,
         )
         return AddInspiration(ok=True)
 
@@ -103,11 +100,11 @@ class Query:
             return None
 
     def resolve_show_list(self, info, **kwargs):
-        future = kwargs.get('future') or False
-        limit = kwargs.get('limit') or None
-        past = kwargs.get('past') or False
-        show_type_slug = kwargs.get('show_type_slug') or None
-        order_by = kwargs.get('order_by') or '-start'
+        future = kwargs.get("future") or False
+        limit = kwargs.get("limit") or None
+        past = kwargs.get("past") or False
+        show_type_slug = kwargs.get("show_type_slug") or None
+        order_by = kwargs.get("order_by") or "-start"
         source = Show.objects.get_visible().order_by(order_by)
         yesterday = timezone.now() - timedelta(days=1)
         if show_type_slug:
@@ -131,9 +128,11 @@ class Query:
             return None
 
     def resolve_show_type_list(self, info):
-        return ShowType.objects.get_visible().annotate(
-            count=Count('shows__id'),
-        ).order_by('-count')
+        return (
+            ShowType.objects.get_visible()
+            .annotate(count=Count("shows__id"),)
+            .order_by("-count")
+        )
 
 
 class Mutations(ObjectType):

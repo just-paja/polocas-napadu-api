@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theatre_sports', '0004_matchstage'),
+        ("theatre_sports", "0004_matchstage"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contestantgroup',
-            name='contestant_type',
-            field=models.PositiveIntegerField(choices=[(1, 'team-home'), (2, 'team-guest')]),
+            model_name="contestantgroup",
+            name="contestant_type",
+            field=models.PositiveIntegerField(
+                choices=[(1, "team-home"), (2, "team-guest")]
+            ),
         ),
     ]

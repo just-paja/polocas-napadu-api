@@ -9,7 +9,7 @@ workspace_root: &workspace_root
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/python:3.7
+    - image: circleci/python:3.8
 
 version: 2
 jobs:
@@ -79,15 +79,21 @@ jobs:
 
       - run:
           name: Static code analysis
-          command: ./.venv/bin/vrun pipenv run prospector
+          command: ./.venv/bin/vrun pipenv run prospector -s high
 
       - run:
           name: Tests
-          command: ./.venv/bin/vrun pipenv run pytest --junitxml=/tmp/junit-test-report.xml --cov-config=.coveragerc --cov="."
+          command: ./.venv/bin/vrun pipenv run pytest --cov-report=xml --cov-config=.coveragerc --cov="."
 
       - run:
           name: Code Climate reporter
-          command: ./.venv/bin/vrun pipenv run codeclimate-test-reporter
+          command: |
+            ./.venv/bin/vrun pipenv run curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Code Climate reporter
+          command: ./.venv/bin/vrun pipenv run ./cc-test-reporter after-build
 
       - store_test_results:
           path: /tmp/junit-test-report.xml

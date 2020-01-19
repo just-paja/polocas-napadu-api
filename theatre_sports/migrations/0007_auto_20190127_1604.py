@@ -7,17 +7,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theatre_sports', '0006_matchstage_game'),
+        ("theatre_sports", "0006_matchstage_game"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='contestantgroup',
-            options={'verbose_name': 'Contestant Group', 'verbose_name_plural': 'Contestant Groups'},
+            name="contestantgroup",
+            options={
+                "verbose_name": "Contestant Group",
+                "verbose_name_plural": "Contestant Groups",
+            },
         ),
         migrations.AddField(
-            model_name='contestantgroup',
-            name='color',
-            field=colorfield.fields.ColorField(default='#ccc', max_length=18),
+            model_name="contestantgroup",
+            name="color",
+            field=colorfield.fields.ColorField(default="#ccc", max_length=18),
         ),
     ]

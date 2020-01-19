@@ -6,19 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0003_auto_20190113_1759'),
+        ("shows", "0003_auto_20190113_1759"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='showparticipant',
-            options={'verbose_name': 'Show participant', 'verbose_name_plural': 'Show participants'},
+            name="showparticipant",
+            options={
+                "verbose_name": "Show participant",
+                "verbose_name_plural": "Show participants",
+            },
         ),
         migrations.AlterModelOptions(
-            name='showrole',
-            options={'verbose_name': 'Show role', 'verbose_name_plural': 'Show roles'},
+            name="showrole",
+            options={"verbose_name": "Show role", "verbose_name_plural": "Show roles"},
         ),
-        migrations.DeleteModel(
-            name='ShowBand',
-        ),
+        migrations.DeleteModel(name="ShowBand",),
     ]

@@ -3,7 +3,7 @@ from django.db.models import (
     ManyToManyField,
     ForeignKey,
     PositiveIntegerField,
-    CASCADE
+    CASCADE,
 )
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
@@ -13,40 +13,36 @@ TEAM_HOME = 1
 TEAM_GUEST = 2
 
 TYPE_CHOICES = [
-    (TEAM_HOME, _('team-home')),
-    (TEAM_GUEST, _('team-guest')),
+    (TEAM_HOME, _("team-home")),
+    (TEAM_GUEST, _("team-guest")),
 ]
 
-class ContestantGroup(Model):
 
+class ContestantGroup(Model):
     class Meta:
-        verbose_name = _('Contestant Group')
-        verbose_name_plural = _('Contestant Groups')
+        verbose_name = _("Contestant Group")
+        verbose_name_plural = _("Contestant Groups")
 
     contestant_type = PositiveIntegerField(
-        choices=TYPE_CHOICES,
-        verbose_name=_('Contestant Type'),
+        choices=TYPE_CHOICES, verbose_name=_("Contestant Type"),
     )
     band = ForeignKey(
-        'bands.Band',
+        "bands.Band",
         on_delete=CASCADE,
-        related_name='contestant_groups',
-        verbose_name=_('Band'),
+        related_name="contestant_groups",
+        verbose_name=_("Band"),
     )
-    color = ColorField(
-        default='#ccc',
-        verbose_name=_('Color'),
-    )
+    color = ColorField(default="#ccc", verbose_name=_("Color"),)
     match = ForeignKey(
-        'Match',
+        "Match",
         on_delete=CASCADE,
-        related_name='contestant_groups',
-        verbose_name=_('Match'),
+        related_name="contestant_groups",
+        verbose_name=_("Match"),
     )
     players = ManyToManyField(
-        'shows.ShowParticipant',
-        related_name='contestant_groups',
-        verbose_name=_('Players'),
+        "shows.ShowParticipant",
+        related_name="contestant_groups",
+        verbose_name=_("Players"),
     )
 
     def __str__(self):
@@ -59,7 +55,8 @@ class ContestantGroup(Model):
         return self.match.get_show_date()
 
     def get_color_block(self):
-        return mark_safe('''
+        return mark_safe(
+            """
             <div
                 style="
                     background: %s;
@@ -67,7 +64,9 @@ class ContestantGroup(Model):
                     height: 1rem
                 "
             ></div>
-        ''' % (self.color))
+        """
+            % (self.color)
+        )
 
     def get_other_side(self):
         if self.contestant_type == TEAM_HOME:
@@ -93,6 +92,6 @@ class ContestantGroup(Model):
         return total
 
 
-ContestantGroup.get_color_block.short_description = _('Color')
-ContestantGroup.get_show_date.short_description = _('Date')
-ContestantGroup.get_show_name.short_description = _('Match')
+ContestantGroup.get_color_block.short_description = _("Color")
+ContestantGroup.get_show_date.short_description = _("Date")
+ContestantGroup.get_show_name.short_description = _("Match")

@@ -7,9 +7,9 @@ from .live_poll_voting import LivePollVoting
 from .volume_scrape import VolumeScrape
 
 __all__ = (
-    'AlreadyClosed',
-    'LivePoll',
-    'LivePollTypeField',
-    'LivePollVoting',
-    'VolumeScrape',
+    "AlreadyClosed",
+    "LivePoll",
+    "LivePollTypeField",
+    "LivePollVoting",
+    "VolumeScrape",
 )

@@ -1,0 +1,172 @@
+[
+  {
+    "model": "accounting.account",
+    "pk": 1,
+    "fields": {
+      "name": "Bank account",
+      "description": "Default bank account",
+      "currency": "CZK",
+      "bank": "2700",
+      "account_number": "111333",
+      "iban": "CZ3327000000000000111333",
+      "bic": "BACXCZPP",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00",
+      "visibility": 1
+    }
+  },
+  {
+    "model": "accounting.account",
+    "pk": 2,
+    "fields": {
+      "name": "Cash account",
+      "description": "Default cash account",
+      "currency": "CZK",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00",
+      "visibility": 1
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 1,
+    "fields": {
+      "name": "Nájem",
+      "description": "Platba za nájem",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 2,
+    "fields": {
+      "name": "Členský příspěvek",
+      "description": "Pravidelné členské příspěvky",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 3,
+    "fields": {
+      "name": "Vstupné",
+      "description": "Divák platí za vstupenku na představení",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 4,
+    "fields": {
+      "name": "Soustředění",
+      "description": "Dotace soustředění",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 5,
+    "fields": {
+      "name": "Dotace workshopu",
+      "description": "Příspěvek pro člena za účelem snížení ceny workshopu",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 6,
+    "fields": {
+      "name": "Výplata lektora",
+      "description": "Platíme lektorovi za odvedený workshop a služby s tím spojené",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 7,
+    "fields": {
+      "name": "Nákup kostýmů",
+      "description": "Nákup kostýmů, dresů a dalšího oblečení pro představení",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 8,
+    "fields": {
+      "name": "Nákup rekvizit",
+      "description": "Akvizice předmětů které budou hrát v našich představeních",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 9,
+    "fields": {
+      "name": "Výplata fotografa",
+      "description": "Platba za fotografické služby",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 10,
+    "fields": {
+      "name": "Merchandising",
+      "description": "Nákup zboží za účelem propagace",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 11,
+    "fields": {
+      "name": "Platba za doménu",
+      "description": "Převod peněz za nájem doménového jména",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purpose",
+    "pk": 12,
+    "fields": {
+      "name": "Převod mezi účty spolku",
+      "description": "Strategický převod finančních prostředků mezi účty spolku",
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purposecategory",
+    "pk": 1,
+    "fields": {
+      "name": "Shows",
+      "description": "Paying lectors fee for workshop",
+      "purposes": [3],
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  },
+  {
+    "model": "accounting.purposecategory",
+    "pk": 2,
+    "fields": {
+      "name": "Maintenance",
+      "description": "Transactions connected with group maintenance",
+      "purposes": [1, 2],
+      "created": "2019-01-22T09:44:00+00:00",
+      "modified": "2019-01-22T09:44:00+00:00"
+    }
+  }
+]

@@ -8,39 +8,94 @@ import voting.models.live_poll_type_field
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('voting', '0001_initial'),
-        ('theatre_sports', '0015_auto_20190417_1346'),
+        ("voting", "0001_initial"),
+        ("theatre_sports", "0015_auto_20190417_1346"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ScorePointPoll',
+            name="ScorePointPoll",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('poll_type', voting.models.live_poll_type_field.LivePollTypeField(choices=[(1, 'Audible vote')], default=1, help_text='pollTypeHelpText', verbose_name='Poll Type')),
-                ('stage', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='score_point_polls', to='theatre_sports.MatchStage', verbose_name='Match Stage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "poll_type",
+                    voting.models.live_poll_type_field.LivePollTypeField(
+                        choices=[(1, "Audible vote")],
+                        default=1,
+                        help_text="pollTypeHelpText",
+                        verbose_name="Poll Type",
+                    ),
+                ),
+                (
+                    "stage",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="score_point_polls",
+                        to="theatre_sports.MatchStage",
+                        verbose_name="Match Stage",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Score Point Poll',
-                'verbose_name_plural': 'Score Point Polls',
+                "verbose_name": "Score Point Poll",
+                "verbose_name_plural": "Score Point Polls",
             },
         ),
         migrations.CreateModel(
-            name='ScorePointPollVoting',
+            name="ScorePointPollVoting",
             fields=[
-                ('livepollvoting_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='voting.LivePollVoting')),
-                ('contestant_group', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='score_point_poll_votings', to='theatre_sports.ContestantGroup', verbose_name='Contestant Group')),
-                ('poll', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='votings', to='theatre_sports.ScorePointPoll', verbose_name='Score Point Poll')),
+                (
+                    "livepollvoting_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="voting.LivePollVoting",
+                    ),
+                ),
+                (
+                    "contestant_group",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="score_point_poll_votings",
+                        to="theatre_sports.ContestantGroup",
+                        verbose_name="Contestant Group",
+                    ),
+                ),
+                (
+                    "poll",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="votings",
+                        to="theatre_sports.ScorePointPoll",
+                        verbose_name="Score Point Poll",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Score point poll voting',
-                'verbose_name_plural': 'Score point poll votings',
+                "verbose_name": "Score point poll voting",
+                "verbose_name_plural": "Score point poll votings",
             },
-            bases=('voting.livepollvoting',),
+            bases=("voting.livepollvoting",),
         ),
         migrations.AddField(
-            model_name='scorepointpoll',
-            name='winner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='winning_polls', to='theatre_sports.ScorePointPollVoting', verbose_name='Winner'),
+            model_name="scorepointpoll",
+            name="winner",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="winning_polls",
+                to="theatre_sports.ScorePointPollVoting",
+                verbose_name="Winner",
+            ),
         ),
     ]

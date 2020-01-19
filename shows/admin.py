@@ -2,8 +2,9 @@ from fields.admin import (
     BaseAdminModel,
     BaseInlineAdminModel,
     LocationFilter,
-    ShowTypeFilter,
+    SeasonFilter,
     ShowFilter,
+    ShowTypeFilter,
 )
 
 from .models import (
@@ -35,17 +36,17 @@ class ShowParticipantAdmin(BaseAdminModel):
 
     model = ShowParticipant
     list_display = (
-        'profile',
-        'role',
-        'get_show_name',
-        'get_show_date',
+        "profile",
+        "role",
+        "get_show_name",
+        "get_show_date",
     )
-    list_filter = (ShowFilter, 'role')
-    search_fields = ['profile__name']
+    list_filter = (ShowFilter, "role")
+    search_fields = ["profile__name"]
     autocomplete_fields = [
-        'show',
-        'profile',
-        'role',
+        "show",
+        "profile",
+        "role",
     ]
 
     class Media:
@@ -56,7 +57,11 @@ class ShowParticipantInlineAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
     model = ShowParticipant
-    autocomplete_fields = ['profile']
+    autocomplete_fields = ["profile"]
+
+
+class EventSeasonFilter(SeasonFilter):
+    field = "start"
 
 
 class ShowAdmin(BaseAdminModel):
@@ -67,24 +72,16 @@ class ShowAdmin(BaseAdminModel):
         ShowParticipantInlineAdmin,
         ShowPhotoAdmin,
     ]
-    autocomplete_fields = ['location']
-    list_display = ('name', 'location', 'start', 'all_day', 'visibility')
-    list_filter = (ShowTypeFilter, LocationFilter, 'visibility')
-    search_fields = ('name', 'all_day')
-    readonly_fields = ('slug',)
+    autocomplete_fields = ["location"]
+    list_display = ("name", "location", "start", "all_day", "visibility")
+    list_filter = (EventSeasonFilter, ShowTypeFilter, LocationFilter, "visibility")
+    search_fields = ("name", "all_day")
+    readonly_fields = ("slug",)
     fieldsets = (
-        (None, {
-            'fields': ('name', 'slug', 'show_type')
-        }),
-        (None, {
-            'fields': ('start', 'end', 'all_day'),
-        }),
-        (None, {
-            'fields': ('location', 'description'),
-        }),
-        (None, {
-            'fields': ('link_tickets', 'link_reservations', 'link_facebook'),
-        }),
+        (None, {"fields": ("name", "slug", "show_type")}),
+        (None, {"fields": ("start", "end", "all_day"), }),
+        (None, {"fields": ("location", "description"), }),
+        (None, {"fields": ("link_tickets", "link_reservations", "link_facebook"), }),
     )
 
     class Media:
@@ -95,7 +92,7 @@ class ShowRoleAdmin(BaseAdminModel):
     """Admin model for show roles."""
 
     model = ShowRole
-    search_fields = ('name',)
+    search_fields = ("name",)
 
 
 class ShowTypeAdmin(BaseAdminModel):
@@ -106,18 +103,18 @@ class ShowTypeAdmin(BaseAdminModel):
         ShowTypePhotoAdmin,
     ]
     fields = (
-        'name',
-        'slug',
-        'visibility',
-        'short_description',
-        'description',
-        'use_games',
-        'use_fouls'
+        "name",
+        "slug",
+        "visibility",
+        "short_description",
+        "description",
+        "use_games",
+        "use_fouls",
     )
-    readonly_fields = ('slug',)
-    list_display = ('name', 'use_games', 'use_fouls', 'visibility')
-    list_filter = ('use_games', 'use_fouls', 'visibility')
-    search_fields = ('name',)
+    readonly_fields = ("slug",)
+    list_display = ("name", "use_games", "use_fouls", "visibility")
+    list_filter = ("use_games", "use_fouls", "visibility")
+    search_fields = ("name",)
 
 
 class ShowVolumeCalibrationAdmin(BaseAdminModel):

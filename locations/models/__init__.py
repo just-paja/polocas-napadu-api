@@ -5,7 +5,7 @@ from .location_photo import LocationPhoto
 from .usual_place import UsualPlace
 
 __all__ = (
-    'Location',
-    'LocationPhoto',
-    'UsualPlace',
+    "Location",
+    "LocationPhoto",
+    "UsualPlace",
 )

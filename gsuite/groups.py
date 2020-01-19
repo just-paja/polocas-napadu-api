@@ -1,12 +1,12 @@
-MODEL_ACCESS_NONE = 'none'
-MODEL_ACCESS_RO = 'ro'
-MODEL_ACCESS_RW = 'rw'
+MODEL_ACCESS_NONE = "none"
+MODEL_ACCESS_RO = "ro"
+MODEL_ACCESS_RW = "rw"
 
-MODELS_ALL = 'all'
-MODEL_ACTION_ADD = 'add'
-MODEL_ACTION_DELETE = 'delete'
-MODEL_ACTION_CHANGE = 'change'
-MODEL_ACTION_VIEW = 'view'
+MODELS_ALL = "all"
+MODEL_ACTION_ADD = "add"
+MODEL_ACTION_DELETE = "delete"
+MODEL_ACTION_CHANGE = "change"
+MODEL_ACTION_VIEW = "view"
 
 MODEL_ACTIONS = [
     MODEL_ACTION_ADD,
@@ -16,60 +16,49 @@ MODEL_ACTIONS = [
 ]
 
 MODELS_BASE = [
-    'Article',
-    'Band',
-    'BandPhoto',
-    'Chapter',
-    'ChapterPhoto',
-    'ContestantGroup',
-    'Foul',
-    'FoulType',
-    'Inspiration',
-    'LivePollVoting',
-    'Location',
-    'LocationPhoto',
-    'LogEntry',
-    'Match',
-    'MatchStage',
-    'Poem',
-    'Profile',
-    'ProfileGroup',
-    'ProfilePhoto',
-    'Reservation',
-    'ScorePoint',
-    'Show',
-    'ShowParticipant',
-    'ShowPhoto',
-    'ShowRole',
-    'ShowType',
-    'ShowTypePhoto',
-    'VolumeScrape',
+    "Article",
+    "Band",
+    "BandPhoto",
+    "Chapter",
+    "ChapterPhoto",
+    "ContestantGroup",
+    "Foul",
+    "FoulType",
+    "Inspiration",
+    "LivePollVoting",
+    "Location",
+    "LocationPhoto",
+    "LogEntry",
+    "Match",
+    "MatchStage",
+    "Poem",
+    "Profile",
+    "ProfileGroup",
+    "ProfilePhoto",
+    "Reservation",
+    "ScorePoint",
+    "Show",
+    "ShowParticipant",
+    "ShowPhoto",
+    "ShowRole",
+    "ShowType",
+    "ShowTypePhoto",
+    "VolumeScrape",
 ]
 
-GROUP_DEFAULT = 'Uživatelé domény'
-GROUP_ADMIN = 'Administrátoři domény'
+GROUP_DEFAULT = "Uživatelé domény"
+GROUP_ADMIN = "Administrátoři domény"
 
 GROUPS = [
     {
-        'name': GROUP_DEFAULT,
-        'perms': [
-            {
-                'models': MODELS_ALL,
-                'access': MODEL_ACCESS_NONE,
-            },
-            {
-                'models': MODELS_BASE,
-                'access': MODEL_ACCESS_RW,
-            }
-        ]
+        "name": GROUP_DEFAULT,
+        "perms": [
+            {"models": MODELS_ALL, "access": MODEL_ACCESS_NONE, },
+            {"models": MODELS_BASE, "access": MODEL_ACCESS_RW, },
+        ],
     },
     {
-        'name': GROUP_ADMIN,
-        'perms': [
-            {
-                'models': MODELS_ALL,
-                'access': MODEL_ACCESS_RW,
-            },
-        ]
+        "name": GROUP_ADMIN,
+        "perms": [{"models": MODELS_ALL, "access": MODEL_ACCESS_RW, }, ],
     },
 ]

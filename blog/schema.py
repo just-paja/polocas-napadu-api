@@ -25,7 +25,7 @@ class ArticleNode(DjangoObjectType):
         model = Article
 
     def resolve_chapters(self, info, *_):
-        return self.chapters.get_visible().order_by('weight')
+        return self.chapters.get_visible().order_by("weight")
 
 
 class Query:

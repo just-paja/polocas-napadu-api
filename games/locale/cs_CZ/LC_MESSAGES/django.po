@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-25 17:55+0000\n"
+"POT-Creation-Date: 2020-01-08 08:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,10 +41,14 @@ msgstr "Hráč"
 msgid "Game Actors"
 msgstr "Hráči"
 
-#: games/models/game_rules.py:8
+#: games/models/game_rules.py:9
 msgid "Game Rule"
 msgstr "Pravidla"
 
-#: games/models/game_rules.py:9
+#: games/models/game_rules.py:10
 msgid "Game Rules"
 msgstr "Pravidla"
+
+#: games/models/game_rules.py:12
+msgid "Slug"
+msgstr ""

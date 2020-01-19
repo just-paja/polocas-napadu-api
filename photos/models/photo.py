@@ -14,20 +14,8 @@ class Photo(TimeStampedModel, VisibilityMixin):
         abstract = True
 
     image = ImageField(
-        height_field="height",
-        width_field="width",
-        upload_to='var/photos',
+        height_field="height", width_field="width", upload_to="var/photos",
     )
-    height = PositiveIntegerField(
-        null=True,
-        blank=True,
-        editable=False,
-        default=100,
-    )
-    width = PositiveIntegerField(
-        null=True,
-        blank=True,
-        editable=False,
-        default=100,
-    )
+    height = PositiveIntegerField(null=True, blank=True, editable=False, default=100,)
+    width = PositiveIntegerField(null=True, blank=True, editable=False, default=100,)
     description = TextField()

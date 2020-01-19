@@ -9,6 +9,7 @@ class ProfileGroupNode(DjangoObjectType):
     class Meta:
         model = ProfileGroup
 
+
 def serialize_image_field(field, info):
     try:
         return info.context.build_absolute_uri(field.url)
@@ -47,4 +48,4 @@ class Query:
         return source
 
     def resolve_profile_group_list(self, info):
-        return ProfileGroup.objects.get_visible().order_by('weight')
+        return ProfileGroup.objects.get_visible().order_by("weight")

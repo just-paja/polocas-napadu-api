@@ -1,0 +1,15 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_modify %}
+
+{% block object-tools %}
+  {% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    {% block object-tools-items %}
+      {% if original.promise %}
+        <li><a href="{% url 'admin:accounting_promise_change' original.promise.pk %}">{% trans "View promise" %}</a></li>
+      {% endif %}
+      {% change_form_object_tools %}
+    {% endblock %}
+  </ul>
+  {% endif %}{% endif %}
+{% endblock %}

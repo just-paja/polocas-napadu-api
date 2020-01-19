@@ -5,13 +5,10 @@ from fields import DescriptionMixin, NameMixin, VisibilityMixin
 
 
 class ProfileGroup(NameMixin, DescriptionMixin, VisibilityMixin):
-
     class Meta:
-        verbose_name = _('Actor group')
-        verbose_name_plural = _('Actor groups')
+        verbose_name = _("Actor group")
+        verbose_name_plural = _("Actor groups")
 
     weight = IntegerField(
-        default=0,
-        help_text=_('weightHelpText'),
-        verbose_name=_('Weight'),
+        default=0, help_text=_("weightHelpText"), verbose_name=_("Weight"),
     )

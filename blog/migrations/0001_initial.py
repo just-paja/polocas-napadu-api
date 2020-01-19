@@ -12,60 +12,204 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', fields.description.DescriptionField(help_text='nameDescriptionText', verbose_name='Description')),
-                ('name', fields.name.NameField(help_text='nameHelpText', max_length=63, verbose_name='Name')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility')),
-                ('slug', django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='name', verbose_name='Slug')),
-                ('site_anchor', models.CharField(max_length=31, unique=True, verbose_name='Site Anchor')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "description",
+                    fields.description.DescriptionField(
+                        help_text="nameDescriptionText", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "name",
+                    fields.name.NameField(
+                        help_text="nameHelpText", max_length=63, verbose_name="Name"
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                        help_text="visibilityHelpText",
+                        verbose_name="Visibility",
+                    ),
+                ),
+                (
+                    "slug",
+                    django_extensions.db.fields.AutoSlugField(
+                        blank=True,
+                        editable=False,
+                        populate_from="name",
+                        verbose_name="Slug",
+                    ),
+                ),
+                (
+                    "site_anchor",
+                    models.CharField(
+                        max_length=31, unique=True, verbose_name="Site Anchor"
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Article',
-                'verbose_name_plural': 'Articles',
-            },
+            options={"verbose_name": "Article", "verbose_name_plural": "Articles",},
         ),
         migrations.CreateModel(
-            name='Chapter',
+            name="Chapter",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', fields.description.DescriptionField(help_text='nameDescriptionText', verbose_name='Description')),
-                ('name', fields.name.NameField(help_text='nameHelpText', max_length=63, verbose_name='Name')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility')),
-                ('slug', django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='name', verbose_name='Slug')),
-                ('weight', models.IntegerField(default=0, help_text='weightHelpText', verbose_name='Weight')),
-                ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.Article')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "description",
+                    fields.description.DescriptionField(
+                        help_text="nameDescriptionText", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "name",
+                    fields.name.NameField(
+                        help_text="nameHelpText", max_length=63, verbose_name="Name"
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                        help_text="visibilityHelpText",
+                        verbose_name="Visibility",
+                    ),
+                ),
+                (
+                    "slug",
+                    django_extensions.db.fields.AutoSlugField(
+                        blank=True,
+                        editable=False,
+                        populate_from="name",
+                        verbose_name="Slug",
+                    ),
+                ),
+                (
+                    "weight",
+                    models.IntegerField(
+                        default=0, help_text="weightHelpText", verbose_name="Weight"
+                    ),
+                ),
+                (
+                    "article",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="blog.Article"
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Chapter',
-                'verbose_name_plural': 'Chapters',
-            },
+            options={"verbose_name": "Chapter", "verbose_name_plural": "Chapters",},
         ),
         migrations.CreateModel(
-            name='ChapterPhoto',
+            name="ChapterPhoto",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility')),
-                ('image', models.ImageField(height_field='height', upload_to='var/photos', width_field='width')),
-                ('height', models.PositiveIntegerField(blank=True, default=100, editable=False, null=True)),
-                ('width', models.PositiveIntegerField(blank=True, default=100, editable=False, null=True)),
-                ('description', models.TextField()),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='photos', to='blog.Chapter')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                        help_text="visibilityHelpText",
+                        verbose_name="Visibility",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        height_field="height",
+                        upload_to="var/photos",
+                        width_field="width",
+                    ),
+                ),
+                (
+                    "height",
+                    models.PositiveIntegerField(
+                        blank=True, default=100, editable=False, null=True
+                    ),
+                ),
+                (
+                    "width",
+                    models.PositiveIntegerField(
+                        blank=True, default=100, editable=False, null=True
+                    ),
+                ),
+                ("description", models.TextField()),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="photos",
+                        to="blog.Chapter",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
     ]

@@ -6,15 +6,12 @@ from fields import PublicResourceMixin
 
 
 class Poem(PublicResourceMixin):
-
     class Meta:
-        verbose_name = _('Poem')
-        verbose_name_plural = _('Poems')
+        verbose_name = _("Poem")
+        verbose_name_plural = _("Poems")
 
-    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
+    slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")
     weight = IntegerField(
-        default=0,
-        help_text=_('weightHelpText'),
-        verbose_name=_('Weight'),
+        default=0, help_text=_("weightHelpText"), verbose_name=_("Weight"),
     )
-    author = ForeignKey('profiles.Profile', on_delete=PROTECT)
+    author = ForeignKey("profiles.Profile", on_delete=PROTECT)

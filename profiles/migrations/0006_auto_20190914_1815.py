@@ -8,23 +8,27 @@ import fields.visibility
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0005_profile_alias'),
+        ("profiles", "0005_profile_alias"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='profilegroup',
-            name='public',
-        ),
+        migrations.RemoveField(model_name="profilegroup", name="public",),
         migrations.AddField(
-            model_name='profilegroup',
-            name='description',
-            field=fields.description.DescriptionField(default='', help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="profilegroup",
+            name="description",
+            field=fields.description.DescriptionField(
+                default="", help_text="nameDescriptionText", verbose_name="Description"
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profilegroup',
-            name='visibility',
-            field=fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility'),
+            model_name="profilegroup",
+            name="visibility",
+            field=fields.visibility.VisibilityField(
+                choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                default=2,
+                help_text="visibilityHelpText",
+                verbose_name="Visibility",
+            ),
         ),
     ]

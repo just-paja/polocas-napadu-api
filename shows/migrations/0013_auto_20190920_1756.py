@@ -7,18 +7,20 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0012_showtype_short_description'),
+        ("shows", "0012_showtype_short_description"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='showtype',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='name', verbose_name='Slug'),
+            model_name="showtype",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="name", verbose_name="Slug"
+            ),
         ),
         migrations.AlterField(
-            model_name='showtype',
-            name='short_description',
-            field=models.TextField(verbose_name='Short Description'),
+            model_name="showtype",
+            name="short_description",
+            field=models.TextField(verbose_name="Short Description"),
         ),
     ]

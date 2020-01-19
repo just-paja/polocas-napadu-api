@@ -7,14 +7,18 @@ import fields.description
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0002_auto_20190112_1615'),
+        ("profiles", "0002_auto_20190112_1615"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profilephoto',
-            name='description',
-            field=fields.description.DescriptionField(default=None, help_text='nameDescriptionText', verbose_name='Description'),
+            model_name="profilephoto",
+            name="description",
+            field=fields.description.DescriptionField(
+                default=None,
+                help_text="nameDescriptionText",
+                verbose_name="Description",
+            ),
             preserve_default=False,
         ),
     ]

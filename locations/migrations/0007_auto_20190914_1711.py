@@ -6,33 +6,42 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('locations', '0006_usualplace_place_type'),
+        ("locations", "0006_usualplace_place_type"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='location',
-            name='city',
-            field=models.CharField(blank=True, max_length=127, null=True, verbose_name='City'),
+            model_name="location",
+            name="city",
+            field=models.CharField(
+                blank=True, max_length=127, null=True, verbose_name="City"
+            ),
         ),
         migrations.AlterField(
-            model_name='location',
-            name='address',
-            field=models.CharField(max_length=255, verbose_name='Address'),
+            model_name="location",
+            name="address",
+            field=models.CharField(max_length=255, verbose_name="Address"),
         ),
         migrations.AlterField(
-            model_name='location',
-            name='gps',
-            field=models.CharField(blank=True, max_length=127, null=True, verbose_name='GPS coordinates'),
+            model_name="location",
+            name="gps",
+            field=models.CharField(
+                blank=True, max_length=127, null=True, verbose_name="GPS coordinates"
+            ),
         ),
         migrations.AlterField(
-            model_name='location',
-            name='website',
-            field=models.URLField(blank=True, null=True, verbose_name='Website'),
+            model_name="location",
+            name="website",
+            field=models.URLField(blank=True, null=True, verbose_name="Website"),
         ),
         migrations.AlterField(
-            model_name='usualplace',
-            name='place_type',
-            field=models.PositiveIntegerField(blank=True, choices=[(1, 'usualStage')], null=True, verbose_name='Place type'),
+            model_name="usualplace",
+            name="place_type",
+            field=models.PositiveIntegerField(
+                blank=True,
+                choices=[(1, "usualStage")],
+                null=True,
+                verbose_name="Place type",
+            ),
         ),
     ]

@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0006_auto_20190914_1815'),
+        ("profiles", "0006_auto_20190914_1815"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profilegroup',
-            name='weight',
-            field=models.IntegerField(default=0, help_text='weightHelpText', verbose_name='Weight'),
+            model_name="profilegroup",
+            name="weight",
+            field=models.IntegerField(
+                default=0, help_text="weightHelpText", verbose_name="Weight"
+            ),
         ),
     ]

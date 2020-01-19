@@ -7,13 +7,18 @@ import fields.visibility
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theatre_sports', '0013_auto_20190415_0030'),
+        ("theatre_sports", "0013_auto_20190415_0030"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='foultype',
-            name='visibility',
-            field=fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility'),
+            model_name="foultype",
+            name="visibility",
+            field=fields.visibility.VisibilityField(
+                choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                default=2,
+                help_text="visibilityHelpText",
+                verbose_name="Visibility",
+            ),
         ),
     ]

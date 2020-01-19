@@ -11,25 +11,14 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Game(TimeStampedModel):
-
     class Meta:
-        verbose_name = _('Game')
-        verbose_name_plural = _('Games')
+        verbose_name = _("Game")
+        verbose_name_plural = _("Games")
 
-    show = ForeignKey(
-        'shows.Show',
-        on_delete=CASCADE,
-        related_name='games',
-    )
-    rules = ForeignKey(
-        'GameRules',
-        on_delete=PROTECT,
-        related_name='games',
-    )
+    show = ForeignKey("shows.Show", on_delete=CASCADE, related_name="games",)
+    rules = ForeignKey("GameRules", on_delete=PROTECT, related_name="games",)
     inspirations = ManyToManyField(
-        'inspirations.Inspiration',
-        blank=True,
-        related_name='inspiration_games',
+        "inspirations.Inspiration", blank=True, related_name="inspiration_games",
     )
 
     time_limit = PositiveIntegerField(blank=True, null=True)
@@ -37,7 +26,7 @@ class Game(TimeStampedModel):
     end = DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '%s (%s)' % (self.rules.name, self.show.name)
+        return "%s (%s)" % (self.rules.name, self.show.name)
 
     def get_show_name(self):
         return self.show.name
@@ -46,5 +35,5 @@ class Game(TimeStampedModel):
         return self.show.start
 
 
-Game.get_show_date.short_description = _('Date')
-Game.get_show_name.short_description = _('Show')
+Game.get_show_date.short_description = _("Date")
+Game.get_show_name.short_description = _("Show")

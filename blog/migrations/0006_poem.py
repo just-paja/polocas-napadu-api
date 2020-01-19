@@ -11,27 +11,80 @@ import fields.visibility
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0010_auto_20191029_0832'),
-        ('blog', '0005_auto_20191029_0832'),
+        ("profiles", "0010_auto_20191029_0832"),
+        ("blog", "0005_auto_20191029_0832"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Poem',
+            name="Poem",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', fields.description.DescriptionField(help_text='nameDescriptionText', verbose_name='Description')),
-                ('name', fields.name.NameField(help_text='nameHelpText', max_length=63, verbose_name='Name')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('visibility', fields.visibility.VisibilityField(choices=[(1, 'Private'), (2, 'Public'), (3, 'Deleted')], default=2, help_text='visibilityHelpText', verbose_name='Visibility')),
-                ('slug', django_extensions.db.fields.AutoSlugField(blank=True, editable=False, overwrite=True, populate_from='name', verbose_name='Slug')),
-                ('weight', models.IntegerField(default=0, help_text='weightHelpText', verbose_name='Weight')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='profiles.Profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "description",
+                    fields.description.DescriptionField(
+                        help_text="nameDescriptionText", verbose_name="Description"
+                    ),
+                ),
+                (
+                    "name",
+                    fields.name.NameField(
+                        help_text="nameHelpText", max_length=63, verbose_name="Name"
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "visibility",
+                    fields.visibility.VisibilityField(
+                        choices=[(1, "Private"), (2, "Public"), (3, "Deleted")],
+                        default=2,
+                        help_text="visibilityHelpText",
+                        verbose_name="Visibility",
+                    ),
+                ),
+                (
+                    "slug",
+                    django_extensions.db.fields.AutoSlugField(
+                        blank=True,
+                        editable=False,
+                        overwrite=True,
+                        populate_from="name",
+                        verbose_name="Slug",
+                    ),
+                ),
+                (
+                    "weight",
+                    models.IntegerField(
+                        default=0, help_text="weightHelpText", verbose_name="Weight"
+                    ),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="profiles.Profile",
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Poem',
-                'verbose_name_plural': 'Poems',
-            },
+            options={"verbose_name": "Poem", "verbose_name_plural": "Poems",},
         ),
     ]

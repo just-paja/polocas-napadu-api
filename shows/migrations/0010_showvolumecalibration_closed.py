@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0009_showvolumecalibrationvoting'),
+        ("shows", "0009_showvolumecalibrationvoting"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='showvolumecalibration',
-            name='closed',
-            field=models.BooleanField(default=False, verbose_name='Closed'),
+            model_name="showvolumecalibration",
+            name="closed",
+            field=models.BooleanField(default=False, verbose_name="Closed"),
         ),
     ]

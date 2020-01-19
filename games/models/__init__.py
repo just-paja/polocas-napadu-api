@@ -5,7 +5,7 @@ from .game_rules import GameRules
 from .game import Game
 
 __all__ = (
-    'GameActor',
-    'GameRules',
-    'Game',
+    "GameActor",
+    "GameRules",
+    "Game",
 )

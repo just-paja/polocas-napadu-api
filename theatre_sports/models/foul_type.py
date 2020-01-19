@@ -6,7 +6,7 @@ from fields import PublicResourceMixin
 
 class FoulType(PublicResourceMixin):
     class Meta:
-        verbose_name = _('FoulType')
-        verbose_name_plural = _('Foul Types')
+        verbose_name = _("FoulType")
+        verbose_name_plural = _("Foul Types")
 
-    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
+    slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")

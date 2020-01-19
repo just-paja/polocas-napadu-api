@@ -3,10 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class GameActor(Model):
-
     class Meta:
-        verbose_name = _('Game Actor')
-        verbose_name_plural = _('Game Actors')
+        verbose_name = _("Game Actor")
+        verbose_name_plural = _("Game Actors")
 
-    game = ForeignKey('Game', on_delete=CASCADE)
-    participant = ForeignKey('shows.ShowParticipant', on_delete=CASCADE)
+    game = ForeignKey("Game", on_delete=CASCADE)
+    participant = ForeignKey("shows.ShowParticipant", on_delete=CASCADE)

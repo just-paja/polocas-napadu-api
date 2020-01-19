@@ -7,11 +7,11 @@ from .models import Show
 
 
 def get_inspiration_url(request, show):
-    api_url = request.build_absolute_uri(reverse('api_public'))
-    return '%s?apiUrl=%s#/match/%s' % (
+    api_url = request.build_absolute_uri(reverse("api_public"))
+    return "%s?apiUrl=%s#/match/%s" % (
         settings.APP_INSPIRATIONS_URL,
         api_url,
-        show.match.pk
+        show.match.pk,
     )
 
 
@@ -23,9 +23,9 @@ def show_inspiration_qr(request, show_id):
     if show.match:
         inspiration_url = get_inspiration_url(request, show)
     else:
-        inspiration_url = 'https://tema.polocas-napadu.cz'
+        inspiration_url = "https://tema.polocas-napadu.cz"
 
     image = make(inspiration_url)
-    response = HttpResponse(content_type='image/png')
-    image.save(response, 'png')
+    response = HttpResponse(content_type="image/png")
+    image.save(response, "png")
     return response

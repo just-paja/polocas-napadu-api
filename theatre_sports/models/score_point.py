@@ -3,22 +3,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
 
-class ScorePoint(TimeStampedModel):
 
+class ScorePoint(TimeStampedModel):
     class Meta:
-        verbose_name = _('ScorePoint')
-        verbose_name_plural = _('ScorePoints')
+        verbose_name = _("ScorePoint")
+        verbose_name_plural = _("ScorePoints")
 
     contestant_group = ForeignKey(
-        'ContestantGroup',
-        on_delete=CASCADE,
-        related_name='score_points',
+        "ContestantGroup", on_delete=CASCADE, related_name="score_points",
     )
-    game = ForeignKey(
-        'games.Game',
-        on_delete=CASCADE,
-        related_name='score_points',
-    )
+    game = ForeignKey("games.Game", on_delete=CASCADE, related_name="score_points",)
 
     def get_score_snapshot(self):
         return self.contestant_group.score_points.filter(
@@ -38,8 +32,8 @@ class ScorePoint(TimeStampedModel):
         return self.game.show.start
 
 
-ScorePoint.get_contestant_group_name.short_description = _('Contestant')
-ScorePoint.get_game_name.short_description = _('Game')
-ScorePoint.get_score_snapshot.short_description = _('Score')
-ScorePoint.get_show_date.short_description = _('Date')
-ScorePoint.get_show_name.short_description = _('Match')
+ScorePoint.get_contestant_group_name.short_description = _("Contestant")
+ScorePoint.get_game_name.short_description = _("Game")
+ScorePoint.get_score_snapshot.short_description = _("Score")
+ScorePoint.get_show_date.short_description = _("Date")
+ScorePoint.get_show_name.short_description = _("Match")

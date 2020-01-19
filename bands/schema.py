@@ -14,7 +14,7 @@ class BandNode(DjangoObjectType):
     class Meta:
         model = Band
         filter_fields = {
-            'name': ['iexact', 'icontains', 'istartswith'],
+            "name": ["iexact", "icontains", "istartswith"],
         }
         interfaces = [relay.Node]
 

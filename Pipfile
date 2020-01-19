@@ -4,19 +4,19 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-codeclimate-test-reporter = "*"
-coverage = "==4.3.4"
-model-mommy = "*"
+coverage = "*"
+model-bakery = "*"
 prospector = {extras = ["with_pyroma", "with_vulture"],version = "*"}
 pygraphviz = "*"
-pylint-django = "*"
-pytest-cov = "==2.5.1"
+pytest-cov = "*"
 pytest-django = "*"
 pytest-watch = "*"
 ansible = "*"
+pytest-freezegun = "*"
+black = "==19.10b0"
 
 [packages]
-django = "*"
+django = "<3"
 django-extensions = "*"
 django-filter = "*"
 graphene-django = "*"
@@ -32,6 +32,8 @@ django-colorfield = "*"
 django-graphql-jwt = "*"
 django-admin-autocomplete-filter = "*"
 django-nested-admin = "*"
+fiobank = "*"
+django-searchable-encrypted-fields = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"

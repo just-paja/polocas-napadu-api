@@ -1,0 +1,15 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_modify %}
+
+{% block object-tools %}
+  {% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    {% block object-tools-items %}
+      {% if original.fio_readonly_key %}
+        <li><a href="{% url 'bank_sync_account' account_id=original.id %}">{% trans "Sync with bank" %}</a></li>
+      {% endif %}
+      {% change_form_object_tools %}
+    {% endblock %}
+  </ul>
+  {% endif %}{% endif %}
+{% endblock %}

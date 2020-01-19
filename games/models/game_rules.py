@@ -6,7 +6,7 @@ from fields import PublicResourceMixin
 
 class GameRules(PublicResourceMixin):
     class Meta:
-        verbose_name = _('Game Rule')
-        verbose_name_plural = _('Game Rules')
+        verbose_name = _("Game Rule")
+        verbose_name_plural = _("Game Rules")
 
-    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
+    slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")

@@ -7,13 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0013_auto_20190920_1756'),
+        ("shows", "0013_auto_20190920_1756"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='show',
-            name='show_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='shows', to='shows.ShowType', verbose_name='Show type'),
+            model_name="show",
+            name="show_type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="shows",
+                to="shows.ShowType",
+                verbose_name="Show type",
+            ),
         ),
     ]

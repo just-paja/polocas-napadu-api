@@ -8,24 +8,74 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0007_auto_20190418_0945'),
+        ("shows", "0007_auto_20190418_0945"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ShowVolumeCalibration',
+            name="ShowVolumeCalibration",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('min', models.FloatField(blank=True, help_text='minimalAudioHelpText', null=True, verbose_name='Minimum volume')),
-                ('mid', models.FloatField(blank=True, help_text='mediumAudioHelpText', null=True, verbose_name='Medium volume')),
-                ('max', models.FloatField(blank=True, help_text='maximumAudioHelpText', null=True, verbose_name='Maximum volume')),
-                ('show', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='volume_calibrations', to='shows.Show', verbose_name='Show')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "min",
+                    models.FloatField(
+                        blank=True,
+                        help_text="minimalAudioHelpText",
+                        null=True,
+                        verbose_name="Minimum volume",
+                    ),
+                ),
+                (
+                    "mid",
+                    models.FloatField(
+                        blank=True,
+                        help_text="mediumAudioHelpText",
+                        null=True,
+                        verbose_name="Medium volume",
+                    ),
+                ),
+                (
+                    "max",
+                    models.FloatField(
+                        blank=True,
+                        help_text="maximumAudioHelpText",
+                        null=True,
+                        verbose_name="Maximum volume",
+                    ),
+                ),
+                (
+                    "show",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="volume_calibrations",
+                        to="shows.Show",
+                        verbose_name="Show",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Show volume calibration',
-                'verbose_name_plural': 'Show volume calibrations',
+                "verbose_name": "Show volume calibration",
+                "verbose_name_plural": "Show volume calibrations",
             },
         ),
     ]

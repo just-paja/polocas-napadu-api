@@ -16,17 +16,17 @@ class LocationAdmin(BaseAdminModel):
     inlines = [
         LocationPhotoAdmin,
     ]
-    list_display = ('name', 'address', 'website', 'visibility')
-    list_filter = ('visibility',)
-    search_fields = ('name', 'address')
+    list_display = ("name", "address", "website", "visibility")
+    list_filter = ("visibility",)
+    search_fields = ("name", "address")
     fields = (
-        'name',
-        'city',
-        'address',
-        'visibility',
-        'gps',
-        'website',
-        'description',
+        "name",
+        "city",
+        "address",
+        "visibility",
+        "gps",
+        "website",
+        "description",
     )
 
 
@@ -34,17 +34,17 @@ class UsualPlaceAdmin(BaseAdminModel):
 
     model = UsualPlace
     list_display = (
-        'name',
-        'place_type',
-        'get_location_name',
-        'visibility',
+        "name",
+        "place_type",
+        "get_location_name",
+        "visibility",
     )
-    list_filter = ('place_type', 'visibility')
+    list_filter = ("place_type", "visibility")
     search_fields = (
-        'name',
-        'place_type',
-        'location__name',
-        'location__address',
+        "name",
+        "place_type",
+        "location__name",
+        "location__address",
     )
-    autocomplete_fields = ('location',)
-    fields = ('name', 'place_type', 'location', 'visibility', 'description')
+    autocomplete_fields = ("location",)
+    fields = ("name", "place_type", "location", "visibility", "description")

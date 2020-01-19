@@ -10,35 +10,86 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='LivePollVoting',
+            name="LivePollVoting",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('vote_type', voting.models.live_poll_type_field.LivePollTypeField(choices=[(1, 'Audible vote')], default=1, help_text='pollTypeHelpText', verbose_name='Poll Type')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "vote_type",
+                    voting.models.live_poll_type_field.LivePollTypeField(
+                        choices=[(1, "Audible vote")],
+                        default=1,
+                        help_text="pollTypeHelpText",
+                        verbose_name="Poll Type",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Live Poll Voting',
-                'verbose_name_plural': 'Live Poll Votings',
+                "verbose_name": "Live Poll Voting",
+                "verbose_name_plural": "Live Poll Votings",
             },
         ),
         migrations.CreateModel(
-            name='VolumeScrape',
+            name="VolumeScrape",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('volume', models.FloatField(verbose_name='Recorded volume')),
-                ('vote', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='volume_scrapes', to='voting.LivePollVoting', verbose_name='Live Poll Voting')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                ("volume", models.FloatField(verbose_name="Recorded volume")),
+                (
+                    "vote",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="volume_scrapes",
+                        to="voting.LivePollVoting",
+                        verbose_name="Live Poll Voting",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Volume scrape',
-                'verbose_name_plural': 'Volume scrapes',
+                "verbose_name": "Volume scrape",
+                "verbose_name_plural": "Volume scrapes",
             },
         ),
     ]

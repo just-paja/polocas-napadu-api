@@ -6,48 +6,18 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theatre_sports', '0002_auto_20190120_1057'),
+        ("theatre_sports", "0002_auto_20190120_1057"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='match',
-            name='all_day',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='created',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='description',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='end',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='location',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='modified',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='name',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='slug',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='start',
-        ),
-        migrations.RemoveField(
-            model_name='match',
-            name='visibility',
-        ),
+        migrations.RemoveField(model_name="match", name="all_day",),
+        migrations.RemoveField(model_name="match", name="created",),
+        migrations.RemoveField(model_name="match", name="description",),
+        migrations.RemoveField(model_name="match", name="end",),
+        migrations.RemoveField(model_name="match", name="location",),
+        migrations.RemoveField(model_name="match", name="modified",),
+        migrations.RemoveField(model_name="match", name="name",),
+        migrations.RemoveField(model_name="match", name="slug",),
+        migrations.RemoveField(model_name="match", name="start",),
+        migrations.RemoveField(model_name="match", name="visibility",),
     ]

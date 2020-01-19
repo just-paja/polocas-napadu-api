@@ -10,12 +10,12 @@ from .show_volume_calibration import ShowVolumeCalibration
 from .show_volume_calibration_voting import ShowVolumeCalibrationVoting
 
 __all__ = (
-    'Show',
-    'ShowParticipant',
-    'ShowPhoto',
-    'ShowRole',
-    'ShowType',
-    'ShowTypePhoto',
-    'ShowVolumeCalibration',
-    'ShowVolumeCalibrationVoting',
+    "Show",
+    "ShowParticipant",
+    "ShowPhoto",
+    "ShowRole",
+    "ShowType",
+    "ShowTypePhoto",
+    "ShowVolumeCalibration",
+    "ShowVolumeCalibrationVoting",
 )

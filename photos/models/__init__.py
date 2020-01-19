@@ -2,6 +2,4 @@
 
 from .photo import Photo
 
-__all__ = (
-    'Photo',
-)
+__all__ = ("Photo",)

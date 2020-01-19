@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-25 17:55+0000\n"
+"POT-Creation-Date: 2020-01-08 08:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,13 +106,17 @@ msgstr "Popiš improvizační chybu"
 msgid "Match time"
 msgstr "Čas zápasu"
 
-#: theatre_sports/models/foul_type.py:8
+#: theatre_sports/models/foul_type.py:9
 msgid "FoulType"
 msgstr "Typ faulu"
 
-#: theatre_sports/models/foul_type.py:9
+#: theatre_sports/models/foul_type.py:10
 msgid "Foul Types"
 msgstr "Typy faulů"
+
+#: theatre_sports/models/foul_type.py:12
+msgid "Slug"
+msgstr ""
 
 #: theatre_sports/models/match.py:9
 msgid "Matches"

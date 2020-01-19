@@ -3,23 +3,15 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Match(Model):
-
     class Meta:
-        verbose_name = _('Match')
-        verbose_name_plural = _('Matches')
+        verbose_name = _("Match")
+        verbose_name_plural = _("Matches")
 
-    show = OneToOneField(
-        'shows.Show',
-        on_delete=CASCADE,
-        related_name='match',
-    )
-    closed = BooleanField(
-        default=False,
-        verbose_name=_('Closed'),
-    )
+    show = OneToOneField("shows.Show", on_delete=CASCADE, related_name="match",)
+    closed = BooleanField(default=False, verbose_name=_("Closed"),)
 
     def __str__(self):
-        return '%s: %s' % (_('Match'), self.show)
+        return "%s: %s" % (_("Match"), self.show)
 
     def get_show_name(self):
         return self.show.name
@@ -28,15 +20,15 @@ class Match(Model):
         return self.show.start
 
     def get_actual_start(self):
-        first_stage = self.stages.order_by('created').first()
+        first_stage = self.stages.order_by("created").first()
         return first_stage.created if first_stage else self.start
 
     def get_current_stage(self):
-        return self.stages.order_by('-created').first()
+        return self.stages.order_by("-created").first()
 
     def get_prev_stage(self):
         try:
-            return self.stages.order_by('-created')[1]
+            return self.stages.order_by("-created")[1]
         except IndexError:
             return None
 
@@ -51,6 +43,6 @@ class Match(Model):
         return None
 
 
-Match.get_show_name.short_description = _('Match')
-Match.get_show_date.short_description = _('Date')
-Match.get_current_stage_name.short_description = _('Stage')
+Match.get_show_name.short_description = _("Match")
+Match.get_show_date.short_description = _("Date")
+Match.get_current_stage_name.short_description = _("Stage")

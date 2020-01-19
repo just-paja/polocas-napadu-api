@@ -2,7 +2,7 @@ from django.db import migrations
 
 
 def save_all_game_rules(apps, schema_editor):
-    GameRules = apps.get_model('games', 'GameRules')
+    GameRules = apps.get_model("games", "GameRules")
     db_alias = schema_editor.connection.alias
     objects = GameRules.objects.using(db_alias).all()
     for game_rules in objects:
@@ -12,7 +12,7 @@ def save_all_game_rules(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('games', '0006_gamerules_slug'),
+        ("games", "0006_gamerules_slug"),
     ]
 
     operations = [

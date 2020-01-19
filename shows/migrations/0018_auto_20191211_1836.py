@@ -7,13 +7,18 @@ import fields.description
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0017_showtype_use_games'),
+        ("shows", "0017_showtype_use_games"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='show',
-            name='description',
-            field=fields.description.DescriptionField(blank=True, help_text='nameDescriptionText', null=True, verbose_name='Description'),
+            model_name="show",
+            name="description",
+            field=fields.description.DescriptionField(
+                blank=True,
+                help_text="nameDescriptionText",
+                null=True,
+                verbose_name="Description",
+            ),
         ),
     ]

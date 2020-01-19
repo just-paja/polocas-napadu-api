@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shows', '0010_showvolumecalibration_closed'),
+        ("shows", "0010_showvolumecalibration_closed"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='show',
-            name='link_facebook',
+            model_name="show",
+            name="link_facebook",
             field=models.URLField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='show',
-            name='link_reservations',
+            model_name="show",
+            name="link_reservations",
             field=models.URLField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='show',
-            name='link_tickets',
+            model_name="show",
+            name="link_tickets",
             field=models.URLField(blank=True, null=True),
         ),
     ]

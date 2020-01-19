@@ -4,16 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 from events.models import Event
 from fields import DescriptionField
 
-class Show(Event):
 
+class Show(Event):
     class Meta:
-        verbose_name = _('Show')
-        verbose_name_plural = _('Shows')
+        verbose_name = _("Show")
+        verbose_name_plural = _("Shows")
 
     description = DescriptionField(blank=True, null=True)
     show_type = ForeignKey(
-        'showType',
+        "showType",
         on_delete=PROTECT,
-        related_name='shows',
-        verbose_name=_('Show type'),
+        related_name="shows",
+        verbose_name=_("Show type"),
     )

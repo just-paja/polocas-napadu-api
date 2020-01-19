@@ -7,13 +7,19 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('games', '0005_auto_20190415_0030'),
+        ("games", "0005_auto_20190415_0030"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='gamerules',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, overwrite=True, populate_from='name', verbose_name='Slug'),
+            model_name="gamerules",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True,
+                editable=False,
+                overwrite=True,
+                populate_from="name",
+                verbose_name="Slug",
+            ),
         ),
     ]

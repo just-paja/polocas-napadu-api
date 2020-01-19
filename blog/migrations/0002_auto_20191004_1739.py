@@ -6,13 +6,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0001_initial'),
+        ("blog", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='article',
-            name='site_anchor',
-            field=models.CharField(blank=True, max_length=31, null=True, unique=True, verbose_name='Site Anchor'),
+            model_name="article",
+            name="site_anchor",
+            field=models.CharField(
+                blank=True,
+                max_length=31,
+                null=True,
+                unique=True,
+                verbose_name="Site Anchor",
+            ),
         ),
     ]

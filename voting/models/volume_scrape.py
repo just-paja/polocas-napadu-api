@@ -4,23 +4,20 @@ from django_extensions.db.models import TimeStampedModel
 
 from .already_closed import AlreadyClosed
 
+
 class VolumeScrape(TimeStampedModel):
     voting = ForeignKey(
-        'LivePollVoting',
+        "LivePollVoting",
         on_delete=CASCADE,
-        related_name='volume_scrapes',
-        verbose_name=_('Live Poll Voting'),
+        related_name="volume_scrapes",
+        verbose_name=_("Live Poll Voting"),
     )
-    volume = FloatField(
-        verbose_name=_('Recorded volume'),
-    )
+    volume = FloatField(verbose_name=_("Recorded volume"),)
 
     class Meta:
-        verbose_name = _('Volume scrape')
-        verbose_name_plural = _('Volume scrapes')
+        verbose_name = _("Volume scrape")
+        verbose_name_plural = _("Volume scrapes")
 
     def clean(self):
         if self.voting.closed:
-            raise AlreadyClosed(
-                'Poll voting %s is already closed' % self.voting.pk
-            )
+            raise AlreadyClosed("Poll voting %s is already closed" % self.voting.pk)

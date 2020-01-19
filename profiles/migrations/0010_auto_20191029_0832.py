@@ -7,13 +7,19 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0009_auto_20191004_1735'),
+        ("profiles", "0009_auto_20191004_1735"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, overwrite=True, populate_from='name', verbose_name='Slug'),
+            model_name="profile",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True,
+                editable=False,
+                overwrite=True,
+                populate_from="name",
+                verbose_name="Slug",
+            ),
         ),
     ]

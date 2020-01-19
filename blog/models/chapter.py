@@ -6,19 +6,12 @@ from fields import PublicResourceMixin
 
 
 class Chapter(PublicResourceMixin):
-
     class Meta:
-        verbose_name = _('Chapter')
-        verbose_name_plural = _('Chapters')
+        verbose_name = _("Chapter")
+        verbose_name_plural = _("Chapters")
 
-    article = ForeignKey(
-        'Article',
-        on_delete=CASCADE,
-        related_name='chapters',
-    )
-    slug = AutoSlugField(_('Slug'), overwrite=True, populate_from='name')
+    article = ForeignKey("Article", on_delete=CASCADE, related_name="chapters",)
+    slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")
     weight = IntegerField(
-        default=0,
-        help_text=_('weightHelpText'),
-        verbose_name=_('Weight'),
+        default=0, help_text=_("weightHelpText"), verbose_name=_("Weight"),
     )

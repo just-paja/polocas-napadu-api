@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('voting', '0004_auto_20190516_0811'),
+        ("voting", "0004_auto_20190516_0811"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='livepollvoting',
-            name='avg_volume',
-            field=models.FloatField(blank=True, help_text='avgVolumeHelpText', null=True, verbose_name='Average volume'),
+            model_name="livepollvoting",
+            name="avg_volume",
+            field=models.FloatField(
+                blank=True,
+                help_text="avgVolumeHelpText",
+                null=True,
+                verbose_name="Average volume",
+            ),
         ),
     ]
