@@ -17,7 +17,7 @@ from fields import DescriptionField, NameField
 
 from .currency import AmountField, CurrencyField
 from .statement_specs import StatementSpecification
-from .time_limited import TimeFilteredModel, TimeLimitedManager
+from .time_limited import TimeLimitedModel, TimeLimitedManager
 
 STATUS_EXPECTED = 1
 STATUS_PAID = 2
@@ -46,7 +46,7 @@ class PromiseManager(TimeLimitedManager):
         return query
 
 
-class Promise(StatementSpecification, TimeFilteredModel):
+class Promise(StatementSpecification, TimeLimitedModel):
 
     class Meta:
         verbose_name = _('Promise')
