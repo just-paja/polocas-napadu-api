@@ -1,0 +1,13 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_modify %}
+
+{% block object-tools %}
+  {% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    {% block object-tools-items %}
+      <li><a href="{% url 'known_account_pair' known_account_id=original.id %}">{% trans "Pair with statements" %}</a></li>
+      {% change_form_object_tools %}
+    {% endblock %}
+  </ul>
+  {% endif %}{% endif %}
+{% endblock %}

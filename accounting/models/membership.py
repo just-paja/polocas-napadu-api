@@ -77,8 +77,8 @@ class MembershipLevel(NameMixin, DescriptionMixin, TimeLimitedModel):
 class MembershipLevelFee(TimeFilteredModel):
 
     class Meta:
-        verbose_name = _('Membership level')
-        verbose_name_plural = _('Membership levels')
+        verbose_name = _('Membership level fee')
+        verbose_name_plural = _('Membership level fees')
 
     objects = TimeLimitedManager()
     level = ForeignKey(

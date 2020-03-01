@@ -122,12 +122,14 @@ class AccountAdmin(BaseAdminModel):
 
 class KnownAccountInlineAdmin(BaseStackedAdminModel):
     model = KnownAccount
+    extra = 0
 
 
 class CounterPartyAdmin(BaseAdminModel):
     model = CounterParty
     inlines = [KnownAccountInlineAdmin]
     list_display = ('name', 'count_known_accounts', 'created', 'modified')
+    change_form_template = 'admin/counterparty_change_form.html'
     search_fields = (
         'name',
         'accounts__sender_account_number',
@@ -155,12 +157,14 @@ class KnownAccountAdmin(BaseAdminModel):
         'created',
         'modified'
     )
+    change_form_template = 'admin/known_account_change_form.html'
     search_fields = ('sender_account_number', 'sender_bank', 'sender_iban', 'sender_bic')
 
 
 class DebtAdmin(BaseInlineAdminModel):
     model = Debt
     fields = ('amount', 'currency', 'maturity')
+    extra = 0
 
 
 class PromiseAdmin(BaseAdminModel):
@@ -201,6 +205,7 @@ class PromiseAdmin(BaseAdminModel):
 class MembershipLevelFeeAdmin(BaseInlineAdminModel):
     model = MembershipLevelFee
     fields = ('amount', 'currency', 'start', 'end')
+    extra = 0
 
 
 class MembershipLevelAdmin(BaseAdminModel):
