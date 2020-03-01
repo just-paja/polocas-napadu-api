@@ -1,4 +1,4 @@
-from django.db.models import Model, PositiveIntegerField
+from django.db.models import Model, BigIntegerField
 from django.utils.translation import ugettext_lazy as _
 
 from .account import AccountNumberField, BankNumberField, IBanField, BicField
@@ -12,19 +12,19 @@ class StatementSpecification(Model):
 
     amount = AmountField()
     currency = CurrencyField()
-    variable_symbol = PositiveIntegerField(
+    variable_symbol = BigIntegerField(
         blank=True,
         null=True,
         verbose_name=_('variableSymbol'),
         help_text=_('Optional payment identifier'),
     )
-    constant_symbol = PositiveIntegerField(
+    constant_symbol = BigIntegerField(
         blank=True,
         null=True,
         verbose_name=_('constantSymbol'),
         help_text=_('Purpose code of the payment specified by Czech banking system.'),
     )
-    specific_symbol = PositiveIntegerField(
+    specific_symbol = BigIntegerField(
         blank=True,
         null=True,
         verbose_name=_('Specific symbol'),
