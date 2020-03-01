@@ -5,7 +5,14 @@ from fields import NameMixin, DescriptionMixin
 
 from .currency import AmountField, CurrencyField
 from .promise import Promise, RECURRENCE_MONTHLY
-from .time_limited import TimeLimitedManager, TimeFilteredModel, intersects, later, sooner
+from .time_limited import (
+    intersects,
+    later,
+    sooner,
+    TimeFilteredModel,
+    TimeLimitedManager,
+    TimeLimitedModel,
+)
 
 MEMBERSHIP_NAME_IDENTIFIER = 'Členství'
 
@@ -55,7 +62,7 @@ class Membership(TimeFilteredModel):
                     fee.delete()
 
 
-class MembershipLevel(NameMixin, DescriptionMixin, TimeFilteredModel):
+class MembershipLevel(NameMixin, DescriptionMixin, TimeLimitedModel):
 
     class Meta:
         verbose_name = _('Membership level')
@@ -83,6 +90,9 @@ class MembershipLevelFee(TimeFilteredModel):
 
     def __str__(self):
         return '%s %s (%s)' % (self.amount, self.currency, self.level.name)
+
+    def get_related_objects(self):
+        return super().get_related_objects().filter(level=self.level)
 
 
 class MembershipFee(Promise):
