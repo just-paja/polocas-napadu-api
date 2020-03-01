@@ -6,17 +6,17 @@ from .bank_sync import sync_fio
 from .models import Account, CounterParty, KnownAccount, Statement
 
 
-@staff_member_required
-def bank_sync(request):
-    pass
-
-
 def pair_known_account_to_statements(account):
     statements = Statement.objects.filter(known_account__isnull=True)
     for statement in statements:
         if account.matches_statement(statement):
             statement.known_account = account
             statement.save()
+
+
+def sync_account(account):
+    five_years_back = 1825
+    sync_fio(account, five_years_back)
 
 
 @staff_member_required
@@ -36,6 +36,13 @@ def known_account_pair(request, known_account_id):
 @staff_member_required
 def account_bank_sync(request, account_id):
     account = get_object_or_404(Account, pk=account_id, fio_readonly_key__isnull=False)
-    five_years_back = 1825
-    sync_fio(account, five_years_back)
+    sync_account(account)
     return redirect(reverse('admin:accounting_statement_changelist'))
+
+
+@staff_member_required
+def bank_sync(request):
+    accounts = Account.objects.filter(fio_readonly_key__isnull=False).all()
+    for account in accounts:
+        sync_account(account)
+    return redirect(reverse('admin:accounting_account_changelist'))

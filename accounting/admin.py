@@ -19,32 +19,6 @@ from .models import (
     PurposeCategory,
     Statement,
 )
-from .models.promise import (
-    STATUS_EXPECTED,
-    STATUS_OVERPAID,
-    STATUS_PAID,
-    STATUS_UNDERPAID,
-)
-
-COLOR_INFO = '#79aec8'
-COLOR_BODY = '#333333'
-COLOR_SUCCESS = 'green'
-COLOR_DANGER = '#a41515'
-
-STATUS_COLORS = {
-    STATUS_EXPECTED: COLOR_BODY,
-    STATUS_PAID: COLOR_SUCCESS,
-    STATUS_UNDERPAID: COLOR_DANGER,
-    STATUS_OVERPAID: COLOR_DANGER,
-}
-
-PROMISE_TYPE_ONE_TIME = 1
-PROMISE_TYPE_RECURRING = 2
-
-PROMISE_TYPE = (
-    (PROMISE_TYPE_ONE_TIME, _('One time')),
-    (PROMISE_TYPE_RECURRING, _('Recurring')),
-)
 
 DIRECTION_INBOUND = 1
 DIRECTION_OUBOUND = 2
@@ -97,7 +71,7 @@ class PaymentPairingStatusFilter(SimpleListFilter):
         if filter_value == 1:
             return queryset.filter(promise__isnull=False)
         if filter_value == 2:
-            return queryset.filter(promise__isnull=False)
+            return queryset.filter(promise__isnull=True)
         return queryset
 
 
@@ -118,6 +92,7 @@ class AccountAdmin(BaseAdminModel):
     search_fields = ('name', 'description', 'account_number', 'bank', 'iban', 'bic')
     list_filter = ('currency', 'visibility')
     change_form_template = 'admin/account_change_form.html'
+    change_list_template = 'admin/account_change_list.html'
 
 
 class KnownAccountInlineAdmin(BaseStackedAdminModel):
