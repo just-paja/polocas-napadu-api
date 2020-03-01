@@ -172,6 +172,7 @@ class PromiseAdmin(BaseAdminModel):
         'status',
         'amount',
         'get_volume_price_tag',
+        'variable_symbol',
         'modified'
     )
 
