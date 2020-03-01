@@ -1,3 +1,4 @@
+from admin_auto_filters.filters import AutocompleteFilter
 from django.contrib.admin.filters import SimpleListFilter
 from django.urls import reverse
 from django.utils.html import format_html
@@ -220,7 +221,20 @@ class MembershipAdmin(BaseAdminModel):
     fields = ('user', 'level', 'start', 'end')
 
 
+class AccountFilter(AutocompleteFilter):
+    title = _("Account")
+    field_name = "account"
+
+
+class KnownAccountFilter(AutocompleteFilter):
+    title = _("Known account")
+    field_name = "known_account"
+
+
 class StatementAdmin(BaseAdminModel):
+    class Media:
+        pass
+
     model = Statement
     change_form_template = 'admin/statement_change_form.html'
     fieldsets = (
@@ -273,8 +287,10 @@ class StatementAdmin(BaseAdminModel):
     list_filter = (
         PaymentDirectionFilter,
         PaymentPairingStatusFilter,
-        'account',
+        AccountFilter,
+        KnownAccountFilter,
     )
+    search_fields = ('promise__name', 'knownaccount__owner__name')
 
     def link_counter_party(self, statement):
         if statement.known_account:
