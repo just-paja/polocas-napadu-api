@@ -95,7 +95,7 @@ class MembershipLevelFee(TimeFilteredModel):
         return super().get_related_objects().filter(level=self.level)
 
 
-class MembershipFee(Promise):
+class MembershipFee(Promise, TimeFilteredModel):
 
     class Meta:
         verbose_name = _('Membership fee')
@@ -116,7 +116,7 @@ class MembershipFee(Promise):
         self.repeat = RECURRENCE_MONTHLY
         self.name = format_membership_name(self.membership.user)
         if not self.variable_symbol:
-            self.variable_symbol = '%s%s%s' % (self.membership.user.pk, self.membership.pk, self.pk)
+            self.variable_symbol = self.pk
         super().save(*args, **kwargs)
 
     def get_related_objects(self):
