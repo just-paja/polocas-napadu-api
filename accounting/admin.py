@@ -192,9 +192,8 @@ class PromiseAdmin(BaseAdminModel):
         PaymentDirectionFilter,
     )
     list_display = (
-        'pk',
+        '__str__',
         'purpose',
-        'name',
         'status',
         'amount',
         'get_volume_price_tag',
