@@ -162,6 +162,7 @@ class PromiseAdmin(BaseAdminModel):
         }),
     )
     change_form_template = 'admin/promise_change_form.html'
+    change_list_template = 'admin/promise_change_list.html'
     list_filter = (
         'status',
         'repeat',

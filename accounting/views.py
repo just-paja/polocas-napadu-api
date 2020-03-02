@@ -3,7 +3,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
 
 from .bank_sync import sync_fio
-from .models import Account, CounterParty, KnownAccount, Statement
+from .models import Account, CounterParty, KnownAccount, Promise, Statement
 
 
 def pair_known_account_to_statements(account):
@@ -46,3 +46,11 @@ def bank_sync(request):
     for account in accounts:
         sync_account(account)
     return redirect(reverse('admin:accounting_account_changelist'))
+
+
+@staff_member_required
+def promises_regenerate_recurrency(request):
+    promises = Promise.objects.filter(repeat__isnull=False).all()
+    for promise in promises:
+        promise.save()
+    return redirect(reverse('admin:accounting_promise_changelist'))
