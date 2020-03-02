@@ -104,7 +104,6 @@ class Statement(
                 ).first()
             self.counterparty = known_account.owner if known_account else None
 
-
     def update_promises(self):
         if self.promise:
             self.promise.save()

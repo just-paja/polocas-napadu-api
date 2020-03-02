@@ -13,6 +13,7 @@ def pair_known_account_to_statements(account):
             statement.counterparty = account.owner
             statement.save()
 
+
 def pair_counterparty_to_statements(counterparty):
     for account in counterparty.accounts.all():
         pair_known_account_to_statements(account)

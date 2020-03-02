@@ -115,7 +115,7 @@ class CounterPartyAdmin(BaseAdminModel):
         'accounts__sender_iban',
         'accounts__sender_bic',
     )
-    ordering = ('-statements__count', '-modified')
+    ordering = ('-modified',)
 
     def get_queryset(self, request):
         querystring = super().get_queryset(request)
@@ -206,6 +206,12 @@ class PromiseAdmin(BaseAdminModel):
         'variable_symbol',
         'modified'
     )
+    search_fields = (
+        'variable_symbol',
+        'specific_symbol',
+        'constant_symbol',
+        'name',
+    )
 
 
 class MembershipLevelFeeAdmin(BaseInlineAdminModel):
@@ -256,6 +262,11 @@ class AccountFilter(AutocompleteFilter):
     field_name = "account"
 
 
+class PromiseFilter(AutocompleteFilter):
+    title = _("Promise")
+    field_name = "promise"
+
+
 class CounterPartyFilter(AutocompleteFilter):
     title = _("Counterparty")
     field_name = "counterparty"
@@ -274,6 +285,7 @@ class StatementAdmin(BaseAdminModel):
         (None, {
             'fields': (
                 'amount',
+                'currency',
                 'received_at',
                 'promise',
             ),
@@ -318,9 +330,17 @@ class StatementAdmin(BaseAdminModel):
         PaymentDirectionFilter,
         PaymentPairingStatusFilter,
         AccountFilter,
+        PromiseFilter,
         CounterPartyFilter,
     )
-    search_fields = ('promise__name', 'knownaccount__owner__name')
+    autocomplete_fields = ('promise', 'counterparty')
+    search_fields = (
+        'promise__name',
+        'counterparty__name',
+        'variable_symbol',
+        'specific_symbol',
+        'constant_symbol',
+    )
 
     def link_counterparty(self, statement):
         if statement.counterparty:
@@ -331,6 +351,7 @@ class StatementAdmin(BaseAdminModel):
         return None
 
     link_counterparty.short_description = _('Counterparty')
+    link_counterparty.admin_order_field = 'counterparty__name'
 
 
 class PurposeAdmin(BaseAdminModel):
