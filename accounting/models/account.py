@@ -94,7 +94,7 @@ class Account(PublicResourceMixin):
         return ballance if ballance else 0
 
     def get_ballance(self):
-        return '%s %s' % (self.calculate_ballance(), self.currency)
+        return '%.2f %s' % (self.calculate_ballance(), self.currency)
 
     get_ballance.short_description = _('Ballance')
 
