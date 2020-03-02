@@ -11,8 +11,8 @@ from .statement_specs import StatementSenderSpecification
 class CounterParty(NameMixin, TimeStampedModel):
 
     class Meta:
-        verbose_name = _('CounterParty')
-        verbose_name_plural = _('CounterParties')
+        verbose_name = _('Counterparty')
+        verbose_name_plural = _('Counterparties')
 
 
 class KnownAccount(StatementSenderSpecification, TimeStampedModel):

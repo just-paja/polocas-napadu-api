@@ -20,8 +20,8 @@ class PurposeCategory(
     DescriptionMixin,
 ):
     class Meta:
-        verbose_name = _('purpose category')
-        verbose_name_plural = _('purpose categories')
+        verbose_name = _('Purpose category')
+        verbose_name_plural = _('Purpose categories')
 
     purposes = ManyToManyField(
         'Purpose',

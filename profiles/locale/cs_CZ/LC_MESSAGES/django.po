@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 08:52+0000\n"
+"POT-Creation-Date: 2020-03-02 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,42 +21,42 @@ msgstr ""
 msgid "Actors"
 msgstr "Herci"
 
-#: profiles/models/profile.py:12
+#: profiles/models/profile.py:11
 msgid "Actor profile"
 msgstr "Herecký profil"
 
-#: profiles/models/profile.py:13
+#: profiles/models/profile.py:12
 msgid "Actor profiles"
 msgstr "Herecké profily"
 
-#: profiles/models/profile.py:19
+#: profiles/models/profile.py:18
 msgid "artistAliasHelpText"
 msgstr "Při zobrazení bude preferováno před civilním jménem"
 
-#: profiles/models/profile.py:20
+#: profiles/models/profile.py:19
 msgid "Artist alias"
 msgstr "Umělecké jméno"
 
-#: profiles/models/profile.py:22
+#: profiles/models/profile.py:21
 msgid "Slug"
 msgstr ""
 
-#: profiles/models/profile.py:34
+#: profiles/models/profile.py:25
 msgid "Avatar"
 msgstr ""
 
-#: profiles/models/profile_group.py:10
+#: profiles/models/profile_group.py:9
 msgid "Actor group"
 msgstr "Herecká skupina"
 
-#: profiles/models/profile_group.py:11
+#: profiles/models/profile_group.py:10
 msgid "Actor groups"
 msgstr "Herecké skupiny"
 
-#: profiles/models/profile_group.py:15
+#: profiles/models/profile_group.py:13
 msgid "weightHelpText"
 msgstr "Těžší položky se objeví níže v seznamu"
 
-#: profiles/models/profile_group.py:16
+#: profiles/models/profile_group.py:13
 msgid "Weight"
 msgstr "Váha"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 08:52+0000\n"
+"POT-Creation-Date: 2020-03-02 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,26 +57,26 @@ msgstr "Rezervace"
 msgid "Reservations"
 msgstr "Rezervace"
 
-#: tickets/models/reservation.py:46
+#: tickets/models/reservation.py:41
 msgid "Customer name"
 msgstr "Jméno diváka"
 
-#: tickets/models/reservation.py:49
+#: tickets/models/reservation.py:42
 msgid "Customer email"
 msgstr "E-mail diváka"
 
-#: tickets/models/reservation.py:53
+#: tickets/models/reservation.py:43
 msgid "Number of seats"
 msgstr "Počet sedadel"
 
-#: tickets/models/reservation.py:57
+#: tickets/models/reservation.py:45
 msgid "Seat location"
 msgstr "Kde chce sedět"
 
-#: tickets/models/reservation.py:61
+#: tickets/models/reservation.py:47
 msgid "Status"
 msgstr "Stav"
 
-#: tickets/models/reservation.py:65
+#: tickets/models/reservation.py:48
 msgid "Newsletter"
 msgstr "Chce dostávat newsletter"

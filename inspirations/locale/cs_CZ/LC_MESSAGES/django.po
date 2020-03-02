@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 08:52+0000\n"
+"POT-Creation-Date: 2020-03-02 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,18 +25,18 @@ msgstr "Inspirace"
 msgid "Inspiration"
 msgstr "Inspirace"
 
-#: inspirations/models/inspiration.py:19
+#: inspirations/models/inspiration.py:15
 msgid "Textual inspiration"
 msgstr "Textová inspirace"
 
-#: inspirations/models/inspiration.py:20
+#: inspirations/models/inspiration.py:17
 msgid "Enter words that will serve as an inspiration for this improvisation"
 msgstr "Napište slova, která budou použita jako inspirace do této improvizace"
 
-#: inspirations/models/inspiration.py:31
+#: inspirations/models/inspiration.py:29
 msgid "Date"
 msgstr "Datum"
 
-#: inspirations/models/inspiration.py:32
+#: inspirations/models/inspiration.py:30
 msgid "Show"
 msgstr "Představení"

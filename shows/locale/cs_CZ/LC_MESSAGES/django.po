@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 08:52+0000\n"
+"POT-Creation-Date: 2020-03-02 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,8 @@ msgstr ""
 msgid "Shows"
 msgstr "Představení"
 
-#: shows/models/show.py:10 shows/models/show_participant.py:16
-#: shows/models/show_participant.py:42
+#: shows/models/show.py:10 shows/models/show_participant.py:15
+#: shows/models/show_participant.py:41
 #: shows/models/show_volume_calibration.py:9
 msgid "Show"
 msgstr "Představení"
@@ -31,31 +31,31 @@ msgstr "Představení"
 msgid "Show type"
 msgstr "Formát představení"
 
-#: shows/models/show_participant.py:9
+#: shows/models/show_participant.py:8
 msgid "Show participant"
 msgstr "Účinkující"
 
-#: shows/models/show_participant.py:10
+#: shows/models/show_participant.py:9
 msgid "Show participants"
 msgstr "Účinkující"
 
-#: shows/models/show_participant.py:22
+#: shows/models/show_participant.py:21
 msgid "Profile"
 msgstr "Profil"
 
-#: shows/models/show_participant.py:28
+#: shows/models/show_participant.py:27
 msgid "Role"
 msgstr "Role"
 
-#: shows/models/show_participant.py:41
+#: shows/models/show_participant.py:40
 msgid "Date"
 msgstr "Datum"
 
-#: shows/models/show_role.py:10
+#: shows/models/show_role.py:9
 msgid "Show role"
 msgstr "Role"
 
-#: shows/models/show_role.py:11
+#: shows/models/show_role.py:10
 msgid "Show roles"
 msgstr "Role"
 
@@ -71,11 +71,11 @@ msgstr "Slug"
 msgid "Short Description"
 msgstr "Krátký popis"
 
-#: shows/models/show_type.py:23
+#: shows/models/show_type.py:18
 msgid "Use games"
 msgstr "Používá hry"
 
-#: shows/models/show_type.py:29
+#: shows/models/show_type.py:21
 msgid "Use fouls"
 msgstr "Používá fauly"
 
@@ -103,22 +103,22 @@ msgstr "Maximální hlasitost"
 msgid "maximumAudioHelpText"
 msgstr ""
 
-#: shows/models/show_volume_calibration.py:33
+#: shows/models/show_volume_calibration.py:31
 msgid "Closed"
 msgstr "Uzavřeno"
 
-#: shows/models/show_volume_calibration.py:37
+#: shows/models/show_volume_calibration.py:34
 msgid "Show volume calibration"
 msgstr ""
 
-#: shows/models/show_volume_calibration.py:38
+#: shows/models/show_volume_calibration.py:35
 msgid "Show volume calibrations"
 msgstr ""
 
-#: shows/models/show_volume_calibration_voting.py:14
+#: shows/models/show_volume_calibration_voting.py:13
 msgid "Show volume calibration voting"
 msgstr ""
 
-#: shows/models/show_volume_calibration_voting.py:15
+#: shows/models/show_volume_calibration_voting.py:14
 msgid "Show volume calibrations voting"
 msgstr ""

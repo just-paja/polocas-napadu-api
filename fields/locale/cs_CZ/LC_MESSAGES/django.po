@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 08:52+0000\n"
+"POT-Creation-Date: 2020-03-02 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fields/admin.py:21
+#: fields/admin.py:27
 msgid "Location"
 msgstr "Místo"
 
-#: fields/admin.py:26
+#: fields/admin.py:32
 msgid "Show"
 msgstr "Představení"
 
-#: fields/admin.py:31
+#: fields/admin.py:37
 msgid "Show type"
 msgstr "Formát představení"
 
-#: fields/description.py:10
+#: fields/admin.py:46
+msgid "Season"
+msgstr ""
+
+#: fields/description.py:9
 msgid "Description"
 msgstr "Popis"
 
-#: fields/description.py:11
+#: fields/description.py:10
 msgid "nameDescriptionText"
 msgstr "Popište detailně objekt. Můžete použít Markdown."
 
-#: fields/name.py:11
+#: fields/name.py:10
 msgid "Name"
 msgstr "Název"
 
-#: fields/name.py:12
+#: fields/name.py:11
 msgid "nameHelpText"
 msgstr "Napište krátký název, který pomůže uživateli identifikovat objekt"
 
@@ -57,11 +61,11 @@ msgstr "Veřejné"
 msgid "Deleted"
 msgstr "Smazané"
 
-#: fields/visibility.py:21
+#: fields/visibility.py:20
 msgid "Visibility"
 msgstr "Viditelnost"
 
-#: fields/visibility.py:22
+#: fields/visibility.py:21
 msgid "visibilityHelpText"
 msgstr ""
 "Viditelnost ovlivňuje, kdo má přístup k objektu. K veřejným objektům má "

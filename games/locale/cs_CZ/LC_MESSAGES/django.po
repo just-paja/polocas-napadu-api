@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 08:52+0000\n"
+"POT-Creation-Date: 2020-03-02 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: games/__init__.py:7 games/models/game.py:17
+#: games/__init__.py:7 games/models/game.py:16
 msgid "Games"
 msgstr "Hry"
 
-#: games/models/game.py:16
+#: games/models/game.py:15
 msgid "Game"
 msgstr "Hra"
 
-#: games/models/game.py:49
+#: games/models/game.py:38
 msgid "Date"
 msgstr "Datum"
 
-#: games/models/game.py:50
+#: games/models/game.py:39
 msgid "Show"
 msgstr "Představení"
 
-#: games/models/game_actor.py:8
+#: games/models/game_actor.py:7
 msgid "Game Actor"
 msgstr "Hráč"
 
-#: games/models/game_actor.py:9
+#: games/models/game_actor.py:8
 msgid "Game Actors"
 msgstr "Hráči"
 

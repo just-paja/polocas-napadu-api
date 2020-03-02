@@ -257,7 +257,7 @@ class AccountFilter(AutocompleteFilter):
 
 
 class CounterPartyFilter(AutocompleteFilter):
-    title = _("Counter Party")
+    title = _("Counterparty")
     field_name = "counterparty"
 
 
@@ -330,7 +330,7 @@ class StatementAdmin(BaseAdminModel):
             return format_html('<a href="%s">%s</a>' % (link, name))
         return None
 
-    link_counterparty.short_description = _('Counter party')
+    link_counterparty.short_description = _('Counterparty')
 
 
 class PurposeAdmin(BaseAdminModel):
