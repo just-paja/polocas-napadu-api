@@ -143,7 +143,15 @@ class DebtAdmin(BaseInlineAdminModel):
     extra = 0
 
 
+class PurposeFilter(AutocompleteFilter):
+    title = _("Purpose")
+    field_name = "purpose"
+
+
 class PromiseAdmin(BaseAdminModel):
+    class Media:
+        pass
+
     model = Promise
     inlines = [DebtAdmin]
     fieldsets = (
@@ -166,6 +174,7 @@ class PromiseAdmin(BaseAdminModel):
     list_filter = (
         'status',
         'repeat',
+        PurposeFilter,
         PaymentDirectionFilter,
     )
     list_display = (
@@ -313,6 +322,7 @@ class PurposeAdmin(BaseAdminModel):
         'get_promise_count',
     )
     list_filter = ()
+    search_fields = ('name', 'description')
 
 
 class PurposeCategoryAdmin(BaseAdminModel):
