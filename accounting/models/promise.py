@@ -32,9 +32,11 @@ STATUS_CHOICES = (
 )
 
 RECURRENCE_MONTHLY = 'P1M'
+RECURRENCE_YEARLY = 'P1Y'
 
 RECURRENCE_CHOICES = (
     (RECURRENCE_MONTHLY, _('Monthly')),
+    (RECURRENCE_YEARLY, _('Yearly')),
 )
 
 
@@ -157,8 +159,10 @@ class Promise(StatementSpecification, TimeLimitedModel):
         return result.get('amount', 0) or 0
 
     def get_recurrence_delta(self):
-        if self.repeat:
+        if self.repeat == RECURRENCE_MONTHLY:
             return relativedelta(months=1)
+        if self.repeat == RECURRENCE_YEARLY:
+            return relativedelta(years=1)
         return None
 
     def sum_statements(self):
