@@ -14,9 +14,6 @@ class CounterParty(NameMixin, TimeStampedModel):
         verbose_name = _('CounterParty')
         verbose_name_plural = _('CounterParties')
 
-    def count_known_accounts(self):
-        return self.accounts.count()
-
 
 class KnownAccount(StatementSenderSpecification, TimeStampedModel):
 

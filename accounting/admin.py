@@ -1,5 +1,6 @@
 from admin_auto_filters.filters import AutocompleteFilter
 from django.contrib.admin.filters import SimpleListFilter
+from django.db.models import Count
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
@@ -104,7 +105,7 @@ class KnownAccountInlineAdmin(BaseStackedAdminModel):
 class CounterPartyAdmin(BaseAdminModel):
     model = CounterParty
     inlines = [KnownAccountInlineAdmin]
-    list_display = ('name', 'count_known_accounts', 'created', 'modified')
+    list_display = ('name', 'count_accounts', 'count_statements', 'created', 'modified')
     change_form_template = 'admin/counterparty_change_form.html'
     change_list_template = 'admin/counterparty_change_list.html'
     search_fields = (
@@ -114,6 +115,24 @@ class CounterPartyAdmin(BaseAdminModel):
         'accounts__sender_iban',
         'accounts__sender_bic',
     )
+    ordering = ('-statements__count', '-modified')
+
+    def get_queryset(self, request):
+        querystring = super().get_queryset(request)
+        querystring = querystring.annotate(Count('statements', distinct=True))
+        querystring = querystring.annotate(Count('accounts', distinct=True))
+        return querystring
+
+    def count_accounts(self, obj):
+        return obj.accounts__count
+
+    def count_statements(self, obj):
+        return obj.statements__count
+
+    count_accounts.short_description = _('Known accounts')
+    count_accounts.admin_order_field = 'accounts__count'
+    count_statements.short_description = _('Statements')
+    count_statements.admin_order_field = 'statements__count'
 
 
 class KnownAccountAdmin(BaseAdminModel):
