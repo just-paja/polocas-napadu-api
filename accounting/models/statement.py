@@ -33,8 +33,8 @@ class Statement(
         on_delete=CASCADE,
         related_name='statements',
     )
-    known_account = ForeignKey(
-        'KnownAccount',
+    counterparty = ForeignKey(
+        'CounterParty',
         blank=True,
         null=True,
         on_delete=PROTECT,
@@ -91,16 +91,19 @@ class Statement(
             ).first()
 
     def pair_with_known_accounts(self):
-        if not self.known_account:
+        if not self.counterparty:
+            known_account = None
             if self.sender_account_number and self.sender_bank:
-                self.known_account = KnownAccount.objects.filter(
+                known_account = KnownAccount.objects.filter(
                     sender_account_number=self.sender_account_number,
                     sender_bank=self.sender_bank,
                 ).first()
             elif self.sender_iban:
-                self.known_account = KnownAccount.objects.filter(
+                known_account = KnownAccount.objects.filter(
                     sender_iban=self.sender_iban,
                 ).first()
+            self.counterparty = known_account.owner if known_account else None
+
 
     def update_promises(self):
         if self.promise:

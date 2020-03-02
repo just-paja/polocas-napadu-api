@@ -7,11 +7,15 @@ from .models import Account, CounterParty, KnownAccount, Promise, Statement
 
 
 def pair_known_account_to_statements(account):
-    statements = Statement.objects.filter(known_account__isnull=True)
+    statements = Statement.objects.filter(counterparty__isnull=True)
     for statement in statements:
         if account.matches_statement(statement):
-            statement.known_account = account
+            statement.counterparty = account.owner
             statement.save()
+
+def pair_counterparty_to_statements(counterparty):
+    for account in counterparty.accounts.all():
+        pair_known_account_to_statements(account)
 
 
 def sync_account(account):
@@ -22,9 +26,15 @@ def sync_account(account):
 @staff_member_required
 def counterparty_pair(request, counterparty_id):
     counterparty = get_object_or_404(CounterParty, pk=counterparty_id)
-    for account in counterparty.accounts.all():
-        pair_known_account_to_statements(account)
+    pair_counterparty_to_statements(counterparty)
     return redirect(reverse('admin:accounting_counterparty_change', args=[counterparty.pk]))
+
+
+@staff_member_required
+def counterparty_pair_all(request):
+    for counterparty in CounterParty.objects.all():
+        pair_counterparty_to_statements(counterparty)
+    return redirect(reverse('admin:accounting_counterparty_changelist'))
 
 
 @staff_member_required

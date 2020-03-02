@@ -27,7 +27,7 @@ def statement_repr(statement):
         'account': statement.account,
         'amount': statement.amount,
         'ident': statement.ident,
-        'known_account': statement.known_account,
+        'counterparty': statement.counterparty,
         'message': statement.message,
         'promise': statement.promise,
         'scrape': statement.scrape,
@@ -87,7 +87,7 @@ class BankSyncTest(TestCase):
                 'message': '',
                 'promise': None,
                 'ident': '42',
-                'known_account': None,
+                'counterparty': None,
                 'user_identification': 'xxx',
             }
         ], statement_repr)

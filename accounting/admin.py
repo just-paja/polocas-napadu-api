@@ -106,6 +106,7 @@ class CounterPartyAdmin(BaseAdminModel):
     inlines = [KnownAccountInlineAdmin]
     list_display = ('name', 'count_known_accounts', 'created', 'modified')
     change_form_template = 'admin/counterparty_change_form.html'
+    change_list_template = 'admin/counterparty_change_list.html'
     search_fields = (
         'name',
         'accounts__sender_account_number',
@@ -236,9 +237,9 @@ class AccountFilter(AutocompleteFilter):
     field_name = "account"
 
 
-class KnownAccountFilter(AutocompleteFilter):
-    title = _("Known account")
-    field_name = "known_account"
+class CounterPartyFilter(AutocompleteFilter):
+    title = _("Counter Party")
+    field_name = "counterparty"
 
 
 class StatementAdmin(BaseAdminModel):
@@ -278,13 +279,13 @@ class StatementAdmin(BaseAdminModel):
                 'ident',
                 'user_identification',
                 'message',
-                'known_account',
+                'counterparty',
             ),
         }),
     )
     list_display = (
         'id',
-        'link_counter_party',
+        'link_counterparty',
         'amount',
         'promise',
         'received_at',
@@ -298,19 +299,19 @@ class StatementAdmin(BaseAdminModel):
         PaymentDirectionFilter,
         PaymentPairingStatusFilter,
         AccountFilter,
-        KnownAccountFilter,
+        CounterPartyFilter,
     )
     search_fields = ('promise__name', 'knownaccount__owner__name')
 
-    def link_counter_party(self, statement):
-        if statement.known_account:
-            owner = statement.known_account.owner
+    def link_counterparty(self, statement):
+        if statement.counterparty:
+            owner = statement.counterparty
             name = owner.name
             link = reverse('admin:accounting_counterparty_change', args=[owner.pk])
             return format_html('<a href="%s">%s</a>' % (link, name))
         return None
 
-    link_counter_party.short_description = _('Counter party')
+    link_counterparty.short_description = _('Counter party')
 
 
 class PurposeAdmin(BaseAdminModel):

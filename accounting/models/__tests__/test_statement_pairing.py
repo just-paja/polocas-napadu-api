@@ -31,7 +31,7 @@ class StatementTest(TestCase):
             sender_bank='2010',
             sender_account_number='336699111',
         )
-        assert statement.known_account == known_account
+        assert statement.counterparty == owner
 
     def test_pairs_counter_party_based_on_iban(self):
         account = baker.make(
@@ -53,7 +53,7 @@ class StatementTest(TestCase):
             account=account,
             sender_iban='CZ0920100000001234567892',
         )
-        assert statement.known_account == known_account
+        assert statement.counterparty == owner
 
     def test_pairs_promise_based_on_variable_symbol(self):
         account = baker.make(
