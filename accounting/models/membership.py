@@ -114,7 +114,10 @@ class MembershipFee(Promise, TimeFilteredModel):
 
     def save(self, *args, **kwargs):
         self.repeat = RECURRENCE_MONTHLY
-        self.name = format_membership_name(self.membership.user)
+        self.name = '%s (%s)' % (
+            format_membership_name(self.membership.user),
+            self.level_fee.level.name,
+        )
         if not self.variable_symbol:
             self.variable_symbol = self.pk
         super().save(*args, **kwargs)
