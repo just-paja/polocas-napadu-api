@@ -1,26 +1,18 @@
 from admin_auto_filters.filters import AutocompleteFilter
+
+from django.contrib import messages
 from django.contrib.admin.filters import SimpleListFilter
-from django.db.models import Count
-from django.urls import reverse
+from django.shortcuts import redirect
+from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
-from fields.admin import BaseAdminModel, BaseStackedAdminModel, BaseInlineAdminModel
+from fields.admin import BaseAdminModel, BaseInlineAdminModel
 
-from .models import (
-    Account,
-    CounterParty,
-    Debt,
-    KnownAccount,
-    Membership,
-    MembershipFee,
-    MembershipLevel,
-    MembershipLevelFee,
-    Promise,
-    Purpose,
-    PurposeCategory,
-    Statement,
-)
+from .account import AccountFilter
+from .counterparty import CounterPartyFilter
+from .purpose import PurposeFilter
+from ..models import Debt, KnownAccount, Promise, Statement
 
 DIRECTION_INBOUND = 1
 DIRECTION_OUBOUND = 2
@@ -77,64 +69,6 @@ class PaymentPairingStatusFilter(SimpleListFilter):
         return queryset
 
 
-class AccountAdmin(BaseAdminModel):
-    model = Account
-    fields = (
-        'name',
-        'description',
-        'currency',
-        'account_number',
-        'bank',
-        'iban',
-        'bic',
-        'fio_readonly_key',
-        'visibility'
-    )
-    list_display = ('name', 'currency', 'get_ballance', 'iban', 'visibility', 'modified')
-    search_fields = ('name', 'description', 'account_number', 'bank', 'iban', 'bic')
-    list_filter = ('currency', 'visibility')
-    change_form_template = 'admin/account_change_form.html'
-    change_list_template = 'admin/account_change_list.html'
-
-
-class KnownAccountInlineAdmin(BaseStackedAdminModel):
-    model = KnownAccount
-    extra = 0
-
-
-class CounterPartyAdmin(BaseAdminModel):
-    model = CounterParty
-    inlines = [KnownAccountInlineAdmin]
-    list_display = ('name', 'count_accounts', 'count_statements', 'created', 'modified')
-    change_form_template = 'admin/counterparty_change_form.html'
-    change_list_template = 'admin/counterparty_change_list.html'
-    search_fields = (
-        'name',
-        'accounts__sender_account_number',
-        'accounts__sender_bank',
-        'accounts__sender_iban',
-        'accounts__sender_bic',
-    )
-    ordering = ('-modified',)
-
-    def get_queryset(self, request):
-        querystring = super().get_queryset(request)
-        querystring = querystring.annotate(Count('statements', distinct=True))
-        querystring = querystring.annotate(Count('accounts', distinct=True))
-        return querystring
-
-    def count_accounts(self, obj):
-        return obj.accounts__count
-
-    def count_statements(self, obj):
-        return obj.statements__count
-
-    count_accounts.short_description = _('Known accounts')
-    count_accounts.admin_order_field = 'accounts__count'
-    count_statements.short_description = _('Statements')
-    count_statements.admin_order_field = 'statements__count'
-
-
 class KnownAccountAdmin(BaseAdminModel):
     model = KnownAccount
     fields = (
@@ -161,11 +95,6 @@ class DebtAdmin(BaseInlineAdminModel):
     model = Debt
     fields = ('amount', 'currency', 'maturity')
     extra = 0
-
-
-class PurposeFilter(AutocompleteFilter):
-    title = _("Purpose")
-    field_name = "purpose"
 
 
 class PromiseAdmin(BaseAdminModel):
@@ -213,63 +142,26 @@ class PromiseAdmin(BaseAdminModel):
         'name',
     )
 
+    def get_urls(self):
+        return super().get_urls() + [
+            path(
+                'regenerate',
+                self.admin_site.admin_view(self.promises_regenerate),
+                name='promises_regenerate'
+            ),
+        ]
 
-class MembershipLevelFeeAdmin(BaseInlineAdminModel):
-    model = MembershipLevelFee
-    fields = ('amount', 'currency', 'start', 'end')
-    extra = 0
-
-
-class MembershipLevelAdmin(BaseAdminModel):
-    model = MembershipLevel
-    search_fields = ('name', 'description')
-    list_display = ('name', 'is_active', 'start', 'end', 'modified')
-    inlines = (MembershipLevelFeeAdmin,)
-    fields = ('name', 'description', 'start', 'end')
-
-
-class MembershipFeeAdmin(BaseInlineAdminModel):
-    model = MembershipFee
-    fieldsets = (
-        (None, {
-            'fields': ('level_fee', 'start', 'end'),
-        }),
-    )
-    list_display = (
-        'name',
-        'amount',
-        'get_volume_price_tag',
-        'modified'
-    )
-    search_fields = (
-        'membership__user__first_name',
-        'membership__user__last_name',
-        'purpose__name'
-    )
-    autocomplete_fields = ('membership',)
-
-
-class MembershipAdmin(BaseAdminModel):
-    model = Membership
-    search_fields = ('user__first_name', 'user__last_name')
-    autocomplete_fields = ('user',)
-    list_display = ('user', 'level', 'is_active', 'start', 'end', 'modified')
-    fields = ('user', 'level', 'start', 'end')
-
-
-class AccountFilter(AutocompleteFilter):
-    title = _("Account")
-    field_name = "account"
+    def promises_regenerate(self, request):
+        promises = Promise.objects.filter(repeat__isnull=False).all()
+        for promise in promises:
+            promise.save()
+        messages.add_message(request, messages.SUCCESS, _('Promise regeneration was finished'))
+        return redirect(reverse('accounting:accounting_promise_changelist'))
 
 
 class PromiseFilter(AutocompleteFilter):
     title = _("Promise")
     field_name = "promise"
-
-
-class CounterPartyFilter(AutocompleteFilter):
-    title = _("Counterparty")
-    field_name = "counterparty"
 
 
 class StatementAdmin(BaseAdminModel):
@@ -346,35 +238,9 @@ class StatementAdmin(BaseAdminModel):
         if statement.counterparty:
             owner = statement.counterparty
             name = owner.name
-            link = reverse('admin:accounting_counterparty_change', args=[owner.pk])
+            link = reverse('accounting:accounting_counterparty_change', args=[owner.pk])
             return format_html('<a href="%s">%s</a>' % (link, name))
         return None
 
     link_counterparty.short_description = _('Counterparty')
     link_counterparty.admin_order_field = 'counterparty__name'
-
-
-class PurposeAdmin(BaseAdminModel):
-    model = Purpose
-    fields = ('name', 'description')
-    list_display = (
-        'id',
-        'name',
-        'get_promise_count',
-    )
-    list_filter = ()
-    search_fields = ('name', 'description')
-
-
-class PurposeCategoryAdmin(BaseAdminModel):
-    model = PurposeCategory
-    fieldsets = (
-        (None, {
-            'fields': ('name', 'description', 'purposes'),
-        }),
-    )
-    list_display = (
-        'id',
-        'name',
-    )
-    list_filter = ()

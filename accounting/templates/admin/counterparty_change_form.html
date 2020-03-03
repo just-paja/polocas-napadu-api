@@ -5,7 +5,7 @@
   {% if change %}{% if not is_popup %}
   <ul class="object-tools">
     {% block object-tools-items %}
-      <li><a href="{% url 'counterparty_pair' counterparty_id=original.id %}">{% trans "Pair with statements" %}</a></li>
+      <li><a href="{% url 'accounting:counterparty_pair' counterparty_id=original.id %}">{% trans "Pair with statements" %}</a></li>
       {% change_form_object_tools %}
     {% endblock %}
   </ul>

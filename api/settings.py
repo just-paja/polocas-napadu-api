@@ -68,7 +68,6 @@ INSTALLED_APPS = [
     "theatre_sports.TheatreSportsConfig",
     "tickets.TicketsConfig",
     "voting.VotingConfig",
-    "api_admin.ApiAdminConfig",
     "graphene_django",
     "graphql_jwt.refresh_token",
     "admin_sso",

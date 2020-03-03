@@ -1,10 +1,26 @@
 import datetime
+import nested_admin
 
-from dateutil.relativedelta import relativedelta
 from admin_auto_filters.filters import AutocompleteFilter
+from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.contrib.admin import AdminSite
 from django.contrib.admin.filters import SimpleListFilter
 from django.utils.translation import ugettext_lazy as _
-import nested_admin
+from gsuite.views import gauth
+
+
+class ImprovAdminSite(AdminSite):
+    site_header = "Poločas nápadu"
+    name = 'admin'
+
+    def __init__(self):
+        super(ImprovAdminSite, self).__init__(self.name)
+        if settings.DJANGO_ADMIN_SSO:
+            self.login = gauth
+
+    def hookup(self, admin_model):
+        return self.register(admin_model.model, admin_model)
 
 
 class BaseAdminModel(nested_admin.NestedModelAdmin):

@@ -6,7 +6,7 @@
   <ul class="object-tools">
     {% block object-tools-items %}
       {% if original.promise %}
-        <li><a href="{% url 'admin:accounting_promise_change' original.promise.pk %}">{% trans "View promise" %}</a></li>
+        <li><a href="{% url 'accounting:accounting_promise_change' original.promise.pk %}">{% trans "View promise" %}</a></li>
       {% endif %}
       {% change_form_object_tools %}
     {% endblock %}

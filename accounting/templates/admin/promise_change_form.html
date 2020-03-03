@@ -5,7 +5,7 @@
   {% if change %}{% if not is_popup %}
   <ul class="object-tools">
     {% block object-tools-items %}
-      <li><a href="{% url 'admin:accounting_statement_add' %}?promise={{original.id}}">{% trans "Pay" %}</a></li>
+      <li><a href="{% url 'accounting:accounting_statement_add' %}?promise={{original.id}}">{% trans "Pay" %}</a></li>
       {% change_form_object_tools %}
     {% endblock %}
   </ul>

@@ -18,15 +18,19 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
-from accounting import urls as accounting
-from api_admin.admin import ADMIN_SITE
+
+from accounting.admin import ACCOUNTING_ADMIN
 from gsuite.views import gauth
 from shows import urls as shows
 from theatre_sports import urls as theatre_sports
 
+from .admin import CONFIGURATION_ADMIN, CONTENT_ADMIN
+
 
 urlpatterns = [  # pylint:disable=invalid-name
-    path("admin/", ADMIN_SITE.urls),
+    path("accounting/", ACCOUNTING_ADMIN.urls),
+    path("admin/", CONTENT_ADMIN.urls),
+    path("configuration/", CONFIGURATION_ADMIN.urls),
     path(
         "graphql",
         csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG)),
@@ -34,7 +38,6 @@ urlpatterns = [  # pylint:disable=invalid-name
     ),
     path("shows/", include(shows.urlpatterns)),
     path("theatre-sports/", include(theatre_sports.urlpatterns)),
-    path("accounting/", include(accounting.urlpatterns)),
     path("nested_admin/", include("nested_admin.urls")),
     path("", gauth),
 ]
