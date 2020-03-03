@@ -56,6 +56,7 @@ class ContentAdminSite(ImprovAdminSite):
         self.hookup(ShowRoleAdmin)
         self.hookup(ShowTypeAdmin)
         self.hookup(UsualPlaceAdmin)
+        self.register(Assignment, AssignmentAdmin)
 
 
 class ConfigurationAdminSite(ImprovAdminSite):
@@ -66,7 +67,6 @@ class ConfigurationAdminSite(ImprovAdminSite):
         super().__init__(*args, **kwargs)
         self.register(auth_admin.Group, auth_admin.GroupAdmin)
         self.register(auth_admin.User, auth_admin.UserAdmin)
-        self.register(Assignment, AssignmentAdmin)
 
 
 CONTENT_ADMIN = ContentAdminSite()
