@@ -47,7 +47,7 @@ class CounterPartyAdmin(BaseAdminModel):
                 name='counterparty_pair_all'
             ),
             path(
-                '/<counterparty_id>/pair',
+                '<counterparty_id>/pair',
                 self.admin_site.admin_view(self.pair_counterparty),
                 name='counterparty_pair'
             ),
