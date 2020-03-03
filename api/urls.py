@@ -29,8 +29,8 @@ from .admin import CONFIGURATION_ADMIN, CONTENT_ADMIN
 
 urlpatterns = [  # pylint:disable=invalid-name
     path("accounting/", ACCOUNTING_ADMIN.urls),
-    path("admin/", CONTENT_ADMIN.urls),
     path("configuration/", CONFIGURATION_ADMIN.urls),
+    path("admin/", CONTENT_ADMIN.urls),
     path(
         "graphql",
         csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG)),
