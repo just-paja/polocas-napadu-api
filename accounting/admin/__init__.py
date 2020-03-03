@@ -1,4 +1,6 @@
 from django.contrib.auth import admin as auth_admin
+from django.utils.translation import ugettext_lazy as _
+
 from fields.admin import ImprovAdminSite
 
 from .account import AccountAdmin
@@ -10,6 +12,7 @@ from .purpose import PurposeAdmin, PurposeCategoryAdmin
 
 class AccountingAdminSite(ImprovAdminSite):
     name = 'accounting'
+    site_title = _('Accounting')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

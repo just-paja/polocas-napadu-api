@@ -13,6 +13,7 @@ from gsuite.views import gauth
 class ImprovAdminSite(AdminSite):
     site_header = "Poločas nápadu"
     name = 'admin'
+    site_url = settings.APP_WEBSITE_URL
 
     def __init__(self):
         super(ImprovAdminSite, self).__init__(self.name)

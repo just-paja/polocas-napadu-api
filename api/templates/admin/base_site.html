@@ -1,0 +1,31 @@
+{% extends 'admin:admin/base_site.html' %}
+{% load static i18n %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'api/polocas-administrace.css' %}" />
+{% endblock %}
+
+{% block branding %}
+  <div class="admin-sites">
+    <label
+      type="button"
+      class="hamburger-button"
+      for="admin-sites-menu-toggle"
+    >☰</label>
+    <a href="{% url 'admin:index' %}" class="admin-site-title">{{site_header}} - {{site_title}}</a>
+    <input
+      type="checkbox"
+      class="hacky-toggle-checkbox"
+      id="admin-sites-menu-toggle"
+    />
+    <label id="admin-sites-menu" for="admin-sites-menu-toggle">
+      <div class="admin-site-selection">
+        <ul>
+          <li><a href="{% url 'content:index' %}">{% trans 'Content admin' %}</a></li>
+          <li><a href="{% url 'accounting:index' %}">{% trans 'Accounting' %}</a></li>
+          <li><a href="{% url 'configuration:index' %}">{% trans 'Configuration' %}</a></li>
+        </ul>
+      </div>
+    </div>
+  </label>
+{% endblock %}

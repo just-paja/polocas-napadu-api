@@ -1,4 +1,5 @@
 from django.contrib.auth import admin as auth_admin
+from django.utils.translation import ugettext_lazy as _
 
 from admin_sso.admin import AssignmentAdmin
 from admin_sso.models import Assignment
@@ -28,6 +29,9 @@ from tickets.admin import ReservationAdmin
 
 
 class ContentAdminSite(ImprovAdminSite):
+    name = 'content'
+    site_title = _('Content admin')
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.hookup(ArticleAdmin)
@@ -56,6 +60,7 @@ class ContentAdminSite(ImprovAdminSite):
 
 class ConfigurationAdminSite(ImprovAdminSite):
     name = 'configuration'
+    site_title = _('Configuration')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

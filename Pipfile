@@ -34,6 +34,7 @@ django-admin-autocomplete-filter = "*"
 django-nested-admin = "*"
 fiobank = "*"
 django-searchable-encrypted-fields = "*"
+django-apptemplates = "*"
 
 [requires]
 python_version = "3.8"

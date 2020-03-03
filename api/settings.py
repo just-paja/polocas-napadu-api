@@ -95,9 +95,17 @@ ROOT_URLCONF = "api.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["%s/theatre_sports/templates" % BASE_DIR, ],
-        "APP_DIRS": True,
+        "DIRS": [
+            "%s/api/templates" % BASE_DIR,
+            "%s/theatre_sports/templates" % BASE_DIR,
+        ],
+        # "APP_DIRS": True,
         "OPTIONS": {
+            "loaders": [
+                "apptemplates.Loader",
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
+            ],
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
@@ -162,6 +170,9 @@ AUTHENTICATION_BACKENDS = (
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = "/static/"
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'api', 'static'),
+)
 
 GRAPH_MODELS = {
     "all_applications": True,
