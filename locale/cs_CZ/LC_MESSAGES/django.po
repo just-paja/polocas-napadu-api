@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 18:10+0000\n"
+"POT-Creation-Date: 2020-03-04 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api/settings.py:145
+#: api/admin.py:33 api/templates/admin/base_site.html:24
+msgid "Content admin"
+msgstr ""
+
+#: api/admin.py:64 api/templates/admin/base_site.html:26
+msgid "Configuration"
+msgstr ""
+
+#: api/settings.py:152
 msgid "Czech"
 msgstr "Czech"
 
-#: api/settings.py:146
+#: api/settings.py:153
 msgid "English"
 msgstr "English"
 
-#: api_admin/__init__.py:7
-msgid "Admin"
-msgstr "Admin"
+#: api/templates/admin/base_site.html:25
+#, fuzzy
+#| msgid "Voting"
+msgid "Accounting"
+msgstr "Hlasování"
 
 #: gsuite/__init__.py:93
 msgid "Gsuite"
@@ -81,7 +91,5 @@ msgstr "Snímek hlasitosti"
 msgid "Volume scrapes"
 msgstr "Snímky hlasitosti"
 
-#, fuzzy
-#~| msgid "Voting"
-#~ msgid "Accounting"
-#~ msgstr "Hlasování"
+#~ msgid "Admin"
+#~ msgstr "Admin"

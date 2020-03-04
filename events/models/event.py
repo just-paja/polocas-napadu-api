@@ -2,6 +2,7 @@ from django_extensions.db.fields import AutoSlugField
 from django.db.models import (
     BooleanField,
     DateTimeField,
+    EmailField,
     ForeignKey,
     URLField,
     PROTECT,
@@ -24,9 +25,26 @@ class Event(PublicResourceMixin):
     all_day = BooleanField(default=False)
     location = ForeignKey("locations.Location", on_delete=PROTECT)
     objects = EventManager()
-    link_facebook = URLField(blank=True, null=True)
-    link_reservations = URLField(blank=True, null=True)
-    link_tickets = URLField(blank=True, null=True)
+    email_reservations = EmailField(
+        blank=True,
+        null=True,
+        verbose_name=_('Reservation e-mail'),
+    )
+    link_facebook = URLField(
+        blank=True,
+        null=True,
+        verbose_name=_('Event on Facebook'),
+    )
+    link_reservations = URLField(
+        blank=True,
+        null=True,
+        verbose_name=_('Reservation link'),
+    )
+    link_tickets = URLField(
+        blank=True,
+        null=True,
+        verbose_name=_('Link to buy tickets'),
+    )
 
     class Meta:
         abstract = True

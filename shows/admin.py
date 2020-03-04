@@ -81,7 +81,12 @@ class ShowAdmin(BaseAdminModel):
         (None, {"fields": ("name", "slug", "show_type")}),
         (None, {"fields": ("start", "end", "all_day"), }),
         (None, {"fields": ("location", "description"), }),
-        (None, {"fields": ("link_tickets", "link_reservations", "link_facebook"), }),
+        (None, {"fields": (
+            "link_tickets",
+            "link_reservations",
+            "link_facebook",
+            "email_reservations",
+        ), }),
     )
 
     class Media:

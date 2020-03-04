@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 18:10+0000\n"
+"POT-Creation-Date: 2020-03-04 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: events/models/event.py:21
+#: events/models/event.py:22
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
+
+#: events/models/event.py:31
+msgid "Reservation e-mail"
+msgstr "Rezervační e-mail"
+
+#: events/models/event.py:36
+msgid "Event on Facebook"
+msgstr "Událost na Facebooku"
+
+#: events/models/event.py:41
+msgid "Reservation link"
+msgstr "Odkaz na rezervace"
+
+#: events/models/event.py:46
+msgid "Link to buy tickets"
+msgstr "Odkaz na nákup vstupenek"

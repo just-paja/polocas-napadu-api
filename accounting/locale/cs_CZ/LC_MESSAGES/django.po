@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 18:10+0000\n"
+"POT-Creation-Date: 2020-03-04 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounting/__init__.py:7
+#: accounting/__init__.py:7 accounting/admin/__init__.py:15
 msgid "Accounting"
 msgstr "Účetnictví"
 
-#: accounting/admin.py:29
-msgid "Inbound"
-msgstr "Příchozí"
-
-#: accounting/admin.py:30
-msgid "Outbound"
-msgstr "Odchozí"
-
-#: accounting/admin.py:37
-msgid "Yes"
-msgstr "Ano"
-
-#: accounting/admin.py:38
-msgid "No"
-msgstr "Ne"
-
-#: accounting/admin.py:43
-#, fuzzy
-#| msgid "Payment identificator"
-msgid "Payment direction"
-msgstr "Identifikátor platby"
-
-#: accounting/admin.py:62
-msgid "Has pair"
-msgstr "Spárování"
-
-#: accounting/admin.py:132 accounting/models/counter_party.py:22
-msgid "Known accounts"
-msgstr "Známé účty"
-
-#: accounting/admin.py:134
-msgid "Statements"
-msgstr "Platby"
-
-#: accounting/admin.py:167
-msgid "Purpose"
-msgstr "Účel"
-
-#: accounting/admin.py:255 accounting/models/account.py:81
+#: accounting/admin/account.py:15 accounting/models/account.py:81
 #: accounting/models/account.py:107
 msgid "Account"
 msgstr "Účet"
 
-#: accounting/admin.py:260 accounting/admin.py:333
+#: accounting/admin/account.py:60 accounting/admin/account.py:66
+#: accounting/admin/counterparty.py:63 accounting/admin/counterparty.py:72
+msgid "Pairing was finished"
+msgstr ""
+
+#: accounting/admin/counterparty.py:87 accounting/models/counter_party.py:22
+msgid "Known accounts"
+msgstr "Známé účty"
+
+#: accounting/admin/counterparty.py:89
+msgid "Statements"
+msgstr "Platby"
+
+#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:245
 #: accounting/models/counter_party.py:14
 #, fuzzy
 #| msgid "CounterParty"
 msgid "Counterparty"
 msgstr "Protistrana"
+
+#: accounting/admin/payments.py:21
+msgid "Inbound"
+msgstr "Příchozí"
+
+#: accounting/admin/payments.py:22
+msgid "Outbound"
+msgstr "Odchozí"
+
+#: accounting/admin/payments.py:29
+msgid "Yes"
+msgstr "Ano"
+
+#: accounting/admin/payments.py:30
+msgid "No"
+msgstr "Ne"
+
+#: accounting/admin/payments.py:35
+#, fuzzy
+#| msgid "Payment identificator"
+msgid "Payment direction"
+msgstr "Identifikátor platby"
+
+#: accounting/admin/payments.py:54
+msgid "Has pair"
+msgstr "Spárování"
+
+#: accounting/admin/payments.py:158
+msgid "Promise regeneration was finished"
+msgstr ""
+
+#: accounting/admin/payments.py:163 accounting/models/promise.py:54
+msgid "Promise"
+msgstr "Pohledávka"
+
+#: accounting/admin/purpose.py:10
+msgid "Purpose"
+msgstr "Účel"
 
 #: accounting/models/account.py:15
 msgid "Manual"
@@ -214,10 +227,6 @@ msgstr "Měsíčně"
 #: accounting/models/promise.py:39
 msgid "Yearly"
 msgstr "Ročně"
-
-#: accounting/models/promise.py:54
-msgid "Promise"
-msgstr "Pohledávka"
 
 #: accounting/models/promise.py:55
 msgid "Promises"
