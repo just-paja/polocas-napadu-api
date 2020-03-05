@@ -8,6 +8,7 @@ from .show_type import ShowType
 from .show_type_photo import ShowTypePhoto
 from .show_volume_calibration import ShowVolumeCalibration
 from .show_volume_calibration_voting import ShowVolumeCalibrationVoting
+from .ticket_price import TicketPrice
 
 __all__ = (
     "Show",
@@ -18,4 +19,5 @@ __all__ = (
     "ShowTypePhoto",
     "ShowVolumeCalibration",
     "ShowVolumeCalibrationVoting",
+    "TicketPrice",
 )

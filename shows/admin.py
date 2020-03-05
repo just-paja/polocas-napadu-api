@@ -16,6 +16,7 @@ from .models import (
     ShowTypePhoto,
     ShowVolumeCalibration,
     ShowVolumeCalibrationVoting,
+    TicketPrice,
 )
 
 
@@ -60,6 +61,12 @@ class ShowParticipantInlineAdmin(BaseInlineAdminModel):
     autocomplete_fields = ["profile"]
 
 
+class TicketPriceInlineAdmin(BaseInlineAdminModel):
+    """Admin model for show photos."""
+
+    model = TicketPrice
+
+
 class EventSeasonFilter(SeasonFilter):
     field = "start"
 
@@ -69,6 +76,7 @@ class ShowAdmin(BaseAdminModel):
 
     model = Show
     inlines = [
+        TicketPriceInlineAdmin,
         ShowParticipantInlineAdmin,
         ShowPhotoAdmin,
     ]

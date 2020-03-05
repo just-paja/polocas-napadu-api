@@ -7,6 +7,7 @@ from .account import AccountAdmin
 from .counterparty import CounterPartyAdmin, KnownAccountAdmin
 from .membership import MembershipAdmin, MembershipLevelAdmin
 from .payments import PromiseAdmin, StatementAdmin
+from .price_level import PriceLevelAdmin
 from .purpose import PurposeAdmin, PurposeCategoryAdmin
 
 
@@ -21,6 +22,7 @@ class AccountingAdminSite(ImprovAdminSite):
         self.hookup(KnownAccountAdmin)
         self.hookup(MembershipAdmin)
         self.hookup(MembershipLevelAdmin)
+        self.hookup(PriceLevelAdmin)
         self.hookup(PromiseAdmin)
         self.hookup(PurposeAdmin)
         self.hookup(PurposeCategoryAdmin)
