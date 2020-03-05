@@ -31,7 +31,7 @@ class ShowPhotoNode(DjangoObjectType):
 class ShowNode(DjangoObjectType):
     inspiration_qr_url = String()
     total_inspirations = Int()
-    showsParticipants = List(ShowParticipantNode)
+    showsParticipants = List(ShowParticipantNode) # noqa
 
     class Meta:
         model = Show
@@ -43,7 +43,7 @@ class ShowNode(DjangoObjectType):
     def resolve_total_inspirations(self, info):
         return self.inspirations.filter(discarded=False).count()
 
-    def resolve_showsParticipants(self, info):
+    def resolve_showsParticipants(self, info): # noqa
         return self.showsParticipants.order_by('role__weight')
 
 
