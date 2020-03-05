@@ -31,6 +31,7 @@ class ShowPhotoNode(DjangoObjectType):
 class ShowNode(DjangoObjectType):
     inspiration_qr_url = String()
     total_inspirations = Int()
+    roles = List(ShowRoleNode)
 
     class Meta:
         model = Show
@@ -41,6 +42,9 @@ class ShowNode(DjangoObjectType):
 
     def resolve_total_inspirations(self, info):
         return self.inspirations.filter(discarded=False).count()
+
+    def resolve_roles(self, info):
+        return self.roles.order_by('weight')
 
 
 class ShowTypePhotoNode(DjangoObjectType):
