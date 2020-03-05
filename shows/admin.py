@@ -98,6 +98,8 @@ class ShowRoleAdmin(BaseAdminModel):
 
     model = ShowRole
     search_fields = ("name",)
+    list_display = ('name', 'weight')
+    ordering = ('weight',)
 
 
 class ShowTypeAdmin(BaseAdminModel):

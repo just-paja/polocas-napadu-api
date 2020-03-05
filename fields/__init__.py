@@ -3,6 +3,7 @@ from .description import DescriptionField, DescriptionMixin
 from .name import NameField, NameMixin
 from .permissions import is_staff
 from .public import PublicResourceMixin
+from .weight import WeightField, WeightedMixin
 from .visibility import (
     VISIBILITY_DELETED,
     VISIBILITY_CHOICES,
@@ -15,6 +16,8 @@ from .visibility import (
 
 
 __all__ = (
+    'WeightedMixin',
+    'WeightField',
     "append_host_from_context",
     "DescriptionField",
     "DescriptionMixin",
