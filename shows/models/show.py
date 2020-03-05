@@ -1,7 +1,6 @@
 from django.db.models import ForeignKey, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
-from accounting.models import AmountField, CurrencyField
 from events.models import Event
 from fields import DescriptionField
 

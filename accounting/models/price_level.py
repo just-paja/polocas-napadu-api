@@ -1,13 +1,13 @@
-from django.core.exceptions import ValidationError
 from django.db.models import BooleanField
 from django.utils.translation import ugettext_lazy as _
-from django_extensions.db.models import TimeStampedModel
 
 from fields import PublicResourceMixin, WeightedMixin
 
 
 class PriceLevel(PublicResourceMixin, WeightedMixin):
-    is_default = BooleanField()
+    is_default = BooleanField(
+        verbose_name=_('Default price level that will be used as fallback'),
+    )
 
     def clean(self):
         if self.is_default:

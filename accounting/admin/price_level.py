@@ -1,6 +1,3 @@
-from admin_auto_filters.filters import AutocompleteFilter
-from django.utils.translation import ugettext_lazy as _
-
 from fields.admin import BaseAdminModel
 
 from ..models import PriceLevel
@@ -16,5 +13,4 @@ class PriceLevelAdmin(BaseAdminModel):
         'modified',
     )
     ordering = ('weight',)
-    list_filter = ()
     search_fields = ('name', 'description')

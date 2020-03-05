@@ -1,5 +1,5 @@
 from django_extensions.db.models import AutoSlugField
-from django.db.models import ForeignKey, IntegerField, PROTECT
+from django.db.models import ForeignKey, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from fields import PublicResourceMixin, WeightedMixin
