@@ -14,6 +14,7 @@
 
   post_tasks:
     - name: Configure Transaction cron job
+      when: django_project_environment == 'production'
       cron:
         name: 'Pair {{django_project_name}} transactions'
         minute: 0,30
