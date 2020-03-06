@@ -27,6 +27,9 @@ class TimeLimitedModel(TimeStampedModel):
         today = datetime.date.today()
         return self.start <= today and (not self.end or self.end > today)
 
+    is_active.boolean = True
+    is_active.short_description = _('Active')
+
 
 class TimeFilteredModel(TimeLimitedModel):
 

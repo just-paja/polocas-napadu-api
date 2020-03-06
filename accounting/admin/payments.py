@@ -12,6 +12,7 @@ from fields.admin import BaseAdminModel, BaseInlineAdminModel
 from .account import AccountFilter
 from .counterparty import CounterPartyFilter
 from .purpose import PurposeFilter
+from .time_limited import TimeLimitedAdmin, TimeLimitedActiveFilter
 from ..models import Debt, KnownAccount, Promise, Statement
 
 DIRECTION_INBOUND = 1
@@ -97,7 +98,7 @@ class DebtAdmin(BaseInlineAdminModel):
     extra = 0
 
 
-class PromiseAdmin(BaseAdminModel):
+class PromiseAdmin(TimeLimitedAdmin):
     class Media:
         pass
 
@@ -127,6 +128,7 @@ class PromiseAdmin(BaseAdminModel):
     change_form_template = 'admin/promise_change_form.html'
     change_list_template = 'admin/promise_change_list.html'
     list_filter = (
+        TimeLimitedActiveFilter,
         'status',
         'repeat',
         PurposeFilter,
@@ -139,8 +141,9 @@ class PromiseAdmin(BaseAdminModel):
         'amount',
         'get_volume_price_tag',
         'variable_symbol',
-        'start',
-        'end',
+        'is_active',
+        'format_start',
+        'format_end',
     )
     search_fields = (
         'variable_symbol',

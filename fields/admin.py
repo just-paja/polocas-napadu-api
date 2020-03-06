@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib.admin import AdminSite
 from django.contrib.admin.filters import SimpleListFilter
 from django.http import Http404
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from gsuite.views import gauth
 
@@ -116,3 +117,7 @@ class SeasonFilter(SimpleListFilter):
             "%s__lt" % self.field: self.get_season_end(filter_value),
         }
         return queryset.filter(**kwargs)
+
+
+def empty_value(value):
+    return mark_safe('<span class="empty-value">%s</span>' % value)
