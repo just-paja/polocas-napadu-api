@@ -35,6 +35,7 @@ django-nested-admin = "*"
 fiobank = "*"
 django-searchable-encrypted-fields = "*"
 django-apptemplates = "*"
+pyicu = "*"
 
 [requires]
 python_version = "3.8"
