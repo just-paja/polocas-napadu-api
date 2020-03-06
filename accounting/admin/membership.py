@@ -12,9 +12,10 @@ class MembershipLevelFeeAdmin(BaseInlineAdminModel):
 class MembershipLevelAdmin(BaseAdminModel):
     model = MembershipLevel
     search_fields = ('name', 'description')
-    list_display = ('name', 'is_active', 'start', 'end', 'modified')
+    list_display = ('name', 'is_active', 'start', 'end')
     inlines = (MembershipLevelFeeAdmin,)
-    fields = ('name', 'description', 'start', 'end')
+    fields = ('name', 'description', 'start', 'end', 'created', 'modified')
+    readonly_fields = ('modified', 'created')
 
 
 class MembershipFeeAdmin(BaseInlineAdminModel):
@@ -42,5 +43,6 @@ class MembershipAdmin(BaseAdminModel):
     model = Membership
     search_fields = ('user__first_name', 'user__last_name')
     autocomplete_fields = ('user',)
-    list_display = ('user', 'level', 'is_active', 'start', 'end', 'modified')
-    fields = ('user', 'level', 'start', 'end')
+    list_display = ('user', 'level', 'is_active', 'start', 'end')
+    fields = ('user', 'level', 'start', 'end', 'created', 'modified')
+    readonly_fields = ('modified', 'created')
