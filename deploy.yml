@@ -11,3 +11,10 @@
 
   roles:
     - role: practical-ansible.nginx-django
+
+  post_tasks:
+    - name: Configure Transaction cron job
+      cron:
+        name: 'Pair {{django_project_name}} transactions'
+        minute: 0,30
+        job: 'cd /var/www/{{django_project_name}}/{{django_project_environment}}/current && /var/www/{{django_project_name}}/{{django_project_environment}}/virtualenv/bin/python /var/www/{{django_project_name}}/{{django_project_environment}}/current/manage.py sync_accounts'

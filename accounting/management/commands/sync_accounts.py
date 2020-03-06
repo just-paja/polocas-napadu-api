@@ -2,7 +2,7 @@
 from django.core.management.base import BaseCommand
 
 from ...bank_sync import sync_fio
-from ...models import Account
+from ...models import Account, Promise
 
 
 class Command(BaseCommand):
@@ -20,7 +20,13 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         accounts = Account.objects.filter(fio_readonly_key__isnull=False)
         for account in accounts:
-            self.read_account(account, kwargs.get('days_back', 7))
+            print('Synchronizing %s' % account.name)
+            self.read_account(account, kwargs.get('days_back', 1))
+
+        promises = Promise.objects.filter(repeat__isnull=False).all()
+        for promise in promises:
+            print('Regenerating promise %s' % promise.pk)
+            promise.save()
 
     def read_account(self, account, days_back):
         sync_fio(account, days_back)
