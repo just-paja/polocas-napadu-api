@@ -1,5 +1,5 @@
 import datetime
-import icu
+import czech_sort
 import nested_admin
 
 from admin_auto_filters.filters import AutocompleteFilter
@@ -24,8 +24,7 @@ class ImprovAdminSite(AdminSite):
             self.login = gauth
 
     def get_model_sort_helper(self, request):
-        collator = icu.Collator.createInstance(icu.Locale(request.LANGUAGE_CODE))
-        return lambda x: collator.getSortKey(x['name'][0])
+        return lambda x: czech_sort.key(x['name'][0])
 
     def get_app_list(self, request):
         app_list = super().get_app_list(request)
