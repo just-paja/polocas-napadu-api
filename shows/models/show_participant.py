@@ -28,7 +28,11 @@ class ShowParticipant(TimeStampedModel):
     )
 
     def __str__(self):
-        return self.profile.name
+        return '%s (%s, %s)' % (
+            self.profile.name,
+            self.role.name,
+            self.show.name
+        )
 
     def get_show_name(self):
         return self.show.name
