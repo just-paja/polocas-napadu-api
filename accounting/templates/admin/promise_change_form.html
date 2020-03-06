@@ -1,13 +1,16 @@
 {% extends 'admin/change_form.html' %}
 {% load i18n admin_modify %}
 
-{% block object-tools %}
-  {% if change %}{% if not is_popup %}
-  <ul class="object-tools">
-    {% block object-tools-items %}
-      <li><a href="{% url 'accounting:accounting_statement_add' %}?promise={{original.id}}">{% trans "Pay" %}</a></li>
-      {% change_form_object_tools %}
-    {% endblock %}
-  </ul>
-  {% endif %}{% endif %}
+{% block object-tools-items %}
+  <li>
+    <a href="{% url 'accounting:accounting_statement_add' %}?promise={{original.id}}">
+      {% trans "Pay" %}
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'accounting:accounting_statement_changelist' %}?promise={{original.id}}">
+      {% trans "Statements" %}
+    </a>
+  </li>
+  {% change_form_object_tools %}
 {% endblock %}
