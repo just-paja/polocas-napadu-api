@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 16:22+0000\n"
+"POT-Creation-Date: 2020-03-06 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr "Formát představení"
 
 #: fields/admin.py:63
 msgid "Season"
-msgstr ""
+msgstr "Sezóna"
 
 #: fields/description.py:9
 msgid "Description"
@@ -70,3 +70,13 @@ msgid "visibilityHelpText"
 msgstr ""
 "Viditelnost ovlivňuje, kdo má přístup k objektu. K veřejným objektům má "
 "přístup široký internet."
+
+#: fields/weight.py:10
+msgid "Weight"
+msgstr "Váha"
+
+#: fields/weight.py:11
+#, fuzzy
+#| msgid "nameHelpText"
+msgid "weightHelpText"
+msgstr "Těžší objekty se objeví níže v seznamu"

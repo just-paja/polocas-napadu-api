@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 16:22+0000\n"
+"POT-Creation-Date: 2020-03-06 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,18 +45,16 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
-#: profiles/models/profile_group.py:9
+#: profiles/models/profile_group.py:8
 msgid "Actor group"
 msgstr "Herecká skupina"
 
-#: profiles/models/profile_group.py:10
+#: profiles/models/profile_group.py:9
 msgid "Actor groups"
 msgstr "Herecké skupiny"
 
-#: profiles/models/profile_group.py:13
-msgid "weightHelpText"
-msgstr "Těžší položky se objeví níže v seznamu"
+#~ msgid "weightHelpText"
+#~ msgstr "Těžší položky se objeví níže v seznamu"
 
-#: profiles/models/profile_group.py:13
-msgid "Weight"
-msgstr "Váha"
+#~ msgid "Weight"
+#~ msgstr "Váha"

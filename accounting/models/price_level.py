@@ -5,6 +5,10 @@ from fields import PublicResourceMixin, WeightedMixin
 
 
 class PriceLevel(PublicResourceMixin, WeightedMixin):
+    class Meta:
+        verbose_name = _('Price level')
+        verbose_name_plural = _('Price levels')
+
     is_default = BooleanField(
         verbose_name=_('Default price level that will be used as fallback'),
     )

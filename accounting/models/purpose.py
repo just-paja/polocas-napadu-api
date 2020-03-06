@@ -10,6 +10,10 @@ class Purpose(
     NameMixin,
     DescriptionMixin,
 ):
+    class Meta:
+        verbose_name = _('Purpose')
+        verbose_name_plural = _('Purposes')
+
     def get_promise_count(self):
         return self.promises.count()
 

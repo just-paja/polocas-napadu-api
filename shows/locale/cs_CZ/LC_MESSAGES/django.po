@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 16:22+0000\n"
+"POT-Creation-Date: 2020-03-06 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr "Představení"
 
 #: shows/models/show.py:10 shows/models/show_participant.py:15
 #: shows/models/show_participant.py:41
-#: shows/models/show_volume_calibration.py:9
+#: shows/models/show_volume_calibration.py:9 shows/models/ticket_price.py:12
 msgid "Show"
 msgstr "Představení"
 
@@ -85,15 +85,15 @@ msgstr "Minimální hlasitost"
 
 #: shows/models/show_volume_calibration.py:17
 msgid "minimalAudioHelpText"
-msgstr ""
+msgstr "Minimální hlasitost, která byla naměřena během hlasování"
 
 #: shows/models/show_volume_calibration.py:22
 msgid "Medium volume"
-msgstr ""
+msgstr "Střední hlasitost"
 
 #: shows/models/show_volume_calibration.py:23
 msgid "mediumAudioHelpText"
-msgstr ""
+msgstr "Střední hodnota hlasitosti, která byla naměřena během hlasování"
 
 #: shows/models/show_volume_calibration.py:28
 msgid "Maximum volume"
@@ -101,7 +101,7 @@ msgstr "Maximální hlasitost"
 
 #: shows/models/show_volume_calibration.py:29
 msgid "maximumAudioHelpText"
-msgstr ""
+msgstr "Maximální hlasitost, která byla naměřena během hlasování"
 
 #: shows/models/show_volume_calibration.py:31
 msgid "Closed"
@@ -109,16 +109,20 @@ msgstr "Uzavřeno"
 
 #: shows/models/show_volume_calibration.py:34
 msgid "Show volume calibration"
-msgstr ""
+msgstr "Kalibrace akustického hlasování"
 
 #: shows/models/show_volume_calibration.py:35
 msgid "Show volume calibrations"
-msgstr ""
+msgstr "Kalibrace akustického hlasování"
 
 #: shows/models/show_volume_calibration_voting.py:13
 msgid "Show volume calibration voting"
-msgstr ""
+msgstr "Průběh kalibrace akustického hlasování"
 
 #: shows/models/show_volume_calibration_voting.py:14
 msgid "Show volume calibrations voting"
-msgstr ""
+msgstr "Průběhy kalibrace akustického hlasování"
+
+#: shows/models/ticket_price.py:18
+msgid "Price level"
+msgstr "Cenová hladina"

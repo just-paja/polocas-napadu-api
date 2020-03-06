@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 16:22+0000\n"
+"POT-Creation-Date: 2020-03-06 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounting/__init__.py:7 accounting/admin/__init__.py:15
+#: accounting/__init__.py:7 accounting/admin/__init__.py:16
 msgid "Accounting"
 msgstr "Účetnictví"
 
@@ -29,22 +29,39 @@ msgstr "Účet"
 #: accounting/admin/account.py:60 accounting/admin/account.py:66
 #: accounting/admin/counterparty.py:63 accounting/admin/counterparty.py:72
 msgid "Pairing was finished"
-msgstr ""
+msgstr "Párování bylo dokončeno"
 
 #: accounting/admin/counterparty.py:87 accounting/models/counter_party.py:22
 msgid "Known accounts"
 msgstr "Známé účty"
 
 #: accounting/admin/counterparty.py:89
+#: accounting/templates/admin/promise_change_form.html:12
 msgid "Statements"
 msgstr "Platby"
 
-#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:245
+#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:253
 #: accounting/models/counter_party.py:14
 #, fuzzy
 #| msgid "CounterParty"
 msgid "Counterparty"
 msgstr "Protistrana"
+
+#: accounting/admin/membership.py:16 accounting/admin/payments.py:29
+msgid "Yes"
+msgstr "Ano"
+
+#: accounting/admin/membership.py:17 accounting/admin/payments.py:30
+msgid "No"
+msgstr "Ne"
+
+#: accounting/admin/membership.py:22
+msgid "Active"
+msgstr "Aktivní"
+
+#: accounting/admin/membership.py:61
+msgid "Level"
+msgstr "Úroveň"
 
 #: accounting/admin/payments.py:21
 msgid "Inbound"
@@ -53,14 +70,6 @@ msgstr "Příchozí"
 #: accounting/admin/payments.py:22
 msgid "Outbound"
 msgstr "Odchozí"
-
-#: accounting/admin/payments.py:29
-msgid "Yes"
-msgstr "Ano"
-
-#: accounting/admin/payments.py:30
-msgid "No"
-msgstr "Ne"
 
 #: accounting/admin/payments.py:35
 #, fuzzy
@@ -72,15 +81,15 @@ msgstr "Identifikátor platby"
 msgid "Has pair"
 msgstr "Spárování"
 
-#: accounting/admin/payments.py:158
+#: accounting/admin/payments.py:166
 msgid "Promise regeneration was finished"
-msgstr ""
+msgstr "Regenerace pohledávek byla dokončena"
 
-#: accounting/admin/payments.py:163 accounting/models/promise.py:54
+#: accounting/admin/payments.py:171 accounting/models/promise.py:54
 msgid "Promise"
 msgstr "Pohledávka"
 
-#: accounting/admin/purpose.py:10
+#: accounting/admin/purpose.py:10 accounting/models/purpose.py:14
 msgid "Purpose"
 msgstr "Účel"
 
@@ -204,6 +213,19 @@ msgstr "Členský příspěvek"
 msgid "Membership fees"
 msgstr "Členské příspěvky"
 
+#: accounting/models/price_level.py:9
+msgid "Price level"
+msgstr "Cenová hladina"
+
+#: accounting/models/price_level.py:10
+#, fuzzy
+msgid "Price levels"
+msgstr "Cenové hladiny"
+
+#: accounting/models/price_level.py:13
+msgid "Default price level that will be used as fallback"
+msgstr "Výchozí cenová hladina bude použita jako výchozí"
+
 #: accounting/models/promise.py:28
 msgid "Expected"
 msgstr "Očekávané"
@@ -264,12 +286,18 @@ msgstr "Vygenerováno rekurentní pohledávkou"
 msgid "Maturity"
 msgstr "Splatnost"
 
-#: accounting/models/purpose.py:23
+#: accounting/models/purpose.py:15
+#, fuzzy
+#| msgid "Purpose"
+msgid "Purposes"
+msgstr "Účel"
+
+#: accounting/models/purpose.py:27
 #, fuzzy
 msgid "Purpose category"
 msgstr "Kategorie účelů"
 
-#: accounting/models/purpose.py:24
+#: accounting/models/purpose.py:28
 msgid "Purpose categories"
 msgstr "Kategorie účelů"
 
@@ -344,18 +372,18 @@ msgstr "Datum konce musí být po začátku"
 msgid "Selected interval clashes with %s"
 msgstr "Vybraný interval koliduje s %s"
 
-#: accounting/templates/admin/account_change_form.html:9
+#: accounting/templates/admin/account_change_form.html:6
 #: accounting/templates/admin/account_change_list.html:8
 msgid "Sync with bank"
 msgstr "Spárovat"
 
-#: accounting/templates/admin/counterparty_change_form.html:8
+#: accounting/templates/admin/counterparty_change_form.html:5
 #: accounting/templates/admin/counterparty_change_list.html:8
-#: accounting/templates/admin/known_account_change_form.html:8
+#: accounting/templates/admin/known_account_change_form.html:5
 msgid "Pair with statements"
 msgstr "Spárovat s platbami"
 
-#: accounting/templates/admin/promise_change_form.html:8
+#: accounting/templates/admin/promise_change_form.html:7
 msgid "Pay"
 msgstr "Zaplatit"
 
@@ -363,7 +391,7 @@ msgstr "Zaplatit"
 msgid "Regenerate recurrency"
 msgstr "Regenerovat rekurenci"
 
-#: accounting/templates/admin/statement_change_form.html:9
+#: accounting/templates/admin/statement_change_form.html:6
 #, fuzzy
 msgid "View promise"
 msgstr "Prohlédnout pohledávku"
