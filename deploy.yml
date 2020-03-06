@@ -7,6 +7,7 @@
     django_config: api.settings
     django_project_name: 'cz-polocas-napadu-api'
     django_project_environment: '{{ lookup("env", "DJANGO_PROJECT_ENVIRONMENT") }}'
+    django_project_version: '{{ lookup("env", "PACKAGE_VERSION") }}'
     django_wsgi_file: api/wsgi.py
 
   roles:
