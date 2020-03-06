@@ -117,6 +117,12 @@ class PromiseAdmin(BaseAdminModel):
                 'constant_symbol',
             ),
         }),
+        (None, {
+            'fields': (
+                'created',
+                'modified',
+            ),
+        }),
     )
     change_form_template = 'admin/promise_change_form.html'
     change_list_template = 'admin/promise_change_list.html'
@@ -133,7 +139,8 @@ class PromiseAdmin(BaseAdminModel):
         'amount',
         'get_volume_price_tag',
         'variable_symbol',
-        'modified'
+        'start',
+        'end',
     )
     search_fields = (
         'variable_symbol',
@@ -141,6 +148,7 @@ class PromiseAdmin(BaseAdminModel):
         'constant_symbol',
         'name',
     )
+    readonly_fields = ('created', 'modified')
 
     def get_urls(self):
         return super().get_urls() + [
