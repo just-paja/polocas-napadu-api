@@ -55,7 +55,7 @@ def get_models_permissions(apps, group):
 
 def bind_group_permission(apps, group, permission, method):
     perm_cls = apps.get_model("auth", "Permission")
-    perm = perm_cls.objects.get(codename=permission)
+    perm = perm_cls.objects.filter(codename=permission).first()
     exists = group.permissions.filter(id=perm.id).exists()
     if method == PERM_ENSURE and not exists:
         if settings.DEBUG:
