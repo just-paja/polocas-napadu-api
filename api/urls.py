@@ -20,11 +20,12 @@ from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 
 from accounting.admin import ACCOUNTING_ADMIN
+from emailing.admin import EMAILING_ADMIN
 from gsuite.views import gauth
 from shows import urls as shows
 from theatre_sports import urls as theatre_sports
 
-from .admin import CONFIGURATION_ADMIN, CONTENT_ADMIN, EMAILING_ADMIN
+from .admin import CONFIGURATION_ADMIN, CONTENT_ADMIN
 
 
 urlpatterns = [  # pylint:disable=invalid-name

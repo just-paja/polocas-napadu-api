@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 17:33+0000\n"
+"POT-Creation-Date: 2020-03-07 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,63 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: notifications/__init__.py:7
-#, fuzzy
-#| msgid "Configuration"
-msgid "Notifications"
-msgstr "Konfigurace"
+#: emailing/__init__.py:7 emailing/admin/__init__.py:9
+msgid "Emailing"
+msgstr ""
 
-#: notifications/models/email_notification.py:24
+#: emailing/models/email_notification.py:24
 msgid "Text"
 msgstr "Text"
 
-#: notifications/models/email_notification.py:25
+#: emailing/models/email_notification.py:25
 msgid "HTML"
 msgstr "HTML"
 
-#: notifications/models/email_notification.py:30
+#: emailing/models/email_notification.py:30
 msgid "Email notification"
 msgstr "E-mailová notifikace"
 
-#: notifications/models/email_notification.py:31
+#: emailing/models/email_notification.py:31
 msgid "Email notifications"
 msgstr "E-mailové notifikace"
 
-#: notifications/models/email_notification.py:35
+#: emailing/models/email_notification.py:35
 msgid "Notification key"
 msgstr "Notifikační identifikátor"
 
-#: notifications/models/email_notification.py:36
+#: emailing/models/email_notification.py:36
 msgid "Key specific to the notification source"
 msgstr "Klíč, který je specifický pro zdroj notifikace"
 
-#: notifications/models/email_notification.py:39
+#: emailing/models/email_notification.py:39
 msgid "Few words to describe contents of the e-mail"
 msgstr "Pár slov, které popisují obsah e-mailu"
 
-#: notifications/models/email_notification.py:41
+#: emailing/models/email_notification.py:41
 msgid "Subject"
 msgstr "Předmět"
 
-#: notifications/models/email_notification.py:45
+#: emailing/models/email_notification.py:45
 msgid "Name that will be displayed next to sender e-mail address"
 msgstr "Jméno, které se zobrazí před adresou odesílatele"
 
-#: notifications/models/email_notification.py:47
+#: emailing/models/email_notification.py:47
 msgid "Sender name"
 msgstr "Jméno odesílatele"
 
-#: notifications/models/email_notification.py:51
+#: emailing/models/email_notification.py:51
 msgid "E-mail address of the sender"
 msgstr "Platná e-mailová adresa odesílatele"
 
-#: notifications/models/email_notification.py:52
+#: emailing/models/email_notification.py:52
 msgid "Sender email"
 msgstr "E-mail odesílatele"
 
-#: notifications/models/email_notification.py:56
+#: emailing/models/email_notification.py:56
 msgid "Append organization to sender"
 msgstr "Připojit k odesílateli jméno organizace"
 
-#: notifications/models/email_notification.py:58
+#: emailing/models/email_notification.py:58
 #, python-format
 msgid ""
 "Organization name will be appended to the sender name,             resulting "
@@ -84,52 +82,51 @@ msgstr ""
 "Jméno organizace bude připojeno k jménu odesílatele a výsledkem bude třeba "
 "\"Karel z %s\""
 
-#: notifications/models/email_notification.py:63
+#: emailing/models/email_notification.py:63
 msgid "E-mail address of the recipient"
 msgstr "E-mailová adresa příjemce"
 
-#: notifications/models/email_notification.py:64
+#: emailing/models/email_notification.py:64
 msgid "Recipient email"
 msgstr "E-mail příjemce"
 
-#: notifications/models/email_notification.py:68
+#: emailing/models/email_notification.py:68
 msgid "System will proceed and send this e-mail after this datetime."
 msgstr "Systém odešle e-mail při první příležitosti po tomto datu"
 
-#: notifications/models/email_notification.py:70
+#: emailing/models/email_notification.py:70
 msgid "Scheduled on"
 msgstr "Naplánováno na"
 
-#: notifications/models/email_notification.py:74
+#: emailing/models/email_notification.py:74
 msgid "On this date and time, the e-mail was sent."
 msgstr "V tento datum byl e-mail odeslán"
 
-#: notifications/models/email_notification.py:76
+#: emailing/models/email_notification.py:76
 msgid "Sent on"
 msgstr "Odesláno"
 
-#: notifications/models/email_notification.py:80
-#, fuzzy
-#| msgid ""
+#: emailing/models/email_notification.py:80
+msgid ""
 "Ready e-mails will be sent at first valid opportunity after scheduled date"
 msgstr ""
 "Připravené e-maily budou odeslány při první příležitosti naplánovaném datu. "
 "Nepřipravené e-maily budou ignorovány"
 
-#: notifications/models/email_notification.py:81
+#: emailing/models/email_notification.py:81
 msgid "Ready to send"
 msgstr "Připraveno k odeslání"
 
-#: notifications/models/email_notification.py:85
+#: emailing/models/email_notification.py:85
 msgid "Format"
 msgstr "Formát"
 
-#: notifications/models/email_notification.py:88
+#: emailing/models/email_notification.py:88
 #, fuzzy
 msgid "Content"
 msgstr "Obsah"
 
-#: notifications/models/email_notification.py:90
+#: emailing/models/email_notification.py:90
 msgid ""
 "Enter formatted e-mail content. The text version will be auto             "
 "generated for HTML e-mails"
@@ -137,7 +134,12 @@ msgstr ""
 "Vložte formátovaný obsah e-mailu. Textová verze bude automaticky "
 "vygenerována pro HTML e-maily"
 
-#: notifications/models/email_notification.py:130
+#: emailing/models/email_notification.py:130
 #, python-format
 msgid "%(person)s from %(organization)s"
 msgstr "%(person)s z %(organization)s"
+
+#, fuzzy
+#~| msgid "Configuration"
+#~ msgid "Notifications"
+#~ msgstr "Konfigurace"

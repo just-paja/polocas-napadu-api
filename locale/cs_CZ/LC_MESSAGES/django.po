@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 17:33+0000\n"
+"POT-Creation-Date: 2020-03-07 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,10 +24,6 @@ msgstr "Konfigurace"
 #: api/admin/content.py:32 api/templates/admin/base_site.html:24
 msgid "Content admin"
 msgstr "Správa obsahu"
-
-#: api/admin/emailing.py:9
-msgid "Emailing"
-msgstr "E-mailing"
 
 #: api/settings.py:153
 msgid "Czech"
@@ -102,3 +98,6 @@ msgstr "Snímek hlasitosti"
 #: voting/models/volume_scrape.py:19
 msgid "Volume scrapes"
 msgstr "Snímky hlasitosti"
+
+#~ msgid "Emailing"
+#~ msgstr "E-mailing"
