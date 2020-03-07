@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 from fields.admin import (
     BaseAdminModel,
     BaseInlineAdminModel,
@@ -20,6 +22,14 @@ from .models import (
 )
 
 
+class EventSeasonFilter(SeasonFilter):
+    field = "start"
+
+
+class ShowParticipantSeasonFilter(SeasonFilter):
+    field = "show__start"
+
+
 class ShowPhotoAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
@@ -33,16 +43,18 @@ class ShowTypePhotoAdmin(BaseInlineAdminModel):
 
 
 class ShowParticipantAdmin(BaseAdminModel):
-    """Admin model for show photos."""
+
+    class Media:
+        pass
 
     model = ShowParticipant
     list_display = (
         "profile",
-        "role",
+        "get_role_name",
         "get_show_name",
         "get_show_date",
     )
-    list_filter = (ShowFilter, "role")
+    list_filter = (ShowParticipantSeasonFilter, ShowFilter, "role")
     search_fields = ["profile__name"]
     autocomplete_fields = [
         "show",
@@ -50,8 +62,20 @@ class ShowParticipantAdmin(BaseAdminModel):
         "role",
     ]
 
-    class Media:
-        pass
+    def get_role_name(self, item):
+        return item.role.name
+
+    def get_show_name(self, item):
+        return item.show.name
+
+    def get_show_date(self, item):
+        return item.show.start
+
+    get_role_name.admin_order_field = 'role__name'
+    get_role_name.short_description = _("Role")
+    get_show_date.admin_order_field = 'show__start'
+    get_show_date.short_description = _("Date")
+    get_show_name.short_description = _("Show")
 
 
 class ShowParticipantInlineAdmin(BaseInlineAdminModel):
@@ -65,10 +89,6 @@ class TicketPriceInlineAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
     model = TicketPrice
-
-
-class EventSeasonFilter(SeasonFilter):
-    field = "start"
 
 
 class ShowAdmin(BaseAdminModel):
