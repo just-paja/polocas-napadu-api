@@ -1,4 +1,3 @@
-from django.contrib.auth import admin as auth_admin
 from django.utils.translation import ugettext_lazy as _
 
 from admin_sso.admin import AssignmentAdmin
@@ -57,17 +56,3 @@ class ContentAdminSite(ImprovAdminSite):
         self.hookup(ShowTypeAdmin)
         self.hookup(UsualPlaceAdmin)
         self.register(Assignment, AssignmentAdmin)
-
-
-class ConfigurationAdminSite(ImprovAdminSite):
-    name = 'configuration'
-    site_title = _('Configuration')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.register(auth_admin.Group, auth_admin.GroupAdmin)
-        self.register(auth_admin.User, auth_admin.UserAdmin)
-
-
-CONTENT_ADMIN = ContentAdminSite()
-CONFIGURATION_ADMIN = ConfigurationAdminSite()

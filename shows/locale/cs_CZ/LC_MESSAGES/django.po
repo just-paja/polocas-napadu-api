@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 11:52+0000\n"
+"POT-Creation-Date: 2020-03-07 17:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,16 @@ msgstr ""
 msgid "Shows"
 msgstr "Představení"
 
-#: shows/models/show.py:10 shows/models/show_participant.py:15
-#: shows/models/show_participant.py:45
+#: shows/admin.py:75 shows/models/show_participant.py:27
+msgid "Role"
+msgstr "Role"
+
+#: shows/admin.py:77
+msgid "Date"
+msgstr "Datum"
+
+#: shows/admin.py:78 shows/models/show.py:10
+#: shows/models/show_participant.py:15
 #: shows/models/show_volume_calibration.py:9 shows/models/ticket_price.py:12
 msgid "Show"
 msgstr "Představení"
@@ -42,14 +50,6 @@ msgstr "Účinkující"
 #: shows/models/show_participant.py:21
 msgid "Profile"
 msgstr "Profil"
-
-#: shows/models/show_participant.py:27
-msgid "Role"
-msgstr "Role"
-
-#: shows/models/show_participant.py:44
-msgid "Date"
-msgstr "Datum"
 
 #: shows/models/show_role.py:9
 msgid "Show role"

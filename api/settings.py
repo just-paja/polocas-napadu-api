@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "blog.BlogConfig",
     "profiles.ProfilesConfig",
     "shows.ShowsConfig",
+    "notifications.NotificationsConfig",
     "inspirations.InspirationsConfig",
     "games.GamesConfig",
     "theatre_sports.TheatreSportsConfig",
@@ -190,10 +191,11 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, "bands", "locale"),
     os.path.join(BASE_DIR, "blog", "locale"),
     os.path.join(BASE_DIR, "events", "locale"),
-    os.path.join(BASE_DIR, "games", "locale"),
     os.path.join(BASE_DIR, "fields", "locale"),
+    os.path.join(BASE_DIR, "games", "locale"),
     os.path.join(BASE_DIR, "inspirations", "locale"),
     os.path.join(BASE_DIR, "locations", "locale"),
+    os.path.join(BASE_DIR, "notifications", "locale"),
     os.path.join(BASE_DIR, "photos", "locale"),
     os.path.join(BASE_DIR, "profiles", "locale"),
     os.path.join(BASE_DIR, "shows", "locale"),
@@ -205,9 +207,13 @@ LOCALE_PATHS = [
 if DEBUG:
     MEDIA_ROOT = BASE_DIR
     MEDIA_URL = "/media/"
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 RAVEN_DSN = None
 EMAIL_MANAGER = "test@example.com"
+EMAIL_ROBOT_NAME = 'Karel'
+EMAIL_ROBOT_ADDR = 'karel@polocas-napadu.cz'
+ORGANIZATION_NAME = _('Poločas nápadu')
 
 AWS_ACCESS_KEY_ID = None
 AWS_SECRET_ACCESS_KEY = None
