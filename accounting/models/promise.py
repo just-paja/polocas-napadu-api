@@ -185,6 +185,11 @@ DEBT_SOURCE_CHOICES = (
 
 
 class Debt(TimeStampedModel):
+
+    class Meta:
+        verbose_name = _('Debt')
+        verbose_name_plural = _('Debts')
+
     promise = ForeignKey('Promise', on_delete=CASCADE, related_name='debts')
     amount = AmountField()
     currency = CurrencyField()

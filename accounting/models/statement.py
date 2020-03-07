@@ -19,6 +19,11 @@ class Statement(
     StatementSpecification,
     TimeStampedModel
 ):
+
+    class Meta:
+        verbose_name = _('Statement')
+        verbose_name_plural = _('Statements')
+
     account = ForeignKey(
         'Account',
         blank=False,

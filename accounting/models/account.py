@@ -100,6 +100,11 @@ class Account(PublicResourceMixin):
 
 
 class BankScrape(TimeStampedModel):
+
+    class Meta:
+        verbose_name = _('Bank Scrape')
+        verbose_name_plural = _('Bank scrapes')
+
     account = ForeignKey(
         'Account',
         on_delete=CASCADE,
