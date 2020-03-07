@@ -262,10 +262,25 @@ class PromiseTest(TestCase):
             repeat=RECURRENCE_MONTHLY,
             amount=300,
         )
-        self.assert_equal_debts(promise1.debts.all(), [
-            { 'amount': 300, 'promise': promise1, 'maturity': parse('2020-01-01').date(), 'source': 2 },
-            { 'amount': 300, 'promise': promise1, 'maturity': parse('2020-02-01').date(), 'source': 3 },
-            { 'amount': 300, 'promise': promise1, 'maturity': parse('2020-03-01').date(), 'source': 3 },
+        self.assert_equal_debts(promise1.debts.order_by('maturity').all(), [
+            {
+                'amount': 300,
+                'promise': promise1,
+                'maturity': parse('2020-01-01').date(),
+                'source': 2,
+            },
+            {
+                'amount': 300,
+                'promise': promise1,
+                'maturity': parse('2020-02-01').date(),
+                'source': 3,
+            },
+            {
+                'amount': 300,
+                'promise': promise1,
+                'maturity': parse('2020-03-01').date(),
+                'source': 3,
+            },
         ])
 
     @freeze_time('2020-02-27')
@@ -277,9 +292,19 @@ class PromiseTest(TestCase):
             repeat=RECURRENCE_MONTHLY,
             amount=300,
         )
-        self.assert_equal_debts(promise1.debts.all(), [
-            { 'amount': 300, 'promise': promise1, 'maturity': parse('2020-01-01').date(), 'source': 2 },
-            { 'amount': 300, 'promise': promise1, 'maturity': parse('2020-02-01').date(), 'source': 3 },
+        self.assert_equal_debts(promise1.debts.order_by('maturity').all(), [
+            {
+                'amount': 300,
+                'promise': promise1,
+                'maturity': parse('2020-01-01').date(),
+                'source': 2,
+            },
+            {
+                'amount': 300,
+                'promise': promise1,
+                'maturity': parse('2020-02-01').date(),
+                'source': 3,
+            },
         ])
 
     @freeze_time('2020-03-01')
