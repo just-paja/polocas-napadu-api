@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 00:26+0000\n"
+"POT-Creation-Date: 2020-03-07 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fields/admin.py:69
+#: fields/admin.py:87
 msgid "Location"
 msgstr "Místo"
 
-#: fields/admin.py:74
+#: fields/admin.py:92
 msgid "Show"
 msgstr "Představení"
 
-#: fields/admin.py:79
+#: fields/admin.py:97
 msgid "Show type"
 msgstr "Formát představení"
 
-#: fields/admin.py:88
+#: fields/admin.py:106
 msgid "Season"
 msgstr "Sezóna"
 

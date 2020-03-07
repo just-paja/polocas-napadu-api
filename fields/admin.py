@@ -65,6 +65,24 @@ class BaseStackedAdminModel(nested_admin.NestedStackedInline):
     extra = 1
 
 
+class IntValueFilter(SimpleListFilter):
+
+    class Meta:
+        abstract = True
+
+    def lookups(self, request, model_admin):
+        raise NotImplementedError(
+            'The SimpleListFilter.lookups() method must be overridden to '
+            'return a list of tuples (value, verbose value).'
+        )
+
+    def value(self):
+        try:
+            return int(super().value())
+        except (TypeError, ValueError):
+            return None
+
+
 class LocationFilter(AutocompleteFilter):
     title = _("Location")
     field_name = "location"

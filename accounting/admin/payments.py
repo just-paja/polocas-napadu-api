@@ -1,13 +1,12 @@
 from admin_auto_filters.filters import AutocompleteFilter
 
 from django.contrib import messages
-from django.contrib.admin.filters import SimpleListFilter
 from django.shortcuts import redirect
 from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
-from fields.admin import BaseAdminModel, BaseInlineAdminModel
+from fields.admin import BaseAdminModel, BaseInlineAdminModel, IntValueFilter
 
 from .account import AccountFilter
 from .counterparty import CounterPartyFilter
@@ -18,32 +17,22 @@ from ..models import Debt, KnownAccount, Promise, Statement
 DIRECTION_INBOUND = 1
 DIRECTION_OUBOUND = 2
 
-DIRECTION_CHOICES = (
-    (DIRECTION_INBOUND, _('Inbound')),
-    (DIRECTION_OUBOUND, _('Outbound')),
-)
-
 PAIR_YES = 1
 PAIR_NO = 2
 
-PAIR_CHOICES = (
-    (PAIR_YES, _('Yes')),
-    (PAIR_NO, _('No')),
-)
 
-
-class PaymentDirectionFilter(SimpleListFilter):
+class PaymentDirectionFilter(IntValueFilter):
     title = _('Payment direction')
     parameter_name = 'direction'
 
     def lookups(self, request, model_admin):
-        return DIRECTION_CHOICES
+        return (
+            (DIRECTION_INBOUND, _('Inbound')),
+            (DIRECTION_OUBOUND, _('Outbound')),
+        )
 
     def queryset(self, request, queryset):
-        try:
-            filter_value = int(self.value())
-        except TypeError:
-            filter_value = None
+        filter_value = self.value()
         if filter_value == DIRECTION_INBOUND:
             return queryset.filter(amount__gt=0)
         if filter_value == DIRECTION_OUBOUND:
@@ -51,18 +40,18 @@ class PaymentDirectionFilter(SimpleListFilter):
         return queryset
 
 
-class PaymentPairingStatusFilter(SimpleListFilter):
+class PaymentPairingStatusFilter(IntValueFilter):
     title = _('Has pair')
     parameter_name = 'has_pair'
 
     def lookups(self, request, model_admin):
-        return PAIR_CHOICES
+        return (
+            (PAIR_YES, _('Yes')),
+            (PAIR_NO, _('No')),
+        )
 
     def queryset(self, request, queryset):
-        try:
-            filter_value = int(self.value())
-        except TypeError:
-            return queryset
+        filter_value = self.value()
         if filter_value == 1:
             return queryset.filter(promise__isnull=False)
         if filter_value == 2:

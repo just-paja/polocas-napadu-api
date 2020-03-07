@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 00:26+0000\n"
+"POT-Creation-Date: 2020-03-07 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Známé účty"
 msgid "Statements"
 msgstr "Platby"
 
-#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:256
+#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:245
 #: accounting/models/counter_party.py:14
 #, fuzzy
 #| msgid "CounterParty"
@@ -51,37 +51,37 @@ msgstr "Protistrana"
 msgid "Level"
 msgstr "Úroveň"
 
-#: accounting/admin/payments.py:22
-msgid "Inbound"
-msgstr "Příchozí"
-
-#: accounting/admin/payments.py:23
-msgid "Outbound"
-msgstr "Odchozí"
-
-#: accounting/admin/payments.py:30 accounting/admin/time_limited.py:14
-msgid "Yes"
-msgstr "Ano"
-
-#: accounting/admin/payments.py:31 accounting/admin/time_limited.py:15
-msgid "No"
-msgstr "Ne"
-
-#: accounting/admin/payments.py:36
+#: accounting/admin/payments.py:25
 #, fuzzy
 #| msgid "Payment identificator"
 msgid "Payment direction"
 msgstr "Identifikátor platby"
 
-#: accounting/admin/payments.py:55
+#: accounting/admin/payments.py:30
+msgid "Inbound"
+msgstr "Příchozí"
+
+#: accounting/admin/payments.py:31
+msgid "Outbound"
+msgstr "Odchozí"
+
+#: accounting/admin/payments.py:44
 msgid "Has pair"
 msgstr "Spárování"
 
-#: accounting/admin/payments.py:169
+#: accounting/admin/payments.py:49 accounting/admin/time_limited.py:13
+msgid "Yes"
+msgstr "Ano"
+
+#: accounting/admin/payments.py:50 accounting/admin/time_limited.py:14
+msgid "No"
+msgstr "Ne"
+
+#: accounting/admin/payments.py:158
 msgid "Promise regeneration was finished"
 msgstr "Regenerace pohledávek byla dokončena"
 
-#: accounting/admin/payments.py:174 accounting/models/promise.py:54
+#: accounting/admin/payments.py:163 accounting/models/promise.py:56
 msgid "Promise"
 msgstr "Pohledávka"
 
@@ -89,15 +89,15 @@ msgstr "Pohledávka"
 msgid "Purpose"
 msgstr "Účel"
 
-#: accounting/admin/time_limited.py:20 accounting/models/time_limited.py:31
+#: accounting/admin/time_limited.py:19 accounting/models/time_limited.py:31
 msgid "Active"
 msgstr "Aktivní"
 
-#: accounting/admin/time_limited.py:63 accounting/models/time_limited.py:23
+#: accounting/admin/time_limited.py:59 accounting/models/time_limited.py:23
 msgid "End"
 msgstr "Konec"
 
-#: accounting/admin/time_limited.py:65 accounting/models/time_limited.py:17
+#: accounting/admin/time_limited.py:61 accounting/models/time_limited.py:17
 msgid "Start"
 msgstr "Začátek"
 
@@ -258,55 +258,59 @@ msgstr "Nedoplatek"
 msgid "Overpaid"
 msgstr "Přeplatek"
 
-#: accounting/models/promise.py:38
+#: accounting/models/promise.py:39
+msgid "Never"
+msgstr "Nikdy"
+
+#: accounting/models/promise.py:40
 msgid "Monthly"
 msgstr "Měsíčně"
 
-#: accounting/models/promise.py:39
+#: accounting/models/promise.py:41
 msgid "Yearly"
 msgstr "Ročně"
 
-#: accounting/models/promise.py:55
+#: accounting/models/promise.py:57
 msgid "Promises"
 msgstr "Pohledávky"
 
-#: accounting/models/promise.py:60
+#: accounting/models/promise.py:62
 msgid "Initial amount"
 msgstr "Výchozí částka"
 
-#: accounting/models/promise.py:72
+#: accounting/models/promise.py:74
 msgid "Status"
 msgstr "Stav"
 
-#: accounting/models/promise.py:84
+#: accounting/models/promise.py:86
 msgid "Repeat"
 msgstr "Opakování"
 
-#: accounting/models/promise.py:173
+#: accounting/models/promise.py:175
 msgid "Received"
 msgstr "Přijato"
 
-#: accounting/models/promise.py:181
+#: accounting/models/promise.py:183
 msgid "Manually created"
 msgstr "Vytvořeno ručně"
 
-#: accounting/models/promise.py:182
+#: accounting/models/promise.py:184
 msgid "Initial debt"
 msgstr "Výchozí dluh"
 
-#: accounting/models/promise.py:183
+#: accounting/models/promise.py:185
 msgid "Recurring generated"
 msgstr "Vygenerováno rekurentní pohledávkou"
 
-#: accounting/models/promise.py:190
+#: accounting/models/promise.py:192
 msgid "Debt"
 msgstr "Dluh"
 
-#: accounting/models/promise.py:191
+#: accounting/models/promise.py:193
 msgid "Debts"
 msgstr "Dluhy"
 
-#: accounting/models/promise.py:202
+#: accounting/models/promise.py:204
 msgid "Maturity"
 msgstr "Splatnost"
 

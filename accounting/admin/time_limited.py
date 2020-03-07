@@ -1,11 +1,10 @@
 import datetime
 
-from django.contrib.admin.filters import SimpleListFilter
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 
-from fields.admin import BaseAdminModel, empty_value
+from fields.admin import BaseAdminModel, IntValueFilter, empty_value
 
 ACTIVE_YES = 1
 ACTIVE_NO = 2
@@ -16,7 +15,7 @@ ACTIVE_CHOICES = (
 )
 
 
-class TimeLimitedActiveFilter(SimpleListFilter):
+class TimeLimitedActiveFilter(IntValueFilter):
     title = _('Active')
     parameter_name = 'active'
 
@@ -25,10 +24,7 @@ class TimeLimitedActiveFilter(SimpleListFilter):
 
     def queryset(self, request, queryset):
         today = datetime.date.today()
-        try:
-            filter_value = int(self.value())
-        except (TypeError, ValueError):
-            filter_value = None
+        filter_value = self.value()
         if filter_value == ACTIVE_YES:
             return queryset.filter(
                 Q(end__isnull=True) | Q(end__gt=today)
