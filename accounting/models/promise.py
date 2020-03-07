@@ -172,6 +172,9 @@ class Promise(StatementSpecification, TimeLimitedModel):
         ballance = result['ballance']
         return ballance if ballance else 0
 
+    def get_amount_diff(self):
+        return self.sum_statements() - self.calculate_amount()
+
     get_volume_price_tag.short_description = _('Received')
 
 

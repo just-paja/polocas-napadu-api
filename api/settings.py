@@ -214,6 +214,8 @@ EMAIL_MANAGER = "test@example.com"
 EMAIL_ROBOT_NAME = 'Karel'
 EMAIL_ROBOT_ADDR = 'karel@polocas-napadu.cz'
 ORGANIZATION_NAME = _('Poločas nápadu')
+ORGANIZATION_NAME_FROM = _('Poločasu nápadu')
+ORGANIZATION_NAME_FORMAL = _('Poločas nápadu z. s.')
 
 AWS_ACCESS_KEY_ID = None
 AWS_SECRET_ACCESS_KEY = None

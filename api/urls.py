@@ -20,7 +20,8 @@ from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 
 from accounting.admin import ACCOUNTING_ADMIN
-from emailing.admin import EMAILING_ADMIN
+from emailing.admin import EMAILING_ADMIN  # noqa
+from emailing.views import test_email_template
 from gsuite.views import gauth
 from shows import urls as shows
 from theatre_sports import urls as theatre_sports
@@ -46,3 +47,6 @@ urlpatterns = [  # pylint:disable=invalid-name
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [
+        path("emailing/test", test_email_template)
+    ]

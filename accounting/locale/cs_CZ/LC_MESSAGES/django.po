@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 17:38+0000\n"
+"POT-Creation-Date: 2020-03-07 23:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,37 +197,43 @@ msgstr "Měna"
 msgid "ISO 4217 defined three letter currency abbreviation"
 msgstr "Třípísmenková reprezentace měny podle ISO 4217"
 
-#: accounting/models/membership.py:30
+#: accounting/models/membership.py:36
 msgid "Membership"
 msgstr "Členství"
 
-#: accounting/models/membership.py:31
+#: accounting/models/membership.py:37
 msgid "Memberships"
 msgstr "Členství"
 
-#: accounting/models/membership.py:68
+#: accounting/models/membership.py:77
 msgid "Membership level"
 msgstr "Typ členství"
 
-#: accounting/models/membership.py:69
+#: accounting/models/membership.py:78
 msgid "Membership levels"
 msgstr "Typy členství"
 
-#: accounting/models/membership.py:80
+#: accounting/models/membership.py:89
 msgid "Membership level fee"
 msgstr "Příspěvek typu členství"
 
-#: accounting/models/membership.py:81
+#: accounting/models/membership.py:90
 msgid "Membership level fees"
 msgstr "Příspěvky typu členství"
 
-#: accounting/models/membership.py:101
+#: accounting/models/membership.py:110
 msgid "Membership fee"
 msgstr "Členský příspěvek"
 
-#: accounting/models/membership.py:102
+#: accounting/models/membership.py:111
 msgid "Membership fees"
 msgstr "Členské příspěvky"
+
+#: accounting/models/membership.py:172
+#, fuzzy
+#| msgid "Thank you for your membership contribution"
+msgid "Accepted membership contribution"
+msgstr "Děkujeme za tvůj členský příspěvek!"
 
 #: accounting/models/price_level.py:9
 msgid "Price level"
@@ -286,31 +292,31 @@ msgstr "Stav"
 msgid "Repeat"
 msgstr "Opakování"
 
-#: accounting/models/promise.py:175
+#: accounting/models/promise.py:178
 msgid "Received"
 msgstr "Přijato"
 
-#: accounting/models/promise.py:183
+#: accounting/models/promise.py:186
 msgid "Manually created"
 msgstr "Vytvořeno ručně"
 
-#: accounting/models/promise.py:184
+#: accounting/models/promise.py:187
 msgid "Initial debt"
 msgstr "Výchozí dluh"
 
-#: accounting/models/promise.py:185
+#: accounting/models/promise.py:188
 msgid "Recurring generated"
 msgstr "Vygenerováno rekurentní pohledávkou"
 
-#: accounting/models/promise.py:192
+#: accounting/models/promise.py:195
 msgid "Debt"
 msgstr "Dluh"
 
-#: accounting/models/promise.py:193
+#: accounting/models/promise.py:196
 msgid "Debts"
 msgstr "Dluhy"
 
-#: accounting/models/promise.py:204
+#: accounting/models/promise.py:207
 msgid "Maturity"
 msgstr "Splatnost"
 
@@ -421,3 +427,88 @@ msgstr "Regenerovat rekurenci"
 #, fuzzy
 msgid "View promise"
 msgstr "Prohlédnout pohledávku"
+
+#: accounting/templates/membership/thanks_for_payment.html:7
+msgid "Thank you for your membership contribution"
+msgstr "Děkujeme za tvůj členský příspěvek!"
+
+#: accounting/templates/membership/thanks_for_payment.html:14
+#, python-format
+msgid ""
+"\n"
+"          On %(date)s, I received a payment of %(amount_highlighted)s and "
+"paired it with your\n"
+"          membership record, which says you have been with us for\n"
+"          %(membership_days)s days. On behalf of our improv group, I "
+"graciously\n"
+"          accept your gift.\n"
+"        "
+msgstr ""
+"\n"
+"Přesně v %(date)s jsem přijal platbu o částce %(amount_highlighted)s a "
+"spároval jsem jí s tvým záznamem o členství, který říká, že jsi s námi už "
+"%(membership_days)s dní. Jménem naší improvizační skupiny laskavě příjímám "
+"tvůj dar."
+
+#: accounting/templates/membership/thanks_for_payment.html:25
+#, python-format
+msgid ""
+"\n"
+"            By the way, you overpaid us by %(amount_diff_highlighted)s. Go "
+"talk\n"
+"            to our economist if you wish to get it back. We are still a "
+"charity,\n"
+"            so if you want to donate, please kindly use a different variable "
+"symbol.\n"
+"          "
+msgstr ""
+"\n"
+"Mimochodem, máš u nás na členských příspěvcích přeplatek, který celkem činí "
+"%(amount_diff_highlighted)s. Pokud chceš peníze vrátit, jdi si promluvit s "
+"naší hospodářkou. Jsme stále neziskovka, takže pokud nám chceš darovat "
+"peníze, použij prosím jiný variabilní symbol."
+
+#: accounting/templates/membership/thanks_for_payment.html:36
+#, python-format
+msgid ""
+"\n"
+"            By the way, I have calculated that you owe us\n"
+"            %(amount_diff_highlighted)s. To settle our debts, please send a\n"
+"            payment of %(amount_diff)s to the very same account using your\n"
+"            variable symbol (%(variable_symbol)s).\n"
+"          "
+msgstr ""
+"\n"
+"Mimochodem, spočítal jsem, že u nás máš na členských příspěvcích nedoplatek. "
+"Dlužíš nám %(amount_diff_highlighted)s. Pro vyrovnání dluhů nám pošli jako "
+"příspěvek %(amount_diff)s na stejný účet s tvým variabilním symbolem "
+"(%(variable_symbol)s)."
+
+#: accounting/templates/membership/thanks_for_payment.html:45
+msgid ""
+"\n"
+"            If you think, this is a mistake, please talk to our economist.\n"
+"          "
+msgstr ""
+"\n"
+"Pokud si myslíš, že je tohle chyba, promluv si s naší hospodářkou."
+
+#: accounting/templates/membership/thanks_for_payment.html:56
+msgid ""
+"\n"
+"      Thank you for being with us.\n"
+"    "
+msgstr ""
+"\n"
+"Děkujeme, že jsi s námi."
+
+#: accounting/templates/membership/thanks_for_payment.html:64
+#, python-format
+msgid ""
+"\n"
+"    This e-mail has been sent to you because you are a member or\n"
+"    %(organization_name_formal)s.\n"
+"  "
+msgstr ""
+"\n"
+"Tento e-mail ti byl odeslán, protože jsi členem %(organization_name_formal)s"

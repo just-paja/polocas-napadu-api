@@ -1,3 +1,4 @@
+from django.dispatch import Signal
 from django.db.models import (
     CASCADE,
     DateTimeField,
@@ -12,6 +13,9 @@ from django_extensions.db.models import TimeStampedModel
 from .counter_party import KnownAccount
 from .promise import Promise
 from .statement_specs import StatementSpecification, StatementSenderSpecification
+
+
+statement_registered = Signal(providing_args=['instance'])  # pylint: disable=invalid-name
 
 
 class Statement(
@@ -79,6 +83,10 @@ class Statement(
         related_name='statements',
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.initial_promise = self.promise
+
     def __str__(self):
         return 'Statement#%s' % self.id
 
@@ -87,6 +95,7 @@ class Statement(
         self.pair_with_promises()
         super().save(*args, **kwargs)
         self.update_promises()
+        statement_registered.send(sender=self.__class__, instance=self)
 
     def pair_with_promises(self):
         if not self.promise and self.variable_symbol:

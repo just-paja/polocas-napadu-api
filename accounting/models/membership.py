@@ -1,10 +1,15 @@
+import datetime
+
+from django.dispatch import receiver
 from django.db.models import ForeignKey, CASCADE, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin, DescriptionMixin
+from emailing.models import EmailNotification
 
 from .currency import AmountField, CurrencyField
-from .promise import Promise, RECURRENCE_MONTHLY
+from .promise import Promise, RECURRENCE_MONTHLY, STATUS_OVERPAID, STATUS_UNDERPAID
+from .statement import Statement, statement_registered
 from .time_limited import (
     intersects,
     later,
@@ -39,6 +44,9 @@ class Membership(TimeFilteredModel):
 
     def get_related_objects(self):
         return super().get_related_objects().filter(user=self.user)
+
+    def how_many_days(self):
+        return (datetime.date.today() - self.start).days
 
     def save(self, *args, **kwargs):  # pylint:disable=arguments-differ
         super().save(*args, **kwargs)
@@ -124,3 +132,43 @@ class MembershipFee(Promise, TimeFilteredModel):
 
     def get_related_objects(self):
         return super().get_related_objects().filter(membership__user=self.membership.user)
+
+
+def format_amount(amount, currency):
+    return '%s %s' % (amount, currency)
+
+
+@receiver(statement_registered, sender=Statement)
+def acknowledge_membership_contribution(instance, update_fields=None, **kwargs):
+    statement = instance
+    if statement.initial_promise:
+        return
+    promise = statement.promise
+    if not promise:
+        return
+    try:
+        membership_fee = promise.membershipfee
+    except MembershipFee.DoesNotExist:
+        return
+    if not membership_fee:
+        return
+    membership = membership_fee.membership
+    user = membership.user
+    amount_diff = abs(promise.get_amount_diff())
+    context = {
+        'amount_diff': format_amount(amount_diff, promise.currency),
+        'amount': format_amount(statement.amount, statement.currency),
+        'date': statement.received_at,
+        'membership_days': membership.how_many_days(),
+        'overpaid': promise.status == STATUS_OVERPAID,
+        'underpaid': promise.status == STATUS_UNDERPAID,
+        'variable_symbol': promise.variable_symbol,
+    }
+    EmailNotification.schedule(
+        key='membership_fee_thanks',
+        template='membership/thanks_for_payment.html',
+        recipient_email=user.email,
+        subject=_('Accepted membership contribution'),
+        ready=True,
+        **context,
+    )

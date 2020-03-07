@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 17:38+0000\n"
+"POT-Creation-Date: 2020-03-07 23:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,18 @@ msgstr "English"
 
 #: api/settings.py:216
 msgid "Poločas nápadu"
+msgstr "Poločas nápadu"
+
+#: api/settings.py:217
+#, fuzzy
+#| msgid "Poločas nápadu"
+msgid "Poločasu nápadu"
+msgstr "Poločas nápadu"
+
+#: api/settings.py:218
+#, fuzzy
+#| msgid "Poločas nápadu"
+msgid "Poločas nápadu z. s."
 msgstr "Poločas nápadu"
 
 #: api/templates/admin/base_site.html:25

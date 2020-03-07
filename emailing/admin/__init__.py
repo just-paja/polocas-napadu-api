@@ -4,6 +4,7 @@ from fields.admin import ImprovAdminSite
 
 from .notifications import EmailNotificationAdmin
 
+
 class EmailingAdminSite(ImprovAdminSite):
     name = 'emailing'
     site_title = _('Emailing')
@@ -11,5 +12,6 @@ class EmailingAdminSite(ImprovAdminSite):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.hookup(EmailNotificationAdmin)
+
 
 EMAILING_ADMIN = EmailingAdminSite()

@@ -1,0 +1,68 @@
+{% extends 'email/base.html' %}
+{% load i18n email %}
+
+{% block content %}
+  {% filter email_body %}
+    {% filter email_title %}
+      {% trans "Thank you for your membership contribution" %}
+    {% endfilter %}
+
+    {{ ''|email_divider }}
+
+    {% filter email_text_block %}
+      {% filter email_paragraph %}
+        {% blocktrans with amount_highlighted=amount|email_text_highlight:'primary' %}
+          On {{date}}, I received a payment of {{amount_highlighted}} and paired it with your
+          membership record, which says you have been with us for
+          {{membership_days}} days. On behalf of our improv group, I graciously
+          accept your gift.
+        {% endblocktrans %}
+      {% endfilter %}
+
+      {% if overpaid %}
+        {{"&nbsp;" | email_paragraph}}
+        {% filter email_paragraph %}
+          {% blocktrans with amount_diff_highlighted=amount_diff|email_text_highlight:'primary' %}
+            By the way, you overpaid us by {{amount_diff_highlighted}}. Go talk
+            to our economist if you wish to get it back. We are still a charity,
+            so if you want to donate, please kindly use a different variable symbol.
+          {% endblocktrans %}
+        {% endfilter %}
+      {% endif %}
+
+      {% if underpaid %}
+        {{"&nbsp;" | email_paragraph}}
+        {% filter email_paragraph %}
+          {% blocktrans with amount_diff_highlighted=amount_diff|email_text_highlight:'danger' %}
+            By the way, I have calculated that you owe us
+            {{amount_diff_highlighted}}. To settle our debts, please send a
+            payment of {{amount_diff}} to the very same account using your
+            variable symbol ({{variable_symbol}}).
+          {% endblocktrans %}
+        {% endfilter %}
+        {{"&nbsp;" | email_paragraph}}
+        {% filter email_paragraph %}
+          {% blocktrans %}
+            If you think, this is a mistake, please talk to our economist.
+          {% endblocktrans %}
+        {% endfilter %}
+      {% endif %}
+    {% endfilter %}
+  {% endfilter %}
+{% endblock %}
+
+{% block final_words %}
+  {% filter email_paragraph:'lead' %}
+    {% blocktrans %}
+      Thank you for being with us.
+    {% endblocktrans %}
+  {% endfilter %}
+  {{"&nbsp;" | email_paragraph}}
+{% endblock %}
+
+{% block post_scriptum %}
+  {% blocktrans %}
+    This e-mail has been sent to you because you are a member or
+    {{organization_name_formal}}.
+  {% endblocktrans %}
+{% endblock %}

@@ -14,6 +14,7 @@ class EmailNotificationAdmin(BaseAdminModel):
         "ready",
         "sent_on",
     )
+    list_display_links = ('subject', 'recipient_email')
     search_fields = (
         "content",
         "recipient_email",

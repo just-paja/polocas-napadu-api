@@ -25,6 +25,7 @@ EMAIL_FORMAT_CHOICES = (
     (EMAIL_FORMAT_HTML, _('HTML')),
 )
 
+
 class EmailNotification(TimeStampedModel):
     class Meta:
         verbose_name = _("Email notification")
@@ -56,7 +57,7 @@ class EmailNotification(TimeStampedModel):
         verbose_name=_('Append organization to sender'),
         help_text=_(
             'Organization name will be appended to the sender name, \
-            resulting in things like "Karel from %s"' % settings.ORGANIZATION_NAME
+            resulting in things like "Karel from %s"' % settings.ORGANIZATION_NAME_FROM
         ),
     )
     recipient_email = EmailField(
@@ -85,7 +86,7 @@ class EmailNotification(TimeStampedModel):
         verbose_name=_('Format'),
     )
     content = TextField(
-    verbose_name=_('Content'),
+        verbose_name=_('Content'),
         help_text=_(
             'Enter formatted e-mail content. The text version will be auto \
             generated for HTML e-mails'
@@ -96,22 +97,33 @@ class EmailNotification(TimeStampedModel):
     def schedule(
         cls,
         *,
-        date,
-        content_format=EMAIL_FORMAT_HTML,
+        template,
         key,
         recipient_email,
         subject,
-        template,
+        scheduled_on=None,
+        content_format=EMAIL_FORMAT_HTML,
+        ready=False,
         **kwargs
     ):
-        context = {**kwargs}
-        content = render_to_string(template, {'context': context})
+        context = {
+            'organization_name': settings.ORGANIZATION_NAME,
+            'organization_name_from': settings.ORGANIZATION_NAME_FROM,
+            'organization_name_formal': settings.ORGANIZATION_NAME_FORMAL,
+            'sender_name': _('%(person)s from %(organization)s' % ({
+                'person': settings.EMAIL_ROBOT_NAME,
+                'organization': settings.ORGANIZATION_NAME_FROM,
+            })),
+            **kwargs,
+        }
+        content = render_to_string(template, context)
         notification = cls(
-            content=content,
             content_format=content_format,
+            content=content,
             key=key,
             recipient_email=recipient_email,
-            scheduled_on=date,
+            scheduled_on=scheduled_on,
+            subject=subject,
         )
         notification.save()
 
@@ -150,6 +162,7 @@ class EmailNotification(TimeStampedModel):
             not self.scheduled_on
             or self.scheduled_on < now()
         )
+
 
 @receiver(post_save, sender=EmailNotification)
 def send_email_after_save(sender, instance, **kwargs):
