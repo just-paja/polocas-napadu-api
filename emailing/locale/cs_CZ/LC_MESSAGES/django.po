@@ -19,7 +19,7 @@ msgstr ""
 
 #: emailing/__init__.py:7 emailing/admin/__init__.py:10
 msgid "Emailing"
-msgstr ""
+msgstr "E-mailing"
 
 #: emailing/models/email_notification.py:24
 msgid "Text"
@@ -142,21 +142,16 @@ msgstr "%(person)s z %(organization)s"
 
 #: emailing/templates/email/base.html:146
 msgid "Our website"
-msgstr ""
+msgstr "Náš web"
 
 #: emailing/templates/email/base.html:147
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: emailing/templates/email/base.html:148
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: emailing/templates/email/base.html:149
 msgid "YouTube"
-msgstr ""
-
-#, fuzzy
-#~| msgid "Configuration"
-#~ msgid "Notifications"
-#~ msgstr "Konfigurace"
+msgstr "YouTube"
