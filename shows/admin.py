@@ -14,11 +14,11 @@ from .models import (
     ShowParticipant,
     ShowPhoto,
     ShowRole,
+    ShowTicketPrice,
     ShowType,
     ShowTypePhoto,
     ShowVolumeCalibration,
     ShowVolumeCalibrationVoting,
-    TicketPrice,
 )
 
 
@@ -85,10 +85,10 @@ class ShowParticipantInlineAdmin(BaseInlineAdminModel):
     autocomplete_fields = ["profile"]
 
 
-class TicketPriceInlineAdmin(BaseInlineAdminModel):
+class ShowTicketPriceInlineAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
-    model = TicketPrice
+    model = ShowTicketPrice
 
 
 class ShowAdmin(BaseAdminModel):
@@ -96,7 +96,7 @@ class ShowAdmin(BaseAdminModel):
 
     model = Show
     inlines = [
-        TicketPriceInlineAdmin,
+        ShowTicketPriceInlineAdmin,
         ShowParticipantInlineAdmin,
         ShowPhotoAdmin,
     ]

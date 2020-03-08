@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from accounting.models import AmountField, CurrencyField
 
 
-class TicketPrice(Model):
+class ShowTicketPrice(Model):
     show = ForeignKey(
         'Show',
         on_delete=CASCADE,
@@ -17,5 +17,5 @@ class TicketPrice(Model):
         related_name='ticket_prices',
         verbose_name=_('Price level'),
     )
-    price = AmountField()
+    amount = AmountField()
     currency = CurrencyField()
