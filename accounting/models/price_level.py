@@ -10,7 +10,8 @@ class PriceLevel(PublicResourceMixin, WeightedMixin):
         verbose_name_plural = _('Price levels')
 
     is_default = BooleanField(
-        verbose_name=_('Default price level that will be used as fallback'),
+        verbose_name=_('Default'),
+        help_text=_('Default price level that will be used as fallback'),
     )
 
     def clean(self):
