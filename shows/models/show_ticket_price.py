@@ -5,6 +5,10 @@ from accounting.models import AmountField, CurrencyField
 
 
 class ShowTicketPrice(Model):
+    class Meta:
+        verbose_name = _('Show ticket price')
+        verbose_name_plural = _('Show ticket prices')
+
     show = ForeignKey(
         'Show',
         on_delete=CASCADE,
@@ -19,3 +23,12 @@ class ShowTicketPrice(Model):
     )
     amount = AmountField()
     currency = CurrencyField()
+
+
+    def __str__(self):
+        return '%s %s %s (%s)' % (
+            self.show.name,
+            self.amount,
+            self.currency,
+            self.price_level.name,
+        )

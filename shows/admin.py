@@ -89,6 +89,7 @@ class ShowTicketPriceInlineAdmin(BaseInlineAdminModel):
     """Admin model for show photos."""
 
     model = ShowTicketPrice
+    search_fields = ('show__name', 'name')
 
 
 class ShowAdmin(BaseAdminModel):
@@ -109,6 +110,7 @@ class ShowAdmin(BaseAdminModel):
         (None, {"fields": ("name", "slug", "show_type")}),
         (None, {"fields": ("start", "end", "all_day"), }),
         (None, {"fields": ("location", "description"), }),
+        (None, {"fields": ("sell_tickets", "capacity"), }),
         (None, {"fields": (
             "link_tickets",
             "link_reservations",

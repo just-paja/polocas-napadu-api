@@ -1,4 +1,4 @@
-from django.db.models import ForeignKey, PROTECT
+from django.db.models import BooleanField, ForeignKey, PositiveIntegerField, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from events.models import Event
@@ -16,4 +16,15 @@ class Show(Event):
         on_delete=PROTECT,
         related_name="shows",
         verbose_name=_("Show type"),
+    )
+    sell_tickets = BooleanField(
+        default=False,
+        verbose_name=_('Sell tickets'),
+        help_text=_('Ticketing system will be enabled for this show'),
+    )
+    capacity = PositiveIntegerField(
+        blank=True,
+        null=True,
+        verbose_name=_('Capacity'),
+        help_text=_('Maximum amount of tickets to be sold'),
     )

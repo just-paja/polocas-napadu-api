@@ -36,6 +36,8 @@ fiobank = "*"
 django-searchable-encrypted-fields = "*"
 django-apptemplates = "*"
 czech-sort = "*"
+django-countries = "*"
+django-phonenumber-field = {extras = ["phonenumberslite"],version = "*"}
 
 [requires]
 python_version = "3.8"
