@@ -1,6 +1,7 @@
 import graphene
 import graphql_jwt
 
+import accounting.schema
 import bands.schema
 import blog.schema
 import games.schema
@@ -14,6 +15,7 @@ import voting.schema
 
 
 class PublicQuery(
+    accounting.schema.Query,
     bands.schema.Query,
     blog.schema.Query,
     games.schema.Query,

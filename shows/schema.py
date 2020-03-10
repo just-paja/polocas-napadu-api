@@ -10,7 +10,15 @@ from graphene_django.types import DjangoObjectType
 from fields import append_host_from_context
 from inspirations.models import Inspiration
 
-from .models import Show, ShowParticipant, ShowPhoto, ShowRole, ShowType, ShowTypePhoto
+from .models import (
+    Show,
+    ShowParticipant,
+    ShowPhoto,
+    ShowRole,
+    ShowTicketPrice,
+    ShowType,
+    ShowTypePhoto,
+)
 
 
 class ShowRoleNode(DjangoObjectType):
@@ -28,6 +36,11 @@ class ShowPhotoNode(DjangoObjectType):
         model = ShowPhoto
 
 
+class ShowTicketPriceNode(DjangoObjectType):
+    class Meta:
+        model = ShowTicketPrice
+
+
 class ShowNode(DjangoObjectType):
     inspiration_qr_url = String()
     total_inspirations = Int()
@@ -43,7 +56,7 @@ class ShowNode(DjangoObjectType):
     def resolve_total_inspirations(self, info):
         return self.inspirations.filter(discarded=False).count()
 
-    def resolve_showsParticipants(self, info): # noqa
+    def resolve_showsParticipants(self, info):  # noqa, pylint: disable=invalid-name
         return self.showsParticipants.order_by('role__weight')
 
 

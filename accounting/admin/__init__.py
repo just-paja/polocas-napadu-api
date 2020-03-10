@@ -7,6 +7,7 @@ from orders.admin import (
     BuyerAdmin,
     DeliveryMethodAdmin,
     OrderAdmin,
+    OrderableAdmin,
     PaymentMethodAdmin,
 )
 
@@ -35,6 +36,7 @@ class AccountingAdminSite(ImprovAdminSite):
         self.hookup(PaymentMethodAdmin)
         self.hookup(PriceLevelAdmin)
         self.hookup(PromiseAdmin)
+        self.hookup(OrderableAdmin)
         self.hookup(PurposeAdmin)
         self.hookup(PurposeCategoryAdmin)
         self.hookup(ShowTicketAdmin)

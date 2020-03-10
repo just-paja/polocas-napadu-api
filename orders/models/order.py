@@ -62,14 +62,12 @@ class Order(TimeStampedModel):
         verbose_name=_('Order number'),
     )
 
-
     def save(self, *args, **kwargs):  # pylint: disable=arguments-differ
         if not self.ident:
             today = datetime.date.today()
             last = self.__class__.objects.order_by('-ident').first()
             self.ident = int('%s%s' % (today.year, last.ident + 1))
         super().save(*args, **kwargs)
-
 
     def __str__(self):
         return str(self.ident)
