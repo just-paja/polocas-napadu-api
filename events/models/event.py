@@ -4,6 +4,7 @@ from django.db.models import (
     DateTimeField,
     EmailField,
     ForeignKey,
+    ManyToManyField,
     URLField,
     PROTECT,
 )
@@ -20,10 +21,21 @@ class EventManager(VisibilityManager):
 
 class Event(PublicResourceMixin):
     slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")
-    start = DateTimeField()
-    end = DateTimeField(blank=True, null=True)
-    all_day = BooleanField(default=False)
-    location = ForeignKey("locations.Location", on_delete=PROTECT)
+    start = DateTimeField(verbose_name=_("Start"))
+    end = DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name=_("End"),
+    )
+    all_day = BooleanField(
+        default=False,
+        verbose_name=_("All day")
+    )
+    location = ForeignKey(
+        "locations.Location",
+        on_delete=PROTECT,
+        verbose_name=_("Location"),
+    )
     objects = EventManager()
     email_reservations = EmailField(
         blank=True,
@@ -45,6 +57,7 @@ class Event(PublicResourceMixin):
         null=True,
         verbose_name=_('Link to buy tickets'),
     )
+    sponsors = ManyToManyField("profiles.Sponsor", blank=True)
 
     class Meta:
         abstract = True

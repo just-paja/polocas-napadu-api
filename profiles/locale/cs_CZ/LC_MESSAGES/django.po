@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 23:42+0000\n"
+"POT-Creation-Date: 2020-08-04 12:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: profiles/__init__.py:7
-msgid "Actors"
-msgstr "Herci"
+msgid "Profiles"
+msgstr "Profily"
 
 #: profiles/models/profile.py:11
 msgid "Actor profile"
@@ -37,13 +37,13 @@ msgstr "Při zobrazení bude preferováno před civilním jménem"
 msgid "Artist alias"
 msgstr "Umělecké jméno"
 
-#: profiles/models/profile.py:21
+#: profiles/models/profile.py:21 profiles/models/sponsor.py:14
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: profiles/models/profile.py:25
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: profiles/models/profile_group.py:8
 msgid "Actor group"
@@ -51,10 +51,31 @@ msgstr "Herecká skupina"
 
 #: profiles/models/profile_group.py:9
 msgid "Actor groups"
-msgstr "Herecké skupiny"
+msgstr "Seskupení herců"
 
-#~ msgid "weightHelpText"
-#~ msgstr "Těžší položky se objeví níže v seznamu"
+#: profiles/models/sponsor.py:11
+msgid "Sponsor"
+msgstr "Sponzor"
 
-#~ msgid "Weight"
-#~ msgstr "Váha"
+#: profiles/models/sponsor.py:12
+msgid "Sponsors"
+msgstr "Sponzoři"
+
+#: profiles/models/sponsor.py:15
+msgid "Website"
+msgstr "Webová stránka"
+
+#: profiles/models/sponsor.py:17
+msgid "Logo"
+msgstr "Logo"
+
+#: profiles/models/sponsor.py:21
+msgid "Display this sponsor on site"
+msgstr "Zobrazit tohoto sponzora na webu"
+
+#: profiles/models/sponsor.py:22
+msgid "On site"
+msgstr "Na webu"
+
+#~ msgid "Actors"
+#~ msgstr "Herci"

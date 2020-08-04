@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 23:42+0000\n"
+"POT-Creation-Date: 2020-08-04 12:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,10 +30,26 @@ msgid "Date"
 msgstr "Datum"
 
 #: shows/admin.py:78 shows/models/show.py:10
-#: shows/models/show_participant.py:15
-#: shows/models/show_volume_calibration.py:9 shows/models/ticket_price.py:12
+#: shows/models/show_participant.py:15 shows/models/show_ticket_price.py:12
+#: shows/models/show_volume_calibration.py:9
 msgid "Show"
 msgstr "Představení"
+
+#: shows/admin.py:109
+msgid "Identification"
+msgstr "Identifikace"
+
+#: shows/admin.py:110
+msgid "Date and time"
+msgstr "Datum a čas"
+
+#: shows/admin.py:111
+msgid "Location"
+msgstr "Umístění"
+
+#: shows/admin.py:112
+msgid "Links"
+msgstr "Odkazy"
 
 #: shows/models/show.py:18 shows/models/show_type.py:10
 msgid "Show type"
@@ -58,6 +74,10 @@ msgstr "Role"
 #: shows/models/show_role.py:10
 msgid "Show roles"
 msgstr "Role"
+
+#: shows/models/show_ticket_price.py:18
+msgid "Price level"
+msgstr "Cenová hladina"
 
 #: shows/models/show_type.py:11
 msgid "Show types"
@@ -122,7 +142,3 @@ msgstr "Průběh kalibrace akustického hlasování"
 #: shows/models/show_volume_calibration_voting.py:14
 msgid "Show volume calibrations voting"
 msgstr "Průběhy kalibrace akustického hlasování"
-
-#: shows/models/ticket_price.py:18
-msgid "Price level"
-msgstr "Cenová hladina"

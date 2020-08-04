@@ -9,7 +9,7 @@ from fields.admin import ImprovAdminSite
 from games.admin import GameAdmin, GameRulesAdmin
 from inspirations.admin import InspirationAdmin
 from locations.admin import LocationAdmin, UsualPlaceAdmin
-from profiles.admin import ProfileAdmin, ProfileGroupAdmin
+from profiles.admin import ProfileAdmin, ProfileGroupAdmin, SponsorAdmin
 from shows.admin import (
     ShowAdmin,
     ShowParticipantAdmin,
@@ -54,5 +54,6 @@ class ContentAdminSite(ImprovAdminSite):
         self.hookup(ShowParticipantAdmin)
         self.hookup(ShowRoleAdmin)
         self.hookup(ShowTypeAdmin)
+        self.hookup(SponsorAdmin)
         self.hookup(UsualPlaceAdmin)
         self.register(Assignment, AssignmentAdmin)

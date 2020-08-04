@@ -100,20 +100,21 @@ class ShowAdmin(BaseAdminModel):
         ShowParticipantInlineAdmin,
         ShowPhotoAdmin,
     ]
-    autocomplete_fields = ["location"]
+    autocomplete_fields = ["location", "sponsors"]
     list_display = ("name", "location", "start", "all_day", "visibility")
     list_filter = (EventSeasonFilter, ShowTypeFilter, LocationFilter, "visibility")
     search_fields = ("name", "all_day")
     readonly_fields = ("slug",)
     fieldsets = (
-        (None, {"fields": ("name", "slug", "show_type")}),
-        (None, {"fields": ("start", "end", "all_day"), }),
-        (None, {"fields": ("location", "description"), }),
-        (None, {"fields": (
+        (_("Identification"), {"fields": ("name", "slug", "show_type")}),
+        (_("Date and time"), {"fields": ("start", "end", "all_day"), }),
+        (_("Location"), {"fields": ("location", "description"), }),
+        (_("Links"), {"fields": (
             "link_tickets",
             "link_reservations",
             "link_facebook",
             "email_reservations",
+            "sponsors",
         ), }),
     )
 
