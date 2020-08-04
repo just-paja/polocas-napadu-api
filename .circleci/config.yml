@@ -32,7 +32,7 @@ jobs:
             . .venv/bin/activate
             pip install pipenv vrun
             pipenv install --dev
-            pipenv check
+#            pipenv check
 
       - save_cache:
           paths:
