@@ -37,7 +37,7 @@ class SponsorAdmin(BaseAdminModel):
     """Admin model for sponsors"""
 
     model = Sponsor
-    fields = ("name", "slug", "logo", "website", "on_site", "weight")
+    fields = ("name", "slug", "logo", "website", "on_site", "visibility", "weight")
     list_display = ("name", "visibility", "on_site")
     list_filter = ("visibility", "on_site")
     search_fields = ("name", "website")
