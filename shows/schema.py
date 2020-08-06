@@ -12,6 +12,12 @@ from inspirations.models import Inspiration
 
 from .models import Show, ShowParticipant, ShowPhoto, ShowRole, ShowType, ShowTypePhoto
 
+def serialize_image_field(field, info):
+    try:
+        return info.context.build_absolute_uri(field.url)
+    except ValueError:
+        return None
+
 
 class ShowRoleNode(DjangoObjectType):
     class Meta:
@@ -27,6 +33,8 @@ class ShowPhotoNode(DjangoObjectType):
     class Meta:
         model = ShowPhoto
 
+    def resolve_image(self, info, *_):
+        return serialize_image_field(self.image, info)
 
 class ShowNode(DjangoObjectType):
     inspiration_qr_url = String()
