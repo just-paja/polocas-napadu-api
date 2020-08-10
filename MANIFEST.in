@@ -3,6 +3,7 @@ recursive-include api *
 recursive-include bands *
 recursive-include blog *
 recursive-include events *
+recursive-include emailing *
 recursive-include fields *
 recursive-include games *
 recursive-include gsuite *
@@ -10,6 +11,7 @@ recursive-include inspirations *
 recursive-include locale *
 recursive-include locations *
 recursive-include management *
+recursive-include orders *
 recursive-include photos *
 recursive-include profiles *
 recursive-include shows *
