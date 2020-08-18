@@ -94,6 +94,7 @@ class AddInspiration(Mutation):
 
 class Query:
     show = Field(ShowNode, show_id=Int(), slug=String())
+    show_photo_list = List(ShowPhotoNode, limit=Int())
     show_type = Field(ShowTypeNode, slug=String())
     show_type_list = List(ShowTypeNode)
     show_list = List(
@@ -147,6 +148,13 @@ class Query:
             .annotate(count=Count("shows__id"),)
             .order_by("-count")
         )
+
+    def resolve_show_photo_list(self, info, **kwargs):
+        limit = kwargs.get("limit") or None
+        source = ShowPhoto.objects.get_visible().order_by('-created')
+        if limit:
+            source = source[:10]
+        return source
 
 
 class Mutations(ObjectType):
