@@ -6,10 +6,3 @@ def append_host_from_context(url, context):
             url,
         )
     return url
-
-
-def serialize_image_field(field, info):
-    try:
-        return info.context.build_absolute_uri(field.url)
-    except ValueError:
-        return None

@@ -1,6 +1,7 @@
 from graphene import Field, Int, List, String
 
 from graphene_django.types import DjangoObjectType
+from photos.schema import Image, PhotoNode, serialize_image_field
 
 from .models import Profile, ProfileGroup, ProfilePhoto, Sponsor
 
@@ -10,22 +11,14 @@ class ProfileGroupNode(DjangoObjectType):
         model = ProfileGroup
 
 
-def serialize_image_field(field, info):
-    try:
-        return info.context.build_absolute_uri(field.url)
-    except ValueError:
-        return None
-
-
-class ProfilePhotoNode(DjangoObjectType):
+class ProfilePhotoNode(PhotoNode):
     class Meta:
         model = ProfilePhoto
 
-    def resolve_image(self, info, *_):
-        return serialize_image_field(self.image, info)
-
 
 class ProfileNode(DjangoObjectType):
+    avatar = Field(Image)
+
     class Meta:
         model = Profile
 
@@ -34,6 +27,8 @@ class ProfileNode(DjangoObjectType):
 
 
 class SponsorNode(DjangoObjectType):
+    logo = Field(Image)
+
     class Meta:
         model = Sponsor
 

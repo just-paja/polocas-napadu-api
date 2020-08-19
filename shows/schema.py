@@ -9,15 +9,9 @@ from graphene_django.types import DjangoObjectType
 
 from fields import append_host_from_context
 from inspirations.models import Inspiration
+from photos.schema import PhotoNode
 
 from .models import Show, ShowParticipant, ShowPhoto, ShowRole, ShowType, ShowTypePhoto
-
-
-def serialize_image_field(field, info):
-    try:
-        return info.context.build_absolute_uri(field.url)
-    except ValueError:
-        return None
 
 
 class ShowRoleNode(DjangoObjectType):
@@ -30,12 +24,9 @@ class ShowParticipantNode(DjangoObjectType):
         model = ShowParticipant
 
 
-class ShowPhotoNode(DjangoObjectType):
+class ShowPhotoNode(PhotoNode):
     class Meta:
         model = ShowPhoto
-
-    def resolve_image(self, info, *_):
-        return serialize_image_field(self.image, info)
 
 
 class ShowNode(DjangoObjectType):
@@ -57,7 +48,7 @@ class ShowNode(DjangoObjectType):
         return self.showsParticipants.order_by('role__weight')
 
 
-class ShowTypePhotoNode(DjangoObjectType):
+class ShowTypePhotoNode(PhotoNode):
     class Meta:
         model = ShowTypePhoto
 

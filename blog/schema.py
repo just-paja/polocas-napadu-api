@@ -1,18 +1,14 @@
 from graphene import Field, String
 
 from graphene_django.types import DjangoObjectType
-
-from fields import serialize_image_field
+from photos.schema import PhotoNode
 
 from .models import Article, Chapter, ChapterPhoto
 
 
-class ChapterPhotoNode(DjangoObjectType):
+class ChapterPhotoNode(PhotoNode):
     class Meta:
         model = ChapterPhoto
-
-    def resolve_image(self, info, *_):
-        return serialize_image_field(self.image, info)
 
 
 class ChapterNode(DjangoObjectType):

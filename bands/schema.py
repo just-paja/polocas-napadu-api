@@ -1,11 +1,12 @@
 from graphene import List, relay
 
 from graphene_django.types import DjangoObjectType
+from photos.schema import PhotoNode
 
 from .models import Band, BandPhoto
 
 
-class BandPhotoNode(DjangoObjectType):
+class BandPhotoNode(PhotoNode):
     class Meta:
         model = BandPhoto
 
