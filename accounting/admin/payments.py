@@ -229,6 +229,10 @@ class StatementAdmin(BaseAdminModel):
     search_fields = (
         'promise__name',
         'counterparty__name',
+        'sender_account_number',
+        'sender_bank',
+        'sender_iban',
+        'sender_bic',
         'variable_symbol',
         'specific_symbol',
         'constant_symbol',
