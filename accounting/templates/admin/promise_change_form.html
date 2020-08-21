@@ -8,7 +8,7 @@
     </a>
   </li>
   <li>
-    <a href="{% url 'accounting:accounting_statement_changelist' %}?promise={{original.id}}">
+    <a href="{% url 'accounting:accounting_statement_changelist' %}?promise__pk__exact={{original.id}}">
       {% trans "Statements" %}
     </a>
   </li>
