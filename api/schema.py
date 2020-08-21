@@ -1,6 +1,7 @@
 import graphene
 import graphql_jwt
 
+import accounting.schema # noqa
 import bands.schema
 import blog.schema
 import games.schema

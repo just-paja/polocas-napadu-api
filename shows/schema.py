@@ -11,7 +11,15 @@ from fields import append_host_from_context
 from inspirations.models import Inspiration
 from photos.schema import PhotoNode
 
-from .models import Show, ShowParticipant, ShowPhoto, ShowRole, ShowType, ShowTypePhoto
+from .models import (
+    Show,
+    ShowParticipant,
+    ShowPhoto,
+    ShowRole,
+    ShowTicketPrice,
+    ShowType,
+    ShowTypePhoto,
+)
 
 
 class ShowRoleNode(DjangoObjectType):
@@ -27,6 +35,11 @@ class ShowParticipantNode(DjangoObjectType):
 class ShowPhotoNode(PhotoNode):
     class Meta:
         model = ShowPhoto
+
+
+class ShowTicketPriceNode(DjangoObjectType):
+    class Meta:
+        model = ShowTicketPrice
 
 
 class ShowNode(DjangoObjectType):
