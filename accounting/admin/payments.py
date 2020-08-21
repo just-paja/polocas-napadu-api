@@ -6,7 +6,7 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
-from fields.admin import BaseAdminModel, BaseInlineAdminModel, IntValueFilter
+from fields.admin import BaseAdminModel, BaseInlineAdminModel, IntValueFilter, SeasonFilter
 
 from .account import AccountFilter
 from .counterparty import CounterPartyFilter
@@ -87,6 +87,20 @@ class DebtAdmin(BaseInlineAdminModel):
     extra = 0
 
 
+class StatementDateFilter(SeasonFilter):
+    field = 'received_at'
+    season_start = 1
+    season_end = 12
+    start = 2016
+
+
+class PromiseDateFilter(SeasonFilter):
+    field = 'start'
+    season_start = 1
+    season_end = 12
+    start = 2016
+
+
 class PromiseAdmin(TimeLimitedAdmin):
     class Media:
         pass
@@ -122,6 +136,7 @@ class PromiseAdmin(TimeLimitedAdmin):
         'repeat',
         PurposeFilter,
         PaymentDirectionFilter,
+        PromiseDateFilter,
     )
     list_display = (
         '__str__',
@@ -224,6 +239,7 @@ class StatementAdmin(BaseAdminModel):
         AccountFilter,
         PromiseFilter,
         CounterPartyFilter,
+        StatementDateFilter,
     )
     autocomplete_fields = ('promise', 'counterparty')
     search_fields = (

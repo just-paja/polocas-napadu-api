@@ -108,7 +108,8 @@ class SeasonFilter(SimpleListFilter):
 
     def lookups(self, request, model_admin):
         seasons = []
-        for season in range(self.start, datetime.date.today().year):
+        end = datetime.date.today() + relativedelta(months=12)
+        for season in range(self.start, end.year):
             season_name = "%s/%s" % (
                 self.get_season_start(season).year,
                 self.get_season_end(season).year,
