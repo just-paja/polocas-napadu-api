@@ -1,3 +1,5 @@
+import re
+
 from django.utils.translation import ugettext_lazy as _
 
 from fields.admin import (
@@ -8,6 +10,7 @@ from fields.admin import (
     ShowFilter,
     ShowTypeFilter,
 )
+from theatre_sports.models.match import Match
 
 from .models import (
     Show,
@@ -61,6 +64,22 @@ class ShowParticipantAdmin(BaseAdminModel):
         "profile",
         "role",
     ]
+
+    def get_search_results(self, request, *args):
+        """
+        Filter results based on URL. If the URL corresponds to the URL of django
+        admin for match edit, then filter show participants based on who is
+        already mentioned in the show.
+        """
+        queryset, use_distinct = super().get_search_results(request, *args)
+        referer = request.META.get('HTTP_REFERER', None)
+        match_admin_url = '/theatre_sports/match/'
+        if referer and match_admin_url in referer:
+            match_id = re.search('/theatre_sports/match/([0-9]+)/change', referer)
+            match = Match.objects.filter(pk=int(match_id[1])).first()
+            if match:
+                queryset = queryset.filter(show=match.show)
+        return queryset, use_distinct
 
     def get_role_name(self, item):
         return item.role.name
