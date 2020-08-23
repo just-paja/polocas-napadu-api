@@ -3,7 +3,7 @@ import textwrap
 from django import template
 from django.utils.html import format_html
 
-register = template.Library()  # pylint: disable=invalid-name
+register = template.Library()
 
 COLOR_COCONUT_CREAM = '#fcfaed'
 COLOR_WILD_TIDE = '#87e1d1'

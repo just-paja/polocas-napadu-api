@@ -29,7 +29,7 @@ from theatre_sports import urls as theatre_sports
 from .admin import CONFIGURATION_ADMIN, CONTENT_ADMIN
 
 
-urlpatterns = [  # pylint:disable=invalid-name
+urlpatterns = [
     path("accounting/", ACCOUNTING_ADMIN.urls),
     path("configuration/", CONFIGURATION_ADMIN.urls),
     path("emailing/", EMAILING_ADMIN.urls),

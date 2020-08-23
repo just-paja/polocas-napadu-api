@@ -48,7 +48,7 @@ class Membership(TimeFilteredModel):
     def how_many_days(self):
         return (datetime.date.today() - self.start).days
 
-    def save(self, *args, **kwargs):  # pylint:disable=arguments-differ
+    def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         self.update_fees()
 
@@ -79,7 +79,7 @@ class MembershipLevel(NameMixin, DescriptionMixin, TimeLimitedModel):
     objects = TimeLimitedManager()
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class MembershipLevelFee(TimeFilteredModel):

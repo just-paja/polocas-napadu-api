@@ -15,7 +15,7 @@ from .promise import Promise
 from .statement_specs import StatementSpecification, StatementSenderSpecification
 
 
-statement_registered = Signal(providing_args=['instance'])  # pylint: disable=invalid-name
+statement_registered = Signal(providing_args=['instance'])
 
 
 class Statement(
@@ -90,7 +90,7 @@ class Statement(
     def __str__(self):
         return 'Statement#%s' % self.id
 
-    def save(self, *args, **kwargs):  # pylint:disable=arguments-differ
+    def save(self, *args, **kwargs):
         self.pair_with_known_accounts()
         self.pair_with_promises()
         super().save(*args, **kwargs)

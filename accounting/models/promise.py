@@ -87,9 +87,9 @@ class Promise(StatementSpecification, TimeLimitedModel):
     )
 
     def __str__(self):
-        return self.name if self.name else 'Promise#%s' % self.id
+        return str(self.name) if self.name else 'Promise#%s' % self.id
 
-    def save(self, *args, **kwargs):  # pylint:disable=arguments-differ
+    def save(self, *args, **kwargs):
         if not self.pk:
             self.initial_amount = self.amount
             super().save(*args, **kwargs)
@@ -210,7 +210,7 @@ class Debt(TimeStampedModel):
     def __str__(self):
         return '#%s: %s %s' % (self.pk, self.amount, self.currency)
 
-    def save(self, *args, **kwargs):  # pylint:disable=arguments-differ
+    def save(self, *args, **kwargs):
         super().save()
         if self.source == DEBT_SOURCE_MANUAL:
             self.promise.save(*args, **kwargs)
