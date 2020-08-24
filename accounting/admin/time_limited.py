@@ -49,7 +49,7 @@ class TimeLimitedAdmin(BaseAdminModel):
         return item.end or empty_value('∞')
 
     def changelist_view(self, request, extra_context=None):
-        has_questionmark = '?' in request.META.get('HTTP_REFERER')
+        has_questionmark = '?' in request.META.get('HTTP_REFERER', '')
         has_param = 'active' in request.GET
         if has_questionmark or has_param:
             return super().changelist_view(request, extra_context)
