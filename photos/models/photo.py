@@ -1,4 +1,3 @@
-"""Import Django models."""
 from django.db.models import ImageField, PositiveIntegerField, TextField
 from django_extensions.db.models import TimeStampedModel
 
@@ -9,8 +8,6 @@ class Photo(TimeStampedModel, VisibilityMixin):
     """Stores photos."""
 
     class Meta:
-        """Defines photo as abstract class."""
-
         abstract = True
 
     image = ImageField(

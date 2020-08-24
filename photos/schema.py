@@ -26,4 +26,11 @@ class PhotoNode(DjangoObjectType):
         abstract = True
 
     def resolve_image(self, info, *_):
-        return serialize_image_field(self.image, info)
+        img = Image()
+        try:
+            img.height = self.height
+            img.width = self.width
+            img.src = info.context.build_absolute_uri(self.image.url)
+            return img
+        except ValueError:
+            return None
