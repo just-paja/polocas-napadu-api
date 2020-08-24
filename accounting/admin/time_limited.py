@@ -48,7 +48,7 @@ class TimeLimitedAdmin(BaseAdminModel):
         return item.start or empty_value('-∞')
 
     def format_end(self, item):
-        if not item.repeat:
+        if hasattr(item, 'repeat') and not item.repeat:
             return empty_value('∅')
         return item.end or empty_value('∞')
 
