@@ -28,6 +28,11 @@ class MembershipLevelFilter(AutocompleteFilter):
     field_name = "level"
 
 
+class MemberFilter(AutocompleteFilter):
+    title = _("Member")
+    field_name = "user"
+
+
 class MembershipFeeAdmin(BaseInlineAdminModel):
     model = MembershipFee
     fieldsets = (
@@ -56,7 +61,11 @@ class MembershipAdmin(TimeLimitedAdmin):
     model = Membership
     search_fields = ('user__first_name', 'user__last_name', 'user__username')
     autocomplete_fields = ('user',)
-    list_filter = (MembershipLevelFilter, TimeLimitedActiveFilter)
+    list_filter = (
+        MembershipLevelFilter,
+        MemberFilter,
+        TimeLimitedActiveFilter
+    )
     list_display = ('user', 'level', 'is_active', 'format_start', 'format_end')
     fields = ('user', 'level', 'start', 'end', 'created', 'modified')
     readonly_fields = ('modified', 'created')
