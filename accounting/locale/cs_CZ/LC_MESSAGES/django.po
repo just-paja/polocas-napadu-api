@@ -42,8 +42,6 @@ msgstr "Platby"
 
 #: accounting/admin/counterparty.py:132 accounting/admin/payments.py:265
 #: accounting/models/counter_party.py:14
-#, fuzzy
-#| msgid "CounterParty"
 msgid "Counterparty"
 msgstr "Protistrana"
 
@@ -52,10 +50,8 @@ msgid "Level"
 msgstr "Typ členství"
 
 #: accounting/admin/payments.py:25
-#, fuzzy
-#| msgid "Payment identificator"
 msgid "Payment direction"
-msgstr "Identifikátor platby"
+msgstr "Směr platby"
 
 #: accounting/admin/payments.py:30
 msgid "Inbound"
@@ -123,7 +119,6 @@ msgid "Failed"
 msgstr "Selhalo"
 
 #: accounting/models/account.py:34
-#, fuzzy
 msgid "Account number"
 msgstr "Číslo účtu"
 
@@ -172,8 +167,6 @@ msgid "Bank scrapes"
 msgstr "Bankovní synchronizace"
 
 #: accounting/models/counter_party.py:15
-#, fuzzy
-#| msgid "CounterParties"
 msgid "Counterparties"
 msgstr "Protistrany"
 
@@ -186,7 +179,6 @@ msgid "Fill in bank number and account number or IBAN and BIC"
 msgstr "Vyplňte číslo účtu a banky nebo IBAN a BIC"
 
 #: accounting/models/currency.py:17
-#, fuzzy
 msgid "Amount"
 msgstr "Částka"
 
@@ -211,8 +203,6 @@ msgid "Membership level"
 msgstr "Typ členství"
 
 #: accounting/models/membership.py:49
-#, fuzzy
-#| msgid "Membership"
 msgid "Member"
 msgstr "Člen"
 
@@ -439,7 +429,6 @@ msgid "Regenerate recurrency"
 msgstr "Regenerovat rekurenci"
 
 #: accounting/templates/admin/statement_change_form.html:6
-#, fuzzy
 msgid "View promise"
 msgstr "Prohlédnout pohledávku"
 
