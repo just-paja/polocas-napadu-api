@@ -59,7 +59,7 @@ class TimeLimitedAdmin(BaseAdminModel):
             return super().changelist_view(request, extra_context)
         url_parts = list(urlparse.urlparse(request.get_full_path()))
         query = dict(urlparse.parse_qsl(url_parts[4]))
-        query.update({ 'active': 1 })
+        query.update({'active': 1})
         url_parts[4] = urlencode(query)
         return redirect(urlparse.urlunparse(url_parts))
 

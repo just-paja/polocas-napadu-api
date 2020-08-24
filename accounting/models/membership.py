@@ -102,7 +102,7 @@ class MembershipLevelFee(TimeFilteredModel):
     level = ForeignKey(
         'MembershipLevel',
         on_delete=CASCADE,
-        verbose_name = _('Membership type')
+        verbose_name=_('Membership type'),
     )
     amount = AmountField()
     currency = CurrencyField()
