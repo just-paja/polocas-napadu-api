@@ -54,7 +54,7 @@ class MembershipAdmin(TimeLimitedAdmin):
         pass
 
     model = Membership
-    search_fields = ('user__first_name', 'user__last_name')
+    search_fields = ('user__first_name', 'user__last_name', 'user__username')
     autocomplete_fields = ('user',)
     list_filter = (MembershipLeveFilter, TimeLimitedActiveFilter)
     list_display = ('user', 'level', 'is_active', 'format_start', 'format_end')
