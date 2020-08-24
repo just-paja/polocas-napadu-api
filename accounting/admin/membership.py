@@ -23,7 +23,7 @@ class MembershipLevelAdmin(TimeLimitedAdmin):
     readonly_fields = ('modified', 'created')
 
 
-class MembershipLeveFilter(AutocompleteFilter):
+class MembershipLevelFilter(AutocompleteFilter):
     title = _("Level")
     field_name = "level"
 
@@ -56,7 +56,7 @@ class MembershipAdmin(TimeLimitedAdmin):
     model = Membership
     search_fields = ('user__first_name', 'user__last_name', 'user__username')
     autocomplete_fields = ('user',)
-    list_filter = (MembershipLeveFilter, TimeLimitedActiveFilter)
+    list_filter = (MembershipLevelFilter, TimeLimitedActiveFilter)
     list_display = ('user', 'level', 'is_active', 'format_start', 'format_end')
     fields = ('user', 'level', 'start', 'end', 'created', 'modified')
     readonly_fields = ('modified', 'created')
