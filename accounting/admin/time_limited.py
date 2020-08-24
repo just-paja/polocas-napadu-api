@@ -48,6 +48,8 @@ class TimeLimitedAdmin(BaseAdminModel):
         return item.start or empty_value('-∞')
 
     def format_end(self, item):
+        if not item.repeat:
+            return empty_value('∅')
         return item.end or empty_value('∞')
 
     def changelist_view(self, request, extra_context=None):
@@ -62,6 +64,6 @@ class TimeLimitedAdmin(BaseAdminModel):
         return redirect(urlparse.urlunparse(url_parts))
 
     format_end.admin_order_field = 'end'
-    format_end.short_description = _('End')
+    format_end.short_description = _('Repeat until')
     format_start.admin_order_field = 'start'
-    format_start.short_description = _('Start')
+    format_start.short_description = _('Payable since')

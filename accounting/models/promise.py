@@ -67,6 +67,7 @@ class Promise(StatementSpecification, TimeLimitedModel):
         null=True,
         on_delete=PROTECT,
         related_name='promises',
+        verbose_name=_('Purpose'),
     )
     status = PositiveIntegerField(
         default=STATUS_EXPECTED,

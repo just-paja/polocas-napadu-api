@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-04 12:15+0000\n"
+"POT-Creation-Date: 2020-08-24 23:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Známé účty"
 msgid "Statements"
 msgstr "Platby"
 
-#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:245
+#: accounting/admin/counterparty.py:132 accounting/admin/payments.py:265
 #: accounting/models/counter_party.py:14
 #, fuzzy
 #| msgid "CounterParty"
@@ -49,7 +49,7 @@ msgstr "Protistrana"
 
 #: accounting/admin/membership.py:27
 msgid "Level"
-msgstr "Úroveň"
+msgstr "Typ členství"
 
 #: accounting/admin/payments.py:25
 #, fuzzy
@@ -69,37 +69,38 @@ msgstr "Odchozí"
 msgid "Has pair"
 msgstr "Spárování"
 
-#: accounting/admin/payments.py:49 accounting/admin/time_limited.py:13
+#: accounting/admin/payments.py:49 accounting/admin/time_limited.py:15
 msgid "Yes"
 msgstr "Ano"
 
-#: accounting/admin/payments.py:50 accounting/admin/time_limited.py:14
+#: accounting/admin/payments.py:50 accounting/admin/time_limited.py:16
 msgid "No"
 msgstr "Ne"
 
-#: accounting/admin/payments.py:158
+#: accounting/admin/payments.py:173
 msgid "Promise regeneration was finished"
 msgstr "Regenerace pohledávek byla dokončena"
 
-#: accounting/admin/payments.py:163 accounting/models/promise.py:56
+#: accounting/admin/payments.py:178 accounting/models/promise.py:56
 msgid "Promise"
 msgstr "Pohledávka"
 
-#: accounting/admin/purpose.py:10 accounting/models/purpose.py:14
+#: accounting/admin/purpose.py:10 accounting/models/promise.py:70
+#: accounting/models/purpose.py:14
 msgid "Purpose"
 msgstr "Účel"
 
-#: accounting/admin/time_limited.py:19 accounting/models/time_limited.py:31
+#: accounting/admin/time_limited.py:21 accounting/models/time_limited.py:31
 msgid "Active"
 msgstr "Aktivní"
 
-#: accounting/admin/time_limited.py:59 accounting/models/time_limited.py:23
-msgid "End"
-msgstr "Konec"
+#: accounting/admin/time_limited.py:67
+msgid "Repeat until"
+msgstr "Opakovat do"
 
-#: accounting/admin/time_limited.py:61 accounting/models/time_limited.py:17
-msgid "Start"
-msgstr "Začátek"
+#: accounting/admin/time_limited.py:69
+msgid "Payable since"
+msgstr "Splatnost do"
 
 #: accounting/models/account.py:15
 msgid "Manual"
@@ -205,33 +206,41 @@ msgstr "Členství"
 msgid "Memberships"
 msgstr "Členství"
 
-#: accounting/models/membership.py:76
+#: accounting/models/membership.py:43 accounting/models/membership.py:86
 msgid "Membership level"
 msgstr "Typ členství"
 
-#: accounting/models/membership.py:77
+#: accounting/models/membership.py:49
+#, fuzzy
+#| msgid "Membership"
+msgid "Member"
+msgstr "Člen"
+
+#: accounting/models/membership.py:87
 msgid "Membership levels"
 msgstr "Typy členství"
 
-#: accounting/models/membership.py:88
+#: accounting/models/membership.py:98
 msgid "Membership level fee"
 msgstr "Příspěvek typu členství"
 
-#: accounting/models/membership.py:89
+#: accounting/models/membership.py:99
 msgid "Membership level fees"
 msgstr "Příspěvky typu členství"
 
-#: accounting/models/membership.py:109
+#: accounting/models/membership.py:105
+msgid "Membership type"
+msgstr "Typ členství"
+
+#: accounting/models/membership.py:120
 msgid "Membership fee"
 msgstr "Členský příspěvek"
 
-#: accounting/models/membership.py:110
+#: accounting/models/membership.py:121
 msgid "Membership fees"
 msgstr "Členské příspěvky"
 
-#: accounting/models/membership.py:171
-#, fuzzy
-#| msgid "Thank you for your membership contribution"
+#: accounting/models/membership.py:182
 msgid "Accepted membership contribution"
 msgstr "Děkujeme za tvůj členský příspěvek!"
 
@@ -240,13 +249,12 @@ msgid "Price level"
 msgstr "Cenová hladina"
 
 #: accounting/models/price_level.py:10
-#, fuzzy
 msgid "Price levels"
 msgstr "Cenové hladiny"
 
 #: accounting/models/price_level.py:13
 msgid "Default"
-msgstr ""
+msgstr "Výchozí"
 
 #: accounting/models/price_level.py:14
 msgid "Default price level that will be used as fallback"
@@ -288,62 +296,57 @@ msgstr "Pohledávky"
 msgid "Initial amount"
 msgstr "Výchozí částka"
 
-#: accounting/models/promise.py:74
+#: accounting/models/promise.py:75
 msgid "Status"
 msgstr "Stav"
 
-#: accounting/models/promise.py:86
+#: accounting/models/promise.py:87
 msgid "Repeat"
 msgstr "Opakování"
 
-#: accounting/models/promise.py:178
+#: accounting/models/promise.py:179
 msgid "Received"
-msgstr "Přijato"
+msgstr "Převedeno"
 
-#: accounting/models/promise.py:186
+#: accounting/models/promise.py:187
 msgid "Manually created"
 msgstr "Vytvořeno ručně"
 
-#: accounting/models/promise.py:187
+#: accounting/models/promise.py:188
 msgid "Initial debt"
 msgstr "Výchozí dluh"
 
-#: accounting/models/promise.py:188
+#: accounting/models/promise.py:189
 msgid "Recurring generated"
 msgstr "Vygenerováno rekurentní pohledávkou"
 
-#: accounting/models/promise.py:195
+#: accounting/models/promise.py:196
 msgid "Debt"
 msgstr "Dluh"
 
-#: accounting/models/promise.py:196
+#: accounting/models/promise.py:197
 msgid "Debts"
 msgstr "Dluhy"
 
-#: accounting/models/promise.py:207
+#: accounting/models/promise.py:208
 msgid "Maturity"
 msgstr "Splatnost"
 
 #: accounting/models/purpose.py:15
-#, fuzzy
-#| msgid "Purpose"
 msgid "Purposes"
-msgstr "Účel"
+msgstr "Účely"
 
 #: accounting/models/purpose.py:27
-#, fuzzy
 msgid "Purpose category"
-msgstr "Kategorie účelů"
+msgstr "Kategorie účelu"
 
 #: accounting/models/purpose.py:28
 msgid "Purpose categories"
 msgstr "Kategorie účelů"
 
 #: accounting/models/statement.py:28
-#, fuzzy
-#| msgid "Statements"
 msgid "Statement"
-msgstr "Platby"
+msgstr "Platba"
 
 #: accounting/models/statement.py:56
 msgid "Payment identificator"
@@ -398,6 +401,14 @@ msgstr "Specifický symbol"
 #: accounting/models/statement_specs.py:31
 msgid "This number focuses variable symbol."
 msgstr "Dospecifikování variabilního symbolu"
+
+#: accounting/models/time_limited.py:17
+msgid "Start"
+msgstr "Splatnost"
+
+#: accounting/models/time_limited.py:23
+msgid "End"
+msgstr "Konec"
 
 #: accounting/models/time_limited.py:46
 msgid "End must be blank of greater than start"

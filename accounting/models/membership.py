@@ -36,8 +36,18 @@ class Membership(TimeFilteredModel):
         verbose_name_plural = _('Memberships')
 
     objects = TimeLimitedManager()
-    level = ForeignKey('MembershipLevel', on_delete=PROTECT, related_name='memberships')
-    user = ForeignKey('auth.User', on_delete=PROTECT, related_name='memberships')
+    level = ForeignKey(
+        'MembershipLevel',
+        on_delete=PROTECT,
+        related_name='memberships',
+        verbose_name=_('Membership level'),
+    )
+    user = ForeignKey(
+        'auth.User',
+        on_delete=PROTECT,
+        related_name='memberships',
+        verbose_name=_('Member'),
+    )
 
     def __str__(self):
         return format_membership_name(self.user)
@@ -91,7 +101,8 @@ class MembershipLevelFee(TimeFilteredModel):
     objects = TimeLimitedManager()
     level = ForeignKey(
         'MembershipLevel',
-        on_delete=CASCADE
+        on_delete=CASCADE,
+        verbose_name = _('Membership type')
     )
     amount = AmountField()
     currency = CurrencyField()
