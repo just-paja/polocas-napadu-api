@@ -1,4 +1,6 @@
 import datetime
+import urllib.parse as urlparse
+from urllib.parse import urlencode
 
 from django.db.models import Q
 from django.shortcuts import redirect
@@ -53,7 +55,11 @@ class TimeLimitedAdmin(BaseAdminModel):
         has_param = 'active' in request.GET
         if has_questionmark or has_param:
             return super().changelist_view(request, extra_context)
-        return redirect('%s?active=1' % request.get_full_path())
+        url_parts = list(urlparse.urlparse(request.get_full_path()))
+        query = dict(urlparse.parse_qsl(url_parts[4]))
+        query.update({ 'active': 1 })
+        url_parts[4] = urlencode(query)
+        return redirect(urlparse.urlunparse(url_parts))
 
     format_end.admin_order_field = 'end'
     format_end.short_description = _('End')

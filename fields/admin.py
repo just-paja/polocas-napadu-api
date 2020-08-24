@@ -78,7 +78,7 @@ class IntValueFilter(SimpleListFilter):
 
     def value(self):
         try:
-            return int(super().value())
+            return super().value()
         except (TypeError, ValueError):
             return None
 
