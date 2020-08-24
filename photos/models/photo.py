@@ -18,4 +18,4 @@ class Photo(TimeStampedModel, VisibilityMixin):
     )
     height = PositiveIntegerField(null=True, blank=True, editable=False, default=100,)
     width = PositiveIntegerField(null=True, blank=True, editable=False, default=100,)
-    description = TextField()
+    description = TextField(null=False, blank=True)
