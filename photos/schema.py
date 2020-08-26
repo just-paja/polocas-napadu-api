@@ -1,22 +1,7 @@
-from graphene import Field, Int, ObjectType, String
+from graphene import Field
 from graphene_django.types import DjangoObjectType
 
-
-class Image(ObjectType):
-    height = Int()
-    src = String()
-    width = Int()
-
-
-def serialize_image_field(field, info):
-    img = Image()
-    try:
-        img.height = field.height
-        img.width = field.width
-        img.src = info.context.build_absolute_uri(field.url)
-        return img
-    except ValueError:
-        return None
+from images.schema import Image
 
 
 class PhotoNode(DjangoObjectType):
@@ -26,7 +11,7 @@ class PhotoNode(DjangoObjectType):
         abstract = True
 
     def resolve_image(self, info, *_):
-        img = Image()
+        img = Image(self.image)
         try:
             img.height = self.height
             img.width = self.width

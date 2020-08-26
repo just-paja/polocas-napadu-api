@@ -1,7 +1,8 @@
 from graphene import Field, Int, List, String
 
 from graphene_django.types import DjangoObjectType
-from photos.schema import Image, PhotoNode, serialize_image_field
+from images.schema import Image, serialize_image_field
+from photos.schema import PhotoNode
 
 from .models import Profile, ProfileGroup, ProfilePhoto, Sponsor
 

@@ -36,6 +36,7 @@ fiobank = "*"
 django-searchable-encrypted-fields = "*"
 django-apptemplates = "*"
 czech-sort = "*"
+sorl-thumbnail = "*"
 
 [requires]
 python_version = "3.8"

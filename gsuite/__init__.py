@@ -56,15 +56,16 @@ def get_models_permissions(apps, group):
 def bind_group_permission(apps, group, permission, method):
     perm_cls = apps.get_model("auth", "Permission")
     perm = perm_cls.objects.filter(codename=permission).first()
-    exists = group.permissions.filter(id=perm.id).exists()
-    if method == PERM_ENSURE and not exists:
-        if settings.DEBUG:
-            print("Allow %s > %s" % (group.name, permission))
-        group.permissions.add(perm)
-    elif method == PERM_DELETE and exists:
-        if settings.DEBUG:
-            print("Deny %s > %s" % (group.name, permission))
-        group.permissions.remove(perm)
+    if perm:
+        exists = group.permissions.filter(id=perm.id).exists()
+        if method == PERM_ENSURE and not exists:
+            if settings.DEBUG:
+                print("Allow %s > %s" % (group.name, permission))
+            group.permissions.add(perm)
+        elif method == PERM_DELETE and exists:
+            if settings.DEBUG:
+                print("Deny %s > %s" % (group.name, permission))
+            group.permissions.remove(perm)
 
 
 def bind_group_model_permissions(apps, group):

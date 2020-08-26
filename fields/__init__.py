@@ -1,5 +1,5 @@
-from .host import append_host_from_context
 from .description import DescriptionField, DescriptionMixin
+from .host import append_host_from_context
 from .name import NameField, NameMixin
 from .permissions import is_staff
 from .public import PublicResourceMixin
@@ -16,8 +16,6 @@ from .visibility import (
 
 
 __all__ = (
-    'WeightedMixin',
-    'WeightField',
     "append_host_from_context",
     "DescriptionField",
     "DescriptionMixin",
@@ -26,10 +24,12 @@ __all__ = (
     "NameMixin",
     "PublicResourceMixin",
     "VISIBILITY_DELETED",
-    "VISIBILITY_CHOICES",
-    "VISIBILITY_PRIVATE",
-    "VISIBILITY_PUBLIC",
     "VisibilityField",
+    "VISIBILITY_CHOICES",
     "VisibilityManager",
     "VisibilityMixin",
+    "VISIBILITY_PRIVATE",
+    "VISIBILITY_PUBLIC",
+    'WeightedMixin',
+    'WeightField',
 )

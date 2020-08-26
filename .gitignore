@@ -1,11 +1,13 @@
 db.sqlite3
 local_settings.py
 requirements.txt
+/cache
 /var
 /dist
 /htmlcov
 /cc-test-reporter
 /coverage.xml
+/thumbnails
 *.egg-info
 *.mo
 .pytest_cache

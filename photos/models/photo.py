@@ -1,7 +1,8 @@
-from django.db.models import ImageField, PositiveIntegerField, TextField
+from django.db.models import PositiveIntegerField, TextField
 from django_extensions.db.models import TimeStampedModel
 
 from fields import VisibilityMixin
+from images.fields import ImageField
 
 
 class Photo(TimeStampedModel, VisibilityMixin):

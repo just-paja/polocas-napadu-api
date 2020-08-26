@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "gsuite.GSuiteConfig",
     "nested_admin",
     "encrypted_fields",
+    "sorl.thumbnail",
 ]
 
 FIELD_ENCRYPTION_KEYS = (hashlib.sha256(SECRET_KEY.encode("utf-8")).hexdigest(),)
@@ -116,6 +117,25 @@ TEMPLATES = [
         },
     },
 ]
+
+THUMBNAILS = {
+    'fullhd': {
+        'width': 1920,
+        'height': 1080,
+    },
+    'horizon': {
+        'width': 1200,
+        'height': 600,
+    },
+    'gallery': {
+        'width': 480,
+        'height': 320,
+    },
+    'avatar': {
+        'width': 320,
+        'height': 320,
+    },
+}
 
 WSGI_APPLICATION = "api.wsgi.application"
 
@@ -261,6 +281,7 @@ CORS_ORIGIN_WHITELIST += (get_schemed_netloc(APP_WEBSITE_URL),)
 if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    THUMBNAILS['METADATA']['STORAGE'] = "storages.backends.s3boto3.S3Boto3Storage"
 
 if RAVEN_DSN:
     sentry_sdk.init(dsn=RAVEN_DSN, integrations=[DjangoIntegration()])

@@ -1,9 +1,10 @@
 from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
-from django.db.models import CharField, ForeignKey, ImageField, TextField, PROTECT
+from django.db.models import CharField, ForeignKey, TextField, PROTECT
 from django.utils.translation import ugettext_lazy as _
 
 from fields import NameMixin, VisibilityMixin
+from images.fields import ImageField
 
 
 class Profile(NameMixin, TimeStampedModel, VisibilityMixin):

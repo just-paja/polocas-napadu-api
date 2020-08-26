@@ -42,6 +42,7 @@ urlpatterns = [
     path("shows/", include(shows.urlpatterns)),
     path("theatre-sports/", include(theatre_sports.urlpatterns)),
     path("nested_admin/", include("nested_admin.urls")),
+    path("images/", include("images.urls")),
     path("", gauth),
 ]
 
