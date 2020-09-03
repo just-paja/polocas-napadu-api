@@ -14,7 +14,7 @@ def thumbnail(request, image_size, image_format):
     thumb = get_thumbnail(
         image,
         '%sx%s' % (size_params.get('width'), size_params.get('height')),
-        crop='center',
+        crop=size_params.get('crop', None),
         quality=80,
         format=image_format.upper(),
     )

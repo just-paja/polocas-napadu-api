@@ -122,14 +122,17 @@ THUMBNAILS = {
     'fullhd': {
         'width': 1920,
         'height': 1080,
+        'crop': 'center',
     },
     'horizon': {
         'width': 1200,
         'height': 600,
+        'crop': 'center top',
     },
     'gallery': {
         'width': 480,
         'height': 320,
+        'crop': 'center',
     },
     'avatar': {
         'width': 320,
