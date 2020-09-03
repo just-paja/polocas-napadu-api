@@ -7,6 +7,7 @@ recursive-include emailing *
 recursive-include fields *
 recursive-include games *
 recursive-include gsuite *
+recursive-include images *
 recursive-include inspirations *
 recursive-include locale *
 recursive-include locations *
