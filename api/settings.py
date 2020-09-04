@@ -284,6 +284,9 @@ CORS_ORIGIN_WHITELIST += (get_schemed_netloc(APP_WEBSITE_URL),)
 if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'public,max-age=31536000'
+    }
 
 if RAVEN_DSN:
     sentry_sdk.init(dsn=RAVEN_DSN, integrations=[DjangoIntegration()])
