@@ -37,7 +37,7 @@ class Reservation(TimeStampedModel):
         verbose_name = _("Reservation")
         verbose_name_plural = _("Reservations")
 
-    show = ForeignKey("shows.Show", on_delete=CASCADE,)
+    event = ForeignKey("events.Event", on_delete=CASCADE, related_name='reservations')
     customer_name = CharField(max_length=63, verbose_name=_("Customer name"),)
     customer_email = EmailField(verbose_name=_("Customer email"),)
     seat_count = PositiveIntegerField(default=1, verbose_name=_("Number of seats"),)

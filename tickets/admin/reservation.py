@@ -1,12 +1,14 @@
 from fields.admin import BaseAdminModel, ShowFilter
 
-from .models import Reservation
+from events.admin import EventFilter
+
+from ..models import Reservation
 
 
 class ReservationAdmin(BaseAdminModel):
     model = Reservation
     fields = (
-        "show",
+        "event",
         "status",
         "customer_name",
         "customer_email",
@@ -16,16 +18,16 @@ class ReservationAdmin(BaseAdminModel):
         "created",
         "modified",
     )
-    autocomplete_fields = ["show"]
+    autocomplete_fields = ["event"]
     list_display = (
         "customer_name",
         "customer_email",
         "seat_count",
         "status",
         "created",
-        "show",
+        "event",
     )
-    list_filter = (ShowFilter, "status", "newsletter")
+    list_filter = (EventFilter, "status", "newsletter")
     readonly_fields = ("created", "modified")
     search_fields = ("customer_name", "customer_email")
     ordering = ("-created",)

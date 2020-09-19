@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "corsheaders",
     "colorfield",
+    "events.EventsConfig",
     "locations.LocationsConfig",
     "bands.BandsConfig",
     "accounting.AccountingConfig",
@@ -69,6 +70,7 @@ INSTALLED_APPS = [
     "theatre_sports.TheatreSportsConfig",
     "tickets.TicketsConfig",
     "voting.VotingConfig",
+    "workshops.WorkshopsConfig",
     "graphene_django",
     "graphql_jwt.refresh_token",
     "admin_sso",
@@ -152,7 +154,6 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

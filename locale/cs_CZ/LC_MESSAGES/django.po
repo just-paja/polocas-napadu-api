@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 23:22+0200\n"
+"POT-Creation-Date: 2020-10-04 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,51 +17,71 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api/admin/config.py:9 api/templates/admin/base_site.html:27
+#: api/admin/config.py:9 api/templates/admin/base_site.html:28
 msgid "Configuration"
 msgstr "Konfigurace"
 
-#: api/admin/content.py:32 api/templates/admin/base_site.html:24
+#: api/admin/content.py:28
 msgid "Content admin"
 msgstr "Správa obsahu"
 
-#: api/settings.py:153
+#: api/settings.py:176
 msgid "Czech"
 msgstr "Czech"
 
-#: api/settings.py:154
+#: api/settings.py:177
 msgid "English"
 msgstr "English"
 
-#: api/settings.py:216
+#: api/settings.py:239
 msgid "Poločas nápadu"
 msgstr "Poločas nápadu"
 
-#: api/settings.py:217
+#: api/settings.py:240
 #, fuzzy
 #| msgid "Poločas nápadu"
 msgid "Poločasu nápadu"
 msgstr "Poločas nápadu"
 
-#: api/settings.py:218
+#: api/settings.py:241
 #, fuzzy
 #| msgid "Poločas nápadu"
 msgid "Poločas nápadu z. s."
 msgstr "Poločas nápadu"
 
+#: api/templates/admin/base_site.html:24
+#, fuzzy
+#| msgid "Content admin"
+msgid "Content"
+msgstr "Správa obsahu"
+
 #: api/templates/admin/base_site.html:25
+msgid "Tickets"
+msgstr ""
+
+#: api/templates/admin/base_site.html:26
 msgid "E-mailing"
 msgstr "E-mailing"
 
-#: api/templates/admin/base_site.html:26
+#: api/templates/admin/base_site.html:27
 #, fuzzy
 #| msgid "Voting"
 msgid "Accounting"
 msgstr "Hlasování"
 
-#: gsuite/__init__.py:96
+#: gsuite/__init__.py:97
 msgid "Gsuite"
 msgstr "Gsuite"
+
+#: images/fields.py:9
+msgid "Image"
+msgstr "Obrázek"
+
+#: images/fields.py:10
+#, fuzzy
+#| msgid "avgVolumeHelpText"
+msgid "imageHelpText"
+msgstr "Průměrná hlasitost vypočítaná ze všek snímků hlasitosti"
 
 #: voting/__init__.py:7
 msgid "Voting"
@@ -110,6 +130,3 @@ msgstr "Snímek hlasitosti"
 #: voting/models/volume_scrape.py:19
 msgid "Volume scrapes"
 msgstr "Snímky hlasitosti"
-
-#~ msgid "Emailing"
-#~ msgstr "E-mailing"

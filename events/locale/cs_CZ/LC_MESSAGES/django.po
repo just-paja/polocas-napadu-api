@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 23:22+0200\n"
+"POT-Creation-Date: 2020-10-04 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,92 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: events/models/event.py:23
+#: events/__init__.py:7 events/models/event.py:25
+msgid "Events"
+msgstr "Události"
+
+#: events/admin/event.py:58
+msgid "Identification"
+msgstr "Identifikace"
+
+#: events/admin/event.py:59
+msgid "Date and time"
+msgstr "Datum a čas"
+
+#: events/admin/event.py:60
+msgid "Links"
+msgstr "Odkazy"
+
+#: events/admin/event_filter.py:6 events/admin/event_participant.py:64
+#: events/models/event.py:24 events/models/event_participant.py:15
+#: events/models/event_ticket_price.py:12
+msgid "Event"
+msgstr "Událost"
+
+#: events/admin/event_participant.py:61 events/models/event_participant.py:27
+msgid "Role"
+msgstr "Role"
+
+#: events/admin/event_participant.py:63
+msgid "Date"
+msgstr "Datum"
+
+#: events/models/event.py:27
 msgid "Slug"
 msgstr "Slug"
 
-#: events/models/event.py:24
+#: events/models/event.py:29
 msgid "Start"
 msgstr "Začátek"
 
-#: events/models/event.py:28
+#: events/models/event.py:33
 msgid "End"
 msgstr "Konec"
 
-#: events/models/event.py:32
+#: events/models/event.py:37
 msgid "All day"
 msgstr "Celodenní"
 
-#: events/models/event.py:37
+#: events/models/event.py:42
 msgid "Location"
 msgstr "Místo"
 
-#: events/models/event.py:43
+#: events/models/event.py:48
 msgid "Reservation e-mail"
 msgstr "Rezervační e-mail"
 
-#: events/models/event.py:48
+#: events/models/event.py:53
 msgid "Event on Facebook"
 msgstr "Událost na Facebooku"
 
-#: events/models/event.py:53
+#: events/models/event.py:58
 msgid "Reservation link"
 msgstr "Odkaz na rezervace"
 
-#: events/models/event.py:58
+#: events/models/event.py:63
 msgid "Link to buy tickets"
 msgstr "Odkaz na nákup vstupenek"
+
+#: events/models/event_participant.py:8
+msgid "Event participant"
+msgstr "Účastník"
+
+#: events/models/event_participant.py:9
+msgid "Event participants"
+msgstr "Účastníci"
+
+#: events/models/event_participant.py:21
+msgid "Profile"
+msgstr "Profil"
+
+#: events/models/event_ticket_price.py:18
+msgid "Price level"
+msgstr "Cenová hladina"
+
+#: events/models/participant_role.py:9
+msgid "Participant role"
+msgstr "Role účastníka"
+
+#: events/models/participant_role.py:10
+msgid "Participant roles"
+msgstr "Role účastníka"

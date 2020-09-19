@@ -3,27 +3,27 @@ from django.db.models import ForeignKey, CASCADE
 from django.utils.translation import ugettext_lazy as _
 
 
-class ShowParticipant(TimeStampedModel):
+class EventParticipant(TimeStampedModel):
     class Meta:
-        verbose_name = _("Show participant")
-        verbose_name_plural = _("Show participants")
+        verbose_name = _("Event participant")
+        verbose_name_plural = _("Event participants")
 
-    show = ForeignKey(
-        "Show",
+    event = ForeignKey(
+        "events.Event",
         on_delete=CASCADE,
-        related_name="showsParticipants",
-        verbose_name=_("Show"),
+        related_name="eventParticipants",
+        verbose_name=_("Event"),
     )
     profile = ForeignKey(
         "profiles.Profile",
         on_delete=CASCADE,
-        related_name="showsParticipated",
+        related_name="eventsParticipated",
         verbose_name=_("Profile"),
     )
     role = ForeignKey(
-        "ShowRole",
+        "events.ParticipantRole",
         on_delete=CASCADE,
-        related_name="showsParticipants",
+        related_name="eventParticipants",
         verbose_name=_("Role"),
     )
 
@@ -31,5 +31,5 @@ class ShowParticipant(TimeStampedModel):
         return '%s (%s, %s)' % (
             self.profile.name,
             self.role.name,
-            self.show.name
+            self.event.name
         )

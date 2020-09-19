@@ -21,7 +21,8 @@
     <label id="admin-sites-menu" for="admin-sites-menu-toggle">
       <div class="admin-site-selection">
         <ul>
-          <li><a href="{% url 'content:index' %}">{% trans 'Content admin' %}</a></li>
+          <li><a href="{% url 'content:index' %}">{% trans 'Content' %}</a></li>
+          <li><a href="{% url 'tickets:index' %}">{% trans 'Tickets' %}</a></li>
           <li><a href="{% url 'emailing:index' %}">{% trans 'E-mailing' %}</a></li>
           <li><a href="{% url 'accounting:index' %}">{% trans 'Accounting' %}</a></li>
           <li><a href="{% url 'configuration:index' %}">{% trans 'Configuration' %}</a></li>

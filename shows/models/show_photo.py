@@ -4,4 +4,4 @@ from photos.models import Photo
 
 
 class ShowPhoto(Photo):
-    profile = ForeignKey("Show", on_delete=CASCADE, related_name="photos",)
+    show = ForeignKey("shows.Show", on_delete=CASCADE, related_name="photos",)

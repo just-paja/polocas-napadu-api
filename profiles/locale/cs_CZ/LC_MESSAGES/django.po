@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 23:22+0200\n"
+"POT-Creation-Date: 2020-10-04 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,27 +21,27 @@ msgstr ""
 msgid "Profiles"
 msgstr "Profily"
 
-#: profiles/models/profile.py:11
+#: profiles/models/profile.py:12
 msgid "Actor profile"
 msgstr "Herecký profil"
 
-#: profiles/models/profile.py:12
+#: profiles/models/profile.py:13
 msgid "Actor profiles"
 msgstr "Herecké profily"
 
-#: profiles/models/profile.py:18
+#: profiles/models/profile.py:19
 msgid "artistAliasHelpText"
 msgstr "Při zobrazení bude preferováno před civilním jménem"
 
-#: profiles/models/profile.py:19
+#: profiles/models/profile.py:20
 msgid "Artist alias"
 msgstr "Umělecké jméno"
 
-#: profiles/models/profile.py:21 profiles/models/sponsor.py:14
+#: profiles/models/profile.py:22 profiles/models/sponsor.py:15
 msgid "Slug"
 msgstr "Slug"
 
-#: profiles/models/profile.py:25
+#: profiles/models/profile.py:26
 msgid "Avatar"
 msgstr "Avatar"
 
@@ -53,29 +53,26 @@ msgstr "Herecká skupina"
 msgid "Actor groups"
 msgstr "Seskupení herců"
 
-#: profiles/models/sponsor.py:11
+#: profiles/models/sponsor.py:12
 msgid "Sponsor"
 msgstr "Sponzor"
 
-#: profiles/models/sponsor.py:12
+#: profiles/models/sponsor.py:13
 msgid "Sponsors"
 msgstr "Sponzoři"
 
-#: profiles/models/sponsor.py:15
+#: profiles/models/sponsor.py:16
 msgid "Website"
 msgstr "Webová stránka"
 
-#: profiles/models/sponsor.py:17
+#: profiles/models/sponsor.py:18
 msgid "Logo"
 msgstr "Logo"
 
-#: profiles/models/sponsor.py:21
+#: profiles/models/sponsor.py:22
 msgid "Display this sponsor on site"
 msgstr "Zobrazit tohoto sponzora na webu"
 
-#: profiles/models/sponsor.py:22
+#: profiles/models/sponsor.py:23
 msgid "On site"
 msgstr "Na webu"
-
-#~ msgid "Actors"
-#~ msgstr "Herci"

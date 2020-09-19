@@ -25,6 +25,7 @@ from emailing.views import test_email_template
 from gsuite.views import gauth
 from shows import urls as shows
 from theatre_sports import urls as theatre_sports
+from tickets.admin import TICKETS_ADMIN
 
 from .admin import CONFIGURATION_ADMIN, CONTENT_ADMIN
 
@@ -33,6 +34,7 @@ urlpatterns = [
     path("accounting/", ACCOUNTING_ADMIN.urls),
     path("configuration/", CONFIGURATION_ADMIN.urls),
     path("emailing/", EMAILING_ADMIN.urls),
+    path("tickets/", TICKETS_ADMIN.urls),
     path("admin/", CONTENT_ADMIN.urls),
     path(
         "graphql",

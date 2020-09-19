@@ -5,7 +5,7 @@ from django_extensions.db.models import TimeStampedModel
 
 class ShowVolumeCalibration(TimeStampedModel):
     show = ForeignKey(
-        "Show",
+        "shows.Show",
         verbose_name=_("Show"),
         related_name="volume_calibrations",
         on_delete=CASCADE,

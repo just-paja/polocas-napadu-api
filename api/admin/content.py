@@ -5,17 +5,14 @@ from admin_sso.models import Assignment
 
 from blog.admin import ArticleAdmin, ChapterAdmin, PoemAdmin
 from bands.admin import BandAdmin
+from events.admin import MODELS as EVENTS
 from fields.admin import ImprovAdminSite
 from games.admin import GameAdmin, GameRulesAdmin
 from inspirations.admin import InspirationAdmin
 from locations.admin import LocationAdmin, UsualPlaceAdmin
 from profiles.admin import ProfileAdmin, ProfileGroupAdmin, SponsorAdmin
-from shows.admin import (
-    ShowAdmin,
-    ShowParticipantAdmin,
-    ShowRoleAdmin,
-    ShowTypeAdmin,
-)
+from shows.admin import MODELS as SHOWS
+from workshops.admin import MODELS as WORKSHOPS
 from theatre_sports.admin import (
     ContestantGroupAdmin,
     FoulAdmin,
@@ -34,6 +31,9 @@ class ContentAdminSite(ImprovAdminSite):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.hookup(ArticleAdmin)
+        self.hookup_all(EVENTS)
+        self.hookup_all(SHOWS)
+        self.hookup_all(WORKSHOPS)
         self.hookup(BandAdmin)
         self.hookup(ContestantGroupAdmin)
         self.hookup(FoulAdmin)
@@ -50,10 +50,6 @@ class ContentAdminSite(ImprovAdminSite):
         self.hookup(ProfileGroupAdmin)
         self.hookup(ReservationAdmin)
         self.hookup(ScorePointAdmin)
-        self.hookup(ShowAdmin)
-        self.hookup(ShowParticipantAdmin)
-        self.hookup(ShowRoleAdmin)
-        self.hookup(ShowTypeAdmin)
         self.hookup(SponsorAdmin)
         self.hookup(UsualPlaceAdmin)
         self.register(Assignment, AssignmentAdmin)

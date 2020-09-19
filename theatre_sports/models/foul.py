@@ -24,7 +24,7 @@ class Foul(TimeStampedModel):
         verbose_name=_("Game"),
     )
     player = ForeignKey(
-        "shows.ShowParticipant",
+        "events.EventParticipant",
         blank=True,
         null=True,
         on_delete=CASCADE,

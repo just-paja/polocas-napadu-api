@@ -11,7 +11,7 @@ from django.db.models import (
 from django.utils.formats import date_format
 from django.utils.translation import ugettext_lazy as _
 
-from fields import PublicResourceMixin, VisibilityManager
+from fields import DescriptionField, PublicResourceMixin, VisibilityManager
 
 
 class EventManager(VisibilityManager):
@@ -20,7 +20,12 @@ class EventManager(VisibilityManager):
 
 
 class Event(PublicResourceMixin):
+    class Meta:
+        verbose_name = _("Event")
+        verbose_name_plural = _("Events")
+
     slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")
+    description = DescriptionField(blank=True, null=True)
     start = DateTimeField(verbose_name=_("Start"))
     end = DateTimeField(
         blank=True,
@@ -58,9 +63,6 @@ class Event(PublicResourceMixin):
         verbose_name=_('Link to buy tickets'),
     )
     sponsors = ManyToManyField("profiles.Sponsor", blank=True)
-
-    class Meta:
-        abstract = True
 
     def __str__(self):
         return "%s, %s" % (self.name, date_format(self.start, "DATE_FORMAT"),)

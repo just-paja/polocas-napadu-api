@@ -8,4 +8,4 @@ class GameActor(Model):
         verbose_name_plural = _("Game Actors")
 
     game = ForeignKey("Game", on_delete=CASCADE)
-    participant = ForeignKey("shows.ShowParticipant", on_delete=CASCADE)
+    participant = ForeignKey("events.EventParticipant", on_delete=CASCADE)

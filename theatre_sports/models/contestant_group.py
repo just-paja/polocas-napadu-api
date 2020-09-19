@@ -40,7 +40,7 @@ class ContestantGroup(Model):
         verbose_name=_("Match"),
     )
     players = ManyToManyField(
-        "shows.ShowParticipant",
+        "events.EventParticipant",
         related_name="contestant_groups",
         verbose_name=_("Players"),
     )

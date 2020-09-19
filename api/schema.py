@@ -4,6 +4,7 @@ import graphql_jwt
 import accounting.schema # noqa
 import bands.schema
 import blog.schema
+import events.schema
 import games.schema
 import inspirations.schema
 import locations.schema
@@ -12,11 +13,13 @@ import shows.schema
 import theatre_sports.schema
 import tickets.schema
 import voting.schema
+import workshops.schema
 
 
 class PublicQuery(
     bands.schema.Query,
     blog.schema.Query,
+    events.schema.Query,
     games.schema.Query,
     inspirations.schema.Query,
     locations.schema.Query,
@@ -25,6 +28,7 @@ class PublicQuery(
     theatre_sports.schema.Query,
     tickets.schema.Query,
     voting.schema.Query,
+    workshops.schema.Query,
     graphene.ObjectType,
 ):
     pass

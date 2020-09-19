@@ -5,8 +5,11 @@ from accounting.models import AmountField, CurrencyField
 
 
 class ShowTicketPrice(Model):
+    class Meta:
+        db_table = 'events_eventticketprice'
+
     show = ForeignKey(
-        'Show',
+        'events.Event',
         on_delete=CASCADE,
         related_name='ticket_prices',
         verbose_name=_('Show'),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 23:22+0200\n"
+"POT-Creation-Date: 2020-10-04 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: shows/__init__.py:7 shows/models/show.py:11
+#: shows/__init__.py:7 shows/models/show.py:10
 msgid "Shows"
 msgstr "Představení"
 
-#: shows/admin.py:94 shows/models/show_participant.py:27
-msgid "Role"
-msgstr "Role"
+#: shows/admin/show.py:31
+msgid "Identification"
+msgstr "Identifikace"
 
-#: shows/admin.py:96
-msgid "Date"
-msgstr "Datum"
+#: shows/admin/show.py:32
+msgid "Date and time"
+msgstr "Datum a čas"
 
-#: shows/admin.py:97 shows/models/show.py:10
-#: shows/models/show_participant.py:15 shows/models/show_ticket_price.py:12
+#: shows/admin/show.py:33
+msgid "Links"
+msgstr "Odkazy"
+
+#: shows/models/show.py:9 shows/models/show_ticket_price.py:15
 #: shows/models/show_volume_calibration.py:9
 msgid "Show"
 msgstr "Představení"
 
-#: shows/admin.py:128
-msgid "Identification"
-msgstr "Identifikace"
-
-#: shows/admin.py:129
-msgid "Date and time"
-msgstr "Datum a čas"
-
-#: shows/admin.py:130
-msgid "Location"
-msgstr "Umístění"
-
-#: shows/admin.py:131
-msgid "Links"
-msgstr "Odkazy"
-
-#: shows/models/show.py:18 shows/models/show_type.py:10
+#: shows/models/show.py:16 shows/models/show_type.py:10
 msgid "Show type"
 msgstr "Formát představení"
 
-#: shows/models/show_participant.py:8
-msgid "Show participant"
-msgstr "Účinkující"
-
-#: shows/models/show_participant.py:9
-msgid "Show participants"
-msgstr "Účinkující"
-
-#: shows/models/show_participant.py:21
-msgid "Profile"
-msgstr "Profil"
-
-#: shows/models/show_role.py:9
-msgid "Show role"
-msgstr "Role"
-
-#: shows/models/show_role.py:10
-msgid "Show roles"
-msgstr "Role"
-
-#: shows/models/show_ticket_price.py:18
+#: shows/models/show_ticket_price.py:21
 msgid "Price level"
 msgstr "Cenová hladina"
 

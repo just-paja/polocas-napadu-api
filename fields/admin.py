@@ -48,6 +48,10 @@ class ImprovAdminSite(AdminSite):
     def hookup(self, admin_model):
         return self.register(admin_model.model, admin_model)
 
+    def hookup_all(self, admin_models):
+        for admin_model in admin_models:
+            self.hookup(admin_model)
+
 
 class BaseAdminModel(nested_admin.NestedModelAdmin):
     pass

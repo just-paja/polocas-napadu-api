@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 23:22+0200\n"
+"POT-Creation-Date: 2020-10-04 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fields/admin.py:87
+#: fields/admin.py:91
 msgid "Location"
 msgstr "Místo"
 
-#: fields/admin.py:92
+#: fields/admin.py:96
 msgid "Show"
 msgstr "Představení"
 
-#: fields/admin.py:97
+#: fields/admin.py:101
 msgid "Show type"
 msgstr "Formát představení"
 
-#: fields/admin.py:106
+#: fields/admin.py:110
 msgid "Season"
 msgstr "Sezóna"
 
@@ -76,7 +76,5 @@ msgid "Weight"
 msgstr "Váha"
 
 #: fields/weight.py:11
-#, fuzzy
-#| msgid "nameHelpText"
 msgid "weightHelpText"
 msgstr "Těžší objekty se objeví níže v seznamu"
