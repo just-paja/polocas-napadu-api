@@ -1,22 +1,36 @@
 ---
 - name: Setup all my servers on AWS
   hosts: web
-  vars:
-    django_archive: dist/polocas-napadu-api-{{ lookup("env", "PACKAGE_VERSION") }}.tar.gz
-    django_config_file: local_settings.j2
-    django_config: api.settings
-    django_project_name: 'cz-polocas-napadu-api'
-    django_project_environment: '{{ lookup("env", "DJANGO_PROJECT_ENVIRONMENT") }}'
-    django_project_version: '{{ lookup("env", "PACKAGE_VERSION") }}'
-    django_wsgi_file: api/wsgi.py
-
   roles:
-    - role: practical-ansible.nginx-django
-
-  post_tasks:
-    - name: Configure Transaction cron job
-      when: django_project_environment == 'production'
-      cron:
-        name: 'Pair {{django_project_name}} transactions'
-        minute: 0,30
-        job: 'cd /var/www/{{django_project_name}}/{{django_project_environment}}/current && /var/www/{{django_project_name}}/{{django_project_environment}}/virtualenv/bin/python /var/www/{{django_project_name}}/{{django_project_environment}}/current/manage.py sync_accounts'
+    - role: practical-ansible.nginx_docker
+      admin_email: pavel@zak.global
+      become: true
+      project_environment: staging
+      project_name: 'cz-polocas-napadu-api'
+      server_names: '{{ lookup("env", "ALLOWED_HOSTS") }}'
+      env:
+        ALLOWED_HOSTS: '{{ lookup("env", "ALLOWED_HOSTS") }}'
+        APP_INSPIRATIONS_URL: '{{ lookup("env", "APP_INSPIRATIONS_URL") }}'
+        APP_REFEREE_URL: '{{ lookup("env", "APP_REFEREE_URL") }}'
+        APP_SCOREBOARD_URL: '{{ lookup("env", "APP_SCOREBOARD_URL") }}'
+        APP_WEBSITE_URL: '{{ lookup("env", "APP_WEBSITE_URL") }}'
+        AWS_ACCESS_KEY_ID: '{{ lookup("env", "AWS_ACCESS_KEY_ID") }}'
+        AWS_SECRET_ACCESS_KEY: '{{ lookup("env", "AWS_SECRET_ACCESS_KEY") }}'
+        AWS_STORAGE_BUCKET_NAME: '{{ lookup("env", "AWS_STORAGE_BUCKET_NAME") }}'
+        AWS_S3_REGION_NAME: '{{ lookup("env", "AWS_S3_REGION_NAME") }}'
+        DB_HOST: '{{ lookup("env", "DB_HOST") }}'
+        DB_NAME: '{{ lookup("env", "DB_NAME") }}'
+        DB_PASSWORD: '{{ lookup("env", "DB_PASSWORD") }}'
+        DB_USER: '{{ lookup("env", "DB_USER") }}'
+        DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID: '{{ lookup("env", "DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID") }}'
+        DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET: '{{ lookup("env", "DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET") }}'
+        EMAIL_HOST: '{{ lookup("env", "EMAIL_HOST") }}'
+        EMAIL_HOST_PASSWORD: '{{ lookup("env", "EMAIL_HOST_PASSWORD") }}'
+        EMAIL_HOST_USER: '{{ lookup("env", "EMAIL_HOST_USER") }}'
+        EMAIL_MANAGER: '{{ lookup("env", "EMAIL_MANAGER") }}'
+        EMAIL_PORT: '{{ lookup("env", "EMAIL_PORT") }}'
+        EMAIL_USE_TLS: '{{ lookup("env", "EMAIL_USE_TLS") }}'
+        RAVEN_DSN: '{{ lookup("env", "RAVEN_DSN") }}'
+        RECAPTCHA_PRIVATE_KEY: '{{ lookup("env", "RECAPTCHA_PRIVATE_KEY") }}'
+        RECAPTCHA_PUBLIC_KEY: '{{ lookup("env", "RECAPTCHA_PUBLIC_KEY") }}'
+        SECRET_KEY: '{{ lookup("env", "SECRET_KEY") }}'

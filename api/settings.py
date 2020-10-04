@@ -34,14 +34,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "w@6p6z=)+k-%ft55-)!yvuptvzda63@#aj^m5q&_x87ddd62el"  # noqa
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+PROJECT_ENVIRONMENT = os.environ.get('PROJECT_ENVIRONMENT', None)
+DEBUG = PROJECT_ENVIRONMENT != 'production'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'w@6p6z=)+k-%ft55-)!yvuptvzda63@#aj^m5q&_x87ddd62el')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(' ')
 
 
 # Application definition
@@ -144,17 +140,6 @@ THUMBNAILS = {
 
 WSGI_APPLICATION = "api.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -233,30 +218,30 @@ if DEBUG:
     MEDIA_URL = "/media/"
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-RAVEN_DSN = None
-EMAIL_MANAGER = "test@example.com"
+RAVEN_DSN = os.environ.get('RAVEN_DSN', None)
+EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
+EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
+EMAIL_MANAGER = os.environ.get('EMAIL_MANAGER', "test@example.com")
 EMAIL_ROBOT_NAME = 'Karel'
 EMAIL_ROBOT_ADDR = 'karel@polocas-napadu.cz'
 ORGANIZATION_NAME = _('Poločas nápadu')
 ORGANIZATION_NAME_FROM = _('Poločasu nápadu')
 ORGANIZATION_NAME_FORMAL = _('Poločas nápadu z. s.')
 
-AWS_ACCESS_KEY_ID = None
-AWS_SECRET_ACCESS_KEY = None
-AWS_STORAGE_BUCKET_NAME = None
-AWS_S3_REGION_NAME = None
-AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
 AWS_DEFAULT_ACL = "public-read"
+AWS_QUERYSTRING_AUTH = False
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', None)
 AWS_S3_FILE_OVERWRITE = False
-
-APP_SCOREBOARD_URL = "http://localhost:3001"
-APP_REFEREE_URL = "http://localhost:3002"
-APP_INSPIRATIONS_URL = "http://localhost:3003"
-APP_WEBSITE_URL = "http://localhost:3000"
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', None)
 
 DJANGO_ADMIN_SSO = False
-DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = None
-DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = None
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = os.environ.get('DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID', None)
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = os.environ.get('DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET', None)
 
 CORS_ORIGIN_WHITELIST = (
     "http://127.0.0.1",
@@ -265,11 +250,32 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:8080",
 )
 
-try:
-    # pylint: disable=wildcard-import
-    from local_settings import *  # noqa
-except ImportError:
-    pass
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY', None)
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY', None)
+
+APP_REFEREE_URL = os.environ.get('APP_REFEREE_URL', "http://localhost:3002")
+APP_SCOREBOARD_URL = os.environ.get('APP_SCOREBOARD_URL', "http://localhost:3001")
+APP_INSPIRATIONS_URL = os.environ.get('APP_INSPIRATIONS_URL', "http://localhost:3003")
+APP_WEBSITE_URL = os.environ.get('APP_WEBSITE_URL', "http://localhost:3000")
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
+DB_NAME = os.environ.get('DB_NAME', None)
+
+if DB_NAME:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': DB_NAME,
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+        },
+    }
 
 
 def get_schemed_netloc(url):

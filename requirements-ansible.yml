@@ -1,2 +1,3 @@
-- src: practical-ansible.nginx-django
-  version: 1.0.6
+---
+- src: practical-ansible.nginx_docker
+  version: 1.10.1

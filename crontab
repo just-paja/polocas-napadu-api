@@ -1,0 +1,1 @@
+*/30 * * * * root /usr/local/app/manage.py sync_accounts
