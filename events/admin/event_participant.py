@@ -43,9 +43,10 @@ class EventParticipantAdmin(BaseAdminModel):
         match_admin_url = '/theatre_sports/match/'
         if referer and match_admin_url in referer:
             match_id = re.search('/theatre_sports/match/([0-9]+)/change', referer)
-            match = Match.objects.filter(pk=int(match_id[1])).first()
-            if match:
-                queryset = queryset.filter(event=match.show)
+            if match_id:
+                match = Match.objects.filter(pk=int(match_id[1])).first()
+                if match:
+                    queryset = queryset.filter(event=match.show)
         return queryset, use_distinct
 
     def get_role_name(self, item):
