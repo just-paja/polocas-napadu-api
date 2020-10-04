@@ -29,7 +29,13 @@ class ShowAdmin(EventAdmin):
     list_filter = EventAdmin.list_filter + (ShowTypeFilter,)
     fieldsets = (
         (_("Identification"), {"fields": ("name", "slug", "show_type", "description")}),
-        (_("Date and time"), {"fields": ("location", "start", "end", "all_day")}),
+        (_("Date and time"), {"fields": (
+            "location",
+            "start",
+            "end",
+            "all_day",
+            "canceled",
+        )}),
         (_("Links"), {"fields": (
             "link_tickets",
             "link_reservations",

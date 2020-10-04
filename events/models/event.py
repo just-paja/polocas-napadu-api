@@ -36,6 +36,11 @@ class Event(PublicResourceMixin):
         default=False,
         verbose_name=_("All day")
     )
+    canceled = BooleanField(
+        default=False,
+        verbose_name=_('Canceled'),
+        help_text=_('Event has been canceled'),
+    )
     location = ForeignKey(
         "locations.Location",
         on_delete=PROTECT,

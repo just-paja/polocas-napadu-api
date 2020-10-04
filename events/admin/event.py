@@ -25,7 +25,7 @@ class EventTicketPriceInlineAdmin(BaseInlineAdminModel):
 class EventViewerAdmin(BaseAdminModel):
     model = Event
     search_fields = ("name", "all_day")
-    list_display = ("name", "location", "start", "all_day", "visibility")
+    list_display = ("name", "location", "start", "all_day", "canceled", "visibility")
     readonly_fields = (
         "all_day",
         "description",
@@ -50,8 +50,8 @@ class EventAdmin(BaseAdminModel):
         EventParticipantInlineAdmin,
     )
     autocomplete_fields = ["location", "sponsors"]
-    list_display = ("name", "location", "start", "all_day", "visibility")
-    list_filter = (EventSeasonFilter, LocationFilter, "visibility")
+    list_display = ("name", "location", "start", "visibility", "all_day", "canceled")
+    list_filter = (EventSeasonFilter, LocationFilter, "visibility", "canceled")
     search_fields = ("name", "all_day")
     readonly_fields = ("slug",)
     fieldsets = (

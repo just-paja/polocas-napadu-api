@@ -17,7 +17,14 @@ class WorkshopAdmin(EventAdmin):
     )
     fieldsets = (
         (_("Identification"), {"fields": ("name", "slug", "description")}),
-        (_("Date and time"), {"fields": ("location", "start", "end", "all_day", "capacity")}),
+        (_("Date and time"), {"fields": (
+            "location",
+            "start",
+            "end",
+            "all_day",
+            "canceled",
+            "capacity",
+        )}),
         (_("Links"), {"fields": (
             "link_tickets",
             "link_reservations",
