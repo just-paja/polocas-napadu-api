@@ -19,6 +19,7 @@ recursive-include shows *
 recursive-include theatre_sports *
 recursive-include tickets *
 recursive-include voting *
+recursive-include workshops *
 include requirements.txt
 include README.md
 include manage.py

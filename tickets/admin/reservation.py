@@ -1,4 +1,4 @@
-from fields.admin import BaseAdminModel, ShowFilter
+from fields.admin import BaseAdminModel
 
 from events.admin import EventFilter
 

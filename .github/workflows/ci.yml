@@ -1,0 +1,77 @@
+---
+name: Continuous integration
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*'
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: dschep/install-pipenv-action@v1
+      - name: Install system dependencies
+        run: sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config gettext
+      - name: Upgrade sqlite3
+        run: sudo apt list --installed
+      - name: Install dependencies
+        run: pipenv install -d
+      - name: Test
+        run: pipenv run pytest --cov-report=xml --cov-config=.coveragerc --cov="."
+
+  analyze:
+    name: Run static code analysis
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: dschep/install-pipenv-action@v1
+      - name: Install system dependencies
+        run: sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config gettext
+      - name: Install dependencies
+        run: pipenv install -d
+      - name: Static code analysis
+        run: pipenv run prospector -s high
+
+  build:
+    name: Build package
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: dschep/install-pipenv-action@v1
+      - name: Install system dependencies
+        run: sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config gettext
+      - name: Install dependencies
+        run: pipenv install -d
+      - name: Compile messages
+        run: pipenv run ./manage.py compilemessages
+      - name: Lock requirements
+        run: pipenv lock --requirements > requirements.txt
+      - name: Compile artifacts
+        run: pipenv run python setup.py sdist
+      - name: Build docker image
+        run: docker build .

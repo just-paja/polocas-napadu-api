@@ -4,3 +4,11 @@ from .event_participant import EventParticipantAdmin
 from .participant_role import ParticipantRoleAdmin
 
 MODELS = (EventAdmin, EventParticipantAdmin, ParticipantRoleAdmin,)
+
+__all__ = (
+    "EventAdmin",
+    "EventFilter",
+    "EventParticipantAdmin",
+    "EventViewerAdmin",
+    "ParticipantRoleAdmin",
+)
