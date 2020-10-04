@@ -92,8 +92,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: requirements
-      - name: Debug
-        run: ls -lR
       - name: Validate deploy configuration
         uses: ansible/ansible-lint-action@master
         with:
