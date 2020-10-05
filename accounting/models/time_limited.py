@@ -62,7 +62,7 @@ class TimeLimitedManager(Manager):
 
     def get_active(self, date=None):
         filter_date = date if date else datetime.date.today()
-        return self.filter(Q(end__isnull=True) | Q(end__gte=filter_date), start__lte=date)
+        return self.filter(Q(end__isnull=True) | Q(end__gte=filter_date), start__lte=filter_date)
 
     def get_next(self, date=None):
         return self.filter(start__gt=date)
