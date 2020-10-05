@@ -55,6 +55,9 @@ class Membership(TimeFilteredModel):
     def get_related_objects(self):
         return super().get_related_objects().filter(user=self.user)
 
+    def get_current_promise(self):
+        return self.fees.get_active().first()
+
     def how_many_days(self):
         return (datetime.date.today() - self.start).days
 

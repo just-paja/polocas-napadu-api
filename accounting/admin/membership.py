@@ -69,3 +69,4 @@ class MembershipAdmin(TimeLimitedAdmin):
     list_display = ('user', 'level', 'is_active', 'format_start', 'format_end')
     fields = ('user', 'level', 'start', 'end', 'created', 'modified')
     readonly_fields = ('modified', 'created')
+    change_form_template = 'admin/membership_change_form.html'
