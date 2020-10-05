@@ -73,7 +73,7 @@ jobs:
           name: requirements
           path: requirements.txt
 
-  deploy:
+  deploy-staging:
     name: Deploy to staging environment
     runs-on: ubuntu-20.04
     if: github.ref == 'refs/heads/master'
@@ -135,4 +135,68 @@ jobs:
           SECRET_KEY: ${{ secrets.STAGING_SECRET_KEY }}
         run: |
           echo -e "[web]\n${{ secrets.STAGING_DEPLOY_HOST }}\n" > inventory
+          ansible-playbook deploy.yml -i inventory
+
+  deploy-production:
+    name: Deploy to production environment
+    runs-on: ubuntu-20.04
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs:
+      - test
+      - analyze
+      - build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download package dist files
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+      - name: Download requirements
+        uses: actions/download-artifact@v2
+        with:
+          name: requirements
+      - name: Validate deploy configuration
+        uses: ansible/ansible-lint-action@master
+        with:
+          targets: deploy.yml
+      - name: Configure SSH
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          name: id_rsa
+          known_hosts: ${{ secrets.PRODUCTION_KNOWN_HOSTS }}
+      - name: Install deploy dependencies
+        run: |
+          sudo apt-get -y install python3-docker
+          ansible-galaxy install -r requirements-ansible.yml
+      - name: Deploy staging app
+        env:
+          ALLOWED_HOSTS: ${{ secrets.PRODUCTION_ALLOWED_HOSTS }}
+          APP_INSPIRATIONS_URL: ${{ secrets.PRODUCTION_APP_INSPIRATIONS_URL }}
+          APP_REFEREE_URL: ${{ secrets.PRODUCTION_APP_REFEREE_URL }}
+          APP_SCOREBOARD_URL: ${{ secrets.PRODUCTION_APP_SCOREBOARD_URL }}
+          APP_WEBSITE_URL: ${{ secrets.PRODUCTION_APP_WEBSITE_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+          AWS_STORAGE_BUCKET_NAME: ${{ secrets.PRODUCTION_AWS_STORAGE_BUCKET_NAME }}
+          AWS_S3_REGION_NAME: ${{ secrets.PRODUCTION_AWS_S3_REGION_NAME }}
+          DB_HOST: ${{ secrets.PRODUCTION_DB_HOST }}
+          DB_NAME: ${{ secrets.PRODUCTION_DB_NAME }}
+          DB_PASSWORD: ${{ secrets.PRODUCTION_DB_PASSWORD }}
+          DB_USER: ${{ secrets.PRODUCTION_DB_USER }}
+          DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID: ${{ secrets.PRODUCTION_DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID }}
+          DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET: ${{ secrets.PRODUCTION_DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET }}
+          EMAIL_HOST: ${{ secrets.PRODUCTION_EMAIL_HOST }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.PRODUCTION_EMAIL_HOST_PASSWORD }}
+          EMAIL_HOST_USER: ${{ secrets.PRODUCTION_EMAIL_HOST_USER }}
+          EMAIL_MANAGER: ${{ secrets.PRODUCTION_EMAIL_MANAGER }}
+          EMAIL_PORT: ${{ secrets.PRODUCTION_EMAIL_PORT }}
+          EMAIL_USE_TLS: ${{ secrets.PRODUCTION_EMAIL_USE_TLS }}
+          RAVEN_DSN: ${{ secrets.PRODUCTION_RAVEN_DSN }}
+          RECAPTCHA_PRIVATE_KEY: ${{ secrets.PRODUCTION_RECAPTCHA_PRIVATE_KEY }}
+          RECAPTCHA_PUBLIC_KEY: ${{ secrets.PRODUCTION_RECAPTCHA_PUBLIC_KEY }}
+          SECRET_KEY: ${{ secrets.PRODUCTION_SECRET_KEY }}
+        run: |
+          echo -e "[web]\n${{ secrets.PRODUCTION_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy.yml -i inventory
