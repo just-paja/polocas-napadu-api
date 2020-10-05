@@ -50,24 +50,20 @@ msgid "Poločas nápadu z. s."
 msgstr "Poločas nápadu"
 
 #: api/templates/admin/base_site.html:24
-#, fuzzy
-#| msgid "Content admin"
 msgid "Content"
-msgstr "Správa obsahu"
+msgstr "Obsah"
 
 #: api/templates/admin/base_site.html:25
 msgid "Tickets"
-msgstr ""
+msgstr "Vstupenky"
 
 #: api/templates/admin/base_site.html:26
 msgid "E-mailing"
 msgstr "E-mailing"
 
 #: api/templates/admin/base_site.html:27
-#, fuzzy
-#| msgid "Voting"
 msgid "Accounting"
-msgstr "Hlasování"
+msgstr "Účetnictví"
 
 #: gsuite/__init__.py:97
 msgid "Gsuite"
@@ -78,10 +74,8 @@ msgid "Image"
 msgstr "Obrázek"
 
 #: images/fields.py:10
-#, fuzzy
-#| msgid "avgVolumeHelpText"
 msgid "imageHelpText"
-msgstr "Průměrná hlasitost vypočítaná ze všek snímků hlasitosti"
+msgstr "Obrázek v plné kvalitě"
 
 #: voting/__init__.py:7
 msgid "Voting"
