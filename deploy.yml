@@ -5,7 +5,7 @@
     - role: practical-ansible.nginx_docker
       admin_email: pavel@zak.global
       become: true
-      project_environment: staging
+      project_environment: '{{ lookup("env", "DJANGO_ENVIRONMENT") }}'
       project_name: 'cz-polocas-napadu-api'
       server_names: '{{ lookup("env", "ALLOWED_HOSTS") }}'
       env:
