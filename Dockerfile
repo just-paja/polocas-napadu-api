@@ -11,7 +11,7 @@ COPY requirements.txt requirements.txt
 COPY gunicorn.py gunicorn.py
 
 RUN \
-  apk add --update py-pip jpeg-dev zlib-dev libjpeg openrc busybox-initscripts && \
+  apk add --update py-pip jpeg-dev libwebp-dev zlib-dev libjpeg openrc busybox-initscripts && \
   apk add --no-cache postgresql-libs && \
   apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev && \
   pip install -r requirements.txt --no-cache-dir && \
