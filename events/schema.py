@@ -30,7 +30,7 @@ class EventNode(DjangoObjectType):
         return self.ticket_prices.all()
 
     def resolve_participants(self, info): # noqa
-        return self.showsParticipants.order_by('role__weight')
+        return self.eventParticipants.order_by('role__weight')
 
 
 class ParticipantRoleNode(DjangoObjectType):
