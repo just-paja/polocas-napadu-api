@@ -92,10 +92,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: requirements
-      - name: Validate deploy configuration
-        uses: ansible/ansible-lint-action@master
-        with:
-          targets: deploy.yml
       - name: Configure SSH
         uses: shimataro/ssh-key-action@v2
         with:
@@ -157,10 +153,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: requirements
-      - name: Validate deploy configuration
-        uses: ansible/ansible-lint-action@master
-        with:
-          targets: deploy.yml
       - name: Configure SSH
         uses: shimataro/ssh-key-action@v2
         with:
