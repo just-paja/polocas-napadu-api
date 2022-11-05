@@ -1,5 +1,6 @@
-from datetime import timedelta
-from django.db.models import Count
+from dateutil.relativedelta import relativedelta
+from datetime import datetime, timedelta
+from django.db.models import Count, Q
 from django.urls import reverse
 from django.utils import timezone
 from graphene import Boolean, Field, Int, List, ObjectType, String, Mutation
@@ -84,6 +85,7 @@ class Query:
         ShowNode,
         future=Boolean(),
         limit=Int(),
+        month=String(),
         past=Boolean(),
         show_type_slug=String(),
         order_by=String(),
@@ -101,6 +103,7 @@ class Query:
         future = kwargs.get("future") or False
         limit = kwargs.get("limit") or None
         past = kwargs.get("past") or False
+        month = kwargs.get("month") or None
         show_type_slug = kwargs.get("show_type_slug") or None
         order_by = kwargs.get("order_by") or "-start"
         source = Show.objects.get_visible().order_by(order_by)
@@ -111,12 +114,25 @@ class Query:
             except ShowType.DoesNotExist:
                 return []
             source = source.filter(show_type=show_type)
-        if future:
-            source = source.filter(start__gte=yesterday)
-        if past:
-            source = source.filter(start__lt=yesterday)
-        if limit:
-            source = source[:limit]
+        if month:
+            try:
+                y, m = month.split('-')
+                month_start = datetime(year=int(y), month=int(m), day=1)
+                next_month_start = month_start + relativedelta(months=1)
+            except ValueError:
+                return []
+            source = source.exclude(
+                Q(end__lt=month_start) |
+                Q(start__lt=month_start, end__isnull=True) |
+                Q(start__gte=next_month_start),
+            )
+        else:
+            if future:
+                source = source.filter(start__gte=yesterday)
+            if past:
+                source = source.filter(start__lt=yesterday)
+            if limit:
+                source = source[:limit]
         return source
 
     def resolve_show_type(self, info, slug=None):
