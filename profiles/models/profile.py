@@ -21,7 +21,13 @@ class Profile(NameMixin, TimeStampedModel, VisibilityMixin):
     )
     slug = AutoSlugField(_("Slug"), overwrite=True, populate_from="name")
     about = TextField()
-    group = ForeignKey("ProfileGroup", blank=True, null=True, on_delete=PROTECT,)
+    group = ForeignKey(
+        "ProfileGroup",
+        blank=True,
+        null=True,
+        on_delete=PROTECT,
+        related_name="profiles",
+    )
     avatar = ImageField(
         blank=True, null=True, upload_to="var/avatars", verbose_name=_("Avatar"),
     )
