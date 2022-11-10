@@ -10,14 +10,14 @@ on:
 jobs:
   test:
     name: Run tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
           path: ~/.cache/pipenv
           key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - uses: dschep/install-pipenv-action@v1
@@ -27,14 +27,14 @@ jobs:
 
   analyze:
     name: Run static code analysis
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
           path: ~/.cache/pipenv
           key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - uses: dschep/install-pipenv-action@v1
@@ -44,14 +44,14 @@ jobs:
 
   build:
     name: Build package
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
           path: ~/.cache/pipenv
           key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - uses: dschep/install-pipenv-action@v1
@@ -75,13 +75,16 @@ jobs:
 
   deploy-staging:
     name: Deploy to staging environment
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/master'
     needs:
       - test
       - analyze
       - build
     steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - uses: actions/checkout@v3
       - name: Download package dist files
         uses: actions/download-artifact@v3
@@ -100,7 +103,7 @@ jobs:
           known_hosts: ${{ secrets.STAGING_KNOWN_HOSTS }}
       - name: Install deploy dependencies
         run: |
-          sudo apt-get -y install python3-requests python3-docker
+          pip install ansible docker "requests==2.28.1"
           ansible-galaxy install -r requirements-ansible.yml
       - name: Deploy staging app
         env:
@@ -136,7 +139,7 @@ jobs:
 
   deploy-production:
     name: Deploy to production environment
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
       - test
@@ -161,7 +164,7 @@ jobs:
           known_hosts: ${{ secrets.PRODUCTION_KNOWN_HOSTS }}
       - name: Install deploy dependencies
         run: |
-          sudo apt-get -y install python3-requests python3-docker
+          pip install ansible docker "requests==2.28.1"
           ansible-galaxy install -r requirements-ansible.yml
       - name: Deploy staging app
         env:
