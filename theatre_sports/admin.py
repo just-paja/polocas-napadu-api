@@ -29,7 +29,7 @@ class FoulForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         if "instance" in kwargs and kwargs["instance"]:
             kwargs["initial"] = {"time": kwargs["instance"].get_time()}
-        super(FoulForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
 
 class FoulAdmin(BaseAdminModel):
@@ -63,7 +63,7 @@ class FoulAdmin(BaseAdminModel):
         time = form.cleaned_data.get("time")
         if time:
             obj.created = obj.contestant_group.match.get_actual_start() + time
-        return super(FoulAdmin, self).save_model(request, obj, form, change)
+        return super().save_model(request, obj, form, change)
 
 
 class ContestantGroupAdmin(BaseAdminModel):

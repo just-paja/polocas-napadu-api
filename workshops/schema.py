@@ -1,7 +1,9 @@
 from datetime import timedelta
 from django.utils import timezone
-from graphene import Boolean, Field, Int, List, ObjectType, String, Mutation
+from graphene import Boolean, Int, List, String
 from graphene_django.types import DjangoObjectType
+
+from shows.models import ShowType
 
 from .models import Workshop
 

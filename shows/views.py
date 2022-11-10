@@ -18,8 +18,8 @@ def get_inspiration_url(request, show):
 def show_inspiration_qr(request, show_id):
     try:
         show = Show.objects.get(pk=show_id)
-    except Show.DoesNotExist:
-        raise Http404
+    except Show.DoesNotExist as exc:
+        raise Http404 from exc
     if show.match:
         inspiration_url = get_inspiration_url(request, show)
     else:

@@ -19,7 +19,7 @@ class ImprovAdminSite(AdminSite):
     site_url = settings.APP_WEBSITE_URL
 
     def __init__(self):
-        super(ImprovAdminSite, self).__init__(self.name)
+        super().__init__(self.name)
         if settings.DJANGO_ADMIN_SSO:
             self.login = gauth
 

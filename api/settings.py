@@ -296,7 +296,9 @@ if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     }
 
 if RAVEN_DSN:
+    # pylint: disable=abstract-class-instantiated
     sentry_sdk.init(dsn=RAVEN_DSN, integrations=[DjangoIntegration()])
+    # pylint: enable=abstract-class-instantiated
 
 if DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID and DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET:
     DJANGO_ADMIN_SSO = True

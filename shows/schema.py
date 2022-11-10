@@ -1,5 +1,6 @@
-from dateutil.relativedelta import relativedelta
 from datetime import datetime, timedelta
+
+from dateutil.relativedelta import relativedelta
 from django.db.models import Count, Q
 from django.urls import reverse
 from django.utils import timezone
@@ -99,15 +100,24 @@ class Query:
         except Show.DoesNotExist:
             return None
 
-    def resolve_show_list(self, info, **kwargs):
+    def filter_limits(self, source, **kwargs):
         future = kwargs.get("future") or False
         limit = kwargs.get("limit") or None
         past = kwargs.get("past") or False
+        yesterday = timezone.now() - timedelta(days=1)
+        if future:
+            source = source.filter(start__gte=yesterday)
+        if past:
+            source = source.filter(start__lt=yesterday)
+        if limit:
+            source = source[:limit]
+        return source
+
+    def resolve_show_list(self, info, **kwargs):
         month = kwargs.get("month") or None
         show_type_slug = kwargs.get("show_type_slug") or None
         order_by = kwargs.get("order_by") or "-start"
         source = Show.objects.get_visible().order_by(order_by)
-        yesterday = timezone.now() - timedelta(days=1)
         if show_type_slug:
             try:
                 show_type = ShowType.objects.get(slug=show_type_slug)
@@ -116,8 +126,8 @@ class Query:
             source = source.filter(show_type=show_type)
         if month:
             try:
-                y, m = month.split('-')
-                month_start = datetime(year=int(y), month=int(m), day=1)
+                date_year, date_month = month.split('-')
+                month_start = datetime(year=int(date_year), month=int(date_month), day=1)
                 next_month_start = month_start + relativedelta(months=1)
             except ValueError:
                 return []
@@ -127,12 +137,7 @@ class Query:
                 Q(start__gte=next_month_start),
             )
         else:
-            if future:
-                source = source.filter(start__gte=yesterday)
-            if past:
-                source = source.filter(start__lt=yesterday)
-            if limit:
-                source = source[:limit]
+            return self.filter_limits(source, **kwargs)
         return source
 
     def resolve_show_type(self, info, slug=None):
