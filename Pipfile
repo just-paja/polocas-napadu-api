@@ -14,6 +14,7 @@ pytest-watch = "*"
 ansible = "*"
 pytest-freezegun = "*"
 black = "==19.10b0"
+typing-extensions = "*"
 
 [packages]
 django = "<3"
