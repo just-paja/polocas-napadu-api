@@ -1,5 +1,6 @@
 import datetime
 
+from django.contrib.auth import get_user_model
 from django.dispatch import receiver
 from django.db.models import ForeignKey, CASCADE, PROTECT
 from django.utils.translation import ugettext_lazy as _
@@ -43,7 +44,7 @@ class Membership(TimeFilteredModel):
         verbose_name=_('Membership level'),
     )
     user = ForeignKey(
-        'auth.User',
+        get_user_model(),
         on_delete=PROTECT,
         related_name='memberships',
         verbose_name=_('Member'),

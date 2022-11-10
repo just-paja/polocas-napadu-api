@@ -1,3 +1,4 @@
+from django.apps import apps
 from django.dispatch import Signal
 from django.db.models import (
     CASCADE,
@@ -11,7 +12,6 @@ from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
 from .counter_party import KnownAccount
-from .promise import Promise
 from .statement_specs import StatementSpecification, StatementSenderSpecification
 
 
@@ -99,7 +99,8 @@ class Statement(
 
     def pair_with_promises(self):
         if not self.promise and self.variable_symbol:
-            self.promise = Promise.objects.filter_by_transaction(
+            model = apps.get_model('accounting', 'Promise')
+            self.promise = model.objects.filter_by_transaction(
                 self.variable_symbol,
                 self.specific_symbol,
             ).first()

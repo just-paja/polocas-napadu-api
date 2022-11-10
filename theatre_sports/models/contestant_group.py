@@ -46,7 +46,7 @@ class ContestantGroup(Model):
     )
 
     def __str__(self):
-        return self.band.name
+        return str(self.band.name)
 
     def get_show_name(self):
         return self.match.get_show_name()
