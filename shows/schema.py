@@ -77,6 +77,20 @@ class AddInspiration(Mutation):
         return AddInspiration(ok=True)
 
 
+def filter_limits(source, **kwargs):
+    future = kwargs.get("future") or False
+    limit = kwargs.get("limit") or None
+    past = kwargs.get("past") or False
+    yesterday = timezone.now() - timedelta(days=1)
+    if future:
+        source = source.filter(start__gte=yesterday)
+    if past:
+        source = source.filter(start__lt=yesterday)
+    if limit:
+        source = source[:limit]
+    return source
+
+
 class Query:
     show = Field(ShowNode, show_id=Int(), slug=String())
     show_photo_list = List(ShowPhotoNode, limit=Int())
@@ -99,19 +113,6 @@ class Query:
             return Show.objects.get_visible().get(pk=show_id)
         except Show.DoesNotExist:
             return None
-
-    def filter_limits(self, source, **kwargs):
-        future = kwargs.get("future") or False
-        limit = kwargs.get("limit") or None
-        past = kwargs.get("past") or False
-        yesterday = timezone.now() - timedelta(days=1)
-        if future:
-            source = source.filter(start__gte=yesterday)
-        if past:
-            source = source.filter(start__lt=yesterday)
-        if limit:
-            source = source[:limit]
-        return source
 
     def resolve_show_list(self, info, **kwargs):
         month = kwargs.get("month") or None
@@ -137,7 +138,7 @@ class Query:
                 Q(start__gte=next_month_start),
             )
         else:
-            return self.filter_limits(source, **kwargs)
+            return filter_limits(source, **kwargs)
         return source
 
     def resolve_show_type(self, info, slug=None):
