@@ -59,7 +59,7 @@ jobs:
       - name: Compile messages
         run: pipenv run ./manage.py compilemessages
       - name: Lock requirements
-        run: pipenv lock --requirements > requirements.txt
+        run: pipenv requirements > requirements.txt
       - name: Compile artifacts
         run: pipenv run python setup.py sdist
       - name: Store package dist files
