@@ -100,7 +100,7 @@ jobs:
           known_hosts: ${{ secrets.STAGING_KNOWN_HOSTS }}
       - name: Install deploy dependencies
         run: |
-          sudo apt-get -y install python3-docker
+          sudo apt-get -y install python3-requests python3-docker
           ansible-galaxy install -r requirements-ansible.yml
       - name: Deploy staging app
         env:
@@ -161,7 +161,7 @@ jobs:
           known_hosts: ${{ secrets.PRODUCTION_KNOWN_HOSTS }}
       - name: Install deploy dependencies
         run: |
-          sudo apt-get -y install python3-docker
+          sudo apt-get -y install python3-requests python3-docker
           ansible-galaxy install -r requirements-ansible.yml
       - name: Deploy staging app
         env:
