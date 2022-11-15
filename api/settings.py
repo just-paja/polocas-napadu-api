@@ -193,6 +193,9 @@ GRAPHENE = {
     "SCHEMA": "api.schema.PUBLIC",
     "MIDDLEWARE": ["graphql_jwt.middleware.JSONWebTokenMiddleware", ],
 }
+GRAPHQL_JWT = {
+    "JWT_ALLOW_ANY_HANDLER": "api.auth.allow_any"
+}
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, "locale"),
