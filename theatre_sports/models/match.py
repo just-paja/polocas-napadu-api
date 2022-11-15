@@ -34,6 +34,8 @@ class Match(Model):
 
     def get_current_game(self):
         stage = self.get_current_stage()
+        if not stage:
+            return None
         return stage.game
 
     def get_current_stage_name(self):
