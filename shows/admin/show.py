@@ -33,6 +33,7 @@ class ShowAdmin(EventAdmin):
             "location",
             "start",
             "end",
+            "use_inspirations",
             "all_day",
             "canceled",
         )}),

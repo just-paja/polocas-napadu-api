@@ -91,8 +91,13 @@ def filter_limits(source, **kwargs):
     return source
 
 
+def filter_inspirations(source, use_inspirations=None):
+    if use_inspirations != None:
+        return source.filter(use_inspirations=use_inspirations)
+    return source
+
 class Query:
-    show = Field(ShowNode, show_id=Int(), slug=String())
+    show = Field(ShowNode, show_id=Int(), slug=String(), use_inspirations=Boolean())
     show_photo_list = List(ShowPhotoNode, limit=Int())
     show_type = Field(ShowTypeNode, slug=String())
     show_type_list = List(ShowTypeNode)
@@ -104,13 +109,17 @@ class Query:
         past=Boolean(),
         show_type_slug=String(),
         order_by=String(),
+        use_inspirations=Boolean(),
     )
 
-    def resolve_show(self, info, show_id=None, slug=None):
+    def resolve_show(self, info, show_id=None, slug=None, use_inspirations=None):
         try:
+            query = Show.objects.get_visible()
             if slug:
-                return Show.objects.get_visible().get(slug=slug)
-            return Show.objects.get_visible().get(pk=show_id)
+                query = query.filter(slug=slug)
+            else:
+                query = query.filter(pk=show_id)
+            return filter_inspirations(query, use_inspirations).get()
         except Show.DoesNotExist:
             return None
 
@@ -118,7 +127,9 @@ class Query:
         month = kwargs.get("month") or None
         show_type_slug = kwargs.get("show_type_slug") or None
         order_by = kwargs.get("order_by") or "-start"
+        use_inspirations = kwargs.get('use_inspirations', None)
         source = Show.objects.get_visible().order_by(order_by)
+        source = filter_inspirations(source, use_inspirations)
         if show_type_slug:
             try:
                 show_type = ShowType.objects.get(slug=show_type_slug)
