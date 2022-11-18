@@ -4,9 +4,10 @@ description: 'Setup CI to build django with advanced requirements'
 runs:
   using: 'composite'
   steps:
+    - name: Install poetry
+      shell: bash
+      run: pipx install poetry
+
     - name: Install system dependencies
-      run: sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config gettext
       shell: bash
-    - name: Install dependencies
-      run: pipenv install -d
-      shell: bash
+      run: sudo apt-get install python3-dev pkg-config gettext

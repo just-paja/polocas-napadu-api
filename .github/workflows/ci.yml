@@ -13,55 +13,49 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pipenv
-          key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
+      - uses: ./.github/actions/setup-ci
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      - uses: dschep/install-pipenv-action@v1
-      - uses: ./.github/actions/setup-ci
+          cache: "poetry"
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
       - name: Test
-        run: pipenv run pytest --cov-report=xml --cov-config=.coveragerc --cov="."
+        run: poetry run pytest --cov-report=xml --cov-config=.coveragerc --cov="."
 
   analyze:
     name: Run static code analysis
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pipenv
-          key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
+      - uses: ./.github/actions/setup-ci
       - uses: actions/setup-python@v4
         with:
+          cache: poetry
           python-version: "3.10"
-      - uses: dschep/install-pipenv-action@v1
-      - uses: ./.github/actions/setup-ci
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
       - name: Static code analysis
-        run: pipenv run prospector -s high
+        run: poetry run prospector -s high
 
   build:
     name: Build package
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pipenv
-          key: ${{ runner.os }}-${{ hashFiles('Pipfile.lock') }}
+      - uses: ./.github/actions/setup-ci
       - uses: actions/setup-python@v4
         with:
+          cache: "poetry"
           python-version: "3.10"
-      - uses: dschep/install-pipenv-action@v1
-      - uses: ./.github/actions/setup-ci
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
       - name: Compile messages
-        run: pipenv run ./manage.py compilemessages
+        run: poetry run ./manage.py compilemessages
       - name: Lock requirements
-        run: pipenv requirements > requirements.txt
+        run: poetry export -f requirements.txt --output requirements.txt
       - name: Compile artifacts
-        run: pipenv run python setup.py sdist
+        run: poetry run python setup.py sdist
       - name: Store package dist files
         uses: actions/upload-artifact@v3
         with:

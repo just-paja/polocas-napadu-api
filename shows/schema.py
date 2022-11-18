@@ -92,9 +92,10 @@ def filter_limits(source, **kwargs):
 
 
 def filter_inspirations(source, use_inspirations=None):
-    if use_inspirations != None:
+    if use_inspirations is not None:
         return source.filter(use_inspirations=use_inspirations)
     return source
+
 
 class Query:
     show = Field(ShowNode, show_id=Int(), slug=String(), use_inspirations=Boolean())

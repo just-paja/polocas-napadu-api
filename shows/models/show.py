@@ -20,6 +20,6 @@ class Show(Event):
         verbose_name=_('Use inspirations'),
         help_text=_("""
             Show will appear in the inspirations app and audience will be
-            allowed to put in suggestions for the improv scenes"""
-        ),
+            allowed to put in suggestions for the improv scenes
+        """),
     )
