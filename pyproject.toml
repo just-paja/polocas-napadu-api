@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "polocas-napadu-api"
-version = "2.2.3"
+version = "2.3.0"
 description = "API defending database of Poločas nápadu, theatre improvisation group"
 authors = ["Pavel Žák <pavel@zak.global>"]
 license = "MIT"

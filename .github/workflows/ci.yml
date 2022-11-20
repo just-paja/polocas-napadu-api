@@ -55,7 +55,7 @@ jobs:
       - name: Lock requirements
         run: poetry export -f requirements.txt --output requirements.txt
       - name: Compile artifacts
-        run: poetry run python setup.py sdist
+        run: poetry build
       - name: Store package dist files
         uses: actions/upload-artifact@v3
         with:
