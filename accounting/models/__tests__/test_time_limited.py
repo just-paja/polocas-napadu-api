@@ -9,6 +9,12 @@ from dateutil.parser import parse
 
 from ..time_limited import TimeLimitedModel, intersects
 
+
+class TLModel(TimeLimitedModel):
+    class Meta:
+        managed = False
+
+
 class TimeLimitedTest(TestCase):
     def setUp(self):
         self.level = baker.make(
@@ -285,11 +291,11 @@ class IntersectionTest(TestCase):
     # ----------s------e-------------
     # ---s--e------------------------
     def test_returns_false_given_intervals_do_not_intersect_from_bottom_left(self):
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2018-01-01'),
             end=parse('2018-02-01'),
         )
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2019-01-01'),
             end=parse('2019-02-01'),
         )
@@ -298,11 +304,11 @@ class IntersectionTest(TestCase):
     # ---s--e------------------------
     # ----------s------e-------------
     def test_returns_false_given_intervals_do_not_intersect_from_top_left(self):
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2018-01-01'),
             end=parse('2018-02-01'),
         )
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2019-01-01'),
             end=parse('2019-02-01'),
         )
@@ -311,11 +317,11 @@ class IntersectionTest(TestCase):
     # ----------s------e-------------
     # ---s---------------------------
     def test_returns_true_given_earlier_has_no_end_from_bottom_left(self):
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2018-01-01'),
             end=None,
         )
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2019-01-01'),
             end=parse('2019-02-01'),
         )
@@ -324,11 +330,11 @@ class IntersectionTest(TestCase):
     # ---s---------------------------
     # ----------s------e-------------
     def test_returns_true_given_earlier_has_no_end_from_top_left(self):
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2018-01-01'),
             end=None,
         )
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2019-01-01'),
             end=parse('2019-02-01'),
         )
@@ -337,11 +343,11 @@ class IntersectionTest(TestCase):
     # ----------s--------------------
     # ---s----e----------------------
     def test_returns_false_given_later_has_no_end_and_dont_intersect_from_bottom_left(self):
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2018-01-01'),
             end=parse('2018-02-01'),
         )
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2019-01-01'),
             end=None,
         )
@@ -350,11 +356,11 @@ class IntersectionTest(TestCase):
     # ---s----e----------------------
     # ----------s--------------------
     def test_returns_false_given_later_has_no_end_and_dont_intersect_from_top_left(self):
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2018-01-01'),
             end=parse('2018-02-01'),
         )
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2019-01-01'),
             end=None,
         )
@@ -363,11 +369,11 @@ class IntersectionTest(TestCase):
     # ---s---------------------------
     # ----------s--------------------
     def test_returns_true_given_neither_interval_has_end(self):
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2018-01-01'),
             end=None,
         )
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2019-01-01'),
             end=None,
         )
@@ -376,11 +382,11 @@ class IntersectionTest(TestCase):
     # ----------s------e-------------
     # ---s-------------e-------------
     def test_returns_false_given_have_equal_end_from_bottom_left(self):
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2018-01-01'),
             end=parse('2019-02-01'),
         )
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2019-01-01'),
             end=parse('2019-02-01'),
         )
@@ -389,11 +395,11 @@ class IntersectionTest(TestCase):
     # ---s-------------e-------------
     # ----------s------e-------------
     def test_returns_false_given_have_equal_end_from_top_left(self):
-        second = TimeLimitedModel(
+        second = TLModel(
             start=parse('2018-01-01'),
             end=parse('2019-02-01'),
         )
-        first = TimeLimitedModel(
+        first = TLModel(
             start=parse('2019-01-01'),
             end=parse('2019-02-01'),
         )

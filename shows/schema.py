@@ -25,6 +25,7 @@ from .models import (
 class ShowPhotoNode(PhotoNode):
     class Meta:
         model = ShowPhoto
+        fields = '__all__'
 
 
 class ShowNode(EventNode):
@@ -33,6 +34,7 @@ class ShowNode(EventNode):
 
     class Meta:
         model = Show
+        fields = '__all__'
 
     def resolve_inspiration_qr_url(self, info):
         path = reverse("show_inspiration_qr", kwargs={"show_id": self.id, })
@@ -45,11 +47,13 @@ class ShowNode(EventNode):
 class ShowTypePhotoNode(PhotoNode):
     class Meta:
         model = ShowTypePhoto
+        fields = '__all__'
 
 
 class ShowTypeNode(DjangoObjectType):
     class Meta:
         model = ShowType
+        fields = '__all__'
 
     show_count = Int()
 

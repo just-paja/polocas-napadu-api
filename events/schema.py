@@ -12,16 +12,19 @@ from .models import (
 class EventParticipantNode(DjangoObjectType):
     class Meta:
         model = EventParticipant
+        fields = '__all__'
 
 
 class EventTicketPriceNode(DjangoObjectType):
     class Meta:
         model = EventTicketPrice
+        fields = '__all__'
 
 
 class EventNode(DjangoObjectType):
     class Meta:
         model = Event
+        fields = '__all__'
 
     ticket_prices = List(EventTicketPriceNode)
     participants = List(EventParticipantNode)
@@ -36,6 +39,7 @@ class EventNode(DjangoObjectType):
 class ParticipantRoleNode(DjangoObjectType):
     class Meta:
         model = ParticipantRole
+        fields = '__all__'
 
 
 class Query:

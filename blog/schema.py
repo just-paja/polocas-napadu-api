@@ -9,16 +9,19 @@ from .models import Article, Chapter, ChapterPhoto
 class ChapterPhotoNode(PhotoNode):
     class Meta:
         model = ChapterPhoto
+        fields = '__all__'
 
 
 class ChapterNode(DjangoObjectType):
     class Meta:
         model = Chapter
+        fields = '__all__'
 
 
 class ArticleNode(DjangoObjectType):
     class Meta:
         model = Article
+        fields = '__all__'
 
     def resolve_chapters(self, info, *_):
         return self.chapters.get_visible().order_by("weight")

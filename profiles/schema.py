@@ -10,11 +10,13 @@ from .models import Profile, ProfileGroup, ProfilePhoto, Sponsor
 class ProfileGroupNode(DjangoObjectType):
     class Meta:
         model = ProfileGroup
+        fields = '__all__'
 
 
 class ProfilePhotoNode(PhotoNode):
     class Meta:
         model = ProfilePhoto
+        fields = '__all__'
 
 
 class ProfileNode(DjangoObjectType):
@@ -22,6 +24,7 @@ class ProfileNode(DjangoObjectType):
 
     class Meta:
         model = Profile
+        fields = '__all__'
 
     def resolve_avatar(self, info, *_):
         return serialize_image_field(self.avatar, info)
@@ -32,6 +35,7 @@ class SponsorNode(DjangoObjectType):
 
     class Meta:
         model = Sponsor
+        fields = '__all__'
 
     def resolve_logo(self, info, *_):
         return serialize_image_field(self.logo, info)

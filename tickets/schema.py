@@ -10,6 +10,7 @@ from .models import Reservation, STATUS_CONFIRMED
 class ReservationNode(DjangoObjectType):
     class Meta:
         model = Reservation
+        fields = '__all__'
 
 
 class Query:

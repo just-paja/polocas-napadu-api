@@ -24,6 +24,7 @@ from .models import (
 class ContestantGroupNode(DjangoObjectType):
     class Meta:
         model = ContestantGroup
+        fields = '__all__'
 
     logo = String()
     score = Int()
@@ -48,26 +49,31 @@ class ContestantGroupNode(DjangoObjectType):
 class FoulTypeNode(DjangoObjectType):
     class Meta:
         model = FoulType
+        fields = '__all__'
 
 
 class FoulNode(DjangoObjectType):
     class Meta:
         model = Foul
+        fields = '__all__'
 
 
 class MatchStageNode(DjangoObjectType):
     class Meta:
         model = MatchStage
+        fields = '__all__'
 
 
 class ScorePointNode(DjangoObjectType):
     class Meta:
         model = ScorePoint
+        fields = '__all__'
 
 
 class MatchNode(DjangoObjectType):
     class Meta:
         model = Match
+        fields = '__all__'
 
     current_stage = Field(MatchStageNode)
     prev_stage = Field(MatchStageNode)
@@ -92,6 +98,7 @@ class MatchNode(DjangoObjectType):
 class ScorePointPollNode(DjangoObjectType):
     class Meta:
         model = ScorePointPoll
+        fields = '__all__'
 
 
 class ScorePointPollVotingNode(DjangoObjectType):
@@ -99,6 +106,7 @@ class ScorePointPollVotingNode(DjangoObjectType):
 
     class Meta:
         model = ScorePointPollVoting
+        fields = '__all__'
 
     def resolve_volume_scrapes(self, info):
         return self.volume_scrapes.all()

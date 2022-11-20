@@ -8,11 +8,13 @@ from .models import GameActor, GameRules, Game
 class GameActorNode(DjangoObjectType):
     class Meta:
         model = GameActor
+        fields = '__all__'
 
 
 class GameRulesNode(DjangoObjectType):
     class Meta:
         model = GameRules
+        fields = '__all__'
 
 
 class GameNode(DjangoObjectType):
@@ -20,6 +22,7 @@ class GameNode(DjangoObjectType):
 
     class Meta:
         model = Game
+        fields = '__all__'
 
     def resolve_type(self, info):
         return self.rules.name

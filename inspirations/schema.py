@@ -8,6 +8,7 @@ from .models import Inspiration
 class InspirationNode(DjangoObjectType):
     class Meta:
         model = Inspiration
+        fields = '__all__'
 
 
 class Query:

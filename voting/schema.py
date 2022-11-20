@@ -8,11 +8,13 @@ from .models import VolumeScrape, LivePollVoting
 class VolumeScrapeNode(DjangoObjectType):
     class Meta:
         model = VolumeScrape
+        fields = '__all__'
 
 
 class LivePollVotingNode(DjangoObjectType):
     class Meta:
         model = LivePollVoting
+        fields = '__all__'
 
 
 class Query:

@@ -26,8 +26,8 @@ class ImprovAdminSite(AdminSite):
     def get_model_sort_helper(self, request):
         return lambda x: czech_sort.key(x['name'][0])
 
-    def get_app_list(self, request):
-        app_list = super().get_app_list(request)
+    def get_app_list(self, request, app_label=None):
+        app_list = super().get_app_list(request, app_label=app_label)
         sort_helper = self.get_model_sort_helper(request)
         for app in app_list:
             app['models'].sort(key=sort_helper)

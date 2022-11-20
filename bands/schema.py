@@ -9,11 +9,13 @@ from .models import Band, BandPhoto
 class BandPhotoNode(PhotoNode):
     class Meta:
         model = BandPhoto
+        fields = '__all__'
 
 
 class BandNode(DjangoObjectType):
     class Meta:
         model = Band
+        fields = '__all__'
         filter_fields = {
             "name": ["iexact", "icontains", "istartswith"],
         }

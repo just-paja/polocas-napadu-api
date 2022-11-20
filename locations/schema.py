@@ -8,11 +8,13 @@ from .models import Location, UsualPlace
 class LocationNode(DjangoObjectType):
     class Meta:
         model = Location
+        fields = '__all__'
 
 
 class UsualPlaceNode(DjangoObjectType):
     class Meta:
         model = UsualPlace
+        fields = '__all__'
 
 
 class Query:

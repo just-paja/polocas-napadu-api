@@ -11,6 +11,7 @@ from .models import Workshop
 class WorkshopNode(DjangoObjectType):
     class Meta:
         model = Workshop
+        fields = '__all__'
 
 
 class Query:
