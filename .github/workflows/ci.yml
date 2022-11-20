@@ -116,7 +116,7 @@ jobs:
           DB_USER: ${{ secrets.STAGING_DB_USER }}
           DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID: ${{ secrets.STAGING_DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID }}
           DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET: ${{ secrets.STAGING_DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET }}
-          DJANGO_ENVIRONMENT: production
+          DJANGO_ENVIRONMENT: staging
           EMAIL_HOST: ${{ secrets.STAGING_EMAIL_HOST }}
           EMAIL_HOST_PASSWORD: ${{ secrets.STAGING_EMAIL_HOST_PASSWORD }}
           EMAIL_HOST_USER: ${{ secrets.STAGING_EMAIL_HOST_USER }}
@@ -160,7 +160,7 @@ jobs:
         run: |
           pip install ansible docker "requests==2.28.1"
           ansible-galaxy install -r requirements-ansible.yml
-      - name: Deploy staging app
+      - name: Deploy app
         env:
           ALLOWED_HOSTS: ${{ secrets.PRODUCTION_ALLOWED_HOSTS }}
           APP_INSPIRATIONS_URL: ${{ secrets.PRODUCTION_APP_INSPIRATIONS_URL }}
