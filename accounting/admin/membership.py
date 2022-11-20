@@ -1,6 +1,6 @@
 from admin_auto_filters.filters import AutocompleteFilter
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from fields.admin import BaseInlineAdminModel
 
 from ..models import Membership, MembershipFee, MembershipLevel, MembershipLevelFee

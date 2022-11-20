@@ -3,7 +3,7 @@ import datetime
 from django.contrib.auth import get_user_model
 from django.dispatch import receiver
 from django.db.models import ForeignKey, CASCADE, PROTECT
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from fields import NameMixin, DescriptionMixin
 from emailing.models import EmailNotification

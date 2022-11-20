@@ -261,6 +261,7 @@ APP_SCOREBOARD_URL = os.environ.get('APP_SCOREBOARD_URL', "http://localhost:3001
 APP_INSPIRATIONS_URL = os.environ.get('APP_INSPIRATIONS_URL', "http://localhost:3003")
 APP_WEBSITE_URL = os.environ.get('APP_WEBSITE_URL', "http://localhost:3000")
 
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",

@@ -1,5 +1,5 @@
 from django.db.models import Model, BigIntegerField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from .account import AccountNumberField, BankNumberField, IBanField, BicField
 from .currency import AmountField, CurrencyField

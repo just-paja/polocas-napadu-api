@@ -1,5 +1,5 @@
 from django.db.models import FloatField, ForeignKey, CASCADE
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
 from .already_closed import AlreadyClosed

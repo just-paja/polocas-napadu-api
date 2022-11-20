@@ -1,5 +1,5 @@
 from django.contrib.auth import admin as auth_admin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from fields.admin import ImprovAdminSite
 

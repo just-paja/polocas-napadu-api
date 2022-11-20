@@ -1,5 +1,5 @@
 from django.db.models import Model, ForeignKey, CASCADE, PROTECT
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from accounting.models import AmountField, CurrencyField
 

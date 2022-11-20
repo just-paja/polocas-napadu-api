@@ -1,5 +1,5 @@
 from django.db.models import PositiveIntegerField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 POLL_TYPE_AUDIBLE = 1
 

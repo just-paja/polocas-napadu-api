@@ -1,5 +1,5 @@
 from django.db.models import CASCADE, ForeignKey, OneToOneField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from voting.models import LivePoll
 

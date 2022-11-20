@@ -8,14 +8,14 @@ from django.db.models import (
     PROTECT,
     TextField,
 )
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
 from .counter_party import KnownAccount
 from .statement_specs import StatementSpecification, StatementSenderSpecification
 
 
-statement_registered = Signal(providing_args=['instance'])
+statement_registered = Signal()
 
 
 class Statement(

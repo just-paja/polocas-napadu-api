@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.db.models import Count
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import path, reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from fields.admin import BaseAdminModel, BaseStackedAdminModel
 

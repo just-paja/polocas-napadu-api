@@ -1,6 +1,6 @@
 import re
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from fields.admin import BaseAdminModel, SeasonFilter
 from theatre_sports.models import Match
 

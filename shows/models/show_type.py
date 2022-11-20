@@ -1,6 +1,6 @@
 from django_extensions.db.fields import AutoSlugField
 from django.db.models import BooleanField, TextField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from fields import PublicResourceMixin
 

@@ -4,7 +4,7 @@ from urllib.parse import urlencode
 
 from django.db.models import Q
 from django.shortcuts import redirect
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from fields.admin import BaseAdminModel, IntValueFilter, empty_value
 

@@ -1,6 +1,6 @@
 from django_extensions.db.models import TimeStampedModel
 from django.db.models import ForeignKey, CASCADE
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class EventParticipant(TimeStampedModel):
