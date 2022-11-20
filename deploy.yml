@@ -7,6 +7,7 @@
       become: true
       project_environment: '{{ lookup("env", "DJANGO_ENVIRONMENT") }}'
       project_name: 'cz-polocas-napadu-api'
+      project_version: '{{ lookup("ansible.builtin.pipe", "if [[ $PROJECT_ENVIRONMENT == production ]]; then poetry version -s; else git rev-parse HEAD; fi") }}'
       server_names: '{{ lookup("env", "ALLOWED_HOSTS") }}'
       env:
         ALLOWED_HOSTS: '{{ lookup("env", "ALLOWED_HOSTS") }}'
