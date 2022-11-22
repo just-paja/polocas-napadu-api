@@ -1,6 +1,57 @@
+:root {
+  --color-black-olive: #253017;
+  --color-fun-green: #007120;
+  --color-coconut-cream: #fcfaed;
+  --color-riptide: #f2f0e3;
+  
+  --input-bg: #fff;
+  --primary: var(--color-fun-green);
+  --secondary: var(--color-riptide);
+  --body-bg: var(--color-coconut-cream);
+  --header-branding-color: var(--color-coconut-cream);
+  --header-color: var(--color-coconut-cream);
+  --breadcrumbs-bg: var(--color-black-olive);
+  --darkened-bg: #f4eed9;
+  --selected-row: rgba(215, 166, 0, 0.33);
+  --accent: var(--color-buddha-gold);
+
+  --link-fg: var(--primary);
+  --link-hover-color: var(--color-valhalla);
+  --link-selected-fg: #5b80b2;
+
+  --hairline-color: #eae5d7;
+  --default-button-hover-bg: #a47e00;
+  --button-hover-bg: var(--color-valhalla);
+  --inline-group-bg: rgba(71,42,126,0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --input-bg: #161616;
+    --primary: var(--color-fun-green);
+    --secondary: var(--color-riptide);
+    --body-bg: var(--color-black-olive);
+    --header-branding-color: var(--color-coconut-cream);
+    --header-color: var(--color-coconut-cream);
+    --breadcrumbs-bg: var(--color-black-olive);
+    --darkened-bg: #312f2b;
+    --selected-row: rgba(215, 166, 0, 0.33);
+    --accent: var(--color-riptide);
+
+    --link-fg: var(--secondary);
+    --link-hover-color: var(--color-coconut-cream);
+    --link-selected-fg: #5b80b2;
+    --hairline-color: #44413c;
+    --inline-group-bg: rgba(255,255,255,0.1);
+  }
+}
+
 #header {
-  background: #253017;
-  color: #fcfaed;
+  background: var(--primary);
+}
+
+#branding #site-name {
+  font-weight: bold;
 }
 
 @media (max-width: 1024px) {
@@ -9,40 +60,85 @@
   }
 }
 
-html, body {
-  background: #fcfaed;
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea,
+.select2-container--admin-autocomplete .selection .select2-selection--single,
+.select2-container--admin-autocomplete .select2-search--dropdown input.select2-search__field,
+.vTextField {
+  background-color: var(--input-bg);
 }
 
-html, body, h1, h2, h3, h4 {
-  color: #253017;
+#user-tools a:focus, #user-tools a:hover {
+  color: var(--secondary);
 }
 
-body .module,
-body .row1,
-body .inline-related fieldset,
-body #changelist,
-body #changelist .actions,
-body #changelist .paginator
-{
+fieldset > .ui-tabs > .ui-tabs-nav.ui-widget-header {
+  display: none;
+}
+
+fieldset.module {
   background: transparent;
 }
 
-body thead th,
-body .inline-group div.add-row,
-body .inline-group .tabular tr.add-row td,
-body .row2,
-body .submit-row,
-body #content-related,
-body #changelist-filter,
-body #changelist #toolbar,
-body #changelist table thead th
-{
-  background: #f2f0e3;
+.inline-group,
+.djn-group .djn-group-nested {
+  background: var(--inline-group-bg);
+  border: 1px solid var(--hairline-color);
 }
 
-body .breadcrumbs,
-body .module caption {
-  background: #007120;
+.djn-group .djn-group-nested {
+  margin-bottom: 1rem;
+}
+
+.inline-group {
+  margin-bottom: 1.5rem;
+}
+
+.inline-group fieldset:last-child {
+  margin-bottom: 0;
+}
+
+/* Fix Markdown Editor fullscreen clash with sidebar */
+#toggle-nav-sidebar,
+#nav-sidebar {
+  z-index: 8;
+} 
+
+/* Fix Markdown Editor responsive flow */
+.mde-container {
+  flex-direction: column;
+}
+
+.mde-container .cm-s-paper {
+  background: var(--input-bg);
+  border-color: var(--hairline-color);
+  color: var(--input-fg);
+  cursor: text;
+}
+
+.mde-container .editor-toolbar {
+  background: var(--darkened-bg);
+  border-color: var(--hairline-color);
+  clear: both; /* Fix Markdown Editor label position */
+}
+
+.mde-container .editor-toolbar a {
+  cursor: default;
+  color: var(--body-fg) !important;
+}
+
+.mde-container .editor-toolbar a:hover {
+  color: var(--body-bg) !important;
+}
+
+.mde-container .CodeMirror-cursor {
+  border-color: var(--body-fg);
 }
 
 .admin-sites {
@@ -128,8 +224,4 @@ body .module caption {
 #header .admin-site-selection a:hover {
   color: #fcfaed;
   background: #007120;
-}
-
-.empty-value {
-  color: #ccc;
 }
