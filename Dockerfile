@@ -17,4 +17,4 @@ RUN \
 
 EXPOSE 80
 
-CMD gunicorn -c gunicorn.py api.wsgi
+CMD python3 ./manage.py collectstatic --no-input && python3 ./manage.py migrate && gunicorn -c gunicorn.py api.wsgi
